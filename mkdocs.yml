@@ -5,43 +5,59 @@ theme:
     scheme: preference
     primary: teal
     accent: teal
-      
+  custom_dir: overrides      
   icon:
     logo: fontawesome/solid/hospital
   #favicon: assets/images/favicon.png
   features:
-    - navigation.tabs
-
-  
+    - navigation.sections
+    - navigation.expand 
+    - toc.integrate
+    
 nav:
   - Getting Started:
       - Introduction: index.md
       - OHDSI-in-a-Box:
           - What is it?: OHDSI-in-a-Box.md
           - Install: install-OHDSI-in-a-Box.md
+          - Exploring Datasets with Python: explore-datasets-python.ipynb
+      - WhiteRabbit: white-rabbit.md
+        
 
 
+plugins:
+  - mknotebooks:
+      enable_default_jupyter_cell_styling: false
+      write_markdown: false
+      binder: false
+      binder_service_name: "gh"
+      binder_branch: "master"
+  - search
 
+        
 markdown_extensions:
-    - codehilite
-    - admonition
-    - pymdownx.superfences
-    - pymdownx.snippets
-    - pymdownx.details
-    - attr_list
-    - pymdownx.arithmatex:
-        generic: true
-    - pymdownx.emoji:
-        emoji_index: !!python/name:materialx.emoji.twemoji
-        emoji_generator: !!python/name:materialx.emoji.to_svg
-    - pymdownx.smartsymbols
-    - pymdownx.critic:
-        mode: view
-    - pymdownx.caret
-    - pymdownx.mark
-    - pymdownx.tilde
-    - pymdownx.tasklist:
-        custom_checkbox: true
+  - toc:
+      permalink: true
+      toc_depth: 4
+  - codehilite
+  - admonition
+  - pymdownx.superfences
+  - pymdownx.snippets
+  - pymdownx.details
+  - attr_list
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.smartsymbols
+  - pymdownx.critic:
+      mode: view
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.tasklist:
+      custom_checkbox: true
   
 #extra_css:
 #  - stylesheets/extra.css
