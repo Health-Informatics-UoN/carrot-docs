@@ -10,9 +10,9 @@ theme:
     logo: fontawesome/solid/hospital
   #favicon: assets/images/favicon.png
   features:
-    - navigation.sections
+    #- navigation.sections
     - navigation.expand 
-    - toc.integrate
+    #- toc.integrate
     
 nav:
   - Getting Started:
