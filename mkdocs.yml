@@ -15,7 +15,7 @@ extra_css:
     
 nav:
   - Welcome: index.md
-  - Data Team: 
+  - Data Preparation: 
       - Getting Started:
           - Introduction: index-data-team.md
           - OHDSI-in-a-Box:
