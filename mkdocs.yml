@@ -14,13 +14,14 @@ extra_css:
   - stylesheets/custom.css
     
 nav:
-  - Getting Started:
-      - Introduction: index.md
-      - OHDSI-in-a-Box:
-          - What is it?: OHDSI-in-a-Box.md
-          - Install: install-OHDSI-in-a-Box.md
-          - Exploring Datasets with Python: explore-datasets-python.ipynb
-      - WhiteRabbit: white-rabbit.md
+  - Data Team:
+      - Getting Started:
+          - Introduction: index.md
+            - OHDSI-in-a-Box:
+                - What is it?: OHDSI-in-a-Box.md
+                - Install: install-OHDSI-in-a-Box.md
+                - Exploring Datasets with Python: explore-datasets-python.ipynb
+            - WhiteRabbit: white-rabbit.md
   #- Source Code:
   #    - api: api.md
 
