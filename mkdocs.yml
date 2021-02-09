@@ -8,8 +8,8 @@ theme:
   favicon: images/favicon.png
   features:
     #- navigation.sections
-    - navigation.expand 
-    #- toc.integrate
+    #- navigation.expand 
+    - toc.integrate
 extra_css:
   - stylesheets/custom.css
     
@@ -53,7 +53,7 @@ plugins:
 markdown_extensions:
   - toc:
       permalink: true
-      toc_depth: 4
+      toc_depth: 3
   - codehilite
   - admonition
   - pymdownx.superfences
