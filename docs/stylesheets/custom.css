@@ -1,0 +1,16 @@
+[data-md-color-scheme="co-connect"] {
+    --co-connect-secondary: #3db28c;
+
+    --md-primary-fg-color:        #475da7;
+    --md-primary-fg-color--light: #c4c6e2;
+    --md-primary-fg-color--dark:   #3c3c3b;
+
+    --md-primary-fg-color: #3c3c3b;
+    --md-footer-bg-color: #475da7;
+    --md-primary-fg-color--dark:  #3db28c;
+
+    --md-primary-fg-color:white;
+    --md-primary-bg-color: #3c3c3b;
+  
+}
+
