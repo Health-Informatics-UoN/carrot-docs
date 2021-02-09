@@ -8,8 +8,8 @@ theme:
   favicon: images/favicon.png
   features:
     #- navigation.sections
-    #- navigation.expand 
-    - toc.integrate
+    - navigation.expand 
+    #- toc.integrate
 extra_css:
   - stylesheets/custom.css
     
