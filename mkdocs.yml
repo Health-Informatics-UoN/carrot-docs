@@ -14,9 +14,10 @@ extra_css:
   - stylesheets/custom.css
     
 nav:
-  - Data Team:
+  - Welcome: index.md
+  - Data Team: 
       - Getting Started:
-          - Introduction: index.md
+          - Introduction: index-data-team.md
           - OHDSI-in-a-Box:
               - What is it?: OHDSI-in-a-Box.md
               - Install: install-OHDSI-in-a-Box.md
