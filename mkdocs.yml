@@ -2,17 +2,17 @@ site_name: CO-CONNECT Docs
 theme:
   name: material
   palette:
-    scheme: preference
-    primary: teal
-    accent: teal
+    scheme: co-connect
+    primary: 
   custom_dir: overrides      
-  icon:
-    logo: fontawesome/solid/hospital
-  #favicon: assets/images/favicon.png
+  logo: images/favicon.png
+  favicon: images/favicon.png
   features:
     #- navigation.sections
     - navigation.expand 
     #- toc.integrate
+extra_css:
+  - stylesheets/custom.css
     
 nav:
   - Getting Started:
@@ -22,7 +22,8 @@ nav:
           - Install: install-OHDSI-in-a-Box.md
           - Exploring Datasets with Python: explore-datasets-python.ipynb
       - WhiteRabbit: white-rabbit.md
-        
+  #- Source Code:
+  #    - api: api.md
 
 
 plugins:
@@ -33,8 +34,21 @@ plugins:
       binder_service_name: "gh"
       binder_branch: "master"
   - search
-
-        
+  # - mkdocstrings:
+  #     handlers:
+  #       python:
+  #         setup_commands:
+  #           - import sys
+  #           - sys.path.append("../api/")
+  #           - import os
+  #           - import django
+  #           - os.environ.setdefault("DJANGO_SETTINGS_MODULE", "my_django_app.settings")
+  #           - django.setup()
+  #     watch:
+  #       - ../api/
+  #       - src/
+  #       - src/my_package
+      
 markdown_extensions:
   - toc:
       permalink: true
