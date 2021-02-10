@@ -1,6 +1,11 @@
 
 Continuous Integration (CI) in enabled through github actions, everytime you make a pull requestion it will trigger an action to build the stack with `docker-compose` and check for errors when starting it up.
 
+On the page "Actions" you can see the success of the jobs:
+![image](https://user-images.githubusercontent.com/69473770/107514348-744c5b80-6ba1-11eb-9553-b251ce2433bc.png)
+
+
+
 ## Setting Environmental Variables (Secrets)
 
 When running the code on a github runner, we need to pass the secret variables we would have in `.env`. To get started with this
@@ -36,6 +41,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
 ```
+
+In the interface you will see your jobs appear here, indicating whether they are successfull or not:
+![image](https://user-images.githubusercontent.com/69473770/107514366-7adad300-6ba1-11eb-8a92-5bbd912001c8.png)
+
+
+
 ### Setting Steps
 
 In each job multiple steps can be specified, like so:
@@ -45,6 +56,9 @@ steps:
  - step_2
  -...
 ```
+
+In the interface they will appear like this:
+![image](https://user-images.githubusercontent.com/69473770/107514395-84fcd180-6ba1-11eb-8da2-829b9447e6f2.png)
 
 
 ### Configuration Step
@@ -72,6 +86,13 @@ Define other commands to run...
 ...
 ```
 
+You can see that these steps have run well and you can check on the logs via the interface by expanding the steps:
+![image](https://user-images.githubusercontent.com/69473770/107515616-2cc6cf00-6ba3-11eb-9f4b-a6b3e1d466bf.png)
+
+
+
+
+### Artifacts
 
 It's also useful to 'save artifacts' by uploading them 
 ```yaml
@@ -83,20 +104,6 @@ It's also useful to 'save artifacts' by uploading them
      retention-days: 1
 ```
 
-
-## Viewing Actions
-
-### All workflows
-![image](https://user-images.githubusercontent.com/69473770/107514348-744c5b80-6ba1-11eb-9553-b251ce2433bc.png)
-
-### Build Jobs
-![image](https://user-images.githubusercontent.com/69473770/107514366-7adad300-6ba1-11eb-8a92-5bbd912001c8.png)
-
-
-### Steps within the build job
-![image](https://user-images.githubusercontent.com/69473770/107514395-84fcd180-6ba1-11eb-8da2-829b9447e6f2.png)
-
-
-### Access Artifacts
+via the interface, you can then download this log to check further details:
 ![image](https://user-images.githubusercontent.com/69473770/107514922-36036c00-6ba2-11eb-84ab-3d42c0cf765d.png)
 
