@@ -8,7 +8,7 @@ theme:
   favicon: images/favicon.png
   features:
     #- navigation.sections
-    #- navigation.expand 
+    - navigation.expand 
     - toc.integrate
 extra_css:
   - stylesheets/custom.css
