@@ -23,6 +23,7 @@ nav:
         - Exploring Datasets with Python: GettingStarted/explore-datasets-python.ipynb
       - WhiteRabbit: GettingStarted/white-rabbit.md
   - Mapping-Pipeline:
+      - Overview: MappingPipeline/README.md
       - CI configuration: MappingPipeline/ci.md
 
 
