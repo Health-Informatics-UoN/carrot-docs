@@ -1,23 +1,11 @@
-### Table of Contents
-1. [Introduction](#introduction)
-1. [Getting Started](#getting-started)
-   1. [Manually](#manually)
-   1. [Docker](#docker)
-   1. [Refreshing](#refreshing) 
-1. [Pages](#pages)
-   1. [Admin](#admin)
-   1. [Signup](#signup)
-   1. [ScanReports](#scanreports)
-1. [Custom Styling](#custom-styling)
-   1. [CSS](#css)
-   2. [JavaScript](#javascript)
 
-# Introduction
+
+## Introduction
 This repository contains information and code for the CO-CONNECT Mapping Pipeline.
 
-# Getting Started <a name="getting-started"></a>
+## Getting Started 
 
-## Manually
+### Manually
 To run the mapping pipeline Django MVP:
 
 1.	Clone this repository
@@ -27,7 +15,7 @@ To run the mapping pipeline Django MVP:
 5.  Make migrations to load demo data into your local SQLite db
 6.  Log into the admin area at http://127.0.0.1:8000/admin/ to view the data
 
-## Docker
+### Docker
 
 Copy .env file from Teams Software Team -> files -> .env to the root of project. Then run the commands below.
 
@@ -47,7 +35,7 @@ docker-compose stop
 ```
 You can alternatively use `down` to remove everything (changes made within the containers).
 
-## Refreshing
+### Refreshing
 
 A couple of tips for refreshing/cache clearing if you have picked up large changes..
 * Remove `api/db.sqlite3`
@@ -56,29 +44,29 @@ A couple of tips for refreshing/cache clearing if you have picked up large chang
   * :bulb: `ls api/mapping/migrations/ | grep -v __init__.py | xargs rm` 
 
 
-# Pages
+## Pages
 
 :warning: If you run manually the port is `8000`, with the docker container, port `8000` (in the container) is forwarded to `8080` (local)
 
-## Admin 
+### Admin 
 Point to [http://127.0.0.1:8080/admin/](http://127.0.0.1:8080/admin/) to access the django admin.
 
-## Signup
+### Signup
 Sign up an account so that you're able to login
 [http://127.0.0.1:8080/signup/](http://127.0.0.1:8080/signup/)
 
-## ScanReports
+### ScanReports
 To access the scanreports route, go to:
 [http://127.0.0.1:8080/scanreports/](http://127.0.0.1:8080/scanreports/)
 
-# Custom Styling <a name="custom-styling"></a>
+## Custom Styling <a name="custom-styling"></a>
 
 The folder `api/static/` contains static folders that can be used to store custom `css` and `javascript`. Files contained within are then made publically accessable, i.e. viewable by the frontend code, for example:
 ```html
 <img src="{% static 'images/cropped-LARGE_co-connect-logo-1-180x180.png' %}"...>
 ```
 
-## CSS
+### CSS
 
 Styling of elements and the modification of Bootstrap elements can be made in `api/static/style/custom.css`.
 
@@ -100,5 +88,5 @@ For example, to change the background style of the navbar..:
 ```
 
 
-## JavaScript
+### JavaScript
 Any `js`, e.g. `jquery` ajax calls can be inserted in `api/static/javascript/custom.js`.
