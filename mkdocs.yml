@@ -16,14 +16,14 @@ extra_css:
 nav:
   - Welcome: index.md
   - Getting Started:
-      - Introduction: index-data-team.md
+      - Introduction: GettingStarted/index-data-team.md
       - OHDSI-in-a-Box:
-        - What is it?: OHDSI-in-a-Box.md
-        - Install: install-OHDSI-in-a-Box.md
-        - Exploring Datasets with Python: explore-datasets-python.ipynb
-      - WhiteRabbit: white-rabbit.md
-  #- Source Code:
-  #    - api: api.md
+        - What is it?: GettingStarted/OHDSI-in-a-Box.md
+        - Install: GettingStarted/install-OHDSI-in-a-Box.md
+        - Exploring Datasets with Python: GettingStarted/explore-datasets-python.ipynb
+      - WhiteRabbit: GettingStarted/white-rabbit.md
+  - Mapping-Pipeline:
+      - CI configuration: MappingPipeline/ci.md
 
 
 plugins:
