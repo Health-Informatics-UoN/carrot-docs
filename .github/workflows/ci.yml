@@ -14,6 +14,7 @@ jobs:
         with:
           repository: CO-CONNECT/ETLTool
           path: ETLTool
+      - run: ls && ls ETLTool
       - uses: actions/setup-python@v2
         with:
           python-version: 3.x
