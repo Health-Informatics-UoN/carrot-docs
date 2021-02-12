@@ -18,7 +18,7 @@ jobs:
         run: cd ETLTool && pip install -r requirements.txt && cd ../
       - uses: actions/setup-python@v2
         with:
-          python-version: 3.x
+          python-version: 3.8
       - run: pip install mkdocs-material
       - run: pip install mknotebooks
       - run: pip install mkdocstrings
