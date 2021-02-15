@@ -12,6 +12,8 @@ jobs:
         with:
           submodules: True
       - run: ls docs/co-connect-tools
+      - name: Install setuptools
+        run: pip3 install setuptools
       - name: Install co-connect-tools
         run:  pip3 install -e docs/co-connect-tools
       - uses: actions/setup-python@v2
