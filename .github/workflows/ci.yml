@@ -13,11 +13,11 @@ jobs:
           submodules: True
       - run: ls docs/co-connect-tools
       - name: Install co-connect-tools
-        run:  pip install -e docs/co-connect-tools
+        run:  pip3 install -e docs/co-connect-tools
       - uses: actions/setup-python@v2
         with:
           python-version: 3.8
-      - run: pip install mkdocs-material
-      - run: pip install mknotebooks
-      - run: pip install mkdocstrings
+      - run: pip3 install mkdocs-material
+      - run: pip3 install mknotebooks
+      - run: pip3 install mkdocstrings
       - run: mkdocs gh-deploy --force
