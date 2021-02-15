@@ -25,8 +25,9 @@ nav:
   - Mapping-Pipeline:
       - Overview: MappingPipeline/README.md
       - CI configuration: MappingPipeline/ci.md
-  - ETL-Tool:
-      - Source: etltool.md
+  - CO-CONNECT Tools:
+      - ETLTool:
+          - Source: COCONNECT-TOOLS/etltool.md
 
 plugins:
   - mknotebooks:
@@ -41,9 +42,6 @@ plugins:
         python:
           setup_commands:
             - import sys
-            - sys.path.append("../ETLTool/")
-            - import ETLTool.etltool
-            - print (sys.path)
  #           - import os
 #            - import django
  #           - os.environ.setdefault("DJANGO_SETTINGS_MODULE", "my_django_app.settings")

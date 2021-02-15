@@ -9,18 +9,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Checkout source code
-        uses: actions/checkout@v2
-        with:
-          repository: CO-CONNECT/ETLTool
-          path: ETLTool
-      - name: Install ETLTool
-        run: cd ETLTool && pip install -r requirements.txt && cd ../
+      #- name: Checkout source code
+      #  uses: actions/checkout@v2
+      #  with:
+      #    repository: CO-CONNECT/ETLTool
+      #    path: ETLTool
+      #- name: Install ETLTool
+      #  run: cd ETLTool && pip install -r requirements.txt && cd ../
       - uses: actions/setup-python@v2
         with:
           python-version: 3.8
       - run: pip install mkdocs-material
       - run: pip install mknotebooks
       - run: pip install mkdocstrings
-      - run: cat ETLTool/etltool.py
       - run: mkdocs gh-deploy --force
