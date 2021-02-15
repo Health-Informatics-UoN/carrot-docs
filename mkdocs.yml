@@ -28,7 +28,7 @@ nav:
   - CO-CONNECT Tools:
       - ETLTool:
           - Getting Started: "co-connect-tools/notebooks/Introduction\ -\ Using\ the\ ETLTool.ipynb"
-          - Source: COCONNECT-TOOLS/etltool.md
+          - Source: etltool.md
 
 plugins:
   - mknotebooks:
