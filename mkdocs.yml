@@ -25,6 +25,7 @@ nav:
   - Mapping-Pipeline:
       - Overview: MappingPipeline/README.md
       - CI configuration: MappingPipeline/ci.md
+      - Loading Backups: MappingPipeline/backups.md
   - CO-CONNECT Tools:
       - ETLTool:
           - Getting Started: "co-connect-tools/notebooks/Introduction\ -\ Using\ the\ ETLTool.ipynb"
