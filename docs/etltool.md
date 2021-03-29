@@ -1,3 +1,3 @@
-# ETLTool
+# Common Data Model
 
-::: docs.co-connect-tools.coconnect.etltool.ETLTool
+::: docs.co-connect-tools.coconnect.cdm.objects.base.Base
