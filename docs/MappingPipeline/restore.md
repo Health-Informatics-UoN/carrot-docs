@@ -1,6 +1,6 @@
 Here is how you can restore a __single__ ScanReport..
 
-1. Find 
+## 1. Find 
 
 Download the backup of the db, which contains the ScanReport you need to restore.
 
@@ -15,23 +15,24 @@ git checkout <hash>
 ```
 
 
-2. Delete
+## 2. Delete
 
 Once mapping-pipeline is running, remove all reports you don't need, so you're left with just the single report you want to restore.
 
-3. Update with Master
+## 3. Update with Master
 
 Switch to the master branch now and run `makemigratations` to make sure any fields that have been updated get migrated.
 
-**this gave me a lot of problems, what worked...**
-* do `makemigrations`/`migrate` on the old hash of the master
-* switch to the master branch
-* go into the folder `api/mapping/migrations`
-* do `makemigrations`/`migrate`
+**this gave me a lot of problems, what worked...**   
+
+  * do `makemigrations`/`migrate` on the old hash of the master  
+  * switch to the master branch  
+  * go into the folder `api/mapping/migrations` 
+  * do `makemigrations`/`migrate`  
 
 ^without going into the folder, it kept saying there were no changes. And `makemigrations mapping` kept overwritting the old `0001_initial.py`.
 
-4. Dumpdata
+## 4. Dumpdata
 
 Dump the data into json format for the Report, Table(s), Field(s), Value(s).
 Put it in a temp folder inside `api` so it can be see when we run `loaddata`
@@ -49,7 +50,7 @@ docker-compose exec api python manage.py dumpdata mapping.scanreportfield --inde
 docker-compose exec api python manage.py dumpdata mapping.scanreportvalue --indent 6 >> scanreportvalue.json
 ```
 
-5. Loaddata
+## 5. Loaddata
 
 On the VM, inside the `api` folder I transfered the files to `recover/MATCH/`
 
