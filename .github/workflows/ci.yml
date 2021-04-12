@@ -14,7 +14,9 @@ jobs:
       - uses: actions/checkout@v2
         with:
           submodules: True
-      - name: Install setuptools
-        run: pip3 install setuptools
       - run: pip3 install -r requirements.txt
-      - run: cd public & mkdocs gh-deploy --force
+      - run: |
+          ls
+          ls public
+          cd public
+          mkdocs gh-deploy --force
