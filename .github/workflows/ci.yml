@@ -16,7 +16,5 @@ jobs:
           submodules: True
       - name: Install setuptools
         run: pip3 install setuptools
-      - name: Install co-connect-tools
-        run:  pip3 install -e docs/co-connect-tools
       - run: pip3 install -r requirements.txt
       - run: cd public & mkdocs gh-deploy --force
