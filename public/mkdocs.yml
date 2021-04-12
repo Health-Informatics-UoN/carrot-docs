@@ -23,15 +23,13 @@ nav:
         - Exploring Datasets with Python: GettingStarted/explore-datasets-python.ipynb
       - WhiteRabbit: GettingStarted/white-rabbit.md
   - Mapping-Pipeline:
-      - Overview: MappingPipeline/README.md
-      - CI configuration: MappingPipeline/ci.md
-      - Loading Backups: MappingPipeline/backups.md
-      - Recovering Data: MappingPipeline/restore.md
+      - About:   MappingPipeline/about.md
+      - Uploading a Report:   MappingPipeline/uploading-scan-report.md
+      - Downloading Mapping:   MappingPipeline/downloading-rules.md
   - CO-CONNECT Tools:
       - Overview: co-connect-tools/README.md
       - Transforming Data:
           - Getting Started: "co-connect-tools/notebooks/Introduction\ -\ Using\ the\ ETLTool.ipynb"
-          - Source: etltool.md
 
 plugins:
   - mknotebooks:
