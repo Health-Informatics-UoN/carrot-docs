@@ -26,19 +26,6 @@ plugins:
       binder_service_name: "gh"
       binder_branch: "master"
   - search
-  - mkdocstrings:
-      handlers:
-        python:
-          setup_commands:
-            - import sys
- #           - import os
-#            - import django
- #           - os.environ.setdefault("DJANGO_SETTINGS_MODULE", "my_django_app.settings")
- #           - django.setup()
-  #     watch:
-  #       - ../api/
-  #       - src/
-  #       - src/my_package
       
 markdown_extensions:
   - toc:
