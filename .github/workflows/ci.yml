@@ -19,7 +19,5 @@ jobs:
         run: pip3 install setuptools
       - name: Install co-connect-tools
         run:  pip3 install -e docs/co-connect-tools
-      - run: pip3 install mkdocs-material
-      - run: pip3 install mknotebooks
-      - run: pip3 install mkdocstrings
+      - run: pip3 install -r requirements.txt
       - run: mkdocs gh-deploy --force
