@@ -9,7 +9,7 @@ theme:
   features:
     #- navigation.sections
     - navigation.expand 
- extra_css:
+  extra_css:
     - stylesheets/custom.css
     
 nav:
