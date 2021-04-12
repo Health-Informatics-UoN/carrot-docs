@@ -1,0 +1,89 @@
+site_name: CO-CONNECT Docs
+theme:
+  name: material
+  palette:
+    scheme: co-connect
+  custom_dir: overrides      
+  logo: images/favicon.png
+  favicon: images/favicon.png
+  features:
+    #- navigation.sections
+    - navigation.expand 
+    #- toc.integrate
+extra_css:
+  - stylesheets/custom.css
+    
+nav:
+  - Welcome: index.md
+  - Getting Started:
+      - Introduction: GettingStarted/index-data-team.md
+      - OHDSI-in-a-Box:
+        - What is it?: GettingStarted/OHDSI-in-a-Box.md
+        - Install: GettingStarted/install-OHDSI-in-a-Box.md
+        - Exploring Datasets with Python: GettingStarted/explore-datasets-python.ipynb
+      - WhiteRabbit: GettingStarted/white-rabbit.md
+  - Mapping-Pipeline:
+      - Overview: MappingPipeline/README.md
+      - CI configuration: MappingPipeline/ci.md
+      - Loading Backups: MappingPipeline/backups.md
+      - Recovering Data: MappingPipeline/restore.md
+  - CO-CONNECT Tools:
+      - Overview: co-connect-tools/README.md
+      - Transforming Data:
+          - Getting Started: "co-connect-tools/notebooks/Introduction\ -\ Using\ the\ ETLTool.ipynb"
+          - Source: etltool.md
+
+plugins:
+  - mknotebooks:
+      enable_default_jupyter_cell_styling: false
+      write_markdown: false
+      binder: false
+      binder_service_name: "gh"
+      binder_branch: "master"
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          setup_commands:
+            - import sys
+ #           - import os
+#            - import django
+ #           - os.environ.setdefault("DJANGO_SETTINGS_MODULE", "my_django_app.settings")
+ #           - django.setup()
+  #     watch:
+  #       - ../api/
+  #       - src/
+  #       - src/my_package
+      
+markdown_extensions:
+  - toc:
+      permalink: true
+      toc_depth: 4
+  - codehilite
+  - admonition
+  - pymdownx.superfences
+  - pymdownx.snippets
+  - pymdownx.details
+  - attr_list
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.smartsymbols
+  - pymdownx.critic:
+      mode: view
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  
+#extra_css:
+#  - stylesheets/extra.css
+  
+#extra_javascript:
+#  - javascripts/config.js
+#  - https://polyfill.io/v3/polyfill.min.js?features=es6
+#  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+#  - https://cdn.plot.ly/plotly-latest.min.js
