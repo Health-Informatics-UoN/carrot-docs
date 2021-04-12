@@ -1,4 +1,3 @@
-co-connect-tools
 mkdocs-material
 mknotebooks
 mkdocstrings
