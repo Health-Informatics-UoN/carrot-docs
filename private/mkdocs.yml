@@ -1,4 +1,4 @@
-site_name: CO-CONNECT Docs
+site_name: CO-CONNECT Development Docs
 theme:
   name: material
   palette:
@@ -11,8 +11,9 @@ theme:
 extra_css:
   - stylesheets/custom.css
     
-nav: index.md
-  - Mapping-Pipeline:
+nav:
+  - index.md
+  - Mapping-Pipeline: 
       - CI configuration: MappingPipeline/ci.md
       - Loading Backups: MappingPipeline/backups.md
       - Recovering Data: MappingPipeline/restore.md
