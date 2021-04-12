@@ -10,7 +10,7 @@ theme:
     #- navigation.sections
     - navigation.expand 
  extra_css:
-  - stylesheets/custom.css
+    - stylesheets/custom.css
     
 nav:
   - Mapping-Pipeline:
