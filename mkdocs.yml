@@ -28,7 +28,8 @@ nav:
       - Loading Backups: MappingPipeline/backups.md
       - Recovering Data: MappingPipeline/restore.md
   - CO-CONNECT Tools:
-      - ETLTool:
+      - Overview: co-connect-tools/README.md
+      - Transforming Data:
           - Getting Started: "co-connect-tools/notebooks/Introduction\ -\ Using\ the\ ETLTool.ipynb"
           - Source: etltool.md
 
