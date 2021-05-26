@@ -25,9 +25,10 @@ nav:
   - Mapping-Pipeline:
       - About:   MappingPipeline/about.md
       - Uploading a Report:   MappingPipeline/uploading-scan-report.md
-      #- Downloading Mapping:   MappingPipeline/downloading-rules.md
-      - Mapping Rules: MappingPipeline/mapping-rules.md
       - NLP Processing: MappingPipeline/nlp-processing.md
+      - Mapping Rules: MappingPipeline/mapping-rules.md
+      #- Downloading Mapping:   MappingPipeline/downloading-rules.md
+      
   #- CO-CONNECT Tools:
   #    - Overview: co-connect-tools/README.md
   #    - Transforming Data:
