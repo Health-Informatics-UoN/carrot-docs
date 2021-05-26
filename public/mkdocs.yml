@@ -15,17 +15,18 @@ extra_css:
     
 nav:
   - Welcome: index.md
-  - Getting Started:
-      - Introduction: GettingStarted/index-data-team.md
-      - OHDSI-in-a-Box:
-        - What is it?: GettingStarted/OHDSI-in-a-Box.md
-        - Install: GettingStarted/install-OHDSI-in-a-Box.md
-        - Exploring Datasets with Python: GettingStarted/explore-datasets-python.ipynb
-      - WhiteRabbit: GettingStarted/white-rabbit.md
+  #- Getting Started:
+  #    - Introduction: GettingStarted/index-data-team.md
+  #    - OHDSI-in-a-Box:
+  #      - What is it?: GettingStarted/OHDSI-in-a-Box.md
+  #      - Install: GettingStarted/install-OHDSI-in-a-Box.md
+  #      - Exploring Datasets with Python: GettingStarted/explore-datasets-python.ipynb
+  #    - WhiteRabbit: GettingStarted/white-rabbit.md
   - Mapping-Pipeline:
       - About:   MappingPipeline/about.md
       - Uploading a Report:   MappingPipeline/uploading-scan-report.md
-      - Downloading Mapping:   MappingPipeline/downloading-rules.md
+      #- Downloading Mapping:   MappingPipeline/downloading-rules.md
+      - Mapping Rules: MappingPipeline/mapping-rules.md
       - NLP Processing: MappingPipeline/nlp-processing.md
   #- CO-CONNECT Tools:
   #    - Overview: co-connect-tools/README.md
