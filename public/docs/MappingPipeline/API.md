@@ -8,10 +8,10 @@ An API root can be accessed using: http://127.0.0.1:8080/api
 ## OMOP DB 
 We have implemented enpoints for following 8 tables. The API endpoints for these tables are read only. 
 
-1.	concept table: 
-	a.	http://127.0.0.1:8080/api/omop/concepts/         			Returns all concepts of a concept table
-	b.	http://127.0.0.1:8080/api/omop/concepts/1/		 			Returns concept details fromt the concept table for concept id=1 
-	c.	http://localhost:8080/api/omop/conceptsfilter/?concept_code=R51&vocabulary_id=ICD10CM
+1.  concept table: 
+    a.  http://127.0.0.1:8080/api/omop/concepts/         			Returns all concepts of a concept table
+    b.  http://127.0.0.1:8080/api/omop/concepts/1/		 			Returns concept details fromt the concept table for concept id=1 
+    c.  http://localhost:8080/api/omop/conceptsfilter/?concept_code=R51&vocabulary_id=ICD10CM
 																	This will return a record that has "concept_code=R51" and "vocabulary_id=ICD10CM"
 2.	vocabulary table: 
 	a.	http://127.0.0.1:8080/api/omop/vocabularies/				Returns all records of a vocabulary table
