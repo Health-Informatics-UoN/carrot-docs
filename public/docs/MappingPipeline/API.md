@@ -54,10 +54,14 @@ We have implemented enpoints for following 8 tables. The API endpoints for these
 3. mapping_scanreportfield table
     * http://127.0.0.1:8080/api/scanreportfields/ All scan report fields in a mapping_scanreportfield table
     * http://127.0.0.1:8080/api/scanreportfields/4638/ A record in a mapping_scanreportfields with id=4638 
+    * http://127.0.0.1:8080/api/scanreportfieldsfilter/?scan_report_table=419&name=altered_conscious_state This will return a record from a mapping_scanreportfield table with "scan_report_table=419" and "name=altered_conscious_state"
+    *  http://127.0.0.1:8080/api/scanreportfieldsfilter/?scan_report_table=419 This will return all records from a mapping_scanreportfield table with "scan_report_table=419"
 
 4. mapping_scanreportvalue table
     * http://127.0.0.1:8080/api/scanreportvalues/ All scan report values in a mapping_scanreportvalues
     * http://127.0.0.1:8080/api/scanreportvalues/2/ A record in a mapping_scanreportvalues with id=2
+    * http://127.0.0.1:8080/api/scanreportvaluesfilter/?scan_report_field=222&value=Surgery This will return a record from a mapping_scanreportvalue table with "scan_report_field=222" and "value=surgery"
+    * http://127.0.0.1:8080/api/scanreportvaluesfilter/?scan_report_field=222 This will return all records from a mapping_scanreportvalue table with "scan_report_field=222"
 
 5. mapping_scanreportconcept table	
     * http://127.0.0.1:8080/api/scanreportconcepts/ All scan report concepts in a mapping_scanreportconcepts
