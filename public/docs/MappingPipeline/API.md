@@ -1,12 +1,12 @@
 # API for OMOP and Co-Connect DBs
 
-The mapping-pipeline API allows programmtic interaction with co-connect DB and OMOP DB contents and the API is developed using the Django REST framework.  Endpoints for accessing OMOP CDM Contents and mapping tool DB contents:
+The mapping-pipeline API allows programmtic interaction with co-connect DB and OMOP CDM DB contents. The API is developed using the Django REST framework.  
 
 ## API Root
 An API root can be accessed using: http://127.0.0.1:8080/api
 
 ## OMOP DB 
-We have implemented enpoints for following 8 tables. The API endpoints for these tables are read only. 
+We have implemented enpoints for following 8 tables of OMOP CDM DB. The API endpoints for these tables are read only. 
 
 1. concept table: 
     * http://127.0.0.1:8080/api/omop/concepts/ Returns all records in a concept table
@@ -41,6 +41,8 @@ We have implemented enpoints for following 8 tables. The API endpoints for these
     * http://127.0.0.1:8080/drugstrengths/?drug_concept_id=32763&ingredient_concept_id=32763 To get a unique row of drug_strength table we need to give two query terms that consists of drug_concept_id and ingredient_concept_id. However a query term can be defined to get all records either by giving drug_concept_id or ingredient_concept_id.)
 	
 ## Co-Connect DB
+
+We have implemented enpoints for following 16 tables of co-connect DB. 
 
 1. mapping_scanreport table
     * http://127.0.0.1:8080/api/scanreports/ All scan reports in a mapping_scanreport table
