@@ -38,7 +38,7 @@ We have implemented enpoints for following 8 tables of OMOP CDM DB. The API endp
 
 8. drug_strength Table: 
     * **http://127.0.0.1:8080/api/omop/drugstrengths/**	Returns all records of a drug_strength table
-    * **http://127.0.0.1:8080/drugstrengths/?drug_concept_id=32763&ingredient_concept_id=32763** To get a unique row of drug_strength table we need to give two query terms that consists of drug_concept_id and ingredient_concept_id. However a query term can be defined to get all records either by giving drug_concept_id or ingredient_concept_id.)
+    * **http://127.0.0.1:8080/api/omop/drugstrengths/?drug_concept_id=32763&ingredient_concept_id=32763** To get a unique row of drug_strength table we need to give two query terms that consists of drug_concept_id and ingredient_concept_id. However a query term can be defined to get all records either by giving drug_concept_id or ingredient_concept_id.)
 	
 ## Co-Connect DB
 
