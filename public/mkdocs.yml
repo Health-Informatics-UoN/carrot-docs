@@ -27,6 +27,7 @@ nav:
       - Uploading a Report:   MappingPipeline/uploading-scan-report.md
       - NLP Processing: MappingPipeline/nlp-processing.md
       - Mapping Rules: MappingPipeline/mapping-rules.md
+      - API: MappingPipeline/API.md
       #- Downloading Mapping:   MappingPipeline/downloading-rules.md
       
   #- CO-CONNECT Tools:
