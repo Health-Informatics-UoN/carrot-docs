@@ -3,6 +3,24 @@
 
 ## Triggering the function
 When a White Rabbit Scan Report file is uploaded on the site, it is saved into Azure Blob Storage and a message is send to the storage Queue. This message includes the `scan_report_id` from the `ScanReport` model and `blob_name` which is the name of the uploaded file.
+```python
+ azure_dict={
+            "scan_report_id":scan_report.id,
+            "blob_name":str(scan_report.file)
+        }
+        
+        queue_message=json.dumps(azure_dict)
+        message_bytes = queue_message.encode('ascii')
+        base64_bytes = base64.b64encode(message_bytes)
+        base64_message = base64_bytes.decode('ascii')
+        
+        queue = QueueClient.from_connection_string(
+            conn_str=os.environ.get("CONN_STRING"),
+            queue_name="new-scanreports"
+        )
+        queue.send_message(base64_message)
+```
+
 ![Queue Trigger](images/trigger.png)
 
 **Figure 1** Triggering the Queue when uploading a Scan Report
