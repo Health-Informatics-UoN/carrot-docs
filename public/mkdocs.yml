@@ -28,6 +28,8 @@ nav:
       - NLP Processing: MappingPipeline/nlp-processing.md
       - Mapping Rules: MappingPipeline/mapping-rules.md
       - API: MappingPipeline/API.md
+      - ProcessQueue: MappingPipeline/processQueue.md
+      
       #- Downloading Mapping:   MappingPipeline/downloading-rules.md
       
   #- CO-CONNECT Tools:
