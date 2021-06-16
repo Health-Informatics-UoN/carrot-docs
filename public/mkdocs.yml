@@ -32,10 +32,14 @@ nav:
       
       #- Downloading Mapping:   MappingPipeline/downloading-rules.md
       
-  #- CO-CONNECT Tools:
-  #    - Overview: co-connect-tools/README.md
-  #    - Transforming Data:
-  #        - Getting Started: "co-connect-tools/notebooks/Introduction\ -\ Using\ the\ ETLTool.ipynb"
+  - CO-CONNECT Tools:
+      - Getting Started: CoConnectTools/source_code/README.md
+      - CommonDataModel:
+          - Overview: CoConnectTools/CommonDataModel.md
+          - DataType: CoConnectTools/DataType.md
+          - Person: CoConnectTools/Person.md
+      - ETL:
+          - Workbook Example: "CoConnectTools/source_code/notebooks/Introduction\ -\ Using\ the\ ETLTool.ipynb"
 
 plugins:
   - mknotebooks:
