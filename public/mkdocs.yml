@@ -36,10 +36,11 @@ nav:
       - Getting Started: CoConnectTools/source_code/README.md
       - CommonDataModel:
           - Overview: CoConnectTools/CommonDataModel.md
-          - Person: CoConnectTools/Person.md
-          - Condition Occurrence: CoConnectTools/ConditionOccurrence.md
-          - Measurement: CoConnectTools/Measurement.md
-          - Observation: CoConnectTools/Observation.md
+          - Tables:
+              - Person: CoConnectTools/Person.md
+              - Condition Occurrence: CoConnectTools/ConditionOccurrence.md
+              - Measurement: CoConnectTools/Measurement.md
+              - Observation: CoConnectTools/Observation.md
       - ETL:
           - Workbook Example: "CoConnectTools/source_code/notebooks/Introduction\ -\ Using\ the\ ETLTool.ipynb"
 

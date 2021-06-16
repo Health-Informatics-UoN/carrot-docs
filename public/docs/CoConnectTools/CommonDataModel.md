@@ -20,7 +20,7 @@ coconnect/cdm/
 
 ## CDM Fields
 In `common.py` a class called `DestinationField` defines how to handle an input pandas series.
-This pandas series is effectively a column in the output of the CDM Tables, in other words, `DestinationField` is an object for the `destination_field`, e.g. `person_id` in the `destinatio_table` `person`.
+This pandas series is effectively a column in the output of the CDM Tables, in other words, `DestinationField` is an object for the `destination_field`, e.g. `person_id` in the `destination_table` `person`.
 
 ```python
 class DestinationField(object):
