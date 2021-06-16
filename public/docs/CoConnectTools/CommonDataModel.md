@@ -4,12 +4,12 @@ The Pythonic version of the CommonDataModel is built object-orientated in the su
 coconnect/cdm/
 ├── __init__.py
 ├── classes
-│   └── __init__.py
+│   ├── __init__.py
 ├── decorators.py
 ├── model.py
 ├── objects
 │   ├── __init__.py
-│   ├── base.py
+│   ├── common.py
 │   ├── condition_occurrence.py
 │   ├── measurement.py
 │   ├── observation.py
@@ -19,11 +19,11 @@ coconnect/cdm/
 ```
 
 ## CDM Fields
-In `base.py` a class called `DataType` defines how to handle an input pandas series.
-This pandas series is effectively a column in the output of the CDM Tables, in other words, `DataType` is the `destination_field`, e.g. `person_id` for `person`.
+In `common.py` a class called `DestinationField` defines how to handle an input pandas series.
+This pandas series is effectively a column in the output of the CDM Tables, in other words, `DestinationField` is an object for the `destination_field`, e.g. `person_id` in the `destinatio_table` `person`.
 
 ```python
-class DataType(object):
+class DestinationField(object):
     def __init__(self, dtype: str, required: bool, pk=False):
         self.series = None
         self.dtype = dtype
@@ -38,7 +38,7 @@ class DataType(object):
 
 ## CDM Tables
 
-All CDM Tables are formed as objects and are defined in `coconnect/cdm/objects`, inheriting from a base class (`Base`, defined in `base.py`):
+All CDM Tables are formed as objects and are defined in `coconnect/cdm/objects`, inheriting from a base class (`DestinationTable`, defined in `common.py`):
 
    * [Person](/CoConnectTools/Person.md)
    * [Condition Occurrence](/CoConnectTools/ConditionOccurrence.md)
