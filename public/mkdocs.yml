@@ -65,10 +65,10 @@ plugins:
               - "^__init__$"  # but always include __init__ modules and methods
           setup_commands:
             - import sys
-            - sys.path.append("CoConnectTools/source_code/")
-            - sys.path.append("docs/CoConnectTools/source_code/")
-            - sys.path.append("public/docs/CoConnectTools/source_code/")
-            - print (sys.path)
+            #- sys.path.append("CoConnectTools/source_code/")
+            #- sys.path.append("docs/CoConnectTools/source_code/")
+            #- sys.path.append("public/docs/CoConnectTools/source_code/")
+            #- print (sys.path)
 
 markdown_extensions:
   - toc:
