@@ -13,10 +13,12 @@ jobs:
           python-version: 3.8
       - uses: actions/checkout@v2
         with:
-          submodules: True
+          submodules: 'recursive'
       - run: pip3 install -r requirements.txt
       - run: |
           ls
           ls public
+          ls public/docs/CoConnectTools/source_code
+      - run: |
           cd public
           mkdocs gh-deploy --force
