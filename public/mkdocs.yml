@@ -35,8 +35,9 @@ nav:
   - CO-CONNECT Tools:
       - Getting Started: CoConnectTools/source_code/README.md
       - CommonDataModel:
-          - Overview: CoConnectTools/CommonDataModel.md
+          - Overview: CoConnectTools/CommonDataModel.md 
           - Tables:
+              - Common: CoConnectTools/Common.md  
               - Person: CoConnectTools/Person.md
               - Condition Occurrence: CoConnectTools/ConditionOccurrence.md
               - Measurement: CoConnectTools/Measurement.md
@@ -55,8 +56,16 @@ plugins:
   - mkdocstrings:
       handlers:
         python:
+          rendering:
+            show_if_no_docstring: true
+            show_root_heading: true
+          selection:
+            filters:
+              - "!^_"  # exlude all members starting with _
+              - "^__init__$"  # but always include __init__ modules and methods
           setup_commands:
             - import sys
+            - sys.path.append("CoConnectTools/source_code/")
       
 markdown_extensions:
   - toc:
