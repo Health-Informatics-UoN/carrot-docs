@@ -15,10 +15,14 @@ jobs:
         with:
           submodules: 'recursive'
       - run: pip3 install -r requirements.txt
-      - run: |
-          ls
-          ls public
-          ls public/docs/CoConnectTools/source_code
-      - run: |
-          cd public
-          mkdocs gh-deploy --force
+      - run: ls
+      - run: ls public
+      - run: ls public/docs/
+      - run: ls public/docs/CoConnectTools/
+      - run: ls public/docs/CoConnectTools/source_code
+      - name: deploy
+          run: |
+            cd public
+            pwd
+            ls
+            mkdocs gh-deploy --force
