@@ -67,7 +67,6 @@ plugins:
             - import sys
             - sys.path.append("docs/CoConnectTools/source_code/")
             - import coconnect
-            - from coconnect import cdm
 
 
 markdown_extensions:
