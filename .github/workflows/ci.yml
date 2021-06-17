@@ -14,16 +14,18 @@ jobs:
       - uses: actions/checkout@v2
         with:
           submodules: 'recursive'
+      - run: pip3 install -r requirements.txt
       - run: python -c 'import sys; sys.path.append("public/docs/CoConnectTools/source_code/"); import coconnect; print (coconnect.cdm.objects.DestinationTable)'
-      #- run: pip3 install -r requirements.txt
       #- run: ls
       #- run: ls public
       #- run: ls public/docs/
       #- run: ls public/docs/CoConnectTools/
       #- run: ls public/docs/CoConnectTools/source_code
       #- name: deploy
-      #  run: |
-      #    cd public
-      #    pwd
+      - run: |
+          cd public
+          python -c 'import sys; sys.path.append("public/docs/CoConnectTools/source_code/"); import coconnect; prin\
+t (coconnect.cdm.objects.DestinationTable)'
+          #    pwd
       #    ls
       #    mkdocs gh-deploy --force
