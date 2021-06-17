@@ -24,8 +24,7 @@ jobs:
       #- name: deploy
       - run: |
           cd public
-          python -c 'import sys; sys.path.append("public/docs/CoConnectTools/source_code/"); import coconnect; prin\
-t (coconnect.cdm.objects.DestinationTable)'
+          python -c 'import sys; sys.path.append("public/docs/CoConnectTools/source_code/"); import coconnect; print (coconnect.cdm.objects.DestinationTable)'
           #    pwd
-      #    ls
-      #    mkdocs gh-deploy --force
+          #    ls
+          #    mkdocs gh-deploy --force
