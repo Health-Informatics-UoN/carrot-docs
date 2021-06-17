@@ -21,8 +21,8 @@ jobs:
       - run: ls public/docs/CoConnectTools/
       - run: ls public/docs/CoConnectTools/source_code
       - name: deploy
-          run: |
-            cd public
-            pwd
-            ls
-            mkdocs gh-deploy --force
+        run: |
+          cd public
+          pwd
+          ls
+          mkdocs gh-deploy --force
