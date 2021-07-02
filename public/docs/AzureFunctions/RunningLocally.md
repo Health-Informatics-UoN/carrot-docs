@@ -92,7 +92,7 @@ These environment variables which control where messages are sent must be mainta
 
 Because Azure Functions are cloud-based, it's somewhat of a misnomer to talk of running an Azure Function completely 'locally'. In reality, you're still posting to a message queue in the cloud, even when developing locally. However, Azure CLI--when running in debug mode (more on this later)--will 'hijack' the messages in the message queue (depending on how you've set the environment vairables in `local.settings.json` and `.env`) and allow you to process them with the code you're developing locally.
 
-To start debugging locally in VSCode you must first ensure that CCOM is up and running locally ([see here for building and running the Co-Connect Docker image]('https://github.com/CO-CONNECT/mapping-pipeline#readme')). Once your local server is running, you can start Azure Function's debugging mode by clicking: 
+To start debugging locally in VSCode you must first ensure that CCOM is up and running locally ([see here for building and running the Co-Connect Docker image](https://github.com/CO-CONNECT/mapping-pipeline#readme)). Once your local server is running, you can start Azure Function's debugging mode by clicking: 
 
 Run (top toolbar) -> Start Debugging
 
@@ -128,7 +128,7 @@ For detailed output, run func with --verbose flag.
 [2021-07-02T09:34:36.731Z] Host lock lease acquired by instance ID '000000000000000000000000DC4198B8'.
 ```
 You'll likely see a few errors/warnings about directories and permissions. At the time of writing this guide, it's safe to ignore these!
-Note that two functions are listed as you start debugging mode: `NLPQueue` and `ProcessQueue`. These are the names of the **_directories_** which hold the function's code, not the name of the **_message queue_** which holds the function's messages. The text after the function name (queueTrigger) specifies the _type_ of function it is (defined in `function.json`.) So far in Co-Connect, only queueTriggers are used. For more information on Function types, click [here]('https://docs.microsoft.com/en-us/azure/azure-functions/functions-overview').
+Note that two functions are listed as you start debugging mode: `NLPQueue` and `ProcessQueue`. These are the names of the **_directories_** which hold the function's code, not the name of the **_message queue_** which holds the function's messages. The text after the function name (queueTrigger) specifies the _type_ of function it is (defined in `function.json`.) So far in Co-Connect, only queueTriggers are used. For more information on Function types, click [here](https://docs.microsoft.com/en-us/azure/azure-functions/functions-overview).
 
 With the final console output saying 'Host lock lease acquired', you're ready to run your first Azure Functions job!
 
@@ -153,7 +153,7 @@ After some time (around 15-30 seconds), you should notice further updates to the
 ```
 MESSAGE >>>  {'id': 'f00a438f-9bad-4110-bb8b-5278461d7bb3', 'body': '{"documents": [{"language": "en", "id": "17569_field", "text": "patient has a cold"}]}'}
 ```
-After job submission, the `NLPQueue` function works through the stages detailed in [NLP Processing](MappingPipeline/nlp-processing.md). Having received concept **_codes_** from the NLP API, the function looks up a standard and valid **_conceptID_** using the CCOM API. Sometimes, a concept code will be returned which doesn't have a standard and valid conceptID. In such instances you will see the following in the debugging console:
+After job submission, the `NLPQueue` function works through the stages detailed in [NLP Processing](/MappingPipeline/nlp-processing). Having received concept **_codes_** from the NLP API, the function looks up a standard and valid **_conceptID_** using the CCOM API. Sometimes, a concept code will be returned which doesn't have a standard and valid conceptID. In such instances you will see the following in the debugging console:
 ```
 Concept Code C34500 not found!
 ```
