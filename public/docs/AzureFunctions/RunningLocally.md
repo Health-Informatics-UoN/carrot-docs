@@ -34,7 +34,7 @@ And here is an example message destined for the `nlpqueue` queue:
 An [Azure function](https://docs.microsoft.com/en-us/azure/azure-functions/functions-overview) is made up of three key files. Two are kept in the function's directory (which itself lives within Co-Connect's root directory) and define what and how the function should run:
 
 1. `init.py` - This contains the function's logic. The method `main()` should be present for the function to execute.
-2. `function.json` - This tells Azure what type of function you're developing and also what queue to send it to.
+2. `function.json` - This tells Azure what type of function you're developing and also what queue from which to pick messages up from.
 
 Another file is kept outside of the function's directory and should not be commited to Git:
 
