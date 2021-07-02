@@ -8,7 +8,7 @@ To follow this guide you need to install [Azure CLI](https://docs.microsoft.com/
 
 ## Azure Functions Basics
 
-Conceptually, Azure Functions are simple to follow. A **_message_** is posted to a **_message queue_**. An Azure Function then executes on messages within a message queue. In Co-Connect, a message is posted to a message queue as JSON but other formats are possible within Azure Functions (e.g. XML). Here's an example message destined for the `scanreports` queue:
+Conceptually, queue-based Azure Functions are simple to follow. A **_message_** is posted to a **_message queue_**. A Function then executes on messages within a message queue. In Co-Connect, a message is posted to a message queue as JSON but other formats are possible (e.g. XML). Here's an example message destined for the `scanreports` queue:
 
 ```
 {
