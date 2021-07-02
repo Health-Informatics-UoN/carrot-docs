@@ -34,11 +34,11 @@ And here is an example message destined for the `nlpqueue` queue:
 An [Azure function](https://docs.microsoft.com/en-us/azure/azure-functions/functions-overview) is made up of three key files. Two are kept in the function's directory (which itself lives within Co-Connect's root directory) and define what and how the function should run:
 
 1. `init.py` - This contains the function's logic. The method `main()` should be present for the function to execute.
-2. `function.json` - This tells the Azure what type of function you're developing and also what queue to send it to
+2. `function.json` - This tells Azure what type of function you're developing and also what queue to send it to.
 
 Another file is kept outside of the function's directory and should not be commited to Git:
 
-1. `local.settings.json` - This file contains environment variables for your function. It must be present to run Azure functions locally. Contact a member of the team to get all keys and connection strings for this file. For reference, a local.settings.json file looks like this:
+1. `local.settings.json` - Contains environment variables for your function. It must be present to run Azure functions locally. Contact a member of the development team to get all keys and connection strings for this file. For reference, a local.settings.json file looks like this:
 
 ```
 {
@@ -57,15 +57,15 @@ Another file is kept outside of the function's directory and should not be commi
 }
 
 ```
-You only need to have 1 local.settings.json file for all functions within the Co-Connect project. Note however that it should be updated with extra queue names if/when the project requires them.
+You only need to have 1 `local.settings.json` file for all functions within the Co-Connect project. Note, however, that it should be updated with extra queue names if/when the project requires them.
 
 ### Azure Functions in Co-Connect
 
-As of July 2021, the Co-Connect project has two different Azure Functions: one for processing scan reports (called `ProcessQueue` which posts to the message queue `scanreports`), another to run the NLP service (called `NLPQueue` which posts to the message queue `nlpqueue`). The code for these functions lives in the directories ProcessQueue and NLPQueue, respectively.
+As of July 2021, the Co-Connect project has two different Azure Functions: one for processing scan reports (called `ProcessQueue` which posts to the message queue called `scanreports`), another to run the NLP service (called `NLPQueue` which posts to the message queue called `nlpqueue`). The code for these functions lives in the directories ProcessQueue and NLPQueue, respectively.
 
 ## Azure Functions Queues
 
-For each process (NLP and Scan Reports), we have two queues each - a 'local' queue and a 'live' queue (for a total of 4 unique queues.) As environment variables they are coded as:
+For each process (NLP and Scan Reports), we have two queues each - a 'local' queue and a 'live' queue (for a total of 4 unique queues.) As environment variables, they are encoded as:
 
 ##### Local queues
 ```
