@@ -3,7 +3,7 @@
 The mapping-pipeline API allows programmtic interaction with co-connect DB and OMOP CDM DB contents. The API is developed using the Django REST framework. A token based authentication is applied to access API endpoints. API endpoints can be tested through a tool called Postman. A postman is a tool to develop and test APIs. 
 
 ## API Root
-An API root can be accessed using: **http://127.0.0.1:8080/api**
+An API root can be accessed using: **http://127.0.0.1:8080/api**. This command lists all the available endpoints. 
 
 ## OMOP DB 
 We have implemented enpoints for following 8 tables of OMOP CDM DB. The API endpoints for these tables are read only. 
