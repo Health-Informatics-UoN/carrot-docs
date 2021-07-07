@@ -1,6 +1,6 @@
 # API for OMOP and Co-Connect DBs
 
-The mapping-pipeline API allows programmtic interaction with co-connect DB and OMOP CDM DB contents. The API is developed using the Django REST framework.  
+The mapping-pipeline API allows programmtic interaction with co-connect DB and OMOP CDM DB contents. The API is developed using the Django REST framework. A token based authentication is applied to access API endpoints. API endpoints can be tested through a tool called Postman. A postman is a tool to develop and test APIs. 
 
 ## API Root
 An API root can be accessed using: **http://127.0.0.1:8080/api**
