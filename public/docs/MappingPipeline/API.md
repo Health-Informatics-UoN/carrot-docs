@@ -22,6 +22,9 @@ We have implemented enpoints for following 8 tables of OMOP CDM DB. The API endp
 3. concept_relationship table: 
     * **http://localhost:8080/api/omop/conceptrelationships** Returns all records of a concept relationship table
     * **http://localhost:8080/api/omop/conceptrelationships/?concept_id_1=5&concept_id_2=58&relationship_id=Concept%20replaced%20by** To get a unique row of concept_relationship table we need to give three query terms that consists of concept_id_1, concept_id_2 and relationship_id. However to get all records with a specific query terms for concept_id_1 or with concept_id_2 or relationship_id or any combination of these can be applied.
+	!!! info
+    	The above enpoint was a special case as there was no single primary key assigned to the table and therefore, we provided a filter capability to extract records with a simple enpoint with no filter word written at the end of an endpoint. In all other api endpoints when a filter is applied, a word filter is placed at the end of the endpoints. To make API consistant we also also provide alternate endpoints that ends with the filter and the above two samples can also be written something like this: http://localhost:8080/api/omop/conceptrelationshipfilter and http://localhost:8080/api/omop/conceptrelationshipfilter/?concept_id_1=5&concept_id_2=58&relationship_id=Concept%20replaced%20by.
+
 
 4. concept_ancestor table: 
     * **http://localhost:8080/api/omop/conceptancestors/** Returns all records of a concept_ancestor table
