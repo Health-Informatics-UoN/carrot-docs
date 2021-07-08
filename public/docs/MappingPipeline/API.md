@@ -50,28 +50,28 @@ We have implemented enpoints for following 8 tables of OMOP CDM DB. The API endp
 We have implemented enpoints for following 16 tables of co-connect DB. 
 
 1. mapping_scanreport table
-    * **http://localhost:8080/api/scanreports/** All scan reports in a mapping_scanreport table
+    * **http://localhost:8080/api/scanreports/** All scan reports in a mapping_scanreport table. For this endpoint, making a put request allows to accept a json array that is beneficial in its own right with a single call to an api endpoint. 
     * **http://localhost:8080/api/scanreports/31/** A record in a mapping_scanreport table with id=31
 	
 2. mapping_scanreporttable table
-    * **http://localhost:8080/api/scanreporttables/** All scan report tables in a mapping_scanreporttables table
+    * **http://localhost:8080/api/scanreporttables/** All scan report tables in a mapping_scanreporttables table. For this endpoint, making a put request allows to accept a json array that is beneficial in its own right with a single call to an api endpoint. 
     * **http://localhost:8080/api/scanreporttables/1** A record in a mapping_scanreportables table with id=1
 	* **http://localhost:8080/api/scanreporttablesfilter/?scan_report=1&name=Freezer.csv** This will return a record that has a "scan_report=1" and "name=Freezer.csv"
 	
 3. mapping_scanreportfield table
-    * **http://localhost:8080/api/scanreportfields/** All scan report fields in a mapping_scanreportfield table
+    * **http://localhost:8080/api/scanreportfields/** All scan report fields in a mapping_scanreportfield table. For this endpoint, making a put request allows to accept a json array that is beneficial in its own right with a single call to an api endpoint. 
     * **http://localhost:8080/api/scanreportfields/4638/** A record in a mapping_scanreportfields with id=4638 
     * **http://localhost:8080/api/scanreportfieldsfilter/?scan_report_table=419&name=altered_conscious_state** This will return a record from a mapping_scanreportfield table with "scan_report_table=419" and "name=altered_conscious_state"
     *  **http://localhost:8080/api/scanreportfieldsfilter/?scan_report_table=419** This will return all records from a mapping_scanreportfield table with "scan_report_table=419"
 
 4. mapping_scanreportvalue table
-    * **http://localhost:8080/api/scanreportvalues/** All scan report values in a mapping_scanreportvalues
+    * **http://localhost:8080/api/scanreportvalues/** All scan report values in a mapping_scanreportvalues. For this endpoint, making a put request allows to accept a json array that is beneficial in its own right with a single call to an api endpoint. 
     * **http://localhost:8080/api/scanreportvalues/2/** A record in a mapping_scanreportvalues with id=2
     * **http://localhost:8080/api/scanreportvaluesfilter/?scan_report_field=222&value=Surgery** This will return a record from a mapping_scanreportvalue table with "scan_report_field=222" and "value=surgery"
     * **http://localhost:8080/api/scanreportvaluesfilter/?scan_report_field=222** This will return all records from a mapping_scanreportvalue table with "scan_report_field=222"
 
 5. mapping_scanreportconcept table	
-    * **http://localhost:8080/api/scanreportconcepts/** All scan report concepts in a mapping_scanreportconcepts
+    * **http://localhost:8080/api/scanreportconcepts/** All scan report concepts in a mapping_scanreportconcepts. For this endpoint, making a put request allows to accept a json array that is beneficial in its own right with a single call to an api endpoint. 
     * **http://localhost:8080/api/scanreportconcepts/2/** A record in a mapping_scanreportconcepts with id=2
 	
 6. mapping table	
@@ -95,12 +95,10 @@ We have implemented enpoints for following 16 tables of co-connect DB.
     * **http://localhost:8080/api/documentfiles/2** A record in a mapping_documentfiles table with id=2
 
 11. datapartner table	
-     * **http://localhost:8080/api/datapartners/** All records in a datapartner table
+     * **http://localhost:8080/api/datapartners/** All records in a datapartner table. For this endpoint, making a put request allows to accept a json array that is beneficial in its own right with a single call to an api endpoint. 
      * **http://localhost:8080/api/datapartners/2/** A record in a datapartner table with id=2
      * **http://localhost:8080/api/datapartnersfilter/?name=University%20of%20Liverpool** This will return a record that has "name=University of Liverpool"
-	!!! info
-    		This was a request from the data-team to also map `condition_end_datetime`, with the current implementation, the `condition_start_datetime == condition_end_datetime `.
-
+	
 12. mapping_omoptable table	
      * **http://localhost:8080/api/omoptables/** All records in a mapping_omoptable table
      * **http://localhost:8080/api/omoptables/1673/** A record in a mapping_omoptable table with id=1673
