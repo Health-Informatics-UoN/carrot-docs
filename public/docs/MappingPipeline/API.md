@@ -98,8 +98,8 @@ We have implemented enpoints for following 16 tables of co-connect DB.
      * **http://localhost:8080/api/datapartners/** All records in a datapartner table
      * **http://localhost:8080/api/datapartners/2/** A record in a datapartner table with id=2
      * **http://localhost:8080/api/datapartnersfilter/?name=University%20of%20Liverpool** This will return a record that has "name=University of Liverpool"
-!!! info
-    This was a request from the data-team to also map `condition_end_datetime`, with the current implementation, the `condition_start_datetime == condition_end_datetime `.
+	!!! info
+    		This was a request from the data-team to also map `condition_end_datetime`, with the current implementation, the `condition_start_datetime == condition_end_datetime `.
 
 12. mapping_omoptable table	
      * **http://localhost:8080/api/omoptables/** All records in a mapping_omoptable table
