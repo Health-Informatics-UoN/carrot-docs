@@ -3,7 +3,7 @@
 The mapping-pipeline API allows programmtic interaction with co-connect DB and OMOP CDM DB contents. The API is developed using the Django REST framework. A token based authentication is applied to access API endpoints. API endpoints can be tested through a tool called Postman. A postman is a tool to develop and test APIs. 
 
 ## API Root
-An API root can be accessed using: **http://localhost:8080/api**. This command lists all the available endpoints. A sample running of the API enpoints is shown in Figure 1. 
+An API root can be accessed using: **http://localhost:8080/api** and this endpoint lists all the available endpoints in an API (see Figure 1). Figure 1 also demonstrates that for testing API endpoints, a token is required, that can be requested to the system administrator.   
 
 ![](images/APIRootTest_Postman.png)
 **Figure 1** *A sample API endpoint testing through postman*
@@ -57,63 +57,63 @@ We have implemented enpoints for following 16 tables of co-connect DB.
 	* **http://localhost:8080/api/scanreporttablesfilter/?scan_report=1&name=Freezer.csv** This will return a record that has a "scan_report=1" and "name=Freezer.csv"
 	
 3. mapping_scanreportfield table
-    * **http://127.0.0.1:8080/api/scanreportfields/** All scan report fields in a mapping_scanreportfield table
-    * **http://127.0.0.1:8080/api/scanreportfields/4638/** A record in a mapping_scanreportfields with id=4638 
-    * **http://127.0.0.1:8080/api/scanreportfieldsfilter/?scan_report_table=419&name=altered_conscious_state** This will return a record from a mapping_scanreportfield table with "scan_report_table=419" and "name=altered_conscious_state"
-    *  **http://127.0.0.1:8080/api/scanreportfieldsfilter/?scan_report_table=419** This will return all records from a mapping_scanreportfield table with "scan_report_table=419"
+    * **http://localhost:8080/api/scanreportfields/** All scan report fields in a mapping_scanreportfield table
+    * **http://localhost:8080/api/scanreportfields/4638/** A record in a mapping_scanreportfields with id=4638 
+    * **http://localhost:8080/api/scanreportfieldsfilter/?scan_report_table=419&name=altered_conscious_state** This will return a record from a mapping_scanreportfield table with "scan_report_table=419" and "name=altered_conscious_state"
+    *  **http://localhost:8080/api/scanreportfieldsfilter/?scan_report_table=419** This will return all records from a mapping_scanreportfield table with "scan_report_table=419"
 
 4. mapping_scanreportvalue table
-    * **http://127.0.0.1:8080/api/scanreportvalues/** All scan report values in a mapping_scanreportvalues
-    * **http://127.0.0.1:8080/api/scanreportvalues/2/** A record in a mapping_scanreportvalues with id=2
-    * **http://127.0.0.1:8080/api/scanreportvaluesfilter/?scan_report_field=222&value=Surgery** This will return a record from a mapping_scanreportvalue table with "scan_report_field=222" and "value=surgery"
-    * **http://127.0.0.1:8080/api/scanreportvaluesfilter/?scan_report_field=222** This will return all records from a mapping_scanreportvalue table with "scan_report_field=222"
+    * **http://localhost:8080/api/scanreportvalues/** All scan report values in a mapping_scanreportvalues
+    * **http://localhost:8080/api/scanreportvalues/2/** A record in a mapping_scanreportvalues with id=2
+    * **http://localhost:8080/api/scanreportvaluesfilter/?scan_report_field=222&value=Surgery** This will return a record from a mapping_scanreportvalue table with "scan_report_field=222" and "value=surgery"
+    * **http://localhost:8080/api/scanreportvaluesfilter/?scan_report_field=222** This will return all records from a mapping_scanreportvalue table with "scan_report_field=222"
 
 5. mapping_scanreportconcept table	
-    * **http://127.0.0.1:8080/api/scanreportconcepts/** All scan report concepts in a mapping_scanreportconcepts
-    * **http://127.0.0.1:8080/api/scanreportconcepts/2/** A record in a mapping_scanreportconcepts with id=2
+    * **http://localhost:8080/api/scanreportconcepts/** All scan report concepts in a mapping_scanreportconcepts
+    * **http://localhost:8080/api/scanreportconcepts/2/** A record in a mapping_scanreportconcepts with id=2
 	
 6. mapping table	
-    * **http://127.0.0.1:8080/api/mappings/** All records in a mapping table
-    * **http://127.0.0.1:8080/api/mappings/1/** A record in a mapping table with id=1
+    * **http://localhost:8080/api/mappings/** All records in a mapping table
+    * **http://localhost:8080/api/mappings/1/** A record in a mapping table with id=1
 
 7. mapping_classificationsystem table	
-    * **http://127.0.0.1:8080/api/classificationsystems/** All records in a mapping_classificationsystem table
-    * **http://127.0.0.1:8080/api/classificationsystems/2/** A record in a mapping_classificationsystem table with id=2
+    * **http://localhost:8080/api/classificationsystems/** All records in a mapping_classificationsystem table
+    * **http://localhost:8080/api/classificationsystems/2/** A record in a mapping_classificationsystem table with id=2
 
 8. mapping_datadictionary table	
-    * **http://127.0.0.1:8080/api/datadictionaries** All records in a mapping_datadictionary table
-    * **http://127.0.0.1:8080/api/datadictionaries/2/** A record in a mapping_datadictionary table with id=2
+    * **http://localhost:8080/api/datadictionaries** All records in a mapping_datadictionary table
+    * **http://localhost:8080/api/datadictionaries/2/** A record in a mapping_datadictionary table with id=2
 
 9. mapping_document table	
-    * **http://127.0.0.1:8080/api/documents/** All records in a mapping_document table
-    * **http://127.0.0.1:8080/api/documents/2** A record in a mapping_document table with id=2
+    * **http://localhost:8080/api/documents/** All records in a mapping_document table
+    * **http://localhost:8080/api/documents/2** A record in a mapping_document table with id=2
 
 10. mapping_documentfile table	
-    * **http://127.0.0.1:8080/api/documentfiles/** All records in a mapping_documentfiles table
-    * **http://127.0.0.1:8080/api/documentfiles/2** A record in a mapping_documentfiles table with id=2
+    * **http://localhost:8080/api/documentfiles/** All records in a mapping_documentfiles table
+    * **http://localhost:8080/api/documentfiles/2** A record in a mapping_documentfiles table with id=2
 
 11. datapartner table	
-     * **http://127.0.0.1:8080/api/datapartners/** All records in a datapartner table
-     * **http://127.0.0.1:8080/api/datapartners/2/** A record in a datapartner table with id=2
-     * **http://127.0.0.1:8080/api/datapartnersfilter/?name=University%20of%20Liverpool** This will return a record that has "name=University of Liverpool"
+     * **http://localhost:8080/api/datapartners/** All records in a datapartner table
+     * **http://localhost:8080/api/datapartners/2/** A record in a datapartner table with id=2
+     * **http://localhost:8080/api/datapartnersfilter/?name=University%20of%20Liverpool** This will return a record that has "name=University of Liverpool"
 
 12. mapping_omoptable table	
-     * **http://127.0.0.1:8080/api/omoptables/** All records in a mapping_omoptable table
-     * **http://127.0.0.1:8080/api/omoptables/1673/** A record in a mapping_omoptable table with id=1673
+     * **http://localhost:8080/api/omoptables/** All records in a mapping_omoptable table
+     * **http://localhost:8080/api/omoptables/1673/** A record in a mapping_omoptable table with id=1673
 
 13. mapping_omopfield table	
-     * **http://127.0.0.1:8080/api/omopfields/** All records in a mapping_omopfield table
-     * **http://127.0.0.1:8080/api/omopfields/450/** A record in a mapping_omopfield table with id=2
+     * **http://localhost:8080/api/omopfields/** All records in a mapping_omopfield table
+     * **http://localhost:8080/api/omopfields/450/** A record in a mapping_omopfield table with id=2
 
 14. mapping_structuralmappingrule table	
-     * **http://127.0.0.1:8080/api/structuralmappingrules/** All records in a mapping_structuralmappingrule
-     * **http://127.0.0.1:8080/api/structuralmappingrules/8194** A record in a mapping_structuralmappingrule table with id=8194	
+     * **http://localhost:8080/api/structuralmappingrules/** All records in a mapping_structuralmappingrule
+     * **http://localhost:8080/api/structuralmappingrules/8194** A record in a mapping_structuralmappingrule table with id=8194	
 	
 15. source table	
-     * **http://127.0.0.1:8080/api/sources/** All records in a source table
-     * **http://127.0.0.1:8080/api/sources/1/** A record in a source table with id=1   (Currently there is no record in the azure dev DB version)
+     * **http://localhost:8080/api/sources/** All records in a source table
+     * **http://localhost:8080/api/sources/1/** A record in a source table with id=1   (Currently there is no record in the azure dev DB version)
 		
 16. documenttype table	
-     * **http://127.0.0.1:8080/api/documenttypes/** All records in a documenttype table
-     * **http://127.0.0.1:8080/api/documenttypes/2/** A record in a documenttype table with id=2
+     * **http://localhost:8080/api/documenttypes/** All records in a documenttype table
+     * **http://localhost:8080/api/documenttypes/2/** A record in a documenttype table with id=2
 	
