@@ -69,7 +69,7 @@ We have implemented enpoints for following 16 tables of co-connect DB.
     * **http://localhost:8080/api/scanreportvalues/2/** A record in a mapping_scanreportvalues with id=2
     * **http://localhost:8080/api/scanreportvaluesfilter/?scan_report_field=222&value=Surgery** This will return a record from a mapping_scanreportvalue table with "scan_report_field=222" and "value=surgery"
     * **http://localhost:8080/api/scanreportvaluesfilter/?scan_report_field=222** This will return all records from a mapping_scanreportvalue table with "scan_report_field=222"
-
+    * **http://localhost:8080/api/scanreportvaluesfilter/?scan_report_field=222&fields=value,frequency** This will return all records from a mapping_scanreportvalue table with "scan_report_field=222" but will only be returning specified fields in the "fields" parameters (i.e. in this case they are "value" and "frequency").
 5. mapping_scanreportconcept table	
     * **http://localhost:8080/api/scanreportconcepts/** All scan report concepts in a mapping_scanreportconcepts. For this endpoint, making a put request allows to accept a json array that is beneficial in its own right with a single call to an api endpoint. 
     * **http://localhost:8080/api/scanreportconcepts/2/** A record in a mapping_scanreportconcepts with id=2
