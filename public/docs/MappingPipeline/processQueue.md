@@ -38,11 +38,13 @@ The table entries are then appended to a JSON array `json_data` which forms the 
 The API automatically generates the `id` for each table that was created. These ids are extracted from the POST request response and saved in a list (`table_ids`)
 
 ### Scan Report Field
-**Field Overview** contains all the information on the fields including the name, description and other useful columns. ProcessQueue iterates through the rows in the sheet and generates a new `ScanReportField` entry. The field entries are linked to the relevant `ScanReportTable` using the previously generated `table_ids`. As soon as it detects an empty line (different table) it links to the next table_id from the list.
-Similarly as in Scan Report Table the field entries are appended to a JSON array `json_data`, and form the input to a POST request made to the [API](API.md). From the response it saves the `field_ids` and `field_names` and stores them into a dictionary as key value pairs e.g "Field Name": Field ID.
+**Field Overview** contains all the information on the fields including the name, description and other useful columns. ProcessQueue iterates through the rows in the sheet and generates a new `ScanReportField` entry.
+Once it detects an empty line (end of a table) it saves the fields found in that table.
+This is done by appending the field entries to a JSON array `json_data`, which forms the input to a POST request made to the [API](API.md). From the response it saves the `field_ids` and `field_names` and stores them into a dictionary as key value pairs e.g "Field Name": Field ID.
 
 ### Scan Report Value
-Scan report values are stored in sheets named after their corresponding table. For every sheet after the initial two 'Field Overview' and 'Table Overview'(not currently used), `process_scan_report_sheet_table()` is called. The function extracts the data in the following format:
+
+Scan report values are stored in sheets named after their corresponding table. Once the fields in a table are saved, it moves to the corresponding sheet (sheet=table_name) and the `process_scan_report_sheet_table()` function is called on that worksheet. The function extracts the data in the following format:
 
 **Input**
 
