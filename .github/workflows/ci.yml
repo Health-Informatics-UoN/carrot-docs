@@ -10,13 +10,17 @@ jobs:
     steps:
       - uses: actions/setup-python@v2
         with:
-          python-version: 3.8
+          python-version: 3.8.0
       - uses: actions/checkout@v2
         with:
-          submodules: True
+          submodules: 'recursive'
       - run: pip3 install -r requirements.txt
       - run: |
-          ls
-          ls public
+          pip3 install setuptools
+          pip3 install -e public/docs/CoConnectTools/source_code/
+
+      - run: python -c 'import sys; sys.path.append("public/docs/CoConnectTools/source_code/"); import coconnect; print (coconnect.cdm.objects.DestinationTable)'
+      - name: deploy
+        run: |
           cd public
           mkdocs gh-deploy --force

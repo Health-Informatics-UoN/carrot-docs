@@ -1,0 +1,1 @@
+::: coconnect.cdm.objects.common.DestinationTable

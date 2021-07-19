@@ -1,0 +1,3 @@
+[submodule "public/docs/CoConnectTools/source_code"]
+	path = public/docs/CoConnectTools/source_code
+	url = https://github.com/CO-CONNECT/co-connect-tools.git
