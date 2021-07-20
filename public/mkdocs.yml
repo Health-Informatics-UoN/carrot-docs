@@ -46,8 +46,8 @@ nav:
               - Condition Occurrence: CoConnectTools/ConditionOccurrence.md
               - Measurement: CoConnectTools/Measurement.md
               - Observation: CoConnectTools/Observation.md
-      - ETL:
-          - Workbook Example: "CoConnectTools/source_code/notebooks/Introduction\ -\ Using\ the\ ETLTool.ipynb"
+      - Synthetic Data: CoConnectTools/SyntheticData.md
+      - ETL Workbook Example: "CoConnectTools/source_code/notebooks/Introduction\ -\ Using\ the\ ETLTool.ipynb"
 
 plugins:
   - mknotebooks:
