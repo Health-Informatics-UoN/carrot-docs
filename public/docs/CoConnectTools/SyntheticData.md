@@ -4,6 +4,7 @@ Generating synthetic data can be performed via WhiteRabbit, by hand or via the u
 ## CLI for generating synthetic data
 
 Synthetic data can be generated from the CCOM website or from the original `xlsx` ScanReport file.
+
 ```
 $ coconnect generate synthetic --help
 Usage: coconnect generate synthetic [OPTIONS] COMMAND [ARGS]...
@@ -16,7 +17,8 @@ Options:
 Commands:
   ccom  generate synthetic data from a ScanReport ID from CCOM
   xlsx  generate synthetic data from a ScanReport xlsx file
-  ```
+  
+```
 
 ### XLSX
 
@@ -33,7 +35,9 @@ Options:
 
   --fill-column-with-values TEXT  select columns to fill values for
   --help                          Show this message and exit.
+
 ```
 
 
 ### CCOM (work-in-progress)
+
