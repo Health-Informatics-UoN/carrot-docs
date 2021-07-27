@@ -92,7 +92,7 @@ These environment variables which control where messages are sent must be mainta
 
 Because Azure Functions are cloud-based, it's somewhat of a misnomer to talk of running an Azure Function completely 'locally'. In reality, you're still posting to a message queue in the cloud, even when developing locally. However, Azure CLI--when running in debug mode (more on this later)--will 'hijack' the messages in the message queue (depending on how you've set the environment vairables in `local.settings.json` and `.env`) and allow you to process them with the code you're developing locally.
 
-To start debugging locally in VSCode you must first ensure that CCOM is up and running locally ([see here for building and running the Co-Connect Docker image](https://github.com/CO-CONNECT/mapping-pipeline#readme)). Once your local server is running, you can start Azure Function's debugging mode by clicking: 
+To start debugging locally in VSCode you must first ensure that CCOM is up and running locally ([see here for building and running the Co-Connect Docker image](https://github.com/CO-CONNECT/mapping-pipeline#readme) ). Once your local server is running, you can start Azure Function's debugging mode by clicking: 
 
 Run (top toolbar) -> Start Debugging
 
