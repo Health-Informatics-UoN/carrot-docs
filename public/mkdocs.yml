@@ -36,7 +36,7 @@ nav:
       #- Downloading Mapping:   MappingPipeline/downloading-rules.md
       
   - CO-CONNECT Tools:
-      - Quick Start Guide: CoConnectTools/source_code/QuickStart.md
+      #- Quick Start Guide: CoConnectTools/source_code/QuickStart.md
       - Getting Started: CoConnectTools/source_code/README.md
       - CommonDataModel:
           - Overview: CoConnectTools/CommonDataModel.md 
