@@ -25,10 +25,11 @@ nav:
   - Azure Functions:
     - LocalFunctions: AzureFunctions/RunningLocally.md
     - ProcessQueue: AzureFunctions/processQueue.md
+    - NLP Processing: AzureFunctions/nlp-processing.md
+
   - Mapping-Pipeline:
       - About:   MappingPipeline/about.md
       - Uploading a Report:   MappingPipeline/uploading-scan-report.md
-      - NLP Processing: MappingPipeline/nlp-processing.md
       - Mapping Rules: MappingPipeline/mapping-rules.md
       - API: MappingPipeline/API.md
       
