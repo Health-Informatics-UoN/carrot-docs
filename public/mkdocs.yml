@@ -36,8 +36,11 @@ nav:
       #- Downloading Mapping:   MappingPipeline/downloading-rules.md
       
   - CO-CONNECT Tools:
-      #- Quick Start Guide: CoConnectTools/source_code/QuickStart.md
       - Getting Started: CoConnectTools/source_code/README.md
+      - ETL Quick Example: CoConnectTools/QuickRun.md
+      - ETL Workbook Example: "CoConnectTools/source_code/notebooks/Introduction\ -\ Using\ the\ ETLTool.ipynb"
+      - Command Line Commands: CoConnectTools/source_code/CLI.md
+      - Synthetic Data: CoConnectTools/SyntheticData.md
       - CommonDataModel:
           - Overview: CoConnectTools/CommonDataModel.md 
           - Tables:
@@ -46,8 +49,6 @@ nav:
               - Condition Occurrence: CoConnectTools/ConditionOccurrence.md
               - Measurement: CoConnectTools/Measurement.md
               - Observation: CoConnectTools/Observation.md
-      - Synthetic Data: CoConnectTools/SyntheticData.md
-      - ETL Workbook Example: "CoConnectTools/source_code/notebooks/Introduction\ -\ Using\ the\ ETLTool.ipynb"
 
 plugins:
   - mknotebooks:
