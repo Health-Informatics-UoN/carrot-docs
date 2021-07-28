@@ -25,7 +25,7 @@ nav:
   - Azure Functions:
     - LocalFunctions: AzureFunctions/RunningLocally.md
     - ProcessQueue: AzureFunctions/processQueue.md
-    - NLP Processing: AzureFunctions/nlp-processing.md
+    - NLPQueue: AzureFunctions/nlpQueue.md
 
   - Mapping-Pipeline:
       - About:   MappingPipeline/about.md
