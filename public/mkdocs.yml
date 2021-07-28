@@ -39,9 +39,11 @@ nav:
       - Getting Started: CoConnectTools/source_code/README.md
       - ETL Quick Example: CoConnectTools/QuickRun.md
       - ETL Workbook Example: "CoConnectTools/source_code/notebooks/Introduction\ -\ Using\ the\ ETLTool.ipynb"
-      - Command Line Commands: CoConnectTools/source_code/CLI.md
-      - Synthetic Data: CoConnectTools/SyntheticData.md
-      - CommonDataModel:
+      - FAQ: CoConnectTools/FAQ.md
+      - Tools:
+          - Command Line Commands: CoConnectTools/source_code/CLI.md
+          - Generating Synthetic Data: CoConnectTools/SyntheticData.md
+      - Pythonic CommonDataModel:
           - Overview: CoConnectTools/CommonDataModel.md 
           - Tables:
               - Common: CoConnectTools/Common.md  
