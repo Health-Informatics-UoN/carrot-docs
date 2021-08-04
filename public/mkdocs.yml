@@ -49,6 +49,7 @@ nav:
               - Condition Occurrence: CoConnectTools/ConditionOccurrence.md
               - Measurement: CoConnectTools/Measurement.md
               - Observation: CoConnectTools/Observation.md
+              - Drug Exposure: CoConnectTools/DrugExposure.md
   - BCLink:
       - Test Link:
           - Via SSH: BCLink/TestLink/ssh.md
