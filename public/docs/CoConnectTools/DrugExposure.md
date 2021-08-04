@@ -1,0 +1,1 @@
+::: coconnect.cdm.objects.drug_exposure.DrugExposure

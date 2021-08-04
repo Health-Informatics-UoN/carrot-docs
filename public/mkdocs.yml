@@ -47,6 +47,7 @@ nav:
               - Common: CoConnectTools/Common.md  
               - Person: CoConnectTools/Person.md
               - Condition Occurrence: CoConnectTools/ConditionOccurrence.md
+              - Visit Occurrence: CoConnectTools/VisitOccurrence.md
               - Measurement: CoConnectTools/Measurement.md
               - Observation: CoConnectTools/Observation.md
               - Drug Exposure: CoConnectTools/DrugExposure.md
