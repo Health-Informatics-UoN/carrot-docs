@@ -30,9 +30,7 @@ nav:
       - Uploading a Report:   MappingPipeline/uploading-scan-report.md
       - NLP Processing: MappingPipeline/nlp-processing.md
       - Mapping Rules: MappingPipeline/mapping-rules.md
-      - API: MappingPipeline/API.md
-      
-      
+      - API: MappingPipeline/API.md      
       #- Downloading Mapping:   MappingPipeline/downloading-rules.md
       
   - CO-CONNECT Tools:
@@ -43,7 +41,7 @@ nav:
       - Tools:
           - Command Line Commands: CoConnectTools/source_code/CLI.md
           - Generating Synthetic Data: CoConnectTools/SyntheticData.md
-      - Pythonic CommonDataModel:
+      - CommonDataModel:
           - Overview: CoConnectTools/CommonDataModel.md 
           - Tables:
               - Common: CoConnectTools/Common.md  
@@ -51,6 +49,9 @@ nav:
               - Condition Occurrence: CoConnectTools/ConditionOccurrence.md
               - Measurement: CoConnectTools/Measurement.md
               - Observation: CoConnectTools/Observation.md
+  - BCLink:
+      - Test Link:
+          - Via SSH: BCLink/TestLink/ssh.md
 
 plugins:
   - mknotebooks:
