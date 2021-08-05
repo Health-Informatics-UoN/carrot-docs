@@ -36,12 +36,12 @@ nav:
       
   - CO-CONNECT Tools:
       - About: CoConnectTools/About.md
-      - Getting Started: 
+      - User Guide: 
           - Installing: CoConnectTools/Installing.md
           - ETL-Tool: CoConnectTools/ETL-Tool.md   
           - ETL Quick Example: CoConnectTools/QuickRun.md
-      - FAQ: CoConnectTools/FAQ.md
-      - CommonDataModel:
+          - FAQ: CoConnectTools/FAQ.md
+      - Developer Guide:
           - Overview: CoConnectTools/CommonDataModel.md 
           - Tables:
               - Common: CoConnectTools/Common.md  
