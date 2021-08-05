@@ -184,11 +184,7 @@ coconnect display dataframe --markdown --drop-na test/person.csv
 
 ### 6. Additional Options
 
-!!! note
-    For large datasets, it's advised that you do not try to run all the data at the same time
-
-
-To process a dataset in chunks, you can use the following flag:
+To override the default data chunking options and process a dataset in specific chunks, you can use the following flag:
 
 ```
   -nc, --number-of-rows-per-chunk INTEGER
