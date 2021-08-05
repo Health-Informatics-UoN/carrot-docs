@@ -39,7 +39,7 @@ nav:
       - User Guide: 
           - Installing: CoConnectTools/Installing.md
           - ETL-Tool:
-              - Guide: CoConnectTools/ETL-Tool.md   
+              - Walkthrough: CoConnectTools/ETL-Tool.md   
               - Quick Example: CoConnectTools/QuickRun.md
           - FAQ: CoConnectTools/FAQ.md
           - Additional Tools:
