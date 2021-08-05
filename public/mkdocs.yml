@@ -35,12 +35,13 @@ nav:
       #- Downloading Mapping:   MappingPipeline/downloading-rules.md
       
   - CO-CONNECT Tools:
-      - Getting Started: CoConnectTools/source_code/README.md
+      - About: CoConnectTools/About.md
+      - Getting Started: CoConnectTools/About.md
       - ETL Quick Example: CoConnectTools/QuickRun.md
       - ETL Workbook Example: "CoConnectTools/source_code/notebooks/Introduction\ -\ Using\ the\ ETLTool.ipynb"
       - FAQ: CoConnectTools/FAQ.md
       - Tools:
-          - Command Line Commands: CoConnectTools/source_code/CLI.md
+          - Command Line Commands: CoConnectTools/CommandLine.md
           - Generating Synthetic Data: CoConnectTools/SyntheticData.md
       - CommonDataModel:
           - Overview: CoConnectTools/CommonDataModel.md 
