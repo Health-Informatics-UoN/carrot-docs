@@ -1,4 +1,4 @@
-The followe describes how CO-CONNECT-Tools is used to perform ETL (Extract, Transform, Load) on a dataset (series of input `.csv` files) and a set of transform rules (defined in a `json` file).
+This section describes how CO-CONNECT-Tools is used to perform ETL (Extract, Transform, Load) on a dataset (series of input `.csv` files) and a set of transform rules (defined in a `json` file).
 
 The following guide will take you through the main steps to make sure the tool is installed correctly and that the ETL is performed correctly.
 

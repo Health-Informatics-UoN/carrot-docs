@@ -38,8 +38,9 @@ nav:
       - About: CoConnectTools/About.md
       - User Guide: 
           - Installing: CoConnectTools/Installing.md
-          - ETL-Tool: CoConnectTools/ETL-Tool.md   
-          - ETL Quick Example: CoConnectTools/QuickRun.md
+          - ETL-Tool:
+              - Guide: CoConnectTools/ETL-Tool.md   
+              - Quick Example: CoConnectTools/QuickRun.md
           - FAQ: CoConnectTools/FAQ.md
       - Developer Guide:
           - Overview: CoConnectTools/CommonDataModel.md 
