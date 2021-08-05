@@ -2,6 +2,11 @@
 !!! caution
     This tool is only stable and can run with python versions `>=3.6` on the latest Unix distributions (macOS, Ubuntu, Centos7) and on Windows. 
 
+
+!!! tip
+    It is recommended that you setup your own virtual python environment. This can be done via the use of [`venv`](https://docs.python.org/3/library/venv.html) or other methods such as `conda`. 
+
+
 To install the package, the easiest way is to do this is via pip:
 ```
 $ python -m pip install co-connect-tools

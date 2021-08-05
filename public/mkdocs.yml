@@ -42,9 +42,6 @@ nav:
           - ETL Quick Example: CoConnectTools/QuickRun.md
           - ETL Workbook Example: "CoConnectTools/notebooks/Introduction\ -\ Using\ the\ ETLTool.ipynb"
       - FAQ: CoConnectTools/FAQ.md
-      - Tools:
-          - Command Line Commands: CoConnectTools/CommandLine.md
-          - Generating Synthetic Data: CoConnectTools/SyntheticData.md
       - CommonDataModel:
           - Overview: CoConnectTools/CommonDataModel.md 
           - Tables:
@@ -55,6 +52,10 @@ nav:
               - Measurement: CoConnectTools/Measurement.md
               - Observation: CoConnectTools/Observation.md
               - Drug Exposure: CoConnectTools/DrugExposure.md
+      - Additional Tools:
+          - Command Line Interface: CoConnectTools/CommandLine.md
+          - Generating Synthetic Data: CoConnectTools/SyntheticData.md
+
   - BCLink:
       - Test Link:
           - Via SSH: BCLink/TestLink/ssh.md
