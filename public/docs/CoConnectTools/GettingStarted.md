@@ -6,7 +6,7 @@ CO-CONNECT-Tools contains a pythonic version of the OHDSI CDM (default version 5
 
 ### Table of Contents
 1. [Installing](#installing)
-1. [ETL-CDM Quick Start](#quick)
+1. [Running ETL-CDM](#quick)
 
 
 ## Installing
@@ -60,7 +60,7 @@ tabulate
 psutil
 ```
 
-## ETL-CDM Quick Start <a name="quick"></a>
+## Running ETL-CDM <a name="quick"></a>
 
 The primary purpose of this package is running ETL of given a dataset and a set of transform rules encoded within a `json` file. The simplest way to run the ETLTool, designed to handle the output `json` of the CO-CONNECT Mapping-Pipeline web-tool.
 
