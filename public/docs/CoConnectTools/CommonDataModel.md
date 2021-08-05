@@ -11,6 +11,7 @@ coconnect/cdm/
 │   ├── __init__.py
 │   ├── common.py
 │   ├── condition_occurrence.py
+│   ├── drug_exposure.py
 │   ├── measurement.py
 │   ├── observation.py
 │   ├── person.py
@@ -24,8 +25,10 @@ All CDM destination tables are formed as objects and are defined in `coconnect/c
 
    * [Person](/CoConnectTools/Person.md)
    * [Condition Occurrence](/CoConnectTools/ConditionOccurrence.md)
+   * [Visit Occurrence](/CoConnectTools/VisitOccurrence.md)
    * [Observation](/CoConnectTools/Observation.md)
    * [Measurement](/CoConnectTools/Measurement.md)
+   * [Measurement](/CoConnectTools/DrugExposure.md)
 
 
 ### Generating More Tables
