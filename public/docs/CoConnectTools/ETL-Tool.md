@@ -1,14 +1,17 @@
-The primary purpose of this package is running ETL of given a dataset and a set of transform rules encoded within a `json` file. The simplest way to run the ETLTool, designed to handle the output `json` of the CO-CONNECT Mapping-Pipeline web-tool.
+The primary purpose of this package is running ETL (Extract, Transform, Load) on a dataset (series of input `.csv` files) and a set of transform rules (defined in a `json` file).
 
+The following guide will take you through the main steps to make sure the tool is installed correctly and that the ETL is performed correctly.
+
+For those more familiar with the CO-CONNECT-Tools ETL, [a Quick Run guide can be found here](/CoConnectTools/QuickRun/)
 
 ### 1. Checking The Package
 
 To verify the package is installed you can test the following information commands:
 ```
-$ coconnect info version
+coconnect info version
 <tool version in format X.Y.Z>
 
-$ coconnect info install_folder
+coconnect info install_folder
 <path to install folder>
 
 ```
@@ -28,19 +31,19 @@ Input data is expected in `csv` format.
 It is possible to do a quick check to display the first 10 rows of an input `csv`.
 Run:
 ```
-$ coconnect display dataframe --head 10 <input data csv file>
+coconnect display dataframe --head 10 <input data csv file>
 ```
 
 With your `json` file for the rules, you can quickly check the tool is able to read and display them via:
 ```
-$ coconnect display json rules.json
+coconnect display json rules.json
 ```
 
 ### 4. Run The Tool
 
 The synthax for running the tool can be seen from using `--help`:
 ```
-$ coconnect map run --help
+coconnect map run --help
 Usage: coconnect map run [OPTIONS] [INPUTS]...
 
   Perform OMOP Mapping given an json file
@@ -68,7 +71,7 @@ Options:
 The tool ==requires== you to pass a `.json` file for the rules, as well as space separated list of `.csv` files 
 
 ```
-$ coconnect map run --rules <.json file for rules> <csv file 1> <csv file 2> <csv file 3> ...
+coconnect map run --rules <.json file for rules> <csv file 1> <csv file 2> <csv file 3> ...
 ```
 
 
@@ -80,13 +83,13 @@ $ coconnect map run --rules <.json file for rules> <csv file 1> <csv file 2> <cs
 
 
         ``` bash
-    	$ coconnect map run --rules rules.json data/*.csv
+    	coconnect map run --rules rules.json data/*.csv
         ```
 
     	The tool has the capability to also run on a folder containing the `.csv` files. The tool will look in the folder for `.csv` files and load them:
 
         ``` bash
-    	$ coconnect map run --rules rules.json data/
+    	coconnect map run --rules rules.json data/
         ```
 
 
@@ -125,7 +128,7 @@ output_data/
 
 Other than opening up the output csv in your favourite viewer, you can also use the command line tools to display a simple dataframe
 ```
-$ coconnect display dataframe --drop-na output_data/condition_occurrence.csv 
+coconnect display dataframe --drop-na output_data/condition_occurrence.csv 
        condition_occurrence_id  person_id  condition_concept_id  ... condition_end_datetime condition_source_value  condition_source_concept_id
 0                            1          9                312437  ...    2020-04-10 00:00:00                      1                       312437
 1                            2         18                312437  ...    2020-04-11 00:00:00                      1                       312437
@@ -137,7 +140,7 @@ $ coconnect display dataframe --drop-na output_data/condition_occurrence.csv
 
 Markdown format can be outputed for convenience too:
 ```
-$ coconnect display dataframe --markdown --drop-na test/person.csv
+coconnect display dataframe --markdown --drop-na test/person.csv
 ```
 
 |    |   person_id |   gender_concept_id | birth_datetime      | gender_source_value   |   gender_source_concept_id |
