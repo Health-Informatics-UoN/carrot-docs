@@ -40,7 +40,7 @@ nav:
           - Installing: CoConnectTools/Installing.md
           - ETL-Tool: CoConnectTools/ETL-Tool.md   
       - ETL Quick Example: CoConnectTools/QuickRun.md
-      - ETL Workbook Example: "CoConnectTools/source_code/notebooks/Introduction\ -\ Using\ the\ ETLTool.ipynb"
+      - ETL Workbook Example: "CoConnectTools/notebooks/Introduction\ -\ Using\ the\ ETLTool.ipynb"
       - FAQ: CoConnectTools/FAQ.md
       - Tools:
           - Command Line Commands: CoConnectTools/CommandLine.md
