@@ -9,28 +9,28 @@
 
 To install the package, the easiest way is to do this is via pip:
 ```
-$ python -m pip install co-connect-tools
+python -m pip install co-connect-tools
 ```
 
 To ensure the right version of python (python3) is used to install from pip you can also do:
 ```
-$ python3 -m pip install co-connect-tools
+python3 -m pip install co-connect-tools
 ```
 Or
 ```
-$ pip3 install co-connect-tools
+pip3 install co-connect-tools
 ```
 
 If you are struggling to install from `pip` due to lack of root permissions, or you are not using a virtual python environment (e.g. conda), you can install as a user with the command:
 ```
-$  python3 -m pip install co-connect-tools --user
+ python3 -m pip install co-connect-tools --user
 ```
 This will install the package into a local user folder.
 
 Alterative you can [download the source code](https://github.com/CO-CONNECT/co-connect-tools/tags), unpack and install as a local package:
 ```
-$ cd < downloaded source code folder >
-$ python3 -m pip install -e . 
+cd < downloaded source code folder >
+python3 -m pip install -e . 
 ```
 
 !!! tip
