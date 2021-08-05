@@ -36,7 +36,7 @@ nav:
       
   - CO-CONNECT Tools:
       - About: CoConnectTools/About.md
-      - Getting Started: CoConnectTools/About.md
+      - Getting Started: CoConnectTools/GettingStarted.md
       - ETL Quick Example: CoConnectTools/QuickRun.md
       - ETL Workbook Example: "CoConnectTools/source_code/notebooks/Introduction\ -\ Using\ the\ ETLTool.ipynb"
       - FAQ: CoConnectTools/FAQ.md
