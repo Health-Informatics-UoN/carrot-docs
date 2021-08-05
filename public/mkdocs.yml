@@ -40,7 +40,6 @@ nav:
           - Installing: CoConnectTools/Installing.md
           - ETL-Tool: CoConnectTools/ETL-Tool.md   
           - ETL Quick Example: CoConnectTools/QuickRun.md
-          - ETL Workbook Example: "CoConnectTools/notebooks/Introduction\ -\ Using\ the\ ETLTool.ipynb"
       - FAQ: CoConnectTools/FAQ.md
       - CommonDataModel:
           - Overview: CoConnectTools/CommonDataModel.md 
@@ -52,6 +51,7 @@ nav:
               - Measurement: CoConnectTools/Measurement.md
               - Observation: CoConnectTools/Observation.md
               - Drug Exposure: CoConnectTools/DrugExposure.md
+          - ETL Workbook Example: "CoConnectTools/notebooks/Introduction\ -\ Using\ the\ ETLTool.ipynb"
       - Additional Tools:
           - Command Line Interface: CoConnectTools/CommandLine.md
           - Generating Synthetic Data: CoConnectTools/SyntheticData.md
