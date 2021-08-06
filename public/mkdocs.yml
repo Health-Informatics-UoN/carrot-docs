@@ -42,12 +42,15 @@ nav:
               - Walkthrough: CoConnectTools/ETL-Tool.md   
               - Quick Example: CoConnectTools/QuickRun.md
           - FAQ: CoConnectTools/FAQ.md
+          - Common Errors: CoConnectTools/CommonErrors.md
           - Additional Tools:
               - Command Line Interface: CoConnectTools/CommandLine.md
               - Generating Synthetic Data: CoConnectTools/SyntheticData.md
 
       - Developer Guide:
-          - Overview: CoConnectTools/CommonDataModel.md 
+          - Overview: CoConnectTools/CommonDataModel.md
+          - Tools:
+              - Input Data: CoConnectTools/InputData.md
           - Tables:
               - Common: CoConnectTools/Common.md  
               - Person: CoConnectTools/Person.md
