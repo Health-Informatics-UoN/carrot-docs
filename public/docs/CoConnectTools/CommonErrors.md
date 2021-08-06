@@ -34,6 +34,33 @@ First you should check that the file supplied with the `--rules` argument is a v
 
 Often the `json.decoder.JSONDecodeError` will tell you what line and column there is an error coming from. Common issues are due to bad formating or accidental insertions of whitespace characters for a text editor, if the file has been opened up and manually edited.
 
+## coconnect.cdm.objects.common.FormattingError
+
+This is an error message telling you that something in your input data is not in the right format for the tool to handle and format. 
+
+!!! example
+    ```
+    coconnect.cdm.objects.common.FormattingError: The column person_id using the formatter function Integer produced NaN values in a required column
+    ```
+
+In the above example, this error message means that while trying to format the `person_id` column into a Integer, every single value failed, meaning the column in the input data that is used for the `person_id` is not in a format that can be converted into an Integer.
+
+Inspecting further you may see something like:
+```
+2021-08-06 16:55:23 - person_0 - ERROR - Something wrong with the formatting of the field 'person_id'.
+2021-08-06 16:55:23 - person_0 - ERROR - Using the formatter 'Integer' failed on all values.
+2021-08-06 16:55:23 - person_0 - INFO - Sample of this column before formatting:
+2021-08-06 16:55:23 - person_0 - ERROR - index
+s4    s4
+d2    d2
+s3    s3
+s1    s1
+Name: person_id, dtype: object
+```
+Which shows that indeed the `person_id` column contains strings and was not able to be convert to an Integer.
+
+!!! note
+    By default, the `person_id` column is expected to already be an integer. 
 
 ## Requiring non-null values in <destination_field> removed X rows, leaving Y rows.
 
