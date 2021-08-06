@@ -5,8 +5,8 @@ Our command line interface tool for performing a transformation of your dataset 
 coconnect map run
 ```
 
-[Overview](/CoConnectTools/About/#etl-tool){ .md-button .md-button--primary }
-[Walkthrough](/CoConnectTools/ETL-Tool/){ .md-button .md-button--secondary }
+[Overview](/docs/CoConnectTools/About/#etl-tool){ .md-button .md-button--primary }
+[Walkthrough](/docs/CoConnectTools/ETL-Tool/){ .md-button .md-button--secondary }
 
 
 ### What is the rules `.json`?
