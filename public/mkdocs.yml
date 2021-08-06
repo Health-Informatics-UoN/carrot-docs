@@ -41,8 +41,8 @@ nav:
           - ETL-Tool:
               - Walkthrough: CoConnectTools/ETL-Tool.md   
               - Quick Example: CoConnectTools/QuickRun.md
-          - FAQ: CoConnectTools/FAQ.md
-          - Common Errors: CoConnectTools/CommonErrors.md
+              - FAQ: CoConnectTools/FAQ.md
+              - Common Errors: CoConnectTools/CommonErrors.md
           - Additional Tools:
               - Command Line Interface: CoConnectTools/CommandLine.md
               - Generating Synthetic Data: CoConnectTools/SyntheticData.md
