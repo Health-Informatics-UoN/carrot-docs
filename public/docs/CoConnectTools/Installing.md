@@ -1,6 +1,6 @@
 
 !!! caution
-    This tool is only stable and can run with python versions `>=3.6` on the latest Unix distributions (macOS, Ubuntu, Centos7) and on Windows. 
+    This tool is only stable with python versions `>=3.6` on Unix distributions (macOS, Ubuntu, Centos7) and on Windows. 
 
 
 !!! tip
