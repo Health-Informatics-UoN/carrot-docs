@@ -4,7 +4,7 @@
 
 
 !!! tip
-    It is recommended that you setup your own virtual python environment. This can be done via the use of [`venv`](https://docs.python.org/3/library/venv.html) or other methods such as `conda`. 
+    It is recommended that you setup your own virtual python environment, for example using [`venv`](https://docs.python.org/3/library/venv.html).
 
 
 To install the package, the easiest way is to do this is via pip:
