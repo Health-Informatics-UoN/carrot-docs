@@ -41,6 +41,7 @@ nav:
           - ETL-Tool:
               - Walkthrough: CoConnectTools/ETL-Tool.md   
               - Quick Example: CoConnectTools/QuickRun.md
+              - GUI: CoConnectTools/ETL-Tool-GUI.md
               - FAQ: CoConnectTools/FAQ.md
               - Common Errors: CoConnectTools/CommonErrors.md
           - Additional Tools:
