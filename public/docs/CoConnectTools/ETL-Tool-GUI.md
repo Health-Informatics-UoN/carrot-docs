@@ -5,6 +5,7 @@ A simple Graphical User Interface (GUI) is implemented in co-connect-tools in or
 
 In this example, we use the test data that is available in the tool (see `coconnect info `)
 We have:  
+
 * A `rules.json` file for the mapping-rules  
 * A folder containing the input data  
 
@@ -44,6 +45,11 @@ Click the "Run" button to execute running the tools on the selected files.
 You will see outputs appear on the command line. A pop-up box will appear saying 'Done' when the tool has finished running.
 ![](../images/gui_4.png)
 
-Now the folder will contain the output `tsv` files which contain the mapped CDM tables.
+Now the folder will contain the output `tsv` files which contain the mapped CDM tables. In this example:  
+
+* `person.tsv`  
+* `condition_occurrence.tsv`  
+* `observation.tsv`  
+
 ![](../images/gui_out.png)
 
