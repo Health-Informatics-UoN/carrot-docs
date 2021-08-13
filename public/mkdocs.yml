@@ -65,6 +65,8 @@ nav:
               - Logging: CoConnectTools/Logger.md
               - Profiling: CoConnectTools/Profiling.md
           - ETL Workbook Example: "CoConnectTools/notebooks/Introduction\ -\ Using\ the\ ETLTool.ipynb"
+          - Performance:
+              - cProfile: CoConnectTools/Performance/cProfile.md
   - BCLink:
       - Test Link:
           - Via SSH: BCLink/TestLink/ssh.md
