@@ -75,6 +75,10 @@ We have implemented enpoints for following 16 tables of co-connect DB.
 5. mapping_scanreportconcept table	
     * **http://localhost:8080/api/scanreportconcepts/** All scan report concepts in a mapping_scanreportconcepts. For this endpoint, making a put request allows to accept a json array that is beneficial in its own right with a single call to an api endpoint. 
     * **http://localhost:8080/api/scanreportconcepts/2/** A record in a mapping_scanreportconcepts with id=2
+    * http://localhost:8080/api/scanreportconceptsfilter/?object_id=513874** This returns all records (i.e. assigned scan report concepts) for a given object_id (i.e. object_id can be of an id of scanreportvalue or scanreportfield).
+    * **http://localhost:8080/api/scanreportconceptsfilter/?object_id__in=513874, 513856** This returns all records (i.e. assigned scan report concepts) for a given list of object_id (i.e. object_id can be of an id of scanreportvalue or scanreportfield).
+    * * http://localhost:8080/api/scanreportconceptsfilter/?concept__concept_id=8507** This returns all records (i.e. assigned scan report concepts) for a given concept_id.
+    * **http://localhost:8080/api/scanreportconceptsfilter/?concept__concept_id__in=8507, 8532** This returns all records (i.e. assigned scan report concepts) for a given list of concept_id.
 	
 6. mapping table	
     * **http://localhost:8080/api/mappings/** All records in a mapping table
