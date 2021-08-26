@@ -47,16 +47,7 @@ We have implemented enpoints for following 8 tables of OMOP CDM DB. The API endp
 	
 ## Co-Connect DB
 
-We have implemented enpoints for following 16 tables of co-connect DB. For all the endpoints, user have an option of specifying returning fields and in case if you don't supply returning fields parameter, it will return values of all fields.
-
-(API endpoints without filter)
-API_URL/?fields=returningfield1,returningfield2
-(e.g. http://localhost:8080/api/scanreporttables/?fields=id,name
-and http://localhost:8080/api/scanreporttables/1/?fields=id,name)
-
-(API endpoints with filter)
-API_URL/?filterfield=value1&filterfield2=value2&fields=returningfield1,returningfield2
-(e.g. http://localhost:8080/api/scanreporttablesfilter/?scan_report=1&fields=id,name,person_id)
+We have implemented enpoints for following 16 tables of co-connect DB. 
 
 1. mapping_scanreport table
     * **http://localhost:8080/api/scanreports/** All scan reports in a mapping_scanreport table. For this endpoint, making a put request allows to accept a json array that is beneficial in its own right with a single call to an api endpoint. 
@@ -134,3 +125,14 @@ API_URL/?filterfield=value1&filterfield2=value2&fields=returningfield1,returning
      * **http://localhost:8080/api/documenttypes/** All records in a documenttype table
      * **http://localhost:8080/api/documenttypes/2/** A record in a documenttype table with id=2
 	
+### Specifying returning fields 
+For all the endpoints, user have an option of specifying returning fields and in case if you don't supply returning fields parameter, it will return values of all fields.
+
+(API endpoints without filter)
+API_URL/?fields=returningfield1,returningfield2
+(e.g. http://localhost:8080/api/scanreporttables/?fields=id,name
+and http://localhost:8080/api/scanreporttables/1/?fields=id,name)
+
+(API endpoints with filter)
+API_URL/?filterfield=value1&filterfield2=value2&fields=returningfield1,returningfield2
+(e.g. http://localhost:8080/api/scanreporttablesfilter/?scan_report=1&fields=id,name,person_id)
