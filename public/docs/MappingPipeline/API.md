@@ -112,7 +112,8 @@ We have implemented enpoints for following 16 tables of co-connect DB.
 
 13. mapping_omopfield table	
      * **http://localhost:8080/api/omopfields/** All records in a mapping_omopfield table
-     * **http://localhost:8080/api/omopfields/450/** A record in a mapping_omopfield table with id=2
+     * **http://localhost:8080/api/omopfields/450/** or **http://localhost:8080/api/omopfieldsfilter/?id=450** A record in a mapping_omopfield table with id=2
+     * **http://localhost:8080/api/omopfieldsfilter/?id__in=449,450** 
 
 14. mapping_structuralmappingrule table	
      * **http://localhost:8080/api/structuralmappingrules/** All records in a mapping_structuralmappingrule
