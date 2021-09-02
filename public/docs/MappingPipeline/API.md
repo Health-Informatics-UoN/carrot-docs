@@ -90,7 +90,6 @@ We have implemented enpoints for following 16 tables of co-connect DB.
     * **http://localhost:8080/api/scanreportvaluesfilter/?value__in=Surgery,YES**
     * **http://localhost:8080/api/scanreportvaluesfilter/?id__in=2,301,286,1360**
 
-
 5. mapping_scanreportconcept table	
     * **http://localhost:8080/api/scanreportconcepts/** All scan report concepts in a mapping_scanreportconcepts. For this endpoint, making a put request allows to accept a json array that is beneficial in its own right with a single call to an api endpoint. 
     * **http://localhost:8080/api/scanreportconcepts/2/** or **http://localhost:8080/api/scanreportconceptsfilter/?id=2** A record in a mapping_scanreportconcepts with id=2
@@ -137,7 +136,10 @@ We have implemented enpoints for following 16 tables of co-connect DB.
 
 14. mapping_structuralmappingrule table	
      * **http://localhost:8080/api/structuralmappingrules/** All records in a mapping_structuralmappingrule
-     * **http://localhost:8080/api/structuralmappingrules/8194** A record in a mapping_structuralmappingrule table with id=8194	
+     * **http://localhost:8080/api/structuralmappingrules/12200** or **http://localhost:8080/api/structuralmappingrulesfilter/?id=12200** A record in a mapping_structuralmappingrule table with id=8194
+     * **http://localhost:8080/api/structuralmappingrulesfilter/?scan_report=40**
+     * **http://localhost:8080/api/structuralmappingrulesfilter/?scan_report__in=40,89**
+     * **http://localhost:8080/api/structuralmappingrulesfilter/?id__in=12200,12208**
 	
 15. source table	
      * **http://localhost:8080/api/sources/** All records in a source table
