@@ -13,8 +13,13 @@ We have implemented enpoints for following 8 tables of OMOP CDM DB. The API endp
 
 1. concept table: 
     * **http://localhost:8080/api/omop/concepts/** Returns all records in a concept table
-    * **http://localhost:8080/api/omop/concepts/1/** Returns concept details from the concept table for concept_id=1 
+    * **http://localhost:8080/api/omop/concepts/1/** or **http://localhost:8080/api/omop/conceptsfilter/?concept_id=1** or **http://localhost:8080/api/omop/conceptsfilter/?concept_id__in=1** or   Returns concept details from the concept table for concept_id=1 
     * **http://localhost:8080/api/omop/conceptsfilter/?concept_code=R51&vocabulary_id=ICD10CM** This will return a record that has "concept_code=R51" and "vocabulary_id=ICD10CM"
+    * **http://localhost:8080/api/omop/conceptsfilter/?vocabulary_id=Domain**
+    * **http://localhost:8080/api/omop/conceptsfilter/?vocabulary_id__in=Domain,Gender**
+    * **http://localhost:8080/api/omop/conceptsfilter/?concept_code=OMOP generated**
+    * **http://localhost:8080/api/omop/conceptsfilter/?concept_code__in=OMOP generated,M**
+    * **http://localhost:8080/api/omop/conceptsfilter/?concept_id__in=1,8507,8532**
 2. vocabulary table: 
     * **http://localhost:8080/api/omop/vocabularies/** Returns all records of a vocabulary table
     * **http://localhost:8080/api/omop/vocabularies/Cost/**	Returns a record from a vocabulary table with vocabulary id=Cost
