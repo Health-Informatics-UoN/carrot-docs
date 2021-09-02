@@ -55,23 +55,37 @@ We have implemented enpoints for following 16 tables of co-connect DB.
 	
 2. mapping_scanreporttable table
     * **http://localhost:8080/api/scanreporttables/** All scan report tables in a mapping_scanreporttables table. For this endpoint, making a put request allows to accept a json array that is beneficial in its own right with a single call to an api endpoint. 
-    * **http://localhost:8080/api/scanreporttables/1** A record in a mapping_scanreportables table with id=1
-	* **http://localhost:8080/api/scanreporttablesfilter/?scan_report=1&name=Freezer.csv** This will return a record that has a "scan_report=1" and "name=Freezer.csv"
+    * **http://localhost:8080/api/scanreporttables/1** or **http://localhost:8080/api/scanreporttablesfilter/?id=1** A record in a mapping_scanreportables table with id=1
+    * **http://localhost:8080/api/scanreporttablesfilter/?scan_report=1&name=Freezer.csv** This will return a record that has a "scan_report=1" and "name=Freezer.csv"
+    * **http://localhost:8080/api/scanreporttablesfilter/?scan_report=1**
+    * **http://localhost:8080/api/scanreporttablesfilter/?scan_report__in=1,40**
+    * **http://localhost:8080/api/scanreporttablesfilter/?name=Freezer.csv**
+    * **http://localhost:8080/api/scanreporttablesfilter/?name__in=Freezer.csv,Questionnaire.csv**
+    * **http://localhost:8080/api/scanreporttablesfilter/?id__in=1,284**
 	
 3. mapping_scanreportfield table
     * **http://localhost:8080/api/scanreportfields/** All scan report fields in a mapping_scanreportfield table. For this endpoint, making a put request allows to accept a json array that is beneficial in its own right with a single call to an api endpoint. 
-    * **http://localhost:8080/api/scanreportfields/4638/** A record in a mapping_scanreportfields with id=4638 
+    * **http://localhost:8080/api/scanreportfields/4638/** or **http://localhost:8080/api/scanreportfieldsfilter/?id=4638** A record in a mapping_scanreportfields with id=4638 
     * **http://localhost:8080/api/scanreportfieldsfilter/?scan_report_table=419&name=altered_conscious_state** This will return a record from a mapping_scanreportfield table with "scan_report_table=419" and "name=altered_conscious_state"
-    *  **http://localhost:8080/api/scanreportfieldsfilter/?scan_report_table=419** This will return all records from a mapping_scanreportfield table with "scan_report_table=419"
+    * **http://localhost:8080/api/scanreportfieldsfilter/?scan_report_table=419** This will return all records from a mapping_scanreportfield table with "scan_report_table=419"
+    * **http://localhost:8080/api/scanreportfieldsfilter/?scan_report_table__in=694,281**
+    * **http://localhost:8080/api/scanreportfieldsfilter/?name=mrn** 
+    * **http://localhost:8080/api/scanreportfieldsfilter/?name__in=mrn,personid**
+    * **http://localhost:8080/api/scanreportfieldsfilter/?id__in=4638,9942,9943**
 
 4. mapping_scanreportvalue table
     * **http://localhost:8080/api/scanreportvalues/** All scan report values in a mapping_scanreportvalues. For this endpoint, making a put request allows to accept a json array that is beneficial in its own right with a single call to an api endpoint. 
-    * **http://localhost:8080/api/scanreportvalues/2/** A record in a mapping_scanreportvalues with id=2
+    * **http://localhost:8080/api/scanreportvalues/2/** or **http://localhost:8080/api/scanreportvaluesfilter/?id=2**A record in a mapping_scanreportvalues with id=2
     * **http://localhost:8080/api/scanreportvaluesfilter/?scan_report_field=222&value=Surgery** This will return a record from a mapping_scanreportvalue table with "scan_report_field=222" and "value=surgery"
     * **http://localhost:8080/api/scanreportvaluesfilter/?scan_report_field=222** This will return all records from a mapping_scanreportvalue table with "scan_report_field=222"
     * **http://localhost:8080/api/scanreportvaluesfilter/?scan_report_field=222&fields=value,frequency** This will return all records from a mapping_scanreportvalue table with "scan_report_field=222" but will only be returning specified fields in the "fields" parameters (i.e. in this case they are "value" and "frequency").
     * **http://localhost:8080/api/scanreportvaluesfilterscanreport/?scan_report=651** This will return all records from a mapping_scanreportvalue table for a scan report with id=651 (i.e. scan_report=651)
     * **http://localhost:8080/api/scanreportvaluesfilterscanreporttable/?scan_report_table=8** This will return all records from a mapping_scanreportvalue table for a scan report table with id=8 (i.e. scan_report_table=8)
+    * **http://localhost:8080/api/scanreportvaluesfilter/?scan_report_field__in=222,1,284**
+    * **http://localhost:8080/api/scanreportvaluesfilter/?value__in=Surgery,YES**
+    * **http://localhost:8080/api/scanreportvaluesfilter/?id__in=2,301,286,1360**
+
+
 5. mapping_scanreportconcept table	
     * **http://localhost:8080/api/scanreportconcepts/** All scan report concepts in a mapping_scanreportconcepts. For this endpoint, making a put request allows to accept a json array that is beneficial in its own right with a single call to an api endpoint. 
     * **http://localhost:8080/api/scanreportconcepts/2/** or **http://localhost:8080/api/scanreportconceptsfilter/?id=2** A record in a mapping_scanreportconcepts with id=2
