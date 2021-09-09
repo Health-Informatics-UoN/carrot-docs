@@ -13,3 +13,5 @@ reasearcher.data = coconnect.find('patient_data',
                                            ]
                                   anonymous=True)
 ```
+
+If you are a Data Partner using our [ETL Tool](https://github.com/CO-CONNECT/co-connect-tools), please go straight to the documentation [here](/CoConnectTools/About/).
