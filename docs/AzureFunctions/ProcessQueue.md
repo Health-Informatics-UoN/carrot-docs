@@ -1,3 +1,6 @@
+!!! note
+    This page is for developers of Azure Functions - not users
+
 ## Introduction
 **ProcessQueue** refers to an Azure Queue Trigger function which processes and saves a scan report and data dictionary to the CCOM database. It is also the name of the directory in the webapp's root directory which houses the Azure Function code. The function is triggered when a new message is added to the queue. Messages are added to the queue when a user uploads a Scan Report and Data Dictionary to the webapp.
 

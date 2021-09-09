@@ -1,3 +1,6 @@
+!!! note
+    This page is for developers of Azure Functions - not users
+
 ## Introduction
 'NLP Processing' is the general term for converting Field/Value text strings from Scan Reports to standard and valid OMOP CDM conceptIDs using the Microsoft Health API. For example:
 > "The patient has a cough" 
