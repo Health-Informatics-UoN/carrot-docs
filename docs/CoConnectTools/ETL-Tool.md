@@ -2,7 +2,7 @@ This section describes how CO-CONNECT-Tools is used to perform ETL (Extract, Tra
 
 The following guide will take you through the main steps to make sure the tool is installed correctly and that the ETL is performed correctly.
 
-For those more familiar with the CO-CONNECT-Tools ETL, [a Quick Run guide can be found here](/CoConnectTools/QuickRun/)
+For those more familiar with the CO-CONNECT-Tools ETL, [a Quick Run guide can be found here](/docs/CoConnectTools/QuickRun/)
 
 ### 1. Checking The Package
 

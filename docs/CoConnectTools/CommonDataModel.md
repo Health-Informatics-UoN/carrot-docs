@@ -23,12 +23,12 @@ coconnect/cdm/
 
 All CDM destination tables are formed as objects and are defined in `coconnect/cdm/objects`, inheriting from a base class (`DestinationTable`, defined in `common.py`):
 
-   * [Person](/CoConnectTools/Person.md)
-   * [Condition Occurrence](/CoConnectTools/ConditionOccurrence.md)
-   * [Visit Occurrence](/CoConnectTools/VisitOccurrence.md)
-   * [Observation](/CoConnectTools/Observation.md)
-   * [Measurement](/CoConnectTools/Measurement.md)
-   * [Measurement](/CoConnectTools/DrugExposure.md)
+   * [Person](/docs/CoConnectTools/Person.md)
+   * [Condition Occurrence](/docs/CoConnectTools/ConditionOccurrence.md)
+   * [Visit Occurrence](/docs/CoConnectTools/VisitOccurrence.md)
+   * [Observation](/docs/CoConnectTools/Observation.md)
+   * [Measurement](/docs/CoConnectTools/Measurement.md)
+   * [Measurement](/docs/CoConnectTools/DrugExposure.md)
 
 
 ### Generating More Tables

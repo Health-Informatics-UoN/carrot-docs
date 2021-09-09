@@ -47,7 +47,7 @@ Options:
 
 ### CCOM 
 
-If you cannot obtain the original WhiteRabbit scan report, you can also generate synthetic data using our CCOM website by connecting via the [api](/MappingPipeline/API/) to the database.
+If you cannot obtain the original WhiteRabbit scan report, you can also generate synthetic data using our CCOM website by connecting via the [api](/docs/MappingPipeline/API/) to the database.
 
 ```
 $ coconnect generate synthetic ccom --help
