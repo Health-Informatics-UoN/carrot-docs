@@ -19,7 +19,7 @@ jobs:
           pip3 install setuptools
           pip3 install -e docs/CoConnectTools/source_code/
 
-      - run: python -c 'import sys; sys.path.append("public/docs/CoConnectTools/source_code/"); import coconnect; print (coconnect.cdm.objects.DestinationTable)'
+      - run: python -c 'import sys; sys.path.append("docs/CoConnectTools/source_code/"); import coconnect; print (coconnect.cdm.objects.DestinationTable)'
       - name: deploy
         run: |
           mkdocs gh-deploy --force
