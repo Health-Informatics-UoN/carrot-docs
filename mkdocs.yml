@@ -22,16 +22,17 @@ nav:
   #      - Install: GettingStarted/install-OHDSI-in-a-Box.md
   #      - Exploring Datasets with Python: GettingStarted/explore-datasets-python.ipynb
   #    - WhiteRabbit: GettingStarted/white-rabbit.md
-  - Azure Functions:
-    - LocalFunctions: AzureFunctions/RunningLocally.md
-    - ProcessQueue: AzureFunctions/processQueue.md
-    - NLPQueue: AzureFunctions/nlpQueue.md
 
-  - Mapping-Pipeline:
+
+  - Mapping-Pipeline (CCOM):
       - About:   MappingPipeline/about.md
       - Uploading a Report:   MappingPipeline/uploading-scan-report.md
       - Mapping Rules: MappingPipeline/mapping-rules.md
-      - API: MappingPipeline/API.md      
+      - API: MappingPipeline/API.md
+      - Azure Functions:
+         - LocalFunctions: AzureFunctions/RunningLocally.md
+         - ProcessQueue: AzureFunctions/ProcessQueue.md
+         - NLPQueue: AzureFunctions/NlpQueue.md
       #- Downloading Mapping:   MappingPipeline/downloading-rules.md
       
   - CO-CONNECT Tools:
@@ -49,16 +50,17 @@ nav:
               - Generating Synthetic Data: CoConnectTools/SyntheticData.md
 
       - Developer Guide:
-          - Overview: CoConnectTools/CommonDataModel.md
-          - Tables:
-              - Common: CoConnectTools/Common.md  
-              - Person: CoConnectTools/Person.md
-              - Condition Occurrence: CoConnectTools/ConditionOccurrence.md
-              - Visit Occurrence: CoConnectTools/VisitOccurrence.md
-              - Measurement: CoConnectTools/Measurement.md
-              - Observation: CoConnectTools/Observation.md
-              - Drug Exposure: CoConnectTools/DrugExposure.md
-          - Tools:
+          - CDM:
+              - Overview: CoConnectTools/CommonDataModel.md
+              - Tables:
+                  - Common: CoConnectTools/Common.md
+                  - Person: CoConnectTools/Person.md
+                  - Condition Occurrence: CoConnectTools/ConditionOccurrence.md
+                  - Visit Occurrence: CoConnectTools/VisitOccurrence.md
+                  - Measurement: CoConnectTools/Measurement.md
+                  - Observation: CoConnectTools/Observation.md
+                  - Drug Exposure: CoConnectTools/DrugExposure.md
+          - Source documentation:
               - Input Data: CoConnectTools/InputData.md
               - File Helpers: CoConnectTools/FileHelpers.md
               - Rule Helpers: CoConnectTools/RuleHelpers.md

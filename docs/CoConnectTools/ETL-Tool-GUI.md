@@ -45,7 +45,7 @@ Click the "Run" button to execute running the tools on the selected files.
 You will see outputs appear on the command line. A pop-up box will appear saying 'Done' when the tool has finished running.
 ![](../images/gui_4.png)
 
-Now the folder will contain the output `tsv` files which contain the mapped CDM tables. In this example:  
+Now the folder will contain the output `tsv` files which contain the mapped CDM tables. In this example these are:  
 
 * `person.tsv`  
 * `condition_occurrence.tsv`  
