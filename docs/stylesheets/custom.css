@@ -19,6 +19,9 @@
     background-color: #3db28c !important;
 }
 
+.center{
+    margin: auto !important;
+}
 
 :root {
   --md-admonition-icon--co-connect: url('/images/favicon.png')
