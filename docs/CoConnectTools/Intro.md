@@ -5,7 +5,6 @@ CO-CONNECT-Tools contains a pythonic version[^1] of the OHDSI CDM, implemented v
 
 [^1]: In the default setup a __slightly__ (`visit_detail_id` link has been removed from Measurement, Observation and Condition Occurrence tables) modified CDM version [`5.3.1`](https://github.com/OHDSI/CommonDataModel/releases/tag/v5.3.1) is used to define a subset of tables in python.
 
-!!! info ""
 The primary purpose of this package is to perform ETL of a dataset based upon a supplied set of transform rules encoded within a json file.
 The tools is designed to handle the output json of the CO-CONNECT Mapping-Pipeline web-tool known as CCOM. Though other output formats are supported, the __default__ output of the tool writes data to `tsv` files.
 
