@@ -21,15 +21,16 @@ Or
 pip3 install co-connect-tools
 ```
 
-If you are struggling to install from `pip` due to lack of root permissions, or you are not using a virtual python environment (e.g. conda), you can install as a user with the command:
-```
- python3 -m pip install co-connect-tools --user
-```
-This will install the package into a local user folder.
+!!! tip
+    If you are struggling to install from `pip` due to lack of root permissions, or you are not using a virtual python environment (e.g. conda), you can install as a user with the command:
+    ```
+    python3 -m pip install co-connect-tools --user
+    ```
+    This will install the package into a local user folder.
 
-Alterative you can [download the source code](https://github.com/CO-CONNECT/co-connect-tools/tags), unpack and install as a local package:
+Alternatively you can [download the source code](https://github.com/CO-CONNECT/co-connect-tools/tags), unpack and install as a local package:
 ```
-cd < downloaded source code folder >
+cd <downloaded_source_code_folder>
 python3 -m pip install -e . 
 ```
 

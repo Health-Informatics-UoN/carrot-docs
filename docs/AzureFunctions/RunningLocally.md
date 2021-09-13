@@ -1,3 +1,6 @@
+!!! note
+    This page is for developers of Azure Functions - not users
+
 ## Introduction
 
 Running Azure Functions locally is a little involved; this guide has been written to get you up and running with Azure CLI and Functions. Note that this guide assumes you're using VSCode. All of the functionality described here can be replicated outside of VSCode (in Azure CLI) but instructions for doing so are not detailed in this guide.
