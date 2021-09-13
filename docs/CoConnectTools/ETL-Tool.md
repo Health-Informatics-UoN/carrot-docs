@@ -7,26 +7,31 @@ For those more familiar with the CO-CONNECT-Tools ETL, [a Quick Run guide can be
 ### 1. Checking The Package
 
 To verify the package is installed you can test the following information commands:
+
+* show the tool version (this may take a few seconds, the first time you run the package)
+
 ```
 coconnect info version
-<tool version in format X.Y.Z>
+```
 
-coconnect info install_folder
-<path to install folder>
+* show the location of the installation folder  
 
 ```
+coconnect info install_folder
+```
+
 
 ### 2. Gather Inputs
 
 To run the transformation to CDM you will need:   
 
-1. Input Data  
-1. `json` file containing the so-called mapping rules
+1. Input Data, in the form of `csv` files
+1. `json` file containing the "mapping rules"
 
 
 ### 3. Check Inputs
 
-Input data is expected in `csv` format.
+Input data is expected in `csv` format, 
 
 It is possible to do a quick check to display the first 10 rows of an input `csv`.
 Run:
@@ -65,27 +70,32 @@ coconnect display json rules.json
 The synthax for running the tool can be seen from using `--help`:
 ```
 coconnect map run --help
-Usage: coconnect map run [OPTIONS] [INPUTS]...
+Usage: coconnect map run [OPTIONS] INPUTS...
 
-  Perform OMOP Mapping given an json file
+  Perform OMOP Mapping given an json file and a series of input files
+
+  INPUTS should be a space separated list of individual input files or
+  directories (which contain .csv files)
 
 Options:
   --rules TEXT                    input json file containing all the mapping
                                   rules to be applied  [required]
-
-  --type [csv]                    specify the type of inputs, the default is
-                                  .csv inputs
-
+  --csv-separator [;|:|	|,| ]     choose a separator to use when dumping
+                                  output csv files
   --use-profiler                  turn on saving statistics for profiling CPU
                                   and memory usage
-
   --output-folder TEXT            define the output folder where to dump csv
                                   files to
-
-  -nc, --number-of-rows-per-chunk INTEGER
-                                  choose to chunk running the data into nrows
+  -nc, --number-of-rows-per-chunk TEXT
+                                  Choose the number of rows (INTEGER) of input
+                                  data to load (chunksize). The default 'auto'
+                                  will work out the ideal chunksize. Inputing
+                                  a value <=0 will turn off data chunking.
   -np, --number-of-rows-to-process INTEGER
                                   the total number of rows to process
+  -l, --log-level [0|1|2|3]       change the level for log messaging. 0 -
+                                  ERROR, 1 - WARNING, 2 - INFO (default), 3 -
+                                  DEBUG
   --help                          Show this message and exit.
 ```
 
@@ -133,22 +143,23 @@ coconnect map run --rules <.json file for rules> <csv file 1> <csv file 2> <csv 
 	
 ### 5. Check The Output
 
-By default, mapped `csv` files are created in the folder `output_data` within your current working directory.
+By default, mapped `tsv` files are created in the folder `output_data` within your current working directory.
 !!! tip
     To specify a different output folder, use the command line argument `--output-folder` when running `coconnect map run`
 
 Log files are also created in a subdirectory of the output folder, for example:
 ```
 output_data/
-├── condition_occurrence.csv
+├── condition_occurrence.tsv
 ├── logs
-│   └── 2021-07-19T100054.json
-└── observation.csv
+│   └── 2021-09-13T101629_slice_0.json
+├── observation.tsv
+└── person.tsv
 ```
 
 Other than opening up the output csv in your favourite viewer, you can also use the command line tools to display a simple dataframe
 ```
-coconnect display dataframe --drop-na output_data/condition_occurrence.csv
+coconnect display dataframe --drop-na output_data/condition_occurrence.tsv
 ```
 ```
        condition_occurrence_id  person_id  condition_concept_id  ... condition_end_datetime condition_source_value  condition_source_concept_id
@@ -162,7 +173,7 @@ coconnect display dataframe --drop-na output_data/condition_occurrence.csv
 
 Markdown format can be outputed for convenience too:
 ```
-coconnect display dataframe --markdown --drop-na test/person.csv
+coconnect display dataframe --markdown --drop-na output_data/person.tsv
 ```
 
 |    |   person_id |   gender_concept_id | birth_datetime      | gender_source_value   |   gender_source_concept_id |
@@ -177,7 +188,6 @@ coconnect display dataframe --markdown --drop-na test/person.csv
 |  7 |         108 |                8507 | 1985-03-01 00:00:00 | M                     |                       8507 |
 |  8 |         109 |                8532 | 1950-10-31 00:00:00 | F                     |                       8532 |
 |  9 |         110 |                8532 | 1993-09-07 00:00:00 | F                     |                       8532 |
-
 
 !!! note
     The argument `--drop-na` removes columns that are entirely `nan`/`null` in order to get a better display of the mapped CDM table, this is because many of the CDM table columns are not used in the examples.
