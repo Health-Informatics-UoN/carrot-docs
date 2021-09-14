@@ -72,8 +72,10 @@ nav:
           - Performance:
               - cProfile: CoConnectTools/Performance/cProfile.md
   - BCLink:
-      - Test Link:
-          - Via SSH: BCLink/TestLink/ssh.md
+      - About: BCLink/About.md
+      - For Developers: 
+          - Test Link:
+              - Via SSH: BCLink/TestLink/ssh.md
 
 plugins:
   - mknotebooks:
