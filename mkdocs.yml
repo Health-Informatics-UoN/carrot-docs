@@ -76,6 +76,7 @@ nav:
       - For Developers: 
           - Test Link:
               - Via SSH: BCLink/TestLink/ssh.md
+              - Loading: BCLink/TestLink/Notes/14Sep.md
 
 plugins:
   - mknotebooks:
