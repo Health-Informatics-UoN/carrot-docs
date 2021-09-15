@@ -17,14 +17,32 @@ datasettool2 delete-all-rows ds100394 --database=bclink
 ## CommandLine Options
 
 ```
-datasettool2 load --dataset=<DATASET> [--datafile=<FILE> | --source-dataset=<SOURCE_DATASET>] [--submission-id] [--queue] [--resfolder=PATH] [--force-prepare-data] [--timing] [--hierarchical-timing] [--sqltimeout=<SEC>] [--database=<DATABASE>] [--user=<USER>] [--developer=<DEVELOPER>] [--pooledconnection] [--job-id=<JOB>] [--job=<JOB>]
+dataset_tool --load --table=ds100123 --user=<test_user>
+    --data_file=ds100123.txt [or --data_file_list=my_filelist.txt]
+    [--extra='...'] [--no-backup] [--support]
+    [--move-original-file] [--grab-original-file] [--immediate-write]
+    [--force-prepare-data] [--job-parameters=<extra-job-params-file>]
+    [--bcqueue] [--bcqueue-res-path='job-result-path'] [--niceness=10]
+    [--device=XX] [--subj_filter=xx] [--samples_table=xx] database
+```
+
+
+```
+datasettool2 load --dataset=<DATASET> [--datafile=<FILE> | --source-dataset=<SOURCE_DATASET>]
+                  [--submission-id] [--queue] [--resfolder=PATH] [--force-prepare-data]
+		  [--timing] [--hierarchical-timing] [--sqltimeout=<SEC>]
+		  [--database=<DATABASE>] [--user=<USER>] [--developer=<DEVELOPER>]
+		  [--pooledconnection] [--job-id=<JOB>] [--job=<JOB>]
 ```
 
 `--resfolder=<PATH>` : appears to have no effect, all the jobs end up in `/data/var/lib/bcos/download/<user>`, this would be useful if you could specify the job output path.
 
 
 ```
-datasettool2 load2 --dataset=<DATASET> --datafile=<FILE> [--force-prepare-data] [--timing] [--hierarchical-timing] [--sqltimeout=<SEC>] [--database=<DATABASE>] [--user=<USER>] [--developer=<DEVELOPER>] [--pooledconnection] [--job-id=<JOB>] [--job=<JOB>]
+datasettool2 load2 --dataset=<DATASET> --datafile=<FILE> [--force-prepare-data]
+                  [--timing] [--hierarchical-timing] [--sqltimeout=<SEC>]
+		  [--database=<DATABASE>] [--user=<USER>] [--developer=<DEVELOPER>]
+		  [--pooledconnection] [--job-id=<JOB>] [--job=<JOB>]
 ```
 
 
