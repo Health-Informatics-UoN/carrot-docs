@@ -29,7 +29,6 @@ We have implemented enpoints for following 8 tables of OMOP CDM DB. The API endp
     * **http://localhost:8080/api/omop/conceptrelationships/?concept_id_1=5&concept_id_2=58&relationship_id=Concept%20replaced%20by** To get a unique row of concept_relationship table we need to give three query terms that consists of concept_id_1, concept_id_2 and relationship_id. However to get all records with a specific query terms for concept_id_1 or with concept_id_2 or relationship_id or any combination of these can be applied.
     * Alternatively, for the concept_relationship table, the above two endpoints can also be used as: http://localhost:8080/api/omop/conceptrelationshipfilter and http://localhost:8080/api/omop/conceptrelationshipfilter/?concept_id_1=5&concept_id_2=58&relationship_id=Concept%20replaced%20by.
 
-
 4. concept_ancestor table: 
     * **http://localhost:8080/api/omop/conceptancestors/** Returns all records of a concept_ancestor table
     * **http://localhost:8080/api/omop/conceptancestors/262/** Returns a record from the concept_ancestor table with concept a concept ancestor id=262
@@ -49,7 +48,16 @@ We have implemented enpoints for following 8 tables of OMOP CDM DB. The API endp
 8. drug_strength Table: 
     * **http://localhost:8080/api/omop/drugstrengths/**	Returns all records of a drug_strength table
     * **http://localhost:8080/api/omop/drugstrengths/?drug_concept_id=32763&ingredient_concept_id=32763** To get a unique row of drug_strength table we need to give two query terms that consists of drug_concept_id and ingredient_concept_id. However a query term can be defined to get all records either by giving drug_concept_id or ingredient_concept_id.)
-	
+
+## Django User Models
+
+We have implemented enpoints for following 1 table of django user model.
+
+1. User table
+    * **http://localhost:8080/api/users/** This endpoint returns user details (user ids and usernames) of all users. 
+    * **http://localhost:8080/api/users/6/** or **http://localhost:8080/api/usersfilter/?id=6** This endpoint returns user details (user ids and usernames) of a specific user with an id=6. 
+    * **http://localhost:8080/api/usersfilter/?id__in=6,10** This endpoint returns user details for a given list of user ids (i.e. 6 and 10). 
+
 ## Co-Connect DB
 
 We have implemented enpoints for following 16 tables of co-connect DB. 
@@ -160,3 +168,4 @@ and http://localhost:8080/api/scanreporttables/1/?fields=id,name)
 (API endpoints with filter)
 API_URL/?filterfield=value1&filterfield2=value2&fields=returningfield1,returningfield2
 (e.g. http://localhost:8080/api/scanreporttablesfilter/?scan_report=1&fields=id,name,person_id)
+
