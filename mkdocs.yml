@@ -12,7 +12,8 @@ theme:
     #- toc.integrate
 extra_css:
   - stylesheets/custom.css
-    
+
+  
 nav:
   - Welcome: index.md
   #- Getting Started:

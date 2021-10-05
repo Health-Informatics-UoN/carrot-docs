@@ -42,3 +42,19 @@ source automation/bin/activate
 pip install pip --upgrade
 pip install co-connect-tools
 ```
+
+## Using the GUI
+
+```
+yum install -y xorg-x11-server-Xorg xorg-x11-xauth xorg-x11-apps
+```
+
+X11 forwarding for GUI:
+```
+ssh -YX <VM>
+```
+
+To make sure `tkinter` is installed (on CentOS):
+```
+sudo yum install python3-tkinter
+```
