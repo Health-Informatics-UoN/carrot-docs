@@ -5,13 +5,13 @@ CO-CONNECT-Tools contains a pythonic version[^1] of the OHDSI CDM, implemented v
 
 [^1]: In the default setup a __slightly__ (`visit_detail_id` link has been removed from Measurement, Observation and Condition Occurrence tables) modified CDM version [`5.3.1`](https://github.com/OHDSI/CommonDataModel/releases/tag/v5.3.1) is used to define a subset of tables in python.
 
-The primary purpose of this package is to map a dataset {==using transformation==} rules defined in a json file, outputting formatted datasets in `tsv` format that can be inserted into a [BCLink](/docs/BCLink/About) database.
+The primary purpose of this package is to map a dataset using {==transformation rules==} defined in a json file, outputting formatted datasets in `tsv` format that can be inserted into a [BCLink](/docs/BCLink/About) database.
 
 Transformation rules are produced by the CO-CONNECT Mapping-Pipeline web-tool known as [CCOM](/docs/MappingPipeline/about/). 
 
 ## Getting Started
 
-To get started with the ETL process, follow the instructions for installing the co-connect-tools package and running the ETL-Tool on the following pages:
+To get started with the ETL process, follow the instructions for installing the co-connect-tools package and running the ETL on the following pages:
 
 !!! success "ETL"
     1. [Installing](/docs/CoConnectTools/Installing/)  

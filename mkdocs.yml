@@ -37,18 +37,17 @@ nav:
       #- Downloading Mapping:   MappingPipeline/downloading-rules.md
       
   - CO-CONNECT Tools:
-      - About:
-          - Introduction: CoConnectTools/Intro.md
-          - ETL Process: CoConnectTools/ETL/About.md
+      - About: CoConnectTools/Introduction.md
       - User Guide: 
           - Installing: CoConnectTools/Installing.md
           - ETL:
+              - About : CoConnectTools/ETL/About.md
               - Full Automation: CoConnectTools/ETL/Automation.md
               - Extract: CoConnectTools/ETL/Pseudonymisation.md
               - Transform:
                   - Walkthrough: CoConnectTools/ETL/Transform.md   
                   - GUI: CoConnectTools/ETL/Transform-GUI.md
-              - Load: CoConnectTools/Load.md
+              - Load: CoConnectTools/ETL/Load.md
               - FAQ: CoConnectTools/FAQ.md
           - Common Errors: CoConnectTools/CommonErrors.md
           - Additional Tools:
