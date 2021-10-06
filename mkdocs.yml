@@ -39,15 +39,19 @@ nav:
   - CO-CONNECT Tools:
       - About:
           - Introduction: CoConnectTools/Intro.md
-          - ETL-Tool: CoConnectTools/ETL-About.md
+          - ETL Process: CoConnectTools/ETL-About.md
       - User Guide: 
           - Installing: CoConnectTools/Installing.md
-          - ETL-Tool:
-              - Walkthrough: CoConnectTools/ETL-Tool.md   
-              - Quick Example: CoConnectTools/QuickRun.md
-              - GUI: CoConnectTools/ETL-Tool-GUI.md
+          - ETL:
+              - Full Automation: CoConnectTools/Automation.md
+              - Extract: CoConnectTools/Pseudonymisation.md
+              - Transform:
+                  - Walkthrough: CoConnectTools/ETL-Tool.md   
+                  - Quick Example: CoConnectTools/QuickRun.md
+                  - GUI: CoConnectTools/ETL-Tool-GUI.md
+              - Load: CoConnectTools/Load.md
               - FAQ: CoConnectTools/FAQ.md
-              - Common Errors: CoConnectTools/CommonErrors.md
+          - Common Errors: CoConnectTools/CommonErrors.md
           - Additional Tools:
               - Command Line Interface: CoConnectTools/CommandLine.md
               - Generating Synthetic Data: CoConnectTools/SyntheticData.md
