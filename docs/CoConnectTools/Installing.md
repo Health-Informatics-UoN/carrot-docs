@@ -2,6 +2,7 @@
 !!! caution
     This tool is only stable with python versions `>=3.6` on Unix distributions (macOS, Ubuntu, Centos7) and on Windows. 
 
+The co-connect-tools package is available to be [installed via pip](https://pypi.org/project/co-connect-tools/). The latest tagged version of the tool can be found here. See [the next section](/docs/CoConnectTools/Installing/#upgrading) on how to upgrade the package to the latest version.
 
 !!! tip
     It is recommended that you setup your own virtual python environment, for example using [`venv`](https://docs.python.org/3/library/venv.html).
@@ -17,7 +18,7 @@
     ```
 
 
-To install the package, the easiest way is to do this is via pip:
+To install the package via pip you should execute the command:
 ```
 python -m pip install co-connect-tools
 ```
@@ -35,35 +36,9 @@ python3 -m pip install co-connect-tools
     ```
     This will install the package into a local user folder.
 
-Alternatively you can [download the source code](https://github.com/CO-CONNECT/co-connect-tools/tags), unpack and install as a local package:
-```
-cd <downloaded_source_code_folder>
-python3 -m pip install -e . 
-```
-
 !!! tip
     If you have trouble with `pip` hanging on installing dependencies, try to install using the argument `--no-cache-dir`. Also make sure that you have updated `pip` via `pip3 install --upgrade pip`.
 
-
-### Manual Install 
-If you are on a system and need to install manual without pip (e.g. yum), you can install from source but will also need to install the additional dependencies that are located in `requirements.txt`:
-
-```bash
-$ cat requirements.txt
-numpy
-pandas
-coloredlogs
-Jinja2
-graphviz
-click
-sqlalchemy
-tabulate
-psutil
-pysimplegui
-requests
-openpyxl
-snakeviz
-```
 
 ## Upgrading
 
@@ -79,3 +54,12 @@ Otherwise, to be sure, uninstall the package and reinstall it.
     coconnect info version
     ```
     will display the installed verison of the tool.
+
+## Installing from Source
+
+Alternatively you can [download the source code](https://github.com/CO-CONNECT/co-connect-tools/tags), unpack and install as a local package:
+```
+cd <downloaded_source_code_folder>
+python3 -m pip install -e . 
+```
+
