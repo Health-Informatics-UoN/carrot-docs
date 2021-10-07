@@ -41,6 +41,40 @@ To run the full ETL you need a `.yml`(or `.yaml`) file to configure various sett
 
 [Example yamls](https://github.com/CO-CONNECT/co-connect-tools/tree/master/coconnect/data/test/automation){ .md-button .md-button--secondary}
 
+
+### Template yaml file
+
+"TL;DR, I want a yaml configuration file that I can run out the box, that will watch a folder for my data dumps"
+
+
+```yaml
+clean: true
+rules: <full path of rules json file>
+log: <full path of where to save a log file>
+data: 
+   input: <full path of where input data dumps will be saved>
+   output: <full path of output folder for the transformed CDM tsv file>
+bclink:
+  tables:
+    person: <name of person table in bclink>
+    <other cdm table>: <<name of cdm table in bclink>
+    ....
+```
+
+Edit and save as:
+```
+config.yml
+```
+
+
+Run with:
+```
+coconnect etl bclink from_yaml config.yml
+```
+
+Use the flag `-d` (or `--daemon`) to run this as a daemon background process. [See the docs here for more explaination](/docs/CoConnectTools/ETL/Automation/#run-as-daemon).
+
+
 ### Example yaml file
 
 A simple example `yaml` file that will run the transform on an input folder containing the input `csv` files and uploads them to `bclink` is shown here:
