@@ -68,6 +68,8 @@ This can be ran manually, or is executed as part of the automated ETL.
 
 A `json` encoded file that contains information of how multiple CDM tables and CDM objects need to be created by the [transform process](/docs/CoConnectTools/ETL/Transform/)
 
+[Rules JSON](/docs/CoConnectTools/ETL/Rules/){ .md-button .md-button--primary }
+
 
 ### What should my input files be called?
 
