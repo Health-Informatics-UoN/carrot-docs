@@ -140,7 +140,9 @@ rules: /usr/lib/bcos/MyWorkingDirectory/rules.json
 ### Input Data **[required]**
 
 * Specify a list of folders (or individual csv files) for where the input data is located   
-
+* Data must be [standardised](/docs/CoConnectTools/ETL/Extract/)
+    * manually converted to `csv` format, abiding by [co-connect data standards](https://co-connect.ac.uk/co-connect-data-files-and-meta-data-standardisation/)
+    * optionally already pseudonymised
 
 ```yaml
 ...
@@ -233,7 +235,7 @@ bclink:
 
 * To execute the "load" as a dry-run, you can specify to only `echo` the bclink commands and not insert into `bclink`.
 
-```
+```yaml
 bclink:
   dry-run: true
 ```

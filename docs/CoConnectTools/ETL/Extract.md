@@ -1,6 +1,8 @@
 As described on [https://co-connect.ac.uk](https://co-connect.ac.uk), the input data for the ETL process must be in the form of `csv` data dumps, that are formatted to a particular data-standard.
 
+<center>
 [Data Standards](https://co-connect.ac.uk/co-connect-data-files-and-meta-data-standardisation/){ .md-button .md-button--primary }
+</center>
 
 This part of the ETL process must be performed manually by the data-partner.
 
