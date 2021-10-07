@@ -2,20 +2,19 @@ This section describes how CO-CONNECT-Tools can be used to manually perform the 
 
 The following guide will take you through the main steps to make sure the tool is installed correctly and that the ETL is performed correctly.
 
-For those more familiar with the CO-CONNECT-Tools ETL, [a Quick Run guide can be found here](/docs/CoConnectTools/QuickRun/)
-
 
 ### 1. Install the tool
 
 Follow the install guide here:
+
 [Install Guide](/docs/CoConnectTools/Installing/){ .md-button .md-button--primary }
 
 ### 2. Gather Inputs
 
 To run the transformation to CDM you will need:   
 
-1. Input Data, in the form of `csv` files
-1. `json` file containing the "mapping rules"
+1. [Input Data](/docs/CoConnectTools/ETL/Extract/), in the form of `csv` files
+1. [`json`](/docs/CoConnectTools/ETL/Rules/) file containing the "mapping rules"
 
 
 ### 3. Check Inputs

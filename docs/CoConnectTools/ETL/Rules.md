@@ -14,7 +14,7 @@ For co-connect datapartners, you will be supplied this `json` file by the co-con
                               "source_table": "<name of input .csv>",
                               "source_field": "<name of field in input .csv>",
                               "term_mapping": {
-                                    "<name of value in field>": <ohdsi concept id e.g. 8507 for 'MALE' >
+                                    "<name of value in field>": "<ohdsi concept id e.g. 8507 for 'MALE' >"
                               }
                         },
 			"<next cdm field>": {...},
@@ -22,7 +22,7 @@ For co-connect datapartners, you will be supplied this `json` file by the co-con
 	          },
 		  "<next object name: e.g. 'FEMALE'>" : {...}
 	     },
-	     "<next cdm table e.g. 'condition_occurrence'"> : {...}
+	     "<next cdm table e.g. 'condition_occurrence'>" : {...}
       }
  }
 ```
