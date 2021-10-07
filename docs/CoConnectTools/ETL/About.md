@@ -7,7 +7,7 @@ The co-connect ETL process runs via a Command Line Interface, installed with the
 {++ETL++} stands for:
 
 * {++Extract++}: input data is extracted into `.csv` format and pseudonymised    
-* {++Transform++}: a CDM model is created and processed, given the pseudonymised data and a `json` transformation rules file which tells the software how to map and transform the data.    
+* {++Transform++}: a CDM model is created and processed, given the pseudonymised data and a [`json` transformation rules file](/docs/CoConnectTools/ETL/Rules/) which tells the software how to map and transform the data.    
 * {++Load++}: inserts the data into a database or other destination.
 
 Currently, the only fully automated ETL process co-connect-tools can perform is one intergrated with __bclink__ for the __load__ step of the ETL.
@@ -40,7 +40,7 @@ A schematic diagram of the co-connect/bclink ETL is given below:
 * Pseudonymises the input datasets, masking any person identifiers or person IDs **[optionally automated]**
 
 ### Transform
-* The transform mapping is executed with the command `coconnect map run [arguments]`, where additional arguments pass the paths to a mapping-rules `json` file and input data `csv` files **[optionally automated]**:
+* The transform mapping is executed with the command `coconnect map run [arguments]`, where additional arguments pass the paths to a mapping-rules [`json` file](/docs/CoConnectTools/ETL/Rules/) and input data `csv` files **[optionally automated]**:
 
     * A new pythonic [`CommonDataModel`](/docs/CoConnectTools/CommonDataModel/) is created.   
     * [`InputData`](/docs/CoConnectTools/InputData/) is created to handle/chunk the input files and is added to the `CommonDataModel`.  

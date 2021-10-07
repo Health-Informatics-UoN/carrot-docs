@@ -63,3 +63,20 @@ cd <downloaded_source_code_folder>
 python3 -m pip install -e . 
 ```
 
+
+## Verifying
+
+To verify the package is installed you can test the following information commands:
+
+* show the tool version (this may take a few seconds, the first time you run the package)
+
+```
+coconnect info version
+```
+
+* show the location of the installation folder  
+
+```
+coconnect info install_folder
+```
+

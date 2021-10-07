@@ -1,17 +1,72 @@
-### What is the ETL-Tool?
+## ETL
 
-Our command line interface tool for performing a transformation of your dataset into a Common Data Model (CDM):
+### What is the co-connect ETL?
+
+Extract, transform and load of your dataset into a Common Data Model (CDM) format that is loaded into bclink.
+
+Our command line tool has the ability to do the full process:
 ```
-coconnect map run
+coconnect etl bclink --help
 ```
 
-[Overview](/docs/CoConnectTools/About/#etl-tool){ .md-button .md-button--primary }
-[Walkthrough](/docs/CoConnectTools/ETL-Tool/){ .md-button .md-button--secondary }
+[Overview](/docs/CoConnectTools/ETL/About/){ .md-button .md-button--primary }
+[Setting up automation](/docs/CoConnectTools/ETL/Automation/){ .md-button .md-button--secondary }
+
+
+Otherwise, you have to do each step manually:
+
+[Extract](/docs/CoConnectTools/ETL/Extract){ .md-button .md-button--primary }
+[Transform](/docs/CoConnectTools/ETL/Transform){ .md-button .md-button--primary }
+[Load](/docs/CoConnectTools/ETL/Load){ .md-button .md-button--primary }
+
+
+### How can I pseudonymise my data?
+
+co-connect-tools comes with the command line command:
+
+```
+$ coconnect pseudonymise --help
+Usage: coconnect pseudonymise [OPTIONS] INPUT
+
+  Command to help pseudonymise data.
+
+Options:
+  -s, --salt TEXT             salt hash  [required]
+  -i, --person-id, --id TEXT  name of the person_id  [required]
+  -o, --output-folder TEXT    path of the output folder  [required]
+  --chunksize INTEGER         set the chunksize when loading data
+  --help                      Show this message and exit.
+```
+
+A detailed guide on how to use this feature can be found here:
+
+[Pseudonymisation guide](/docs/CoConnectTools/ETL/Pseudonymisation/){ .md-button .md-button--primary }
+
+
+### Can I pseudonymise the data myself?
+
+Yes. You do not need to use the tool packaged in co-connect-tools, you can do this process yourself to create a masked for the person (study) identifiers in your dataset.
+
+## Transforming (mapping) a dataset
+
+### What is the transform tool?
+
+Our command line interface tool for performing only the 'T' part of the 'ETL' process.. a transformation of your dataset into a Common Data Model (CDM):
+```
+coconnect map run --help
+```
+
+[Overview](/docs/CoConnectTools/ETL/About/#transform){ .md-button .md-button--primary }
+[Manual from the Command Line](/docs/CoConnectTools/ETL/Transform/){ .md-button .md-button--secondary }
+[Manual from a GUI](/docs/CoConnectTools/ETL/Transform-GUI/){ .md-button .md-button--secondary }
+
+
+This can be ran manually, or is executed as part of the automated ETL.
 
 
 ### What is the rules `.json`?
 
-A `json` encoded file that contains information of how multiple CDM tables and CDM objects need to be created by the ETL-Tool
+A `json` encoded file that contains information of how multiple CDM tables and CDM objects need to be created by the [transform process](/docs/CoConnectTools/ETL/Transform/)
 
 
 ### What should my input files be called?

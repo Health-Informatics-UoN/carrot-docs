@@ -1,25 +1,14 @@
-This section describes how CO-CONNECT-Tools is used to perform ETL (Extract, Transform, Load) on a dataset (series of input `.csv` files) and a set of transform rules (defined in a `json` file).
+This section describes how CO-CONNECT-Tools can be used to manually perform the Transform part of the co-connect ETL (Extract, Transform, Load). By transforming (mapping) a dataset (series of input `.csv` files) given a set of rules defined in a `json` file.
 
 The following guide will take you through the main steps to make sure the tool is installed correctly and that the ETL is performed correctly.
 
 For those more familiar with the CO-CONNECT-Tools ETL, [a Quick Run guide can be found here](/docs/CoConnectTools/QuickRun/)
 
-### 1. Checking The Package
 
-To verify the package is installed you can test the following information commands:
+### 1. Install the tool
 
-* show the tool version (this may take a few seconds, the first time you run the package)
-
-```
-coconnect info version
-```
-
-* show the location of the installation folder  
-
-```
-coconnect info install_folder
-```
-
+Follow the install guide here:
+[Install Guide](/docs/CoConnectTools/Installing/){ .md-button .md-button--primary }
 
 ### 2. Gather Inputs
 
