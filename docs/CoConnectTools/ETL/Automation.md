@@ -43,6 +43,24 @@ To run the full ETL you need a `.yml`(or `.yaml`) file to configure various sett
 
 ### Example yaml file
 
+A simple example `yaml` file that will run the transform on an input folder containing the input `csv` files and uploads them to `bclink` is shown here:
+```yaml
+clean: true
+rules: rules/rules_14June2021.json
+log: automation/log
+data: 
+   input: inputs/
+   output: automation/results/
+bclink:
+  tables:
+    person: person_001
+    observation: observation_001
+    measurement: measurement_001
+    condition_occurrence: condition_occurrence_001
+```
+
+### Example yaml file (watches for new data dumps)
+
 A full `yaml` example is given below, subsequent sections detail what each setting is doing:
 ```yaml
 clean: true
@@ -111,32 +129,18 @@ Since the automated ETL is executed passing a `yaml` configuration to the comman
 
 ### Rules **[required]**
 
-Specify the location of the transform rules file provided by the co-connect team
+* Specify the location of the [transform rules file](/docs/CoConnectTools/ETL/Rules/) provided by the co-connect team
+
 ```yaml
 ...
 rules: /usr/lib/bcos/MyWorkingDirectory/rules.json 
 ...
 ```
 
-
-### Clean **[optional]**
-
-```yaml
-...
-clean: true
-..
-```
-
-### Log **[optional]**
-
-
-```yaml
-...
-log: /usr/lib/bcos/MyWorkingDirectory/coconnect-etl.log
-...
-```
-
 ### Input Data **[required]**
+
+* Specify a list of folders (or individual csv files) for where the input data is located   
+
 
 ```yaml
 ...
@@ -144,22 +148,13 @@ data:
    input:
 	- /data/dataset_drops/001/
 	- /data/dataset_drops/002/
-   output: /usr/lib/bcos/MyWorkingDirectory/output
 ...
 ```
 
-### Output Path **[required]**
+#### Watching a directory for new data-drops **[optional]**
 
-```yaml
-...
-data: 
-   output: /usr/lib/bcos/MyWorkingDirectory/output
-...
-```
+* Alternative you can specify the ETL to watch a directory for new data-drops.
 
-### Watching a directory for new data-drops **[optional]**
-
-Alternative you can specify the ETL to watch a directory for new data-drops.
 ```yaml
 ...
 data: 
@@ -169,7 +164,47 @@ data:
 ...
 ```
 
+### Output Path **[required]**
+
+* Also specify where the output CDM tables (in `tsv` format) are saved, so they can be uploaded to BCLink.
+
+```yaml
+...
+data: 
+   output: /usr/lib/bcos/MyWorkingDirectory/output
+...
+```
+
+
+### Clean **[optional]**
+
+* When starting the ETL process from this configuration file:
+
+1. clean all results folders (folders containing the mapped `tsv` files)
+2. delete all existing rows in the BCLink tables
+
+```yaml
+...
+clean: true
+..
+```
+
+### Log **[optional]**
+
+* Specify the location on the log file created when running the ETL.   
+* If not specified, the file is written to `./coconnect.log` (in the working directory of where the command was executed from).   
+
+```yaml
+...
+log: /usr/lib/bcos/MyWorkingDirectory/coconnect-etl.log
+...
+```
+
 ### Pseudonymisation **[optional]**
+
+* Include an automated pseudonymisation procedure, specifying the output folder location of where to store these files
+* A salt hash (provided to you by the co-connect team)
+
 ```yaml
 ...
 data: 
@@ -181,9 +216,9 @@ data:
 
 ### bclink **[optional]**
 
-By default it is assumed the bclink table to be inserted to has an id that is the same as the CDM table name.
+* By default it is assumed the bclink table to be inserted to has an id that is the same as the CDM table name.
 
-However, you may want to upload to a different table e.g. insert a `person` table into the bclink table `ds10001`. To be able to to this you can specify a map between the CDM table and the BCLink take dataset id.
+* However, you may want to upload to a different table e.g. insert a `person` table into the bclink table `ds10001`. To be able to to this you can specify a map between the CDM table and the BCLink take dataset id.
 
 ```yaml
 bclink:
@@ -192,4 +227,13 @@ bclink:
       observation: ds10002
       condition_occurrence: ds10003
       measurement: ds10004
+```
+
+#### dry-run
+
+* To execute the "load" as a dry-run, you can specify to only `echo` the bclink commands and not insert into `bclink`.
+
+```
+bclink:
+  dry-run: true
 ```
