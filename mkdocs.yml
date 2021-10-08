@@ -42,7 +42,9 @@ nav:
           - Installing: CoConnectTools/Installing.md
           - ETL:
               - About : CoConnectTools/ETL/About.md
-              - Automated: CoConnectTools/ETL/Automation.md
+              - Automation:
+                  - Yaml Configuration: CoConnectTools/ETL/Automation.md
+                  - Guide: CoConnectTools/ETL/Automation-Guide.md
               - Manual:
                   - Extract:
                       - Input Data:  CoConnectTools/ETL/Extract.md

@@ -1,6 +1,12 @@
 The following guide documents how you can use the co-connect command line tools to automate the ETL process for co-connect+BC-Link.
 
+!!! caution
+    This tool is designed to work with BCLink installed on a CentOS machine, while logged in as the user `bcos_srv` that has permissions to view the input data (optionally already pseudonymised).
+
 ```
+
+The tool runs with one argument, a `yaml` configuration file:
+
 [bcos_srv]$ coconnect etl bclink from_yaml --help
 Usage: coconnect etl bclink from_yaml [OPTIONS] CONFIG_FILE
 
@@ -11,29 +17,6 @@ Options:
   --help        Show this message and exit.
 ```
 
-## Initial Setup
-
-To use ETL with `bclink`, you must be the user `bcos_srv`, i.e. when ssh'd into the machine hosting `bclink`:
-```
-sudo -s
-su - bcos_srv
-```
-
-The best practise is to create a working directory in the following location:
-```
-mkdir /usr/lib/bcos/MyWorkingDirectory/
-cd /usr/lib/bcos/MyWorkingDirectory/
-```
-
-It is also best practise to setup a virtual python environment and install the tool:
-```
-python3 -m venv automation
-source automation/bin/activate
-pip install pip --upgrade
-pip install co-connect-tools
-```
-
-[Detailed Installation Instructions](/docs/CoConnectTools/Installing/){ .md-button .md-button--primary}
 
 ## Run 
 
