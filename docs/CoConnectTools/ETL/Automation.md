@@ -5,12 +5,34 @@ The following guide documents how you can use the co-connect command line tools 
 
 ```
 
-The tool runs with one argument, a `yaml` configuration file:
+Many commands are available to use for the bclink integration, requiring a `yaml` configuration file.
+```
+$ coconnect etl bclink --help
+Usage: coconnect etl bclink [OPTIONS] COMMAND [ARGS]...
 
-[bcos_srv]$ coconnect etl bclink from_yaml --help
-Usage: coconnect etl bclink from_yaml [OPTIONS] CONFIG_FILE
+  Command group for ETL integration with bclink
 
-  Run with a yaml configuration file
+Options:
+  -f, --force                   Force running of this, useful for development
+                                purposes
+  --config, --config-file TEXT  specify a yaml configuration file  [required]
+  --help                        Show this message and exit.
+
+Commands:
+  check_tables   check the bclink tables
+  clean_tables   clean (delete all rows) in the bclink tables defined in...
+  create_tables  crate new bclink tables
+  execute        Run the full ETL process for CO-CONNECT integrated with...
+```
+
+All can be executed with the synthax `coconnect etl bclink --config <path to config file> COMMAND` 
+
+To actually execute the ETL runs with one argument, a `yaml` configuration file via the command `execute`:
+
+[bcos_srv]$ coconnect etl bclink --config config.yml execute --help
+Usage: coconnect etl bclink execute [OPTIONS]
+
+  Run the full ETL process for CO-CONNECT integrated with BCLink
 
 Options:
   -d, --daemon  run the ETL as a daemon process
@@ -52,7 +74,7 @@ config.yml
 
 Run with:
 ```
-coconnect etl bclink from_yaml config.yml
+coconnect etl bclink --config config.yml execute
 ```
 
 Use the flag `-d` (or `--daemon`) to run this as a daemon background process. [See the docs here for more explaination](/docs/CoConnectTools/ETL/Automation/#run-as-daemon).
@@ -108,9 +130,9 @@ To run as a background process (more specifically as a "daemon"), that watches f
 
 Start the ETL process with the following command:
 ```
-$ coconnect etl bclink from_yaml example.yml -d
-2021-10-07 10:30:02 - from_yaml - INFO - running as a daemon process, logging to coconnect-etl.log
-2021-10-07 10:30:02 - from_yaml - INFO - process_id in <TimeoutPIDLockFile: 'etl.pid' -- 'etl.pid'>
+$ coconnect etl bclink --config config.yml execute --daemon
+2021-10-13 10:50:03 - Execute - INFO - running as a daemon process, logging to /usr/lib/bcos/OMOP-test-data/tests_06Oct/etl.log
+2021-10-13 10:50:03 - Execute - INFO - process_id in <TimeoutPIDLockFile: 'etl.pid' -- 'etl.pid'>
 $
 ```
 
@@ -118,9 +140,27 @@ $
 
 The yaml file configures where log messages are saved. For example, you can `tail` the last two lines of the log to see the output:
 ```
-$ tail -2 coconnect-etl.log 
-2021-10-07 10:30:02 - from_yaml - INFO - Refreshing _input_data every 0:00:05 to look for new subfolders....
-2021-10-07 10:30:02 - from_yaml - WARNING - No subfolders for data dumps yet found...
+$  tail -20 etl.log
+2021-10-13 10:51:40 - bclink_helpers - INFO - ======== SUMMARY ========
+2021-10-13 10:51:40 - bclink_helpers - INFO - {
+      "person": {
+            "bclink_table": "person_001",
+            "nrows": "1000"
+      },
+      "observation": {
+            "bclink_table": "observation_001",
+            "nrows": "900"
+      },
+      "condition_occurrence": {
+            "bclink_table": "condition_occurrence_001",
+            "nrows": "400"
+      },
+      "measurement": {
+            "bclink_table": "measurement_001",
+            "nrows": "1000"
+      }
+}
+2021-10-13 10:51:40 - _process_data - INFO - Refreshing /usr/lib/bcos/OMOP-test-data/tests_06Oct/data every 0:00:05 to look for new subfolders....
 ```
 
 ### Find the process ID
