@@ -127,6 +127,7 @@ It is assumed that BCLink systems has already been an installed on a host machin
          output: /usr/lib/bcos/MyWorkingDirectory/pseudonymised_input_data
          salt: 00ed1234da
     bclink:
+      global_ids: global_ids_v1
       tables:
          person: person_test_data_v1
          observation: observation_test_data_v1
