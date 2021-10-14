@@ -3,7 +3,6 @@ The following guide documents how you can use the co-connect command line tools 
 !!! caution
     This tool is designed to work with BCLink installed on a CentOS machine, while logged in as the user `bcos_srv` that has permissions to view the input data (optionally already pseudonymised).
 
-```
 
 Many commands are available to use for the bclink integration, requiring a `yaml` configuration file.
 ```
