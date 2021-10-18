@@ -53,13 +53,12 @@ To run the full ETL you need a `.yml`(or `.yaml`) file to configure various sett
 
 
 ```yaml
-clean: true
 rules: <full path of rules json file>
-log: <full path of where to save a log file>
 data: 
-   input: <full path of where input data dumps will be saved>
+   input: <full path of where input data dumps will be places>
    output: <full path of output folder for the transformed CDM tsv file>
 bclink:
+  global_ids: <name of global id subject table in bclink>
   tables:
     person: <name of person table in bclink>
     <other cdm table>: <<name of cdm table in bclink>
@@ -91,6 +90,7 @@ data:
    input: inputs/
    output: automation/results/
 bclink:
+  global_ids: ids_001
   tables:
     person: person_001
     observation: observation_001
@@ -119,6 +119,7 @@ bclink:
       observation: ds10002
       condition_occurrence: ds10003
       measurement: ds10004
+   global_ids: ds10005
 ```
 
 
@@ -286,6 +287,13 @@ bclink:
       observation: ds10002
       condition_occurrence: ds10003
       measurement: ds10004
+```
+
+Similarly a name of the BCLink table where the lookup between the hashed global identifiers and the integer indentifiers inserted into the person table can be specified to point to a particular table:
+
+```yaml
+bclink:
+   global_ids: ds10005
 ```
 
 #### dry-run
