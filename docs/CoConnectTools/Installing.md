@@ -2,6 +2,9 @@
 !!! caution
     This tool is only stable with python versions `>=3.6` on Unix distributions (macOS, Ubuntu, Centos7) and on Windows. 
 
+[![asciicast](https://asciinema.org/a/443714.svg)](https://asciinema.org/a/443714)
+
+
 The co-connect-tools package is available to be [installed via pip](https://pypi.org/project/co-connect-tools/). The latest tagged version of the tool can be found here. See [the next section](/docs/CoConnectTools/Installing/#upgrading) on how to upgrade the package to the latest version.
 
 !!! tip
