@@ -42,18 +42,16 @@ nav:
           - Installing: CoConnectTools/Installing.md
           - ETL:
               - About : CoConnectTools/ETL/About.md
-              - Automation:
-                  - Yaml Configuration: CoConnectTools/ETL/Automation.md
-                  - Guide: CoConnectTools/ETL/Automation-Guide.md
-              - Manual:
-                  - Extract:
-                      - Input Data:  CoConnectTools/ETL/Extract.md
-                      - Pseudonymisation: CoConnectTools/ETL/Pseudonymisation.md
-                  - Transform:
-                      - JSON Rules: CoConnectTools/ETL/Rules.md   
-                      - Command Line: CoConnectTools/ETL/Transform.md   
-                      - GUI: CoConnectTools/ETL/Transform-GUI.md
-                  - Load: CoConnectTools/ETL/Load.md
+              - Yaml Configuration: CoConnectTools/ETL/Yaml.md
+              - Quick Guide: CoConnectTools/ETL/ETL-Guide.md
+              - Extract:
+                  - Input Data:  CoConnectTools/ETL/Extract.md
+                  - Pseudonymisation: CoConnectTools/ETL/Pseudonymisation.md
+              - Transform:
+                  - JSON Rules: CoConnectTools/ETL/Rules.md   
+                  - Command Line: CoConnectTools/ETL/Transform.md   
+                  - GUI: CoConnectTools/ETL/Transform-GUI.md
+              - Load: CoConnectTools/ETL/Load.md
               - FAQ: CoConnectTools/FAQ.md
           - Common Errors: CoConnectTools/CommonErrors.md
           - Additional Tools:

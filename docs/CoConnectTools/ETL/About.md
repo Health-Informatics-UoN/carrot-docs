@@ -25,7 +25,44 @@ Commands:
   bclink  Command group for ETL integration with bclink
 ```
 
-## CO-CONNECT/BC-LINK
+## CO-CONNECT--BC-LINK Workflow
+
+The "co-coconnect--bc-link" ETL process performs the mapping of health data into the OMOP format before loading it into a BCLink instances.
+
+`execute` command will run the full process, however, it is possible to run individual steps of this workflow.
+
+All configuration of the ETL is made via a `yaml` file.
+[Configuring the Yaml File](/docs/CoConnectTools/ETL/Yaml/){ .md-button .md-button--primary}
+
+
+
+```
+$ coconnect etl bclink --help
+Usage: coconnect etl bclink [OPTIONS] COMMAND [ARGS]...
+
+  Command group for ETL integration with bclink
+
+Options:
+  -f, --force                   Force running of this, useful for development
+                                purposes
+
+  --config, --config-file TEXT  specify a yaml configuration file  [required]
+  -i, --interactive             run with interactive options - i.e. so user
+                                can confirm operations
+
+  --help                        Show this message and exit.
+
+Commands:
+  check_tables     check the bclink tables
+  clean_tables     clean (delete all rows) in the bclink tables defined in...
+  create_tables    crate new bclink tables
+  delete_data      delete data that has been inserted into bclink
+  drop_duplicates  check and drop for duplicates
+  execute          Run the full ETL process for CO-CONNECT integrated with...
+  extract          Run the Extract part of ETL process for CO-CONNECT...
+  load             Run the Load part of ETL process for CO-CONNECT...
+  transform        Run the Transform part of ETL process for CO-CONNECT...
+```
 
 ### Architecture Overview
 A schematic diagram of the co-connect/bclink ETL is given below:
