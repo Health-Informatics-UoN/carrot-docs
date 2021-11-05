@@ -38,7 +38,8 @@ nav:
       
   - CO-CONNECT Tools:
       - About: CoConnectTools/About.md
-      - User Guide: 
+      - User Guide:
+          - FAQ: CoConnectTools/FAQ.md
           - Installing: CoConnectTools/Installing.md
           - ETL:
               - About : CoConnectTools/ETL/About.md
@@ -52,7 +53,6 @@ nav:
                   - Command Line: CoConnectTools/ETL/Transform.md   
                   - GUI: CoConnectTools/ETL/Transform-GUI.md
               - Load: CoConnectTools/ETL/Load.md
-              - FAQ: CoConnectTools/FAQ.md
           - Common Errors: CoConnectTools/CommonErrors.md
           - Additional Tools:
               - Command Line Interface: CoConnectTools/CommandLine.md

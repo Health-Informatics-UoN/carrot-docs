@@ -1,3 +1,5 @@
+Before getting started, please take a look a the following frequently asked questions.
+
 ## ETL
 
 ### What is the co-connect ETL?
@@ -52,9 +54,17 @@ Yes. You do not need to use the tool packaged in co-connect-tools, you can do th
 ### What is the transform tool?
 
 Our command line interface tool for performing only the 'T' part of the 'ETL' process.. a transformation of your dataset into a Common Data Model (CDM):
-```
-coconnect map run --help
-```
+
+=== "Using a configuration file"
+	If the input data and rules file are specified in a `yaml` configuration file, the tool transform tool can be run as:
+    ```
+	coconnect etl bclink --config <config> transform --help
+	```
+=== "With commandline arguments"
+	Alternatively, using commandline arguments, the tool can be run as:
+    ```
+	coconnect map run --help
+	```
 
 [Overview](/docs/CoConnectTools/ETL/About/#transform){ .md-button .md-button--primary }
 [Manual from the Command Line](/docs/CoConnectTools/ETL/Transform/){ .md-button .md-button--secondary }
@@ -62,6 +72,7 @@ coconnect map run --help
 
 
 This can be ran manually, or is executed as part of the automated ETL.
+
 
 
 ### What is the rules `.json`?
@@ -103,7 +114,7 @@ You need to pass a space separated list of files (or directories containing `.cs
 
 The rules `.json` file is supplied via the option `--rules `.
 
-The `--help` message displays the following syntax for how the ETL-Tool should be run:
+The `--help` message displays the following syntax for how the `map` tool (for transform) can be run:
 
 ```
 Usage: coconnect map run [OPTIONS] INPUTS...
