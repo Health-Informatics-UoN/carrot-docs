@@ -34,6 +34,7 @@ nav:
          - LocalFunctions: AzureFunctions/RunningLocally.md
          - ProcessQueue: AzureFunctions/ProcessQueue.md
          - NLPQueue: AzureFunctions/NlpQueue.md
+      - Database Migrations: MappingPipeline/migrations.md
       #- Downloading Mapping:   MappingPipeline/downloading-rules.md
       
   - CO-CONNECT Tools:
