@@ -89,13 +89,15 @@ Use the flag `-d` (or `--daemon`) to run this as a daemon background process. [S
 	  - input: inputs/
 	    output: automation/results/
 	bclink:
-	  global_ids: ids_001
-	  tables:
-	    person: person_001
-		observation: observation_001
-		measurement: measurement_001
-		condition_occurrence: condition_occurrence_001
+      tables:
+	    person: person
+		observation: observation
+		measurement: measurement
+		condition_occurrence: condition_occurrence
 	```
+
+   !!! note 
+       The tab for `bclink:` is not neccessary as the default behaviour is to assume the IDs of the tables in `bclink` match the names of the tables e.g. `person: person`
 
 === "Watches for new data dumps"
     A full `yaml` example is given below, that watches a folder for subfolders containing data dumps, subsequent sections detail what each setting is doing:
