@@ -252,7 +252,7 @@ Before you run the ETL (for the first time), it's important to make sure there's
 	clean: true
 	```
 
-## 5. Run the ETL
+## 6. Run the ETL
 
 Finally you are ready to execute the ETL...
 
