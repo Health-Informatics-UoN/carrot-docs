@@ -132,11 +132,12 @@ Options:
 
 ## How can I install the software offline (no internet connection)?
 
-1. You need to download the source code and its dependencies, somewhere which has a stable internet connection.
+You need to download the source code and its dependencies, somewhere which has a stable internet connection.
 
-2. Make a new directory
+### Download wheel files
 
-3. Next execute the command `python3 -m pip download co-connect-tools`:
+* Make a new directory
+* Next execute the command `python3 -m pip download co-connect-tools`:
 ```
 $ python3 -m pip download co-connect-tools
 Collecting co-connect-tools
@@ -160,32 +161,37 @@ PyYAML-6.0-cp38-cp38-macosx_10_9_x86_64.whl
 ...
 ```
 
-4. Now you can zip and move this folder to a location that you want to install co-connect-tools that doesn't have an internet connection
+### Transfer the wheel files 
 
-5. In this new environment, create a new working directory and setup a virtual environment
+Now you can zip and move this folder to a location/machine that you want to install co-connect-tools, one that doesn't have an internet connection to pypi.org.
+
+* In this new environment, create a new working directory and setup a virtual environment
 
 !!! warning
 	this new environment should be the same architecture, i.e. if you download on a Windows environment and then try to install on MacOS, this won't work.
 
 
-Copy/unzip the .whl files into a new folder, e.g. `deps/`
+* Copy/unzip the .whl files into a new folder, e.g. `deps/`
 
 ```
 python3 -m venv .
 source bin/activate
 ```
 
+
+### Install the package offline
+
+You can use `pip` to install 
+```
+pip install --no-index --find-links <path to folder containing .whl files> co-connect-tools
+```
+
 !!! warning
-	You will need a recent version of pip, you may need to [download the latest version of pip](https://pypi.org/project/pip/#modal-close) and tranfer the .whl file to this offline environment too.
+	Dependening on your python version, you made need a recent version of pip. You can [download the latest version of pip](https://pypi.org/project/pip/#modal-close) and tranfer the .whl file to this offline environment, and install the update with:
 	```
 	pip install pip-21.3.1-py3-none-any.whl
 	```
 
-7. Install the tool offline
-
-```
-pip install --no-index --find-links /folder/containing/.whl files/ co-connect-tools
-```
 Example:
 ```
 $ pip install --no-index --find-links . co-connect-tools
@@ -203,10 +209,11 @@ Processing ./inquirer-2.8.0-py2.py3-none-any.whl
 Processing ./click-8.0.3-py3-none-any.whl
 Processing ./Jinja2-3.0.3-py3-none-any.whl
 ...
+...
 Successfully installed Jinja2-3.0.3 MarkupSafe-2.0.1 blessed-1.19.0 certifi-2021.10.8 charset-normalizer-2.0.9 click-8.0.3 co-connect-tools-0.4.13 coloredlogs-15.0.1 docutils-0.18.1 et-xmlfile-1.1.0 graphviz-0.19.1 humanfriendly-10.0 idna-3.3 inquirer-2.8.0 lockfile-0.12.2 numpy-1.21.4 openpyxl-3.0.9 pandas-1.3.5 psutil-5.8.0 pysimplegui-4.55.1 python-daemon-2.3.0 python-dateutil-2.8.2 python-editor-1.0.4 pytz-2021.3 pyyaml-6.0 readchar-2.0.1 requests-2.26.0 six-1.16.0 tabulate-0.8.9 urllib3-1.26.7 wcwidth-0.2.5
 ```
 
-Check if the tool installed offline
+Check if the tool installed offline, and you're good to go
 ```
 $ coconnect --version
 0.4.13
