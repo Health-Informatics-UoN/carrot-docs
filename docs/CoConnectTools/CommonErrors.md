@@ -28,6 +28,10 @@ ping: cannot resolve pypi.org: Unknown host
 ```
 This means your machine cannot establish a connection to `pypi` to download and install the tool. 
 
+<center>
+[FAQ: How can I install the tool offline?](/docs/CoConnectTools/FAQ/#how-can-i-install-the-software-offline-no-internet-connection){ .md-button .md-button--primary}
+</center>
+
 
 ## `coconnect.tools.file_helpers.MissingInputFiles`
 

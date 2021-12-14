@@ -130,7 +130,7 @@ Options:
 ```
 
 
-### How can I install the software offline (no internet connection)?
+## How can I install the software offline (no internet connection)?
 
 1. You need to download the source code and its dependencies, somewhere which has a stable internet connection.
 
