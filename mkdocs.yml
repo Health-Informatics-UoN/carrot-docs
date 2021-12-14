@@ -77,6 +77,7 @@ nav:
               - Rule Helpers: CoConnectTools/RuleHelpers.md
               - Logging: CoConnectTools/Logger.md
               - Profiling: CoConnectTools/Profiling.md
+          - Developer Guide: CoConnectTools/ETL/ETL-Developer-Guide.md
           - ETL Workbook Example: "CoConnectTools/notebooks/Introduction\ -\ Using\ the\ ETLTool.ipynb"
           - Performance:
               - cProfile: CoConnectTools/Performance/cProfile.md

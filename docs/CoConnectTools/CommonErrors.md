@@ -1,5 +1,34 @@
 Below are a list of common errors that are often encountered. 
 
+## `ERROR: No matching distribution found for co-connect-tools`
+
+When installing co-connect-tools you see messages like this:
+```
+$ pip install co-connect-tools
+Collecting co-connect-tools
+  WARNING: Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.VerifiedHTTPSConnection object at 0x10d7c39a0>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known')': /simple/co-connect-tools/
+...
+...
+ERROR: Could not find a version that satisfies the requirement co-connect-tools (from versions: none)
+ERROR: No matching distribution found for co-connect-tools
+```
+
+The most common cause of this error is a lack of internet connection or lack of connection to pypi.org
+
+Check this via the `ping` command, which should give you a response, e.g.:
+```
+$ ping pypi.org
+PING pypi.org (151.101.192.223): 56 data bytes
+64 bytes from 151.101.192.223: icmp_seq=0 ttl=58 time=20.124 ms
+```
+If you see
+```
+$ ping pypi.org
+ping: cannot resolve pypi.org: Unknown host
+```
+This means your machine cannot establish a connection to `pypi` to download and install the tool. 
+
+
 ## `coconnect.tools.file_helpers.MissingInputFiles`
 
 One of the most common errors is due to missing or badly named files.
