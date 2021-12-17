@@ -40,17 +40,24 @@ It is assumed that BCLink systems has already been an installed on a host machin
 
     Test data can be found in th `data_folder`:
     ```
-    $ ls $(coconnect info data_folder)/test/
+    ls $(coconnect info data_folder)/test/
+	```
+	Giving you an output:
+	```
     automation  expected_outputs  inputs  rules  scan_report
     ```
 
     Copy the data (or use a symbolic link) into your current working directory:
     ```
-    $ pwd
-    /usr/lib/bcos/MyWorkingDirectory
-    $ mkdir input_data
-    $ cp -r $(coconnect info data_folder)/test/inputs/original input_data/001
-    $ ls input_data/001
+    mkdir input_data
+    cp -r $(coconnect info data_folder)/test/inputs/original input_data/001
+	```
+	List the example dataset that is now copied over to your working directory
+	```
+    ls input_data/001
+	```
+	Shows the files:
+	```
     covid19_antibody.csv  Covid19_test.csv  Demographics.csv  Symptoms.csv  vaccine.csv
     ```
 
@@ -58,8 +65,14 @@ It is assumed that BCLink systems has already been an installed on a host machin
 
     As associated example mapping rules `json` file for this test dataset can be found and copied over to the working directory:
     ```
-    $ cp -r $(coconnect info data_folder)/test/rules/rules_14June2021.json rules.json
-    $ coconnect display json rules.json |& head -15
+    cp -r $(coconnect info data_folder)/test/rules/rules_14June2021.json rules.json
+	```
+	Make sure you copied the file over correctly, by testing displaying the first 15 liens of the `json` file:
+	```
+    coconnect display json rules.json |& head -15
+	```
+	Outputs:
+	```
     {
       "metadata": {
             "date_created": "2021-06-14T15:27:37.123947",
@@ -102,11 +115,11 @@ The next step is to create and configure a `yaml` file for the tool to digest. T
 	
 	```
 	
-	Example:
+	Example template to use if you have copied over files:
 	```yaml
 	rules: /usr/lib/bcos/MyWorkingDirectory/rules.json 
 	data: 
-       - input: /usr/lib/bcos/MyWorkingDirectory/input_data/
+       - input: /usr/lib/bcos/MyWorkingDirectory/input_data/001/
 	     output: /usr/lib/bcos/MyWorkingDirectory/output_data/
 	```
 	
@@ -166,14 +179,17 @@ By default, if the CO-CONNECT documentation for setting up BCLink has been follo
 	```
 	Example output:
 	```
-	(automation) [bcos_srv@link-test-dt Demo]$ coconnect etl bclink --config config.yml check_tables
-    2021-11-17 10:33:31 - check_tables - INFO - printing to see if tables exist
-	2021-11-17 10:33:31 - run_bash_cmd - NOTICE - bc_sqlselect --user=bclink --query=SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = 'person' ) bclink
-	2021-11-17 10:33:31 - run_bash_cmd - NOTICE - bc_sqlselect --user=bclink --query=SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = 'condition_occurrence' ) bclink
-	2021-11-17 10:33:31 - check_tables - INFO - {
-      "person": true,
-      "condition_occurrence": true
-	  }
+	2021-12-17 10:36:39 - check_tables - INFO - printing to see if tables exist
+	2021-12-17 10:36:39 - run_bash_cmd - NOTICE - bc_sqlselect --user=bclink --query=SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = 'observation' ) bclink
+	2021-12-17 10:36:39 - run_bash_cmd - NOTICE - bc_sqlselect --user=bclink --query=SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = 'condition_occurrence' ) bclink
+	2021-12-17 10:36:39 - run_bash_cmd - NOTICE - bc_sqlselect --user=bclink --query=SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = 'person' ) bclink
+	2021-12-17 10:36:39 - run_bash_cmd - NOTICE - bc_sqlselect --user=bclink --query=SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = 'measurement' ) bclink
+	2021-12-17 10:36:39 - check_tables - INFO - {
+		"observation": true,
+		"condition_occurrence": true,
+		"person": true,
+		"measurement": true
+	}
 	```
 
 ??? example "If you need to create new tables via the GUI"
