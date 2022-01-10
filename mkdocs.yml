@@ -81,6 +81,9 @@ nav:
           - ETL Workbook Example: "CoConnectTools/notebooks/Introduction\ -\ Using\ the\ ETLTool.ipynb"
           - Performance:
               - cProfile: CoConnectTools/Performance/cProfile.md
+  - CO-CONNECT Pseudonymise:
+      - Pseudonymisation: CoConnectPseudonymise/Pseudonymisation.md
+
   - BCLink:
       - About: BCLink/About.md
       - For Developers: 
