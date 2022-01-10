@@ -1,6 +1,6 @@
 
 !!! danger
-	This section is decrepid, please instead use [co-connect-pseudonymise](/docs/CoConnectPseudonymise/Pseudonymisation) instead.
+	This section is decrepid, please instead use [co-connect-pseudonymise](/docs/CoConnectPseudonymise/Pseudonymisation/) instead.
 
 A dataset can be pseudonymised __in-house__, or via the use of the co-connect-tools `pseudonymise` command (also the command executed in the ETL automation process)
 

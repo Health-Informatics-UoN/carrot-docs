@@ -1,10 +1,16 @@
 
-A separate package, to help with pseudonymisation of data, [co-connect-pseudonymise](https://pypi.org/project/co-connect-pseudonymise/) is available to be installed via pypi, or via the [source code on GitHub](https://github.com/CO-CONNECT/Pseudonymisation).
+A separate package, to help with pseudonymisation of columns in data files by passing a ==salt==. [co-connect-pseudonymise](https://pypi.org/project/co-connect-pseudonymise/) is available to be installed via pypi, or via the [source code on GitHub](https://github.com/CO-CONNECT/Pseudonymisation).
 
 This is provided as a separate package for those who no not wish (e.g. for security reasons) or need to install the full package ([co-connect-tools](https://pypi.org/project/co-connect-tools/)).
 
 !!! info 
-	~~co-connect-pseudonymise~~ will be installed if the packge ~~co-connect-tools~~ is installed, as it is a dependancy of the latter. 
+	{++co-connect-pseudonymise++} will be installed if the packge {++co-connect-tools++} is installed, as it is a dependancy of the latter. 
+
+co-connect-pseudonymise contains:   
+
+   * a simple CLI (command line interface) to pseudonymise `csv` files   
+   * a [python workbook](https://github.com/CO-CONNECT/Pseudonymisation/tree/main/notebooks) showing how pseudonymisation can be performed manually   
+   * additional [example code](https://github.com/CO-CONNECT/Pseudonymisation/tree/main/examples) for C# and Java    
 
 
 ## Installation (via pip)
@@ -33,54 +39,59 @@ pip install pip --upgrade
 pip install co-connect-pseudonymise
 ```
 
-
-
-To install the package via pip you should execute the command:
-```
-python -m pip install co-connect-tools
-```
-
-Otherwise, to ensure the right version of python (python3) is used to install (as you may have installed `python2` and `python3`) from pip you can also do:
-```
-python3 -m pip install co-connect-tools
-```
-
-
-
-
-
-
-
-A dataset can be pseudonymised __in-house__, or via the use of the co-connect-tools `pseudonymise` command (also the command executed in the ETL automation process)
+### Check the package
 
 ```
-$ coconnect pseudonymise --help
-Usage: coconnect pseudonymise [OPTIONS] INPUT
-
-  Command to help pseudonymise data.
+pseudonymise --help
+```
+Print the message:
+```
+Usage: pseudonymise [OPTIONS] COMMAND [ARGS]...
 
 Options:
-  -s, --salt TEXT             salt hash  [required]
-  -i, --person-id, --id TEXT  name of the person_id  [required]
-  -o, --output-folder TEXT    path of the output folder  [required]
-  --chunksize INTEGER         set the chunksize when loading data
-  --help                      Show this message and exit.
+  --help  Show this message and exit.
+
+Commands:
+  csv  Command to pseudonymise csv files, given a salt, the name of the...
 ```
 
-## Example
+
+## Run for pseudonymisation of a CSV file
+
+### Display help
+To display the help message to see what options are available, run:
+```
+pseudonymise csv --help 
+```
+Which shows:
+```
+Usage: pseudonymise csv [OPTIONS] INPUT
+
+  Command to pseudonymise csv files, given a salt, the name of the columns to
+  pseudonymise and the input file.
+
+Options:
+  -s, --salt TEXT           salt hash  [required]
+  -c, --column, --id TEXT   name of the identifier columns  [required]
+  -o, --output-folder TEXT  path of the output folder  [required]
+  --chunksize INTEGER       set the chunksize when loading data, useful for
+                            large files
+  --help                    Show this message and exit.
 
 ```
-coconnect pseudonymise -s 123456 -i PersonID -o pseudoynmised_data $(coconnect info data_folder)/test/inputs/original/Demographics.csv 			      
+
+### Execute
+
+Executing a command to pseudonymise the data in the column `PersonID` of the file `data/Demographics.csv` using the ==salt== `beb2839bd78` and outputing the file to the folder `pseudonymised_data/`:
+```
+pseudonymise csv --salt beb2839bd78 --column PersonID  data/Demographics.csv -o pseudonymised_data/
 ```
 
-Which outputs:
-
+Outputs the following:
 ```
-2021-10-07 14:55:55 - pseudonymise - INFO - Working on file /Users/calummacdonald/Usher/CO-CONNECT/Software/co-connect-tools/coconnect/data/test/inputs/original/Demographics.csv, pseudonymising column 'PersonID' with salt '123456'
-2021-10-07 14:55:55 - pseudonymise - INFO - Saving new file to pseudoynmised_data/Demographics.csv
-2021-10-07 14:55:55 - InputData - INFO - InputData Object Created
-2021-10-07 14:55:56 - InputData - INFO - Registering  /Users/calummacdonald/Usher/CO-CONNECT/Software/co-connect-tools/coconnect/data/test/inputs/original/Demographics.csv [<class 'pandas.core.frame.DataFrame'>]
-2021-10-07 14:55:56 - pseudonymise - INFO - 0      16dc368a89b428b2485484313ba67a3912ca03f2b2b424...
+2022-01-10 09:56:11.155 | INFO     | cli.cli:csv:16 - Working on file Demographics.csv, pseudonymising columns '['PersonID']' with salt 'beb2839bd78'
+2022-01-10 09:56:11.157 | INFO     | cli.cli:csv:22 - Saving new file to pseudonymised_data/Demographics.csv
+2022-01-10 09:56:11.173 | DEBUG    | cli.cli:csv:32 - 0      16dc368a89b428b2485484313ba67a3912ca03f2b2b424...
 1      37834f2f25762f23e1f74a531cbe445db73d6765ebe608...
 2      454f63ac30c8322997ef025edff6abd23e0dbe7b8a3d51...
 3      5ef6fdf32513aa7cd11f72beccf132b9224d33f271471f...
@@ -92,6 +103,5 @@ Which outputs:
 998    330e14d4ae80612334d94c488d29eb469626b476864abd...
 999    ab9828ca390581b72629069049793ba3c99bb8e5e9e7b9...
 Name: PersonID, Length: 1000, dtype: object
-2021-10-07 14:55:56 - pseudonymise - INFO - Done!
+2022-01-10 09:56:11.183 | INFO     | cli.cli:csv:52 - Done with pseudonymised_data/Demographics.csv!
 ```
-
