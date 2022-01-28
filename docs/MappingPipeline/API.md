@@ -97,6 +97,7 @@ We have implemented enpoints for following 16 tables of co-connect DB.
     * **http://localhost:8080/api/scanreportvaluesfilter/?scan_report_field__in=222,1,284** This will return all records from a mapping_scanreportvalue table for a list of of ids (222, 1, 284). 
     * **http://localhost:8080/api/scanreportvaluesfilter/?value__in=Surgery,YES** This will return all records from a mapping_scanreportvalue table matching any of values from the list (i.e. Surgery, YES) in a value field. 
     * **http://localhost:8080/api/scanreportvaluesfilter/?id__in=2,301,286,1360** This return records from a mapping_scanreportvalue table either having an "id=2" or "id=301" or "id=286" or "id=1360" (as id is a primary key there will be a single record for each value).
+    * **http://localhost:8080/api/scanreportvaluepks/?scan_report=56** This will return all values where the conceptID!= -1 for a scan report with id=56
 
 5. mapping_scanreportconcept table	
     * **http://localhost:8080/api/scanreportconcepts/** All scan report concepts in a mapping_scanreportconcepts. For this endpoint, making a put request allows to accept a json array that is beneficial in its own right with a single call to an api endpoint. 
@@ -142,12 +143,13 @@ We have implemented enpoints for following 16 tables of co-connect DB.
      * **http://localhost:8080/api/omopfields/450/** or **http://localhost:8080/api/omopfieldsfilter/?id=450** A record in a mapping_omopfield table with id=2
      * **http://localhost:8080/api/omopfieldsfilter/?id__in=449,450** This return records from a mapping_omopfield table either having an "id=449" or "id=450" (as id is a primary key there will be a single record for each value). 
 
-14. mapping_structuralmappingrule table	
-     * **http://localhost:8080/api/structuralmappingrules/** All records in a mapping_structuralmappingrule
-     * **http://localhost:8080/api/structuralmappingrules/12200** or **http://localhost:8080/api/structuralmappingrulesfilter/?id=12200** A record in a mapping_structuralmappingrule table with id=8194
-     * **http://localhost:8080/api/structuralmappingrulesfilter/?scan_report=40** This returns all records in mapping_structuralmappingrule table for a scan_report=40. 
-     * **http://localhost:8080/api/structuralmappingrulesfilter/?scan_report__in=40,89** This returns all records in structuralmappingrule table either having a scan_report=40 or 89.
-     * **http://localhost:8080/api/structuralmappingrulesfilter/?id__in=12200,12208** This returns records from a mapping_structuralmappingrul table either having an "id=1673" or "id=1674" (as id is a primary key there will be a single record for each value).
+14. mapping_mappingrule table	
+     * **http://localhost:8080/api/mappingrules/** All records in a mapping_mappingrule
+     * **http://localhost:8080/api/mappingrules/12200** or **http://localhost:8080/api/mappingrulesfilter/?id=12200** A record in a mapping_mappingrule table with id=8194
+     * **http://localhost:8080/api/mappingrulesfilter/?scan_report=40** This returns all records in mapping_mappingrule table for a scan_report=40. 
+     * **http://localhost:8080/api/mappingrulesfilter/?scan_report__in=40,89** This returns all records in mappingrule table either having a scan_report=40 or 89.
+     * **http://localhost:8080/api/mappingrulesfilter/?id__in=12200,12208** This returns records from a mapping_mappingrul table either having an "id=1673" or "id=1674" (as id is a primary key there will be a single record for each value).
+     * **http://localhost:8080/api/mappingruleslist/?id=56** This returns all mapping rules for scan report with id=56
 	
 15. source table	
      * **http://localhost:8080/api/sources/** All records in a source table
@@ -156,7 +158,18 @@ We have implemented enpoints for following 16 tables of co-connect DB.
 16. documenttype table	
      * **http://localhost:8080/api/documenttypes/** All records in a documenttype table
      * **http://localhost:8080/api/documenttypes/2/** A record in a documenttype table with id=2
-	
+
+## Count Stats
+
+* **http://localhost:8080/api/countstats/** Returns the total number of Scan Reports, Scan Report Tables, Scan Report Fields, Scan Report Values & Mapping Rules in the database
+* **http://localhost:8080/api/countstatsscanreport/?scan_report=435** Returns the total number of tables, fields, values and mapping rules in a scan report with id=435
+* **http://localhost:8080/api/countstatsscanreporttable/?scan_report_table=435** Returns the total number of fields and values in a table with id=435
+* **http://localhost:8080/api/countstatsscanreporttablefield/?scan_report_field=6781** Returns the total number of values in a field with id=6781
+
+## General use
+* **http://localhost:8080/api/json/?id=526** Returns a json representation of the mapping rules for a scan report with id=526.
+* **http://localhost:8080/api/scanreports/526/download** Downloads the scan report with id=526 from azure blob storage and returns an .xlsx file as an HTTP Response.
+
 ### Specifying returning fields 
 For all the endpoints, user have an option of specifying returning fields and in case if you don't supply returning fields parameter, it will return values of all fields.
 
