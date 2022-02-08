@@ -1,1 +1,1 @@
-::: coconnect.tools.file_helpers.InputData
+::: coconnect.io.DataCollection

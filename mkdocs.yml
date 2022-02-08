@@ -71,8 +71,10 @@ nav:
                   - Measurement: CoConnectTools/Measurement.md
                   - Observation: CoConnectTools/Observation.md
                   - Drug Exposure: CoConnectTools/DrugExposure.md
+                  - Procedure Occurrence: CoConnectTools/ProcedureOccurrence.md
+                  - Specimen: CoConnectTools/Specimen.md
           - Source documentation:
-              - Input Data: CoConnectTools/InputData.md
+              - Data Collections: CoConnectTools/InputData.md
               - File Helpers: CoConnectTools/FileHelpers.md
               - Rule Helpers: CoConnectTools/RuleHelpers.md
               - Logging: CoConnectTools/Logger.md

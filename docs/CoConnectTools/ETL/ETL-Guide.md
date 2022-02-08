@@ -105,6 +105,9 @@ To the run the tool and automatically upload data to `bclink`, you **must** be l
 
 The next step is to create and configure a `yaml` file for the tool to digest. This yaml file must contain the location of the "rules" `json` file, provided to you by the connect team, and the path of the input data.
 
+!!! note
+	If you are unfamilar with the Linux command-line and don't know how to create a file, try using `vim`, `pico` or `emacs` commands.
+
 ??? example "Minimal YAML"
     Create a file called `config.yaml` and insert the following lines and save:
     ```yaml
