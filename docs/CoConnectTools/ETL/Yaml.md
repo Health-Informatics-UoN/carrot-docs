@@ -357,5 +357,5 @@ bclink:
 
 ```yaml
 bclink:
-  dry-run: true
+  dry_run: true
 ```
