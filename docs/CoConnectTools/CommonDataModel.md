@@ -3,20 +3,23 @@ The Pythonic version of the CommonDataModel is built object-orientated in the su
 ```
 coconnect/cdm/
 ├── __init__.py
-├── classes
-│   ├── __init__.py
 ├── decorators.py
 ├── model.py
 ├── objects
 │   ├── __init__.py
 │   ├── common.py
-│   ├── condition_occurrence.py
-│   ├── drug_exposure.py
-│   ├── measurement.py
-│   ├── observation.py
-│   ├── person.py
-│   └── visit_occurrence.py
-└── operations.py
+│   └── versions
+│       ├── __init__.py
+│       └── v5_3_1
+│           ├── __init__.py
+│           ├── condition_occurrence.py
+│           ├── drug_exposure.py
+│           ├── measurement.py
+│           ├── observation.py
+│           ├── person.py
+│           ├── procedure_occurrence.py
+│           ├── specimen.py
+│           └── visit_occurrence.py
 ```
 
 ## Destination Tables
@@ -28,7 +31,9 @@ All CDM destination tables are formed as objects and are defined in `coconnect/c
    * [Visit Occurrence](/docs/CoConnectTools/VisitOccurrence.md)
    * [Observation](/docs/CoConnectTools/Observation.md)
    * [Measurement](/docs/CoConnectTools/Measurement.md)
-   * [Measurement](/docs/CoConnectTools/DrugExposure.md)
+   * [Drug Exposure](/docs/CoConnectTools/DrugExposure.md)
+   * [Procedure Occurrence](/docs/CoConnectTools/ProcedureOccurrence.md)
+   * [Specimen](/docs/CoConnectTools/Specimen.md)
 
 
 ### Generating More Tables

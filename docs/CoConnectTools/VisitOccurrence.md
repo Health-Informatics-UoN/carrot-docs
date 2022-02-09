@@ -1,1 +1,1 @@
-::: coconnect.cdm.objects.visit_occurrence.VisitOccurrence
+::: coconnect.cdm.objects.versions.v5_3_1.visit_occurrence.VisitOccurrence

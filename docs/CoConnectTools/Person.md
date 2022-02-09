@@ -1,1 +1,1 @@
-::: coconnect.cdm.objects.person.Person
+::: coconnect.cdm.objects.versions.v5_3_1.person.Person

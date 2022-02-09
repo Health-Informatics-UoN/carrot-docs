@@ -1,1 +1,1 @@
-::: coconnect.cdm.objects.specimen.Specimen
+::: coconnect.cdm.objects.versions.v5_3_1.specimen.Specimen

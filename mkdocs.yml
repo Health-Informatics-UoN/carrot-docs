@@ -58,8 +58,9 @@ nav:
           - Common Errors: CoConnectTools/CommonErrors.md
           - Additional Tools:
               - Command Line Interface: CoConnectTools/CommandLine.md
-              - Generating Synthetic Data: CoConnectTools/SyntheticData.md
-
+              - Generating Synthetic Data:
+                  - Command Line: CoConnectTools/SyntheticData.md
+                  - By Hand: 'CoConnectTools/notebooks/Generating Synthetic Data By Hand.ipynb'
       - Developer Guide:
           - CDM:
               - Overview: CoConnectTools/CommonDataModel.md
