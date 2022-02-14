@@ -21,7 +21,7 @@ class TestSomething(TestCase):
         ...
         # Add more reusable variables
 ```
-4. Write a method to test an functionality of your code. The name must start with `test_`.
+4. Write a method to test a functionality of your code. The name must start with `test_`.
 ```Python
 from django.test import TestCase
 from .my_module import add
