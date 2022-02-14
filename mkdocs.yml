@@ -35,7 +35,9 @@ nav:
          - ProcessQueue: AzureFunctions/ProcessQueue.md
          - NLPQueue: AzureFunctions/NlpQueue.md
       - Database Migrations: MappingPipeline/migrations.md
-      - Testing: Testing/django-testing.md
+      - Testing: 
+          - Running Django Tests: Testing/django-testing.md
+          - Writing Django Tests: Testing/django-testing-writing.md
       #- Downloading Mapping:   MappingPipeline/downloading-rules.md
       
   - CO-CONNECT Tools:

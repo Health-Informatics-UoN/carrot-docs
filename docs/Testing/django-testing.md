@@ -17,7 +17,7 @@ docker build --tag ccom . && docker run -it --volume $PWD/api:/api
 docker exec -it `docker container ls | awk 'NR==2 {print $1}'` /bin/bash
 ```
 
-3. Then run the following commands:
+3. Then run the following commands in the container:
 ```
 cd ../api
 python manage.py test mapping
