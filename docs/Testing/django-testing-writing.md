@@ -9,7 +9,7 @@ from django.test import TestCase
 class TestSomething(TestCase):
     pass
 ```
-3. *(Optional)* If you have data that can be reused in multiple tests, you can write a `setUP` method that will be ran before each test in the `class`. Make sure to prepend `self.` to your variable.
+3. *(Optional)* If you have data that can be reused in multiple tests, you can write a `setUp` method that will be ran before each test in the `class`. Make sure to prepend `self.` to your variable.
 ```Python
 from django.test import TestCase
 
