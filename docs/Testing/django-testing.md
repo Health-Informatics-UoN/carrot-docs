@@ -1,5 +1,3 @@
-
-
 To run unit tests locally, we can do the following:
 
 1. Build and run the mapping tool locally, where the `.env` file should 
