@@ -35,7 +35,7 @@ nav:
          - ProcessQueue: AzureFunctions/ProcessQueue.md
          - NLPQueue: AzureFunctions/NlpQueue.md
       - Database Migrations: MappingPipeline/migrations.md
-      - Testing: MappingPipeline/testings.md
+      - Testing: MappingPipeline/testing.md
       #- Downloading Mapping:   MappingPipeline/downloading-rules.md
       
   - CO-CONNECT Tools:
