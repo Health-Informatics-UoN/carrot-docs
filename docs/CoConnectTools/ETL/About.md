@@ -4,65 +4,44 @@
 The co-connect ETL process runs via a Command Line Interface, installed with the co-connect-tools package.
 
 
-{++ETL++} stands for:
+In the context of the co-connect workflow {++ETL++} stands for (and means):
 
-* {++Extract++}: input data is extracted into `.csv` format and pseudonymised    
-* {++Transform++}: a CDM model is created and processed, given the pseudonymised data and a [`json` transformation rules file](/docs/CoConnectTools/ETL/Rules/) which tells the software how to map and transform the data.    
+* {++Extract++}: input data is extracted into `.csv` format and (optionally) pseudonymised    
+* {++Transform++}: a CDM model is created and processed, given the extracted data and a [`json` transformation rules file](/docs/CoConnectTools/ETL/Rules/) which tells the software how to map (transform) the data.    
 * {++Load++}: inserts the data into a database or other destination.
 
-Currently, the only fully automated ETL process co-connect-tools can perform is one intergrated with __bclink__ for the __load__ step of the ETL.
+## Workflow
 
+Our {++ETL++} workflow is provided in the form of the so-called __ETL-Tool__ which is a command line interface (CLI):
 ```
-$ coconnect etl --help
+coconnect etl --help
+```
+```
 Usage: coconnect etl [OPTIONS] COMMAND [ARGS]...
 
   Command group for running the full ETL of a dataset
 
 Options:
-  --help  Show this message and exit.
-
-Commands:
-  bclink  Command group for ETL integration with bclink
-```
-
-## CO-CONNECT--BC-LINK Workflow
-
-The "co-coconnect--bc-link" ETL process performs the mapping of health data into the OMOP format before loading it into a BCLink instances.
-
-`execute` command will run the full process, however, it is possible to run individual steps of this workflow.
-
-All configuration of the ETL is made via a `yaml` file.
-[Configuring the Yaml File](/docs/CoConnectTools/ETL/Yaml/){ .md-button .md-button--primary}
-
-
-
-```
-$ coconnect etl bclink --help
-Usage: coconnect etl bclink [OPTIONS] COMMAND [ARGS]...
-
-  Command group for ETL integration with bclink
-
-Options:
-  -f, --force                   Force running of this, useful for development
-                                purposes
-
-  --config, --config-file TEXT  specify a yaml configuration file  [required]
-  -i, --interactive             run with interactive options - i.e. so user
-                                can confirm operations
-
+  --config, --config-file TEXT  specify a yaml configuration file
+  -d, --daemon                  run the ETL as a daemon process
+  -l, --log-file TEXT           specify the log file to write to
   --help                        Show this message and exit.
-
-Commands:
-  check_tables     check the bclink tables
-  clean_tables     clean (delete all rows) in the bclink tables defined in...
-  create_tables    crate new bclink tables
-  delete_data      delete data that has been inserted into bclink
-  drop_duplicates  check and drop for duplicates
-  execute          Run the full ETL process for CO-CONNECT integrated with...
-  extract          Run the Extract part of ETL process for CO-CONNECT...
-  load             Run the Load part of ETL process for CO-CONNECT...
-  transform        Run the Transform part of ETL process for CO-CONNECT...
 ```
+
+This is an automated tool, meaning it is able to run (optionally as a background process) and detect changes in the inputs or configuration files to process new data dumps. 
+
+Currently, automation using the `coconnect etl` CLI is possible for loading to a BC-Link or outputing to a local file storage system.
+
+
+### CO-CONNECT--BC-LINK Workflow
+
+The whole point in transforming data into the OMOP CDM format is so the data can be uploaded to BC-Link. This workflow can be performed in one step with the correct configuration of the input `yaml` file when running `coconnect etl --config <yaml file>`, see:
+<center>
+[Configuring the Yaml File](/docs/CoConnectTools/ETL/Yaml/){ .md-button .md-button--primary}
+</center>
+
+However, the process may need to be decoupled into multiple steps; for example, if BC-Link is not hosted on a machine that has access to the original data. In this scenario the `coconnect etl` or `coconnect run map` can be used to perform the transform (OMOP mapping), the output files can then be transfered to the machine hosting BC-Link and be uploaded (from the command-line, or using the BC-Link GUI)
+
 
 ### Architecture Overview
 A schematic diagram of the co-connect/bclink ETL is given below:
