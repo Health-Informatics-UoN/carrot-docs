@@ -78,7 +78,10 @@ nav:
                   - Procedure Occurrence: CoConnectTools/ProcedureOccurrence.md
                   - Specimen: CoConnectTools/Specimen.md
           - Source documentation:
-              - Data Collections: CoConnectTools/InputData.md
+              - CLI:
+                  - CoConnectTools/CLI/CLI.md
+                  - CoConnectTools/CLI/Run.md
+              - Data Collections: CoConnectTools/DataCollection.md
               - File Helpers: CoConnectTools/FileHelpers.md
               - Rule Helpers: CoConnectTools/RuleHelpers.md
               - Logging: CoConnectTools/Logger.md

@@ -1,25 +1,30 @@
-The following guide documents how you can use the co-connect command line tools to automate the ETL process for co-connect--bc-link by defining a `yaml` file.
-
-!!! caution
-    This tool is designed to work with BCLink installed on a CentOS machine, while logged in as the user `bcos_srv` that has permissions to view the input data (optionally already pseudonymised).
+The following guide documents how you can use the co-connect command line tools to automate the ETL process for by defining a `yaml` configuration file.
 
 
-ETL workflows, configured with a `yaml` file are executed with the synthax `coconnect etl bclink --config <path to config file> COMMAND` 
+ETL workflows, configured with a `yaml` file are executed with the synthax `coconnect etl --config <path to config file> [optional additional COMMAND]` 
 
-Fukk ETL runs with one argument (`--config`) and the command `execute`:
 ```
-[bcos_srv]$ coconnect etl bclink --config config.yml execute --help
-Usage: coconnect etl bclink execute [OPTIONS]
+coconnect etl --config config.yml --help
+```
+```
+Usage: coconnect etl [OPTIONS] COMMAND [ARGS]...
 
-  Run the full ETL process for CO-CONNECT integrated with BCLink
+  Command group for running the full ETL of a dataset
 
 Options:
-  -d, --daemon  run the ETL as a daemon process
-  --help        Show this message and exit.
+  --config, --config-file TEXT  specify a yaml configuration file
+  -d, --daemon                  run the ETL as a daemon process
+  -l, --log-file TEXT           specify the log file to write to
+  --help                        Show this message and exit.
+
+Commands:
+  check-tables   check tables
+  clean-table    clean (delete all rows) of a given table name
+  clean-tables   clean (delete all rows) in the tables defined in the...
+  create-tables  create new bclink tables
+  delete-tables  delete some tables
 ```
 
-
-## Execute
 
 To run the full ETL you need a `.yml`(or `.yaml`) file to configure various settings.
 
@@ -27,100 +32,138 @@ To run the full ETL you need a `.yml`(or `.yaml`) file to configure various sett
 [Example yamls](https://github.com/CO-CONNECT/co-connect-tools/tree/master/coconnect/data/test/automation){ .md-button .md-button--secondary}
 </center>
 
-### Template yaml file
+### Get to the point...
 
 "TL;DR, I want a yaml configuration file that I can run out the box..."
 
-=== "Specify Input Folder(s)"
+
+
+### Transform Tab 
+This tab specifies how the data is going to be transformed.
+
+??? "Configuration"
     The following is the most basic example of a configuration, where the rules, input data, output data folder and tables names are specified as such:
 	```yaml
-	rules: <full path of rules json file>
-	data: 
- 	  - input: <full path of where input csv files are>
-	    output: <full path of output folder for the transformed CDM tsv file>
- 	  - input: <full path of a second data dump of csv files>
-	    output: <full path of output folder for the second data dump>
-	  - ...
-	bclink:
-	  global_ids: <name of global id subject table in bclink>
-	  tables:
-	    person: <name of person table in bclink>
-	    <other cdm table>: <<name of cdm table in bclink>
-    ....
+    transform:
+       data:
+         - input: <input data folder>
+           output: <output folder location>
+		   rules: <rules.json location>
     ```
-=== "Watch a folder for subfolders"
-    With this configuration the tool will automatically watch the `input` folder for new data dumps.
+	When this configuration is executed, a local storage folder is used to write the files, i.e. there is no load performed. Effectively this is just the T in the ETL.
+	
+	Example:
 	```yaml
-	rules: <full path of rules json file>
-	data: 
-	  input: <full path of where input data dumps will be placed>
-	  output: <full path of output folder for the transformed CDM tsv file>
-	bclink:
-	  global_ids: <name of global id subject table in bclink>
-	  tables:
-	    person: <name of person table in bclink>
-	    <other cdm table>: <<name of cdm table in bclink>
-    ....
-    ```
-
-Edit and save as:
-```
-config.yml
-```
-
-
-Run with:
-```
-coconnect etl bclink --config config.yml execute
-```
-
-Use the flag `-d` (or `--daemon`) to run this as a daemon background process. [See the docs here for more explaination](/docs/CoConnectTools/ETL/Automation/#run-as-daemon).
-
-
-### Example yaml file
-
-=== "Simple"
-    A simple example `yaml` file that will run the transform on an input folder containing the input `csv` files and uploads them to `bclink` is shown here:
-	```yaml
-	clean: true
-	rules: rules/rules_14June2021.json
-	log: automation/log
-	data: 
-	  - input: inputs/
-	    output: automation/results/
-	bclink:
-      tables:
-	    person: person
-		observation: observation
-		measurement: measurement
-		condition_occurrence: condition_occurrence
+	transform:
+       data:
+         - input: /usr/lib/bcos/MyWorkingDirectory/Temp/demo-dataset/data/part1/
+           rules: /usr/lib/bcos/MyWorkingDirectory/Temp/demo-dataset/data/rules.json
+           output: /usr/lib/bcos/MyWorkingDirectory/Temp/cache/basic/
 	```
 
-   !!! note 
-       The tab for `bclink:` is not neccessary as the default behaviour is to assume the IDs of the tables in `bclink` match the names of the tables e.g. `person: person`
-
-=== "Watches for new data dumps"
-    A full `yaml` example is given below, that watches a folder for subfolders containing data dumps, subsequent sections detail what each setting is doing:
+	Additional valid keyword arguments to the `map` function (which can be found in [in `def map`](/docs/CoConnectTools/CLI/Run/)), can be passed here:
 	```yaml
-	clean: true
-	rules: /usr/lib/bcos/MyWorkingDirectory/rules.json 
-	log: /usr/lib/bcos/MyWorkingDirectory/coconnect-etl.log
-	data: 
-	  watch: 
-	    days: 1
-      input: /data/dataset_drops
-	  output: /usr/lib/bcos/MyWorkingDirectory/output
-	  pseudonymise: 
-	    output: /usr/lib/bcos/MyWorkingDirectory/pseudo_data
-		salt: 00ed1234da
-	bclink:
-	  tables:
-        person: ds10001
-        observation: ds10002
-        condition_occurrence: ds10003
-        measurement: ds10004
-      global_ids: ds10005
-    ```
+    transform:
+       data:
+         - input: <input data folder>
+           output: < output folder location>
+		   rules: < rules.json location>
+		   split_outputs: <true/false if to save the outputs as one file e.g. person.tsv or not>
+           number_of_rows_to_process: <number of rows of data to run over>
+		   dont_automatically_fill_missing_columns: <true/false dont automatically fill missing columns e.g. year_of_birth from birth_datetime>
+	```
+	
+	Multiple input folders can be added:
+	```yaml
+    transform:
+       data:
+         - input: < input data folder>
+           output: < output folder location>
+		   rules: < rules.json location>
+	     - input: < another input data folder>
+           output: < output folder location>
+		   rules: < rules.json location>
+	```
+	Anchors can be used to reduce the number of repeats:
+	```yaml
+ 	transform:
+	   settings: &settings
+	     output: < output folder location>
+		 rules: < rules.json location>
+	   data:
+	     - input: < input data folder>
+		   <<:*settings
+         - input: < another input data folder> 
+		   <<:*settings
+	```
+		
+	Alternatively the data tab can be a master/main folder, containing subfolders of multiple data dumps. If specified as follows, the code will use the main folder to look for subfolders to process.
+	```yaml
+    transform:
+       data:
+         input: < input main folder>
+         output: < output folder location>
+		 rules: < rules.json location>
+	```
+	
+### Load Tab 
+
+??? "Local Configuration"
+	A very basic example shows how the load tab can be used to do the same as above (load/dump to a local folder i.e. `LocalDataCollection`)
+	```yaml
+	load: &load-local
+       output: < folder for the output>
+    transform:
+	   settings: &settings
+	     output: *load-local
+		 rules: < rules.json location>
+	   data:
+	     - input: < input data folder>
+		   <<:*settings
+ 	```
+??? "BCLink Configuration"
+    To specify we want to load to BCLink instead, we can create a load tab section as so:
+	```yaml
+	load: &load-bclink
+      cache: /usr/lib/bcos/MyWorkingDirectory/Temp/cache/
+	  bclink:
+        dry_run: false
+	transform:
+	   settings: &settings
+	     output: *load-bclink
+		 rules: < rules.json location>
+	   data:
+	     - input: < input data folder>
+		   <<:*settings
+ 	
+	```
+	By specifying that the output should go to the `load-bclink` configuration, the tool will be able to write the output to a `BCLinkDataCollection`.
+	
+	The default behaviour is to assume that the destination table (e.g. `person` table) should be loaded to a BCLink table which exactly the same name. 
+	If this is not the case, you must manually specify the names of the tables so the tool knows which BCLink table it should upload to.
+	
+	```yaml
+	load: &load-bclink
+      cache: < cache directory for writing files>
+	  bclink:
+         tables:
+		    <cdm table>: <bclink table>
+			...
+	
+	```
+		
+	Example:
+	```yaml
+	load: &load-bclink
+      cache: /usr/lib/bcos/MyWorkingDirectory/Temp/cache/
+	  bclink:
+         tables:
+		    person: ds100000
+			observation: ds100001
+			measurement: ds100003
+			.....
+	```
+	
 
 
 ## Execute as daemon

@@ -5,9 +5,9 @@ The following is a walkthrough of how to run an automated ETL process using test
 It is assumed that BCLink systems has already been an installed on a host machine. 
 
 ??? example "Setting up a working directory"
-    To use ETL with `bclink`, you must be the user `bcos_srv`, i.e. when ssh'd into the machine hosting `bclink`:
+    When running the ETL with the `bclink` backend, you must be the user `bcos_srv`, i.e. when ssh'd into the machine hosting `bclink`:
     ```
-    ssh <IP address of host machine>
+    ssh <username>@<IP address of host machine>
     sudo -s
     su - bcos_srv
     ``` 
@@ -32,68 +32,59 @@ It is assumed that BCLink systems has already been an installed on a host machin
     ```
     coconnect info version
     ```
-    Which should display version `>=0.4.1` for the automation to work.
+    Which should display version `>=0.5.0` for the automation to work.
 
     [Detailed Installation Instructions](/docs/CoConnectTools/Installing/){ .md-button .md-button--primary}
 
-??? example "Get input data"
-
-    Test data can be found in th `data_folder`:
-    ```
-    ls $(coconnect info data_folder)/test/
-	```
-	Giving you an output:
-	```
-    automation  expected_outputs  inputs  rules  scan_report
-    ```
-
-    Copy the data (or use a symbolic link) into your current working directory:
-    ```
-    mkdir input_data
-    cp -r $(coconnect info data_folder)/test/inputs/original input_data/001
-	```
-	List the example dataset that is now copied over to your working directory
-	```
-    ls input_data/001
-	```
-	Shows the files:
-	```
-    covid19_antibody.csv  Covid19_test.csv  Demographics.csv  Symptoms.csv  vaccine.csv
-    ```
-
-??? example "Get a rules `json` file"
-
-    As associated example mapping rules `json` file for this test dataset can be found and copied over to the working directory:
-    ```
-    cp -r $(coconnect info data_folder)/test/rules/rules_14June2021.json rules.json
-	```
-	Make sure you copied the file over correctly, by testing displaying the first 15 liens of the `json` file:
-	```
-    coconnect display json rules.json |& head -15
-	```
-	Outputs:
-	```
-    {
-      "metadata": {
-            "date_created": "2021-06-14T15:27:37.123947",
-            "dataset": "Test"
-      },
-      "cdm": {
-            "observation": {
-                  "observation_0": {
-                        "observation_concept_id": {
-                              "source_table": "Demographics.csv",
-                              "source_field": "ethnicity",
-                              "term_mapping": {
-                                    "Asian": 35825508
-                              }
-                        },
-
-    ```
 
 ## 2. Setup Data
 
-To the run the tool and automatically upload data to `bclink`, you **must** be logged in as the user `bcos_srv`, therefore this user must have permissions to view the data.
+Setup your inputs and obtain the `rules.json` for performing the transform (OMOP mapping).
+
+??? example "Get inputs"
+
+	We recommend that you download the test dataset from [CO-CONNECT/demo-dataset](https://github.com/CO-CONNECT/demo-dataset), otherwise a smaller test dataset can be foud in the following location: `$(coconnect info data_folder)/test/`
+	
+	```
+	git clone https://github.com/CO-CONNECT/demo-dataset.git
+	```
+	checking the files:
+	```
+	ls demo-dataset/data/
+	```
+	There are two rules files, one yaml configuration (plus a tempate configuration file), and three folders for different data dumps. More information can be found [in the demo-dataset README](https://github.com/CO-CONNECT/demo-dataset/blob/master/README.md):
+	```
+    config.yaml config-template.yaml part1  part2  part3  rules.json  rules_small.json
+	```
+	We can check the rules.json file by testing displaying the first 15 liens of the `json` file:
+	```
+    coconnect display rules json demo-dataset/data/rules.json |& head -15
+	```
+	Outputs:
+	```
+	{
+      "metadata": {
+            "date_created": "2022-02-11T12:22:48.465257",
+            "dataset": "FAILED: ExampleV4"
+      },
+      "cdm": {
+            "person": {
+                  "MALE 3025": {
+                        "birth_datetime": {
+                              "source_table": "Demographics.csv",
+                              "source_field": "Age",
+                              "operations": [
+                                    "get_datetime_from_age"
+                              ]
+                        },
+	  ```
+
+
+!!! note
+	If you are following this guide with the example dataset, as long as you have copied or downloaded data as user `bcos_srv`, then all should be OK.
+
+To the run the tool and automatically upload data to `bclink`, you **must** be logged in as the user `bcos_srv`, therefore this user must have permissions to view the data. So double-check or grant access. 
+
 
 ??? example "Granting data access to a user"
     There are many ways of doing this on CentOS via `chown` and/or `chmod`. You should contact your system administrator to do this if your are not experienced and/or don't have `root` access (that you may need).
@@ -109,57 +100,74 @@ The next step is to create and configure a `yaml` file for the tool to digest. T
 	If you are unfamilar with the Linux command-line and don't know how to create a file, try using `vim`, `pico` or `emacs` commands.
 
 ??? example "Minimal YAML"
-    Create a file called `config.yaml` and insert the following lines and save:
+    Create a file called `config.yaml`, either as a new file or copy over the `cp demo-dataset/data/config-template.yaml config.yaml` and edit the values:
     ```yaml
-    rules: <path to rules .json file>
-    data: 
-      - input: <path to folder containing input .csv file>
-        output: <path to a folder where you want to save the output data e.g. `./output_data/`>
+	settings:
+      clean: <bool>
 	
+    load: &load-bclink
+      cache: <str: cache folder> 
+      bclink:
+        dry_run: <bool>
+		
+    transform:
+       settings: &settings
+         output: *load-bclink
+         rules: <str: rules .json file>
+       data:
+         - input: <str: first input data folder>
+           <<: *settings
+         - input: <str: additional input data folder>
+           <<: *settings
 	```
 	
-	Example template to use if you have copied over files:
+	Example template to use if you have copied over and are useing the demo-dataset:
 	```yaml
-	rules: /usr/lib/bcos/MyWorkingDirectory/rules.json 
-	data: 
-       - input: /usr/lib/bcos/MyWorkingDirectory/input_data/001/
-	     output: /usr/lib/bcos/MyWorkingDirectory/output_data/
-	```
+    settings:
+      clean: true
+
+    load: &load-bclink
+      cache: /usr/lib/bcos/MyWorkingDirectory/cache/
+      bclink:
+        dry_run: false
+		
+    transform:
+       settings: &settings
+         output: *load-bclink
+         rules: /usr/lib/bcos/MyWorkingDirectory/demo-dataset/data/rules.json
+       data:
+         - input: /usr/lib/bcos/MyWorkingDirectory/demo-dataset/data/part1/
+           <<: *settings
+     ```
 	
 
 ??? example "YAML with multiple data folders"
     Similarly if you have multiple data dumps, you can configure the yaml like so:
     ```yaml
-    rules: <path to rules .json file>
-    data: 
-      - input: <path to folder containing input .csv file>
-        output: <path to a folder where you want to save the output data e.g. `./output_data/001/`>
-      - input: <path to a 2nd folder containing input .csv file>
-        output: <path to a 2nd folder where you want to save the output data e.g. `./output_data/002/`>
+	transform:
+	   settings: ...
+	   data:
+	     - input: <folder 1>
+           <<: *settings
+	   data:
+	     - input: <folder 2>
+           <<: *settings
 	```
+	
 	!!! note
 	    While the tool is running you can edit this file to append more data paths...
 
 ??? example "YAML to watch a directory for new data dumps"
-    Create a new file called `config.yaml` that will do the following:
 
-    1. Look every 1 minute in the folder `input_data` for any subfolders containing input `csv` data files
-    2. Run pseudonymisation on this data with a salt of value `00ed1234da` and save the pseudonymised data in the folder `pseudonymised_input_data`
-    3. Run the transform of the dataset into CDM based on the rules saved in `rules.json` 
-    4. Upload this data into bclink link tables (e.g. person.tsv --> person_test_data_v1)
+	Specifying the data in the transform section as a dictionary will tell the tool to look inside the master folder for subfolders containing the data
 
     ```yaml
-    clean: true
-    rules: /usr/lib/bcos/MyWorkingDirectory/rules.json
-    log: /usr/lib/bcos/MyWorkingDirectory/coconnect.log
-    data: 
-      watch: 
-         minutes: 1
-      input: /usr/lib/bcos/MyWorkingDirectory/input_data
-      output: /usr/lib/bcos/MyWorkingDirectory/mapped_data
-	  pseudonymise: 
-         output: /usr/lib/bcos/MyWorkingDirectory/pseudonymised_input_data
-         salt: 00ed1234da
+	transform:
+	   settings: ...
+	   data:
+	     input: <master folder>
+		 <<: *settings
+	
     ```
 
 ## 4. Setup and Check BCLink tables
@@ -171,29 +179,37 @@ By default, if the CO-CONNECT documentation for setting up BCLink has been follo
 * measurement  
 * observation  
 * drug_exposure   
-
+* etc..
 
 
 ??? example "Check if your tables exist"
     With a minimal `yaml` configuration, you can perform a check to see if the tables exist and that the tool is able to interact with them.
 	
 	```
-	coconnect etl bclink --config config.yml check_tables
+	coconnect etl --config config.yml check-tables
 	```
 	Example output:
 	```
-	2021-12-17 10:36:39 - check_tables - INFO - printing to see if tables exist
-	2021-12-17 10:36:39 - run_bash_cmd - NOTICE - bc_sqlselect --user=bclink --query=SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = 'observation' ) bclink
-	2021-12-17 10:36:39 - run_bash_cmd - NOTICE - bc_sqlselect --user=bclink --query=SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = 'condition_occurrence' ) bclink
-	2021-12-17 10:36:39 - run_bash_cmd - NOTICE - bc_sqlselect --user=bclink --query=SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = 'person' ) bclink
-	2021-12-17 10:36:39 - run_bash_cmd - NOTICE - bc_sqlselect --user=bclink --query=SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = 'measurement' ) bclink
-	2021-12-17 10:36:39 - check_tables - INFO - {
-		"observation": true,
-		"condition_occurrence": true,
-		"person": true,
-		"measurement": true
-	}
+	2022-03-15 12:56:02 - run_etl - INFO - running etl on config.yaml (last modified: 1647348863.9978611)
+	...
+	2022-03-15 12:56:02 - BCLinkHelpers - NOTICE - bc_sqlselect --user=bclink --query=SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = 'condition_occurrence' ) bclink
+	2022-03-15 12:56:02 - BCLinkHelpers - INFO - condition_occurrence (condition_occurrence) already exists --> all good
+	2022-03-15 12:56:02 - BCLinkHelpers - NOTICE - bc_sqlselect --user=bclink --query=SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = 'drug_exposure' ) bclink
+	2022-03-15 12:56:02 - BCLinkHelpers - INFO - drug_exposure (drug_exposure) already exists --> all good
+	...
+	2022-03-15 12:56:03 - BCLinkHelpers - INFO - ======== BCLINK SUMMARY ========
+	2022-03-15 12:56:03 - BCLinkHelpers - INFO - {
+      "condition_occurrence": {
+            "bclink_table": "condition_occurrence",
+            "nrows": "63988"
+      },
+      "drug_exposure": {
+            "bclink_table": "drug_exposure",
+            "nrows": "33015"
+      },
+    ...
 	```
+If there is an error here, you may need to manually configure the table in the yaml file (see [here](/docs/CoConnectTools/ETL/Yaml/))
 
 ??? example "If you need to create new tables via the GUI"
  
@@ -217,16 +233,26 @@ By default, if the CO-CONNECT documentation for setting up BCLink has been follo
     $dataset_tool --create --form=PERSON --table=person_test_data_v1 --setname='PERSON_TEST_DATA_V1' --user=data bclink
     Created dataset with table person_test_data_v1
     ```
+	
+	You would then have to specify in the `yaml` configuration the name of these tables so the tool is able to know e.g. which table to insert the `person` into, for example:
+	```yaml
+    load: &load-bclink
+      bclink:
+	    tables:
+           person: person_test_data_v1
+		...
+	```
 
 	CO-CONNECT-Tools also has this feature to create tables based on what has been setup in the `yaml` configuration file
 	```
-    coconnect etl bclink --config <config> create_tables
+    coconnect etl --config <config> create-tables
 	```
 	Example output:
 	```
-	2021-11-05 11:03:10 - run_bash_cmd - NOTICE - bc_sqlselect --user=bclink --query=SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = 'person_004' ) bclink
-	2021-11-05 11:03:10 - run_bash_cmd - NOTICE - dataset_tool --create --table=person_004 --setname=PERSON_004 --user=data --form=PERSON bclink
-	2021-11-05 11:03:10 - bclink_helpers - INFO - Created dataset with table person_004
+	2022-03-15 13:41:39 - run_etl - INFO - running etl on config.yaml (last modified: 1647351696.3011575)
+	2022-03-15 13:41:39 - BCLinkHelpers - NOTICE - bc_sqlselect --user=bclink --query=SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = 'person_test_003' ) bclink
+	2022-03-15 13:41:39 - BCLinkHelpers - NOTICE - dataset_tool --create --table=person_test_003 --setname=PERSON_TEST_003 --user=data --form=PERSON bclink
+	2022-03-15 13:41:39 - BCLinkHelpers - INFO - Created dataset with table person_test_003
 	--> All done with success.
     ...
 	```
@@ -249,155 +275,193 @@ Before you run the ETL (for the first time), it's important to make sure there's
 
 ??? example "From the Command Line"
 	```
-	coconnect etl bclink --config config.yml clean_tables 
+	coconnect etl --config config.yml clean-tables 
 	```
 	Example output:
     ```
-	(automation) [bcos_srv@link-test-dt Demo]$ coconnect etl bclink --config config2.yml clean_tables
-	2021-11-17 11:13:03 - bclink_helpers - INFO - Cleaning table person_001
-	2021-11-17 11:13:03 - run_bash_cmd - NOTICE - datasettool2 delete-all-rows person_001 --database=bclink
-	2021-11-17 11:13:05 - bclink_helpers - WARNING - Deleting all rows from dataset PERSON_001 (person_001)
-	2021-11-17 11:13:05 - bclink_helpers - WARNING - Deleted all 0 rows from dataset PERSON_001 (person_001)
-	2021-11-17 11:13:05 - bclink_helpers - INFO - Cleaning table condition_occurrence_001
-	2021-11-17 11:13:05 - run_bash_cmd - NOTICE - datasettool2 delete-all-rows condition_occurrence_001 --database=bclink
-	2021-11-17 11:13:07 - bclink_helpers - WARNING - Deleting all rows from dataset CONDITION_OCCURRENCE_001 (condition_occurrence_001)
-	2021-11-17 11:13:07 - bclink_helpers - WARNING - Deleted all 6 rows from dataset CONDITION_OCCURRENCE_001 (condition_occurrence_001)
-	2021-11-17 11:13:07 - clean_tables - INFO - removing output/001/
+	2022-03-15 13:42:51 - run_etl - INFO - running etl on config.yaml (last modified: 1647351753.2908654)
+	2022-03-15 13:42:51 - BCLinkHelpers - NOTICE - bc_sqlselect --user=bclink --query=SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = 'condition_occurrence' ) bclink
+	2022-03-15 13:42:51 - BCLinkHelpers - INFO - condition_occurrence (condition_occurrence) already exists --> all good
+	...
+	2022-03-15 13:42:51 - BCLinkHelpers - NOTICE - datasettool2 delete-all-rows condition_occurrence --database=bclink
+	2022-03-15 13:42:53 - BCLinkHelpers - WARNING - Deleting all rows from dataset CONDITION_OCCURRENCE (condition_occurrence)
+	2022-03-15 13:42:53 - BCLinkHelpers - WARNING - Deleted all 63988 rows from dataset CONDITION_OCCURRENCE (condition_occurrence)
+	2022-03-15 13:42:53 - BCLinkHelpers - INFO - Cleaning table drug_exposure
+	2022-03-15 13:42:53 - BCLinkHelpers - NOTICE - datasettool2 delete-all-rows drug_exposure --database=bclink
+	...
+	2022-03-15 13:43:07 - BCLinkHelpers - INFO - ======== BCLINK SUMMARY ========
+	2022-03-15 13:43:07 - BCLinkHelpers - INFO - {
+	"condition_occurrence": {
+            "bclink_table": "condition_occurrence",
+            "nrows": "0"
+      },
+      "drug_exposure": {
+            "bclink_table": "drug_exposure",
+            "nrows": "0"
+      },
+      "measurement": {
+            "bclink_table": "measurement", 
+            "nrows": "0"
+      },
+      "observation": {
+            "bclink_table": "observation", 
+            "nrows": "0"
+      },
+
 	```
 	
 ??? example "Specify within the YAML"
-	Alternatively you can tell the tool to do this automatically by specifying it in the `yaml` configuration file, by appending the configuration:
+	Alternatively you can tell the tool to do this automatically by specifying it in the `yaml` configuration file, by appending the configuration. Everytime `coconnect etl` is executed, the tables present in BCLink will be cleaned:
 	```
-	clean: true
+	settings:
+       clean: true
 	```
 
 ## 6. Run the ETL
 
 Finally you are ready to execute the ETL...
 
-??? example "Execute the full ETL"
+??? example "Start the co-connect ETL"
 	```
-	coconnect etl bclink --config config.yml execute
+	coconnect etl --config config.yml
 	```
 	Example output:
 	
 	#### Start of the Process
 	```
-	2021-11-17 11:18:06 - _process_list_data - INFO - ETL process has begun
-	2021-11-17 11:18:06 - run_bash_cmd - NOTICE - bc_sqlselect --user=bclink --query=SELECT count(*) FROM person_001 bclink
-	2021-11-17 11:18:06 - run_bash_cmd - NOTICE - bc_sqlselect --user=bclink --query=SELECT count(*) FROM condition_occurrence_001 bclink
-	2021-11-17 11:18:06 - bclink_helpers - INFO - ======== BCLINK SUMMARY ========
-	2021-11-17 11:18:06 - bclink_helpers - INFO - {
-      "person": {
-            "bclink_table": "person_001",
-            "nrows": "0"
-      },
-      "condition_occurrence": {
-            "bclink_table": "condition_occurrence_001",
-            "nrows": "0"
-      }
-    }
-	2021-11-17 11:18:06 - _process_list_data - INFO - New data found! [{'input': 'data/001/', 'output': 'output/001/'}]
-	2021-11-17 11:18:06 - execute - INFO - Executing steps ['clean', 'extract', 'transform', 'load']
+	2022-03-15 13:47:57 - run_etl - INFO - running etl on config.yaml (last modified: 1647352068.9562533)
+	2022-03-15 13:47:57 - LocalDataCollection - INFO - DataCollection Object Created
+	2022-03-15 13:47:57 - LocalDataCollection - INFO - Registering  Demographics.csv [<coconnect.io.common.DataBrick object at 0x7f0c5a82a5c0>]
+	2022-03-15 13:47:57 - LocalDataCollection - INFO - Registering  GP_Records.csv [<coconnect.io.common.DataBrick object at 0x7f0c5a82a9b0>]
+	...
+	2022-03-15 13:47:57 - BCLinkHelpers - NOTICE - bc_sqlselect --user=bclink --query=SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = 'condition_occurrence' ) bclink
+	2022-03-15 13:47:57 - BCLinkHelpers - INFO - condition_occurrence (condition_occurrence) already exists --> all good
+	...
 	```
+	
+	#### Building the Model
+	```
+	...
+	2022-03-15 13:47:58 - BCLinkDataCollection - INFO - DataCollection Object Created
+	2022-03-15 13:47:58 - CommonDataModel - INFO - CommonDataModel (5.3.1) created with co-connect-tools version 0.0.0
+	2022-03-15 13:47:58 - CommonDataModel - INFO - Running with an DataCollection object
+	2022-03-15 13:47:58 - CommonDataModel - INFO - Turning on automatic cdm column filling
+	...
+	```
+	
 	#### Extracting data
 	```
 	...
-	2021-11-17 11:18:10 - execute - INFO - Executing ETL...
-	2021-11-17 11:18:10 - extract - INFO - starting extraction processes
-	2021-11-17 11:18:10 - run_bash_cmd - NOTICE - bc_sqlselect --user=bclink --query=SELECT count(*) FROM person_001 bclink
-	2021-11-17 11:18:10 - run_bash_cmd - NOTICE - bc_sqlselect --user=bclink --query=SELECT count(*) FROM condition_occurrence_001 bclink
-	2021-11-17 11:18:10 - transform - INFO - starting data transform processes
-	2021-11-17 11:18:10 - transform - INFO - inputs: ['data/001/']
-	2021-11-17 11:18:10 - transform - INFO - output_folder: output/001/
-	2021-11-17 11:18:10 - transform - INFO - indexer: {}
-	2021-11-17 11:18:10 - transform - INFO - existing_global_ids: None
+	2022-03-15 13:47:58 - BCLinkHelpers - NOTICE - bc_sqlselect --user=bclink --query=SELECT * FROM person_ids  bclink
+	2022-03-15 13:47:58 - BCLinkHelpers - NOTICE - bc_sqlselect --user=bclink --query=SELECT count(*) FROM condition_occurrence bclink
+	...
 	```
+		
+	#### Adding Health Data Element 
+	```
+	2022-03-15 13:47:58 - CommonDataModel - INFO - Added Mental health problem 3046 of type condition_occurrence
+	2022-03-15 13:47:58 - CommonDataModel - INFO - Added Mental disorder 3047 of type condition_occurrence
+	2022-03-15 13:47:58 - CommonDataModel - INFO - Added Type 2 diabetes mellitus 3048 of type condition_occurrence
+	```
+	
+	
 	#### Transforming data
+	Preparing everything:
 	```
 	...
-	2021-11-17 11:18:11 - InputData - INFO - Registering  Questionnaire.csv [<class 'pandas.io.parsers.TextFileReader'>]
-	2021-11-17 11:18:11 - InputData - INFO - Registering  Demo.csv [<class 'pandas.io.parsers.TextFileReader'>]
-	2021-11-17 11:18:11 - CommonDataModel::Demo_test - INFO - CommonDataModel created with version 0.0.0
-	2021-11-17 11:18:11 - CommonDataModel::Demo_test - INFO - Running with the output to be dumped to a folder 'output/001/'
-	2021-11-17 11:18:11 - CommonDataModel::Demo_test - INFO - Running with an InputData object
-	2021-11-17 11:18:11 - CommonDataModel::Demo_test - INFO - Added FEMALE of type person
-	...
-	2021-11-17 11:18:11 - CommonDataModel::Demo_test - INFO - Starting processing in order: ['person', 'condition_occurrence']
-	2021-11-17 11:18:11 - CommonDataModel::Demo_test - INFO - Number of objects to process for each table...
+	2022-03-15 13:47:58 - CommonDataModel - INFO - Starting processing in order: ['person', 'observation', 'condition_occurrence', 'drug_exposure']
+	2022-03-15 13:47:58 - CommonDataModel - INFO - Number of objects to process for each table...
 	{
-      "person": 2,
-      "condition_occurrence": 2
-    }
+	  "person": 2,
+      "observation": 4,
+      "condition_occurrence": 12,
+      "drug_exposure": 5
+	}
+	2022-03-15 13:47:58 - CommonDataModel - INFO - for person: found 2 objects
+	2022-03-15 13:47:58 - CommonDataModel - INFO - working on person
+	2022-03-15 13:47:58 - CommonDataModel - INFO - starting on MALE 3025
+	2022-03-15 13:47:58 - Person - INFO - Called apply_rules
+	2022-03-15 13:47:58 - LocalDataCollection - INFO - Retrieving initial dataframe for 'Demographics.csv' for the first time
 	...
-	2021-11-17 11:18:11 - CommonDataModel::Demo_test - INFO - working on person
-	2021-11-17 11:18:11 - FEMALE - INFO - Called apply_rules
-	2021-11-17 11:18:11 - FEMALE - INFO - Mapped birth_datetime
-	2021-11-17 11:18:11 - FEMALE - INFO - Mapped gender_concept_id
-	2021-11-17 11:18:11 - FEMALE - INFO - Mapped gender_source_concept_id
-	2021-11-17 11:18:11 - FEMALE - INFO - Mapped gender_source_value
-	2021-11-17 11:18:11 - FEMALE - INFO - Mapped person_id
-	2021-11-17 11:18:11 - FEMALE - INFO - Performing checks on data formatting.
-	2021-11-17 11:18:11 - FEMALE - WARNING - Requiring non-null values in gender_concept_id removed 1 rows, leaving 3 rows.
-	...
-	2021-11-17 11:18:11 - CommonDataModel::Demo_test - INFO - saving person to output/001//person.tsv
-	2021-11-17 11:18:11 - CommonDataModel::Demo_test - INFO - saving condition_occurrence to output/001//condition_occurrence.tsv
-	2021-11-17 11:18:11 - CommonDataModel::Demo_test - INFO - finished save to file
-	2021-11-17 11:18:11 - CommonDataModel::Demo_test - INFO - making output folder output/001//logs/
-	```
 	
+	```
+	Applying rules to build the health data element and saving the file to the cache folder:
+	```
+	...
+	2022-03-15 13:48:05 - CommonDataModel - INFO - starting on FEMALE 3026
+	2022-03-15 13:48:05 - Person - INFO - Called apply_rules
+	2022-03-15 13:48:06 - Person - INFO - Mapped birth_datetime
+	2022-03-15 13:48:06 - Person - INFO - Mapped gender_concept_id
+	2022-03-15 13:48:06 - Person - INFO - Mapped gender_source_concept_id
+	2022-03-15 13:48:06 - Person - INFO - Mapped gender_source_value
+	2022-03-15 13:48:06 - Person - INFO - Mapped person_id
+	2022-03-15 13:48:06 - Person - WARNING - Requiring non-null values in gender_concept_id removed 55732 rows, leaving 44268 rows.
+	2022-03-15 13:48:06 - Person - INFO - Automatically formatting data columns.
+	2022-03-15 13:48:06 - Person - INFO - created df (0x7f0c57843908)[FEMALE_3026]
+	2022-03-15 13:48:06 - CommonDataModel - INFO - finished FEMALE 3026 (0x7f0c57843908) ... 2/2 completed, 44268 rows
+	...
+	2022-03-15 13:48:09 - BCLinkDataCollection - INFO - saving person.FEMALE_3026.0x7f0c57843908.2022-03-15T134809 to /usr/lib/bcos/MyWorkingDirectory/Temp/cache//person.FEMALE_3026.0x7f0c57843908.2022-03-15T134809.tsv
+	...
+	```
+		
 	#### Loading Data
+	Making jobs to load the data
 	```
 	...
-	2021-11-17 11:18:11 - load - INFO - starting loading data processes
-	2021-11-17 11:18:11 - load - INFO - starting loading global ids
-	2021-11-17 11:18:11 - load - INFO - starting loading cdm tables
-	2021-11-17 11:18:11 - run_bash_cmd - NOTICE - dataset_tool --load --table=person_001 --user=data --data_file=output/001//person.tsv --support --bcqueue bclink
-	2021-11-17 11:18:11 - bclink_helpers - INFO - submitted job to bclink queue: link-test-dt:bcos_srv-1221
+	2022-03-15 13:48:09 - BCLinkHelpers - NOTICE - dataset_tool --load --table=person --user=data --data_file=/usr/lib/bcos/MyWorkingDirectory/Temp/cache//person.FEMALE_3026.0x7f0c57843908.2022-03-15T134809.tsv --support --bcqueue bclink
+	2022-03-15 13:48:10 - BCLinkHelpers - INFO - submitted job to bclink queue: link-test-dt:bcos_srv-336
+	2022-03-15 13:48:10 - BCLinkHelpers - NOTICE - datasettool2 list-updates --dataset=person --user=data --database=bclink
+	2022-03-15 13:48:13 - BCLinkHelpers - INFO - running job 10983
 	...
-	2021-11-17 11:19:00 - bclink_helpers - INFO -    BATCH                     UPDDATE         UPD_COMPLETION_DATE    JOB STATUS  ACTION
-	0   1327  2021-11-17-11.18.13.428504  2021-11-17-11.18.13.740396  13648     OK  INSERT
-	2021-11-17 11:19:00 - bclink_helpers - INFO - Getting log for person_001 id=13648
-	2021-11-17 11:19:00 - run_bash_cmd - NOTICE - cat /data/var/lib/bcos/download/data/job13648/cover.13648
-	2021-11-17 11:19:00 - bclink_helpers - TEXT -
-	2021-11-17 11:19:00 - bclink_helpers - TEXT - Job #13646    Wed Nov 17 11:18:11 2021    BC|SNPmax 6.0.0-rc21
-	2021-11-17 11:19:00 - bclink_helpers - TEXT - ### Application: supp-dataload-batch
-	2021-11-17 11:19:00 - bclink_helpers - TEXT - ### User:        data
-	2021-11-17 11:19:00 - bclink_helpers - TEXT - ### Database:  bclink
-	2021-11-17 11:19:00 - bclink_helpers - TEXT - ### Run on local/localhost.localdomain
+	```
+	checking to see if upload jobs have finished:
+	```
+	2022-03-15 13:56:19 - BCLinkHelpers - NOTICE - cat /data/var/lib/bcos/download/data/job11043/cover.11043
+	2022-03-15 13:56:19 - BCLinkHelpers - TEXT -
+	2022-03-15 13:56:19 - BCLinkHelpers - TEXT - Job #11042    Tue Mar 15 13:56:06 2022    BC|SNPmax 6.0.0-rc21
+	2022-03-15 13:56:19 - BCLinkHelpers - TEXT - ### Application: supp-dataload-batch
+	2022-03-15 13:56:19 - BCLinkHelpers - TEXT - ### User:        data
+	2022-03-15 13:56:19 - BCLinkHelpers - TEXT - ### Database:  bclink
+	2022-03-15 13:56:19 - BCLinkHelpers - TEXT - ### Run on local/localhost.localdomain
+	2022-03-15 13:56:19 - BCLinkHelpers - TEXT -
+	2022-03-15 13:56:19 - BCLinkHelpers - TEXT - Job description: Upload of file /usr/lib/bcos/MyWorkingDirectory
+	/Temp/cache//drug_exposure.COVID_19_vaccine_3036.0x7f0c55b86390.2022-03-15T135606.tsv
+	2022-03-15 13:56:19 - BCLinkHelpers - TEXT - ================================================================
+	========
+	2022-03-15 13:56:19 - BCLinkHelpers - TEXT - --> No data converter selected
+	2022-03-15 13:56:19 - BCLinkHelpers - TEXT - --> Adding new data, duplicates are discarded and reported
+	2022-03-15 13:56:19 - BCLinkHelpers - TEXT -
+	2022-03-15 13:56:19 - BCLinkHelpers - TEXT - ===Summary report===
+	2022-03-15 13:56:19 - BCLinkHelpers - TEXT - --> OK
+	2022-03-15 13:56:19 - BCLinkHelpers - CRITICAL - 110 data row(s) discarded, 23389 new row(s) inserted
+	2022-03-15 13:56:19 - BCLinkHelpers - TEXT - ---> See attachments
+	2022-03-15 13:56:19 - BCLinkHelpers - TEXT -
+	2022-03-15 13:56:19 - BCLinkHelpers - TEXT - ===Detailed report===
+	2022-03-15 13:56:19 - BCLinkHelpers - TEXT -  
 	...
-	2021-11-17 11:19:05 - execute - INFO - looking for duplicates and deleting any
-	2021-11-17 11:19:05 - drop_duplicates - INFO - printing to see if tables exist
-	2021-11-17 11:19:05 - drop_duplicates - INFO - Looking for duplicates in condition_occurrence (condition_occurrence_001)
-	2021-11-17 11:19:05 - run_bash_cmd - NOTICE - bc_sqlselect --user=bclink --query=SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = 'condition_occurrence_001' ) bclink
-	...
-	2021-11-17 11:19:05 - bclink_helpers - INFO - no duplicates detected
-	2021-11-17 11:19:05 - bclink_helpers - INFO - [
-      {
-            "job_id": "13648",
-            "table": "person",
-            "bclink_table": "person_001",
-            "From": " output/001//person.tsv",
-            "To": "   <data> PERSON_001 (person_001)",
-            "new_rows": "4 new row(s) inserted"
-      },
-      {
-            "job_id": "13649",
-            "table": "condition_occurrence",
-            "bclink_table": "condition_occurrence_001",
-            "From": " output/001//condition_occurrence.tsv",
-            "To": "   <data> CONDITION_OCCURRENCE_001 (condition_occurrence_001)",
-            "new_rows": "6 new row(s) inserted"
-      }
-	]
 	```
 	
-	#### Finished and waiting for changed
-	```
-	2021-11-17 11:19:05 - execute - INFO - done!
-	2021-11-17 11:19:05 - _process_list_data - INFO - Finished!... Listening for changes to data in config.yml
+	
+	#### Finished!
 	
 	```
+	...
+	2022-03-15 13:56:19 - BCLinkHelpers - TEXT - --> OK
+	2022-03-15 13:56:19 - BCLinkHelpers - CRITICAL - 115 data row(s) discarded, 23384 new row(s) inserted
+	2022-03-15 13:56:19 - BCLinkHelpers - TEXT - ---> See attachments
+	2022-03-15 13:56:19 - BCLinkHelpers - TEXT -
+	2022-03-15 13:56:19 - BCLinkHelpers - TEXT - ===Detailed report===
+	2022-03-15 13:56:19 - BCLinkHelpers - TEXT -  
+	2022-03-15 13:56:19 - BCLinkDataCollection - INFO - done!
+	```
 
-
-
+	If the `yaml` contains:
+	```yaml
+	settings:
+	   listen_for_changes: true
+	```
+	
+	Instead you will see the message:
+	```
+	2022-03-15 13:59:58 - run_etl - INFO - Finished!... Listening for changes every 5 seconds to data in config.yaml
+	```

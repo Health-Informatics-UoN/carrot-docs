@@ -12,7 +12,7 @@ coconnect etl --help
 ```
 <center>
 [Overview](/docs/CoConnectTools/ETL/About/){ .md-button .md-button--primary }
-[Setting up automation](/docs/CoConnectTools/ETL/Automation/){ .md-button .md-button--secondary }
+[Setting up automation](/docs/CoConnectTools/ETL/Yaml/){ .md-button .md-button--secondary }
 </center>
 
 Otherwise, you have to do each step manually:
