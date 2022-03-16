@@ -2,6 +2,16 @@
 !!! danger
 	This section is decrepid, please instead use [co-connect-pseudonymise](/docs/CoConnectPseudonymise/Pseudonymisation/) instead.
 
+!!! warning
+	Please use the command:
+	```
+	pseudonymise csv --help
+	```
+	That comes with the [co-connect-pseudonymise](/docs/CoConnectPseudonymise/Pseudonymisation/) package, and is installed when you install `co-connect-tools`.
+
+
+# Decrepid Tool
+
 A dataset can be pseudonymised __in-house__, or via the use of the co-connect-tools `pseudonymise` command (also the command executed in the ETL automation process)
 
 ```

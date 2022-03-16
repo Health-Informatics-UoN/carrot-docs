@@ -423,6 +423,7 @@ Output example...
 ...
 ```
 
+And displaying the delta of the rules created:
 ```
 coconnect display rules dag rules_delta.json
 ```
