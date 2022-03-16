@@ -2,6 +2,9 @@ This section describes how CO-CONNECT-Tools can be used to manually perform the 
 
 The following guide will take you through the main steps to make sure the tool is installed correctly and that the ETL is performed correctly.
 
+!!! note
+	Running the transform part of the ETL process with `coconnect run map OPTIONS` instead of `coconnect etl --config <file>` gives you a lot more control over the command line options, although all options can be parsed as key-word-arguments in the config `yaml` used with the `coconnect etl`
+
 
 ### 1. Install the tool
 
@@ -57,8 +60,10 @@ coconnect display json rules.json
 
 The synthax for running the tool can be seen from using `--help`:
 ```
-coconnect map run --help
-Usage: coconnect map run [OPTIONS] INPUTS...
+coconnect run map --help
+```
+```
+Usage: coconnect run map [OPTIONS] [INPUTS]...
 
   Perform OMOP Mapping given an json file and a series of input files
 
@@ -68,29 +73,53 @@ Usage: coconnect map run [OPTIONS] INPUTS...
 Options:
   --rules TEXT                    input json file containing all the mapping
                                   rules to be applied  [required]
+  --indexing-conf TEXT            configuration file to specify how to start
+                                  the indexing
   --csv-separator [;|:|	|,| ]     choose a separator to use when dumping
                                   output csv files
   --use-profiler                  turn on saving statistics for profiling CPU
                                   and memory usage
+  --format-level [0|1|2]          Choose the level of formatting to apply on
+                                  the output data. 0 - no formatting. 1 -
+                                  automatic formatting. 2 (default) - check
+                                  formatting (will crash if input data is not
+                                  already formatted).
   --output-folder TEXT            define the output folder where to dump csv
                                   files to
-  -nc, --number-of-rows-per-chunk TEXT
+  --write-mode [w|a]              force the write-mode on existing files
+  --split-outputs                 force the output files to be split into
+                                  separate files
+  --allow-missing-data            don't crash if there is data tables in rules
+                                  file that hasnt been loaded
+  --database TEXT                 define the output database where to insert
+                                  data into
+  -nc, --number-of-rows-per-chunk INTEGER
                                   Choose the number of rows (INTEGER) of input
-                                  data to load (chunksize). The default 'auto'
+                                  data to load (chunksize). The option 'auto'
                                   will work out the ideal chunksize. Inputing
-                                  a value <=0 will turn off data chunking.
+                                  a value <=0 will turn off data chunking
+                                  (default behaviour).
   -np, --number-of-rows-to-process INTEGER
                                   the total number of rows to process
-  -l, --log-level [0|1|2|3]       change the level for log messaging. 0 -
-                                  ERROR, 1 - WARNING, 2 - INFO (default), 3 -
-                                  DEBUG
+  --person-id-map TEXT            pass the location of a file containing
+                                  existing masked person_ids
+  --db TEXT                       instead, pass a connection string to a db
+  --merge-output                  merge the output into one file
+  --parse-original-person-id      turn off automatic conversion (creation) of
+                                  person_id to (as) Integer
+  --no-fill-missing-columns       Turn off automatically filling missing CDM
+                                  columns
+  --log-file TEXT                 specify a path for a log file
+  --max-rules INTEGER             maximum number of rules to process
+  --object TEXT                   give a list of objects by name to process
+  --table TEXT                    give a list of tables by name to process
   --help                          Show this message and exit.
 ```
 
 The tool ==requires== you to pass a `.json` file for the rules, as well as space separated list of `.csv` files 
 
 ```
-coconnect map run --rules <.json file for rules> <csv file 1> <csv file 2> <csv file 3> ...
+coconnect run map --rules <.json file for rules> <csv file 1> <csv file 2> <csv file 3> ...
 ```
 
 
@@ -101,13 +130,13 @@ coconnect map run --rules <.json file for rules> <csv file 1> <csv file 2> <csv 
         For macOS/Ubuntu/Centos etc. users, you can easily run from the CLI with a wildcard. Assuming your input data is located in the folder `data/` you can run:
 
         ``` bash
-    	coconnect map run --rules $(coconnect info install_folder)/data/test/rules/rules_14June2021.json  $(coconnect info install_folder)/data/test/inputs/*.csv
+    	coconnect run map --rules $(coconnect info install_folder)/data/test/rules/rules_14June2021.json  $(coconnect info install_folder)/data/test/inputs/*.csv
         ```
 
     	The tool has the capability to also run on a folder containing the `.csv` files. The tool will look in the folder for `.csv` files and load them:
 
         ``` bash
-        coconnect map run --rules $(coconnect info install_folder)/data/test/rules/rules_14June2021.json  $(coconnect info install_folder)/data/test/inputs/
+        coconnect run map --rules $(coconnect info install_folder)/data/test/rules/rules_14June2021.json  $(coconnect info install_folder)/data/test/inputs/
         ```
 
 
@@ -117,13 +146,13 @@ coconnect map run --rules <.json file for rules> <csv file 1> <csv file 2> <csv 
 
 
         ``` 
-    	coconnect map run --rules rules.json D:\Foo\Bar\data
+    	coconnect run map --rules rules.json D:\Foo\Bar\data
         ```
 
         Or by manually passing the individual input csv files:
         
         ``` 
-        coconnect map run --rules rules.json D:\Foo\Bar\data\file_1.csv D:\Foo\Bar\data\file_2.csv
+        coconnect run map --rules rules.json D:\Foo\Bar\data\file_1.csv D:\Foo\Bar\data\file_2.csv
         ```
 
         Wildcards for inputs ....
