@@ -32,11 +32,51 @@ To run the full ETL you need a `.yml`(or `.yaml`) file to configure various sett
 [Example yamls](https://github.com/CO-CONNECT/co-connect-tools/tree/master/coconnect/data/test/automation){ .md-button .md-button--secondary}
 </center>
 
+## Setup your YAML config
+
+Here are some details on how you can setup a yaml configuration file
+
 ### Get to the point...
 
 "TL;DR, I want a yaml configuration file that I can run out the box..."
 
+??? "Locally"
+	Run on some input data and perform a local load by merging the split outputs (e.g. create one file called `person.tsv` in the output folder)
+	```yaml
+	settings:
+		listen_for_changes: true
+		
+	load: &load-local
+		output: cache/
+		merge_output: true
 
+	transform:
+		settings: &settings
+			rules: demo-dataset/data/rules_small.json
+		data:
+			- input: demo-dataset/data/part1/
+			  <<: *settings
+              <<: *load-local
+	```
+
+??? "BCLink"
+	Configuration to upload to BCLink. Will wait for changes (additional data added to the transform section, changes to the rules file etc...)
+	```yaml
+	settings:
+		listen_for_changes: true
+		clean: true
+	load: &load-bclink
+		cache: /usr/lib/bcos/MyWorkingDirectory/Temp/cache/
+		bclink:
+			dry_run: false
+	transform:
+		settings: &settings
+			output: *load-bclink
+			rules: /usr/lib/bcos/MyWorkingDirectory/Temp/demo-dataset/data/rules.json
+		data:
+		- input: /usr/lib/bcos/MyWorkingDirectory/Temp/demo-dataset/data/part1/
+		  <<: *settings
+	```
 
 ### Transform Tab 
 This tab specifies how the data is going to be transformed.
@@ -164,50 +204,95 @@ This tab specifies how the data is going to be transformed.
 			.....
 	```
 	
+### Extract Tab
+
+By defining an extract tab in the `yaml` you are able to execute code __before__ the transform is run.
+
+??? "Configuration"
+	
+	The following shows how a bash command can be defined to run on an input and extract an output. It's important that you define an extract job that will run on a single input and output a single output. The configuration must specify a `{input}` and a  `{output}`.
+	
+	Any configuration must be also hooked up with the transform part, so the tool knows that it should perform the extract before processing..
+	
+	For example...
+	```yaml
+	extract: &pseudonymise
+		bash: |
+			echo "Going to run {input} and put output in {output}"
+			pseudonymise csv --salt 12345 --id ID --output-folder {output} {input}
+	...
+	transform:
+		data:
+			- input:
+				<<: *pseudonymise
+				input: demo-dataset/data/part1/
+				output: data_pseudonymised/
+			  output: output/
+			  rules: demo-dataset/data/rules_small.json
+	```
+	As can be seen, in the transform tab, the `data.input` now itself specifies an `input`/`output` because the `*pseudonymise` specifies how a pre-processing on the `input` should be run to produce an `output` - which is then used as the _input_ for transform.
+	
+	Example output, you will see the `pseudonymise csv` start to run before the transform.
+	```
+	2022-03-16 11:35:46 - run_etl - INFO - running etl on config.yaml (last modified: 1647430135.1740856)
+"Going to run demo-dataset/data/part1/Symptoms.csv and put output in data_pseudonymised/"
+
+	2022-03-16 11:35:46.656 | INFO     | cli.cli:csv:16 - Working on file demo-dataset/data/part1/Symptoms.csv, pseudonymising columns '['ID']' with salt '12345'
+	2022-03-16 11:35:46.656 | INFO     | cli.cli:csv:22 - Saving new file to data_pseudonymised//Symptoms.csv
+	2022-03-16 11:35:46.761 | DEBUG    | cli.cli:csv:32 - 0        e428669397a3d0c72d46f6d5afe9a8ae20ea675883c0e7...
+	1        a37861e3f9bb0fd4385b7c6fddcf6d4ba366a4f3c9b17b...
+	2        a37861e3f9bb0fd4385b7c6fddcf6d4ba366a4f3c9b17b...
+	3        a37861e3f9bb0fd4385b7c6fddcf6d4ba366a4f3c9b17b...
+	4        a37861e3f9bb0fd4385b7c6fddcf6d4ba366a4f3c9b17b...
+	...
+	```
 
 
-## Execute as daemon
+## Running the ETL
 
+To run the ETL-Tool given a configuration file, simply run:
+```
+coconnect etl --config config.yaml
+```
+
+### Daemon Mode
 To run as a background process (more specifically as a "daemon"), that watches for changes in a directory (ideal for data dumps of regularly updated data) the tool can be started with the flag `-d` or `--daemon`.
 
-### Start the ETL from a yaml file
+#### Start the ETL from a yaml file
 
 Start the ETL process with the following command:
 ```
-$ coconnect etl bclink --config config.yml execute --daemon
-2021-10-13 10:50:03 - Execute - INFO - running as a daemon process, logging to /usr/lib/bcos/OMOP-test-data/tests_06Oct/etl.log
-2021-10-13 10:50:03 - Execute - INFO - process_id in <TimeoutPIDLockFile: 'etl.pid' -- 'etl.pid'>
-$
+coconnect etl --config config.yaml --daemon
+```
+You'll see an output like:
+```
+2022-03-16 11:10:30 - etl - INFO - running as a daemon process, logging to coconnect.log
+2022-03-16 11:10:30 - etl - INFO - process_id in <TimeoutPIDLockFile: 'etl.pid' -- 'etl.pid'>
 ```
 
-### Check the logs
+The file `etl.pid` will exist as long as the process is running, if you dont see this (while you specified to listen for changes), something when wrong and you should check the logs.
+
+
+#### Check the logs
 
 The yaml file configures where log messages are saved. For example, you can `tail` the last two lines of the log to see the output:
 ```
-$  tail -20 etl.log
-2021-10-13 10:51:40 - bclink_helpers - INFO - ======== SUMMARY ========
-2021-10-13 10:51:40 - bclink_helpers - INFO - {
-      "person": {
-            "bclink_table": "person_001",
-            "nrows": "1000"
-      },
-      "observation": {
-            "bclink_table": "observation_001",
-            "nrows": "900"
-      },
-      "condition_occurrence": {
-            "bclink_table": "condition_occurrence_001",
-            "nrows": "400"
-      },
-      "measurement": {
-            "bclink_table": "measurement_001",
-            "nrows": "1000"
-      }
-}
-2021-10-13 10:51:40 - _process_data - INFO - Refreshing /usr/lib/bcos/OMOP-test-data/tests_06Oct/data every 0:00:05 to look for new subfolders....
+tail coconnect.log
+```
+```
+2022-03-16 11:14:14 - CommonDataModel - INFO - working on drug_exposure
+2022-03-16 11:14:14 - CommonDataModel - INFO - starting on drug_exposure.COVID_19_vaccine_3035.0x117dff910.2022-03-16T111409
+2022-03-16 11:14:14 - CommonDataModel - INFO - finished drug_exposure.COVID_19_vaccine_3035.0x117dff910.2022-03-16T111409 (0x119468eb0) ... 1/1 completed, 23522 rows
+2022-03-16 11:14:14 - CommonDataModel - INFO - saving dataframe (0x11ba44ca0) to <coconnect.io.plugins.local.LocalDataCollection object at 0x117dfffd0>
+2022-03-16 11:14:14 - LocalDataCollection - INFO - saving drug_exposure to cache//drug_exposure.tsv
+2022-03-16 11:14:14 - LocalDataCollection - INFO - finished save to file
+2022-03-16 11:14:14 - CommonDataModel - INFO - finalised drug_exposure on iteration 0 producing 23522 rows from 1 tables
+2022-03-16 11:14:14 - LocalDataCollection - INFO - Getting next chunk of data
+2022-03-16 11:14:14 - LocalDataCollection - INFO - All input files for this object have now been used.
+2022-03-16 11:14:14 - run_etl - INFO - Finished!... Listening for changes every 5 seconds to data in config.yaml
 ```
 
-### Find the process ID
+#### Find the process ID
 
 By default a (lock) file `etl.pid` is created while the ETL process is running as a background process. The PID (process ID) is saved inside the file, e.g.:
 ```
@@ -215,190 +300,68 @@ $ cat etl.pid
 75107
 ```
 
-### Kill the daemon
+#### Kill the daemon
 
 To stop the background process, you can do:
 ```
 kill -9 $(cat etl.pid)
 ```
 
+## Additional Commands
 
-## Setup your `yaml` configuration
+### Check Tables
 
-This section documents additional options and how to configure your `yaml` file.
+A simple command that only works if you have BCLink options setup in your `yaml` file
+```
+coconnect etl --config config.yaml check-tables
+```
+The command will display information about the number of rows in the BCLink tables the configuration file configures for.
 
 
-### Rules **[required]**
+### Delete Tables
+The following command can be run even when the ETL tool is already running as a background process
+```
+coconnect etl --config config.yaml delete-tables 
+```
+Starting the command provides you with a prompt, asking which files you want to delete
+```
+2022-03-16 11:17:10 - run_etl - INFO - running etl on config.yaml (last modified: 1647356757.6764326)
+[?] Which tables do you want to delete? ... : 
+ > o /usr/lib/bcos/MyWorkingDirectory/Temp/cache/person_ids.0x7f0c5783dcf8.2022-03-15T134800.tsv
+   o /usr/lib/bcos/MyWorkingDirectory/Temp/cache/person.MALE_3025.0x7f0c57843668.2022-03-15T134803.tsv
+   o /usr/lib/bcos/MyWorkingDirectory/Temp/cache/person_ids.0x7f0c56ad6ac8.2022-03-15T134807.tsv
+   o /usr/lib/bcos/MyWorkingDirectory/Temp/cache/person.FEMALE_3026.0x7f0c57843908.2022-03-15T134809.tsv
+   o /usr/lib/bcos/MyWorkingDirectory/Temp/cache/observation.Antibody_3027.0x7f0c56ad6908.2022-03-15T134814.tsv
+   ...
+```
 
-* Specify the location of the [transform rules file](/docs/CoConnectTools/ETL/Rules/) provided by the co-connect team
-
-```yaml
+For example, selecting one file (by moving your keyboard arrows to navigate and select):
+```
+   o /usr/lib/bcos/MyWorkingDirectory/Temp/cache/observation.2019_nCoV_3044.0x7f0c563fa470.2022-03-15T135156.tsv
+ > X /usr/lib/bcos/MyWorkingDirectory/Temp/cache/observation.Cancer_3045.0x7f0c563fa278.2022-03-15T135200.tsv
+   o /usr/lib/bcos/MyWorkingDirectory/Temp/cache/condition_occurrence.Headache_3028.0x7f0c571c3320.2022-03-15T135459.tsv
+```
+Starts the process to delete this file (also deletes it from BCLink if it has been uploaded there):
+```
 ...
-rules: /usr/lib/bcos/MyWorkingDirectory/rules.json 
+2022-03-16 11:19:42 - BCLinkHelpers - INFO - Called remove_table on /usr/lib/bcos/MyWorkingDirectory/Temp/cache/observation.Cancer_3045.0x7f0c563fa278.2022-03v
+2022-03-16 11:19:42 - LocalDataCollection - INFO - DataCollection Object Created
+2022-03-16 11:19:42 - LocalDataCollection - INFO - Using a chunksize of '1000' nrows
+2022-03-16 11:19:42 - LocalDataCollection - INFO - Registering  observation [<coconnect.io.common.DataBrick object at 0x7fa2a0471630>]
+2022-03-16 11:19:42 - BCLinkHelpers - NOTICE - bc_sqlselect --user=bclink --query=SELECT column_name FROM INFORMATION_SCHEMA. COLUMNS WHERE table_name = 'obsek
+2022-03-16 11:19:42 - BCLinkHelpers - INFO - got pk observation_id
+2022-03-16 11:19:42 - LocalDataCollection - INFO - Retrieving initial dataframe for 'observation' for the first time
+2022-03-16 11:19:42 - BCLinkHelpers - NOTICE - bc_sqlselect --user=bclink --query=DELETE FROM observation WHERE observation_id IN (82700,82701,82703,82704,827k
+2022-03-16 11:19:42 - LocalDataCollection - INFO - Getting next chunk of data
+2022-03-16 11:19:42 - LocalDataCollection - INFO - Getting the next chunk of size '1000' for 'observation'
+2022-03-16 11:19:42 - LocalDataCollection - INFO - --> Got 1000 rows
 ...
+2022-03-16 11:19:44 - LocalDataCollection - INFO - All input files for this object have now been used.
+2022-03-16 11:19:44 - delete_tables - WARNING - removing /usr/lib/bcos/MyWorkingDirectory/Temp/cache/observation.Cancer_3045.0x7f0c563fa278.2022-03-15T135200
 ```
 
-### Input/Output Data **[required]**
+## Reference
 
-* Specify a list of folders (or individual csv files) for where the input data is located   
-* Data must be [standardised](/docs/CoConnectTools/ETL/Extract/)
-    * manually converted to `csv` format, abiding by [co-connect data standards](https://co-connect.ac.uk/co-connect-data-files-and-meta-data-standardisation/)
-    * already pseudonymised
-* Specify the output folder of where the `tsv` files created in the transform process will be written to disk before any upload to BCLink.
+The following 
 
-
-??? example "Example input data structure"
-    ```yaml
-	/data/dataset_drops/
-	├── 001
-	│   ├── Demo.csv
-	│   └── Questionnaire.csv
-	└── 002
-	    └── Questionnaire.csv
-    ```
-
-
-=== "Input Folders"
-    If you have (multiple) folder(s) containing the input (csv) files, the should be specified as such:
-	```yaml
-	...
-	data: 
-	  - input: /data/dataset_drops/001/
-	    output: /data/output/001/
-	  - input: /data/dataset_drops/002/
-	    output: /data/output/002/
-		...
-	```
-=== "Input Files"
-    If you want to specify the full path to files, that may be in different folders, this can be achieved via:
-    ```yaml
-	...
-	data: 
-     - input: 
-	    - /data/001/Demo.csv
-		- /data/002/Questionaire.csv 
-       output: /data/output/
-    ...
-	```
-
-=== "Folder containing subfolders"
-    Alternative you can specify the ETL to watch a directory for new data-drops that are contained within subfolders of that folder.
-	```yaml
-	...
-	data: 
-	  watch: 
-        days: 1
-	  input: /data/dataset_drops
-      output: /data/output
-    ...
-    ```
-
-
-### Clean **[optional]**
-
-* When starting the ETL process from this configuration file:
-
-1. clean all results folders (folders containing the mapped `tsv` files)
-2. delete all existing rows in the BCLink tables
-
-```yaml
-...
-clean: true
-..
-```
-
-### Log **[optional]**
-
-* Specify the location on the log file created when running the ETL.   
-* If not specified, the file is written to `./coconnect.log` (in the working directory of where the command was executed from).   
-
-```yaml
-...
-log: /usr/lib/bcos/MyWorkingDirectory/coconnect-etl.log
-...
-```
-
-### Pseudonymisation **[optional]**
-
-* Include an automated pseudonymisation procedure, specifying the output folder location of where to store these files
-* A salt hash (provided to you by the co-connect team)
-
-=== "Example #1" 
-    Simple configuration for data list:
-    ```yaml
-	...
-	data:
-	   - input: ...
-	     output: ...
-	     pseudonymise: 
-		    output: /usr/lib/bcos/MyWorkingDirectory/pseudo_data
-			salt: 00ed1234da
-	...
-    ```
-=== "Example #2" 
-    When watching a folder for subfolder data dumps
-    ```yaml
-	...
-	data:
-	   input: ...
-	   pseudonymise: 
-		   output: /usr/lib/bcos/MyWorkingDirectory/pseudo_data
-		   salt: 00ed1234da
-	...
-    ```
-=== "Example #3" 
-    Using a hook/anchor to prevent copy&pasting code
-    ```yaml
-	rules: rules_update.json
-    log: coconnect.log
-    pseudonymise: &pseudonymise_opts
-       salt: 00ed1234da
-       chunksize: 100
-       do: true
-	data:
-	   - input: data/001/
-	     output: output/001/ 
-		 pseudonymise: 
-		   <<: *pseudonymise_opts
-		   output: pseudo/001/
-	   - input: data/002/
-	     output: output/002/ 
-		 pseudonymise: 
-		   <<: *pseudonymise_opts
-		   output: pseudo/002/
-	   ...
-	...
-    ```
-
-### bclink **[optional]**
-
-#### tables
-* By default it is assumed the bclink table to be inserted to has an id that is the same as the CDM table name.
-
-* However, you may want to upload to a different table e.g. insert a `person` table into the bclink table `ds10001`. To be able to to this you can specify a map between the CDM table and the BCLink take dataset id.
-
-```yaml
-bclink:
-   tables:
-      person: ds10001
-      observation: ds10002
-      condition_occurrence: ds10003
-      measurement: ds10004
-```
-#### global ids
-
-Similarly a name of the BCLink table where the lookup between the hashed global identifiers and the integer indentifiers inserted into the person table can be specified to point to a particular table:
-
-```yaml
-bclink:
-   global_ids: ds10005
-```
-
-#### dry-run
-
-* To execute the "load" as a dry-run, you can specify to only `echo` the bclink commands and not insert into `bclink`.
-
-```yaml
-bclink:
-  dry_run: true
-```
+### BCLink
