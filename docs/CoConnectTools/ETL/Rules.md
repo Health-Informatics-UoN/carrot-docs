@@ -2,6 +2,27 @@ The transform (mapping) rules `json` file encodes rules on how to create CDM obj
 
 For co-connect datapartners, you will be supplied this `json` file by the co-connect team, who create this file based on a WhiteRabbit ScanReport uploaded and then mapped on the [CCOM](/docs/MappingPipeline/about/) mapping website.
 
+## CLI helper
+
+The co-connect package comes with a CLI helper for displaying/manipulating rules files
+```
+coconnect display rules --help
+```
+```
+Usage: coconnect display rules [OPTIONS] COMMAND [ARGS]...
+
+  Commands for displaying json rules in various ways.
+
+Options:
+  --help  Show this message and exit.
+
+Commands:
+  dag      Display the OMOP mapping json as a DAG
+  delta    display a delta of two rules files
+  flatten  flattern a rules json file
+  json     Show the OMOP mapping json
+```
+
 ## JSON Structure
 
 ```json
@@ -37,9 +58,8 @@ echo $(coconnect info data_folder)/test/rules/rules_14June2021.json
 
 It can be displayed to the terminal (Unix):
 ```
-coconnect display json $(coconnect info data_folder)/test/rules/rules_14June2021.json
+coconnect display rules json $(coconnect info data_folder)/test/rules/rules_14June2021.json
 ```
-
 
 ```json
 {
@@ -343,3 +363,69 @@ coconnect display json $(coconnect info data_folder)/test/rules/rules_14June2021
       }
 }
 ```
+
+
+## Demo Dataset
+
+If you have downloaded the [demo-dataset](https://github.com/CO-CONNECT/demo-dataset.git) you will find two rules json files:
+```
+ls demo-dataset/data/*json
+```
+```
+demo-dataset/data/rules.json       demo-dataset/data/rules_small.json
+```
+
+### DAG Display
+
+Example:
+```
+coconnect display rules dag demo-dataset/data/rules_small.json
+coconnect display rules dag demo-dataset/data/rules.json
+```
+
+<center>
+<img src="../../../images/rules_small.gv.png" width="300"/>
+<img src="../../../images/rules.gv.png" width="300"/>
+</center>
+
+
+### JSON Delta
+
+You may want to extract a difference between two `json` rules files, for which the command `display rules delta` is appropriate.
+
+Extract the delta between two rules files (a small old, and bigger new), pipeing the output to a file:
+```
+coconnect display rules delta demo-dataset/data/rules_small.json demo-dataset/data/rules.json | tee rules_delta.json
+```
+Output example...
+```
+2022-03-16 10:35:09 - load_json_delta - INFO - loading a json from 'demo-dataset/data/rules.json' as a delta
+2022-03-16 10:35:09 - load_json_delta - INFO - Original JSON date: 2022-02-11T12:22:48.465257
+2022-03-16 10:35:09 - load_json_delta - INFO - New JSON date: 2022-02-11T12:22:48.465257
+...
+2022-03-16 10:34:42 - load_json_delta - INFO - Detected a new rule for Hypertensive disorder 3050
+2022-03-16 10:34:42 - load_json_delta - INFO - Detected a new rule for COVID-19 vaccine 3034
+2022-03-16 10:34:42 - load_json_delta - INFO - Detected a new rule for COVID-19 vaccine 3036
+2022-03-16 10:34:42 - load_json_delta - INFO - Detected a new rule for SARS-CoV-2 (COVID-19) vaccine, mRNA-1273 0.2 MG/ML Injectable Suspension 3040
+2022-03-16 10:34:42 - load_json_delta - INFO - Detected a new rule for SARS-CoV-2 (COVID-19) vaccine, mRNA-BNT162b2 0.1 MG/ML Injectable Suspension 3041~
+...
+ },
+      "cdm": {
+            "observation": {
+                  "H/O: heart failure 3043": {
+                        "observation_concept_id": {
+                              "source_table": "Hospital_Visit.csv",
+                              "source_field": "reason",
+                              "term_mapping": {
+                                    "Heart Attack": 4059317
+                              }
+                        },
+...
+```
+
+```
+coconnect display rules dag rules_delta.json
+```
+<center>
+<img src="../../../images/rules_delta.gv.png" width="550"/>
+</center>
