@@ -8,42 +8,50 @@ Extract, transform and load of your dataset into a Common Data Model (CDM) forma
 
 Our command line tool has the ability to do the full process:
 ```
-coconnect etl bclink --help
+coconnect etl --help
 ```
-
+<center>
 [Overview](/docs/CoConnectTools/ETL/About/){ .md-button .md-button--primary }
-[Setting up automation](/docs/CoConnectTools/ETL/Automation/){ .md-button .md-button--secondary }
-
+[Setting up automation](/docs/CoConnectTools/ETL/Yaml/){ .md-button .md-button--secondary }
+</center>
 
 Otherwise, you have to do each step manually:
 
+<center>
 [Extract](/docs/CoConnectTools/ETL/Extract){ .md-button .md-button--primary }
 [Transform](/docs/CoConnectTools/ETL/Transform){ .md-button .md-button--primary }
 [Load](/docs/CoConnectTools/ETL/Load){ .md-button .md-button--primary }
-
+</center>
 
 ### How can I pseudonymise my data?
 
-co-connect-tools comes with the command line command:
+When `co-connect-tools` is installed a standalone package is also installed [`co-connect-pseudonymise`](https://pypi.org/project/co-connect-pseudonymise/) ([source code](https://github.com/CO-CONNECT/Pseudonymisation)).
 
+!!! note
+     The pseudonymisation script (`co-connect-pseudonymise`) can be install separately if you want to run the pseudonymisation in a separate environment and don't want to install all the addditonal packages that `co-connect-tools` will install.  
+
+A CLI is setup called `pseudonymise` which can be run on `csv` files:
 ```
-$ coconnect pseudonymise --help
-Usage: coconnect pseudonymise [OPTIONS] INPUT
+$ pseudonymise csv --help
+Usage: pseudonymise csv [OPTIONS] INPUT
 
-  Command to help pseudonymise data.
+  Command to pseudonymise csv files, given a salt, the name of the columns to
+  pseudonymise and the input file.
 
 Options:
-  -s, --salt TEXT             salt hash  [required]
-  -i, --person-id, --id TEXT  name of the person_id  [required]
-  -o, --output-folder TEXT    path of the output folder  [required]
-  --chunksize INTEGER         set the chunksize when loading data
-  --help                      Show this message and exit.
+  -s, --salt TEXT           salt hash  [required]
+  -c, --column, --id TEXT   name of the identifier columns  [required]
+  -o, --output-folder TEXT  path of the output folder  [required]
+  --chunksize INTEGER       set the chunksize when loading data, useful for
+                            large files
+  --help                    Show this message and exit.
 ```
 
 A detailed guide on how to use this feature can be found here:
 
+<center>
 [Pseudonymisation guide](/docs/CoConnectTools/ETL/Pseudonymisation/){ .md-button .md-button--primary }
-
+</center>
 
 ### Can I pseudonymise the data myself?
 
@@ -55,32 +63,31 @@ Yes. You do not need to use the tool packaged in co-connect-tools, you can do th
 
 Our command line interface tool for performing only the 'T' part of the 'ETL' process.. a transformation of your dataset into a Common Data Model (CDM):
 
-=== "Using a configuration file"
-	If the input data and rules file are specified in a `yaml` configuration file, the tool transform tool can be run as:
-    ```
-	coconnect etl bclink --config <config> transform --help
-	```
 === "With commandline arguments"
 	Alternatively, using commandline arguments, the tool can be run as:
     ```
-	coconnect map run --help
+	coconnect run map --help
+	```
+=== "Using a configuration file"
+	If the input data and rules file are specified in a `yaml` configuration file, and no load section is specified, the `etl` command can be used:
+    ```
+	coconnect etl --config <config> 
 	```
 
+<center>
 [Overview](/docs/CoConnectTools/ETL/About/#transform){ .md-button .md-button--primary }
 [Manual from the Command Line](/docs/CoConnectTools/ETL/Transform/){ .md-button .md-button--secondary }
 [Manual from a GUI](/docs/CoConnectTools/ETL/Transform-GUI/){ .md-button .md-button--secondary }
-
-
-This can be ran manually, or is executed as part of the automated ETL.
-
+</center>
 
 
 ### What is the rules `.json`?
 
 A `json` encoded file that contains information of how multiple CDM tables and CDM objects need to be created by the [transform process](/docs/CoConnectTools/ETL/Transform/)
 
+<center>
 [Rules JSON](/docs/CoConnectTools/ETL/Rules/){ .md-button .md-button--primary }
-
+</center>
 
 ### What should my input files be called?
 
@@ -90,18 +97,19 @@ Your input files need to be `csv` files. If the mapping instructions have been f
 
 The helper command:
 ```
-coconnect display json <rules file> --list-tables
+coconnect display rules json <rules file> --list-tables
 ```
 can be used to display what input file names the tool will be trying to load. 
 
 !!! example
     ```
-    coconnect display json $(coconnect info data_folder)/test/rules/rules_14June2021.json --list-tables
+    coconnect display rules json $(coconnect info data_folder)/test/rules/rules_14June2021.json --list-tables
     ```
     ```
       [
          "Demographics.csv",
-         "Symptoms.csv"
+         "Symptoms.csv",
+		 "covid19_antibody.csv"
       ]
     ```
 !!! tip
@@ -117,7 +125,10 @@ The rules `.json` file is supplied via the option `--rules `.
 The `--help` message displays the following syntax for how the `map` tool (for transform) can be run:
 
 ```
-Usage: coconnect map run [OPTIONS] INPUTS...
+coconnect run map --help
+```
+```
+Usage: coconnect run map [OPTIONS] [INPUTS]...
 
   Perform OMOP Mapping given an json file and a series of input files
 
@@ -127,6 +138,7 @@ Usage: coconnect map run [OPTIONS] INPUTS...
 Options:
   --rules TEXT                    input json file containing all the mapping
                                   rules to be applied  [required]
+...
 ```
 
 

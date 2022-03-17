@@ -16,6 +16,7 @@ The primary purpose of the co-connect-tools package is to {==Extract==} input da
 To get started with the [ETL](/docs/CoConnectTools/ETL/About/) process, follow the instructions for installing the co-connect-tools package and running the ETL on the following pages:
 
 !!! success "ETL"
+    1. [Frequently Asked Questions](/docs/CoConnectTools/FAQ/)  
     1. [Installing](/docs/CoConnectTools/Installing/)  
     1. [About the ETL Process](/docs/CoConnectTools/ETL/About/)
     1. [Guide](/docs/CoConnectTools/ETL/ETL-Guide)  
