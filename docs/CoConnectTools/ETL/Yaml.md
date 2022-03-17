@@ -235,8 +235,8 @@ By defining an extract tab in the `yaml` you are able to execute code __before__
 	Example output, you will see the `pseudonymise csv` start to run before the transform.
 	```
 	2022-03-16 11:35:46 - run_etl - INFO - running etl on config.yaml (last modified: 1647430135.1740856)
-"Going to run demo-dataset/data/part1/Symptoms.csv and put output in data_pseudonymised/"
-
+	"Going to run demo-dataset/data/part1/Symptoms.csv and put output in data_pseudonymised/"
+	
 	2022-03-16 11:35:46.656 | INFO     | cli.cli:csv:16 - Working on file demo-dataset/data/part1/Symptoms.csv, pseudonymising columns '['ID']' with salt '12345'
 	2022-03-16 11:35:46.656 | INFO     | cli.cli:csv:22 - Saving new file to data_pseudonymised//Symptoms.csv
 	2022-03-16 11:35:46.761 | DEBUG    | cli.cli:csv:32 - 0        e428669397a3d0c72d46f6d5afe9a8ae20ea675883c0e7...
