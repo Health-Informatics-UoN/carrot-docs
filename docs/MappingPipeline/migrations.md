@@ -17,7 +17,7 @@ of the current database state (for example, if you have migrated
 ## Choosing the correct instructions
 If the state of locally held migration files is _behind_ the current 
 database state, then follow the instructions in the section 
-[Bringing the migrations/ directory up-to-date with the current database state](bringing-the-migrations-directory-up-to-date-with-the-current-database-state),
+`Bringing the migrations/ directory up-to-date with the current database state`,
 before continuing to `Creating and applying the new migrations`.
 
 Alternatively, if the state of `migrations` matches the database state, then skip 
