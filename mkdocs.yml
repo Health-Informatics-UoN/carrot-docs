@@ -90,6 +90,16 @@ nav:
           - ETL Workbook Example: "CoConnectTools/notebooks/Introduction\ -\ Using\ the\ ETLTool.ipynb"
           - Performance:
               - cProfile: CoConnectTools/Performance/cProfile.md
+      - Notebooks:
+          - CoConnectTools/notebooks/Part 1 - Introduction.ipynb
+          - CoConnectTools/notebooks/Part 2 - Command Line .ipynb
+          - CoConnectTools/notebooks/Part 3 - ETL-Tool.ipynb
+          - CoConnectTools/notebooks/Part 4 - Local.ipynb
+          - CoConnectTools/notebooks/Part 5 - SQL.ipynb
+          - CoConnectTools/notebooks/Part 6 - BCLink.ipynb
+          - CoConnectTools/notebooks/Part 7 - Manually Loading Dataframes.ipynb
+          - CoConnectTools/notebooks/Part 8 - Create PyConfig.ipynb
+          - CoConnectTools/notebooks/Part 9 - Analysis.ipynb
   - CO-CONNECT Pseudonymise:
       - Pseudonymisation: CoConnectPseudonymise/Pseudonymisation.md
 
