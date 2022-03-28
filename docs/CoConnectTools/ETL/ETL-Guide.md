@@ -87,9 +87,9 @@ Setup your inputs and obtain the `rules.json` for performing the transform (OMOP
 	  ```
 
 
-!!! note
-	If you are following this guide with the example dataset, as long as you have copied or downloaded data as user `bcos_srv`, then all should be OK.
-
+	!!! note
+		If you are following this guide with the example dataset, as long as you have copied or downloaded data as user `bcos_srv`, then all should be OK.
+		
 To the run the tool and automatically upload data to `bclink`, you **must** be logged in as the user `bcos_srv`, therefore this user must have permissions to view the data. So double-check or grant access. 
 
 
@@ -128,14 +128,12 @@ The next step is to create and configure a `yaml` file for the tool to digest. T
 	Example template to use if you have copied over and are useing the demo-dataset:  
 	
 	```yaml
-    settings:
+	settings:
       clean: true
-
     load: &load-bclink
       cache: /usr/lib/bcos/MyWorkingDirectory/cache/
       bclink:
         dry_run: false
-		
     transform:
        settings: &settings
          output: *load-bclink
@@ -143,7 +141,7 @@ The next step is to create and configure a `yaml` file for the tool to digest. T
        data:
          - input: /usr/lib/bcos/MyWorkingDirectory/demo-dataset/data/part1/
            <<: *settings
-     ```
+    ```
 	 
 	!!! note
 		If you are unfamilar with the Linux command-line and don't know how to create a file, try using `vim`, `pico` or `emacs` commands.
