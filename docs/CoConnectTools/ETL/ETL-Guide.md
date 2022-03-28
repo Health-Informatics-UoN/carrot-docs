@@ -46,7 +46,11 @@ Setup your inputs and obtain the `rules.json` for performing the transform (OMOP
 	We recommend that you download the test dataset from [CO-CONNECT/demo-dataset](https://github.com/CO-CONNECT/demo-dataset), otherwise a smaller test dataset can be foud in the following location: `$(coconnect info data_folder)/test/`
 	
 	!!! note
-		You will have to have `git` installed for this to work. Please refer to [the detailed installation instructions](/docs/CoConnectTools/Installing/) for more information and alternatvies.
+		You will have to have `git` installed for this to work. You can do this while being `sudo` user, for example on CentOS:
+		```
+		sudo yum install git
+		```
+		If you are running from Windows, Mac or other forms of Linux and do not have `git` installed, you can either contact your system administrator, or follow [the link to the github page](https://github.com/CO-CONNECT/demo-dataset), click "code" and then "Download ZIP".
 	
 	```
 	git clone https://github.com/CO-CONNECT/demo-dataset.git
