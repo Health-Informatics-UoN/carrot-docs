@@ -103,9 +103,6 @@ To the run the tool and automatically upload data to `bclink`, you **must** be l
 
 The next step is to create and configure a `yaml` file for the tool to digest. This yaml file must contain the location of the "rules" `json` file, provided to you by the connect team, and the path of the input data.
 
-!!! note
-	If you are unfamilar with the Linux command-line and don't know how to create a file, try using `vim`, `pico` or `emacs` commands.
-
 ??? example "Minimal YAML"
     Create a file called `config.yaml`, either as a new file or copy over the `cp demo-dataset/data/config-template.yaml config.yaml` and edit the values:
     ```yaml
@@ -128,7 +125,8 @@ The next step is to create and configure a `yaml` file for the tool to digest. T
            <<: *settings
 	```
 	
-	Example template to use if you have copied over and are useing the demo-dataset:
+	Example template to use if you have copied over and are useing the demo-dataset:  
+	
 	```yaml
     settings:
       clean: true
@@ -146,7 +144,12 @@ The next step is to create and configure a `yaml` file for the tool to digest. T
          - input: /usr/lib/bcos/MyWorkingDirectory/demo-dataset/data/part1/
            <<: *settings
      ```
-	
+	 
+	!!! note
+		If you are unfamilar with the Linux command-line and don't know how to create a file, try using `vim`, `pico` or `emacs` commands.
+		Once you have created the file, you should save and quit.
+
+
 
 ??? example "YAML with multiple data folders"
     Similarly if you have multiple data dumps, you can configure the yaml like so:
@@ -193,7 +196,7 @@ By default, if the CO-CONNECT documentation for setting up BCLink has been follo
     With a minimal `yaml` configuration, you can perform a check to see if the tables exist and that the tool is able to interact with them.
 	
 	```
-	coconnect etl --config config.yml check-tables
+	coconnect etl --config config.yaml check-tables
 	```
 	Example output:
 	```
@@ -282,7 +285,7 @@ Before you run the ETL (for the first time), it's important to make sure there's
 
 ??? example "From the Command Line"
 	```
-	coconnect etl --config config.yml clean-tables 
+	coconnect etl --config config.yaml clean-tables 
 	```
 	Example output:
     ```
@@ -330,7 +333,7 @@ Finally you are ready to execute the ETL...
 
 ??? example "Start the co-connect ETL"
 	```
-	coconnect etl --config config.yml
+	coconnect etl --config config.yaml
 	```
 	Example output:
 	
