@@ -63,7 +63,7 @@ Here are some details on how you can setup a yaml configuration file
 		The default behaviour is to load all data into memory and begin processing. This behaviour is not optimal for very large datasets, or if your computing environment has a small amount of memory (or you have a crash due to memory usage when running).
 		
 	To change the chunking of data, you can tell the tool to only read in X number of rows at a time, like so:
-    ```
+    ```yaml
 	- input: ...
 	  ...
 	  number_of_rows_per_chunk: 10000
@@ -71,7 +71,7 @@ Here are some details on how you can setup a yaml configuration file
 	
 	The names of these can be found in the [source documentation](/docs/CoConnectTools/CLI/Run/), corresponding to the options you will see via the command `coconnect run map --help`.
 	For example, to not perform any column formatting and to not automatically fill missing columns (e.g. `year_of_birth` in the person table):
-	```
+	```yaml
 	- input: ...
 	  ...
       dont_automatically_fill_missing_columns: true
