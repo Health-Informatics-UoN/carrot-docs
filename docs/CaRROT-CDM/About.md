@@ -1,7 +1,7 @@
 
 Welcome to our repo for `python` tools used by/with the CaRROT project. The primary functionality is used for performing ETL on health datasets, converting them to the OHDSI Common Data Model (CDM), via a command line interface.
 
-CaRROT-CDM contains a pythonic version[^1] of the OHDSI CDM, implemented via the class `CommonDataModel`. CDM tables, such as "Person" are defined as classes (e.g. [`Person`](/docs/CoConnectTools/Person/)) within the code base. 
+CaRROT-CDM contains a pythonic version[^1] of the OHDSI CDM, implemented via the class `CommonDataModel`. CDM tables, such as "Person" are defined as classes (e.g. [`Person`](/docs/CaRROT-CDM/Person/)) within the code base. 
 
 [^1]: In the default setup a __slightly__ (`visit_detail_id` link has been removed from Measurement, Observation and Condition Occurrence tables) modified CDM version [`5.3.1`](https://github.com/OHDSI/CommonDataModel/releases/tag/v5.3.1) is used to define a subset of tables in python.
 
@@ -31,7 +31,7 @@ To get started with the [ETL](/docs/CaRROT-CDM/ETL/About/) process, follow the i
 More detailed guides and documentation for users and developers can be found in the following locations:
 
 <center>
-[User Guide](/docs/CoConnectTools/Installing/){ .md-button .md-button--primary}
-[Developer Guide](/docs/CoConnectTools/CommonDataModel/){ .md-button .md-button--secondary }
+[User Guide](/docs/CaRROT-CDM/Installing/){ .md-button .md-button--primary}
+[Developer Guide](/docs/CaRROT-CDM/CommonDataModel/){ .md-button .md-button--secondary }
 </center>
 

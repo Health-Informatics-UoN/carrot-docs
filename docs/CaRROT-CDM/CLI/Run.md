@@ -1,3 +1,3 @@
 ```python
---8<-- "docs/CoConnectTools/source_code/coconnect/cli/subcommands/run.py"
+--8<-- "docs/CaRROT-CDM/source_code/coconnect/cli/subcommands/run.py"
 ```

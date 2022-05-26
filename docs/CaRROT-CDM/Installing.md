@@ -5,7 +5,7 @@
 [![asciicast](https://asciinema.org/a/443714.svg)](https://asciinema.org/a/443714)
 
 
-The co-connect-tools package is available to be [installed via pip](https://pypi.org/project/co-connect-tools/). The latest tagged version of the tool can be found here. See [the next section](/docs/CoConnectTools/Installing/#upgrading) on how to upgrade the package to the latest version.
+The co-connect-tools package is available to be [installed via pip](https://pypi.org/project/co-connect-tools/). The latest tagged version of the tool can be found here. See [the next section](/docs/CaRROT-CDM/Installing/#upgrading) on how to upgrade the package to the latest version.
 
 !!! tip
     It is recommended that you setup your own virtual python environment, for example using [`venv`](https://docs.python.org/3/library/venv.html).

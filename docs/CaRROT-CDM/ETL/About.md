@@ -7,7 +7,7 @@ The CaRROT ETL process runs via a Command Line Interface, installed with the co-
 In the context of the CaRROT workflow {++ETL++} stands for (and means):
 
 * {++Extract++}: input data is extracted into `.csv` format and (optionally) pseudonymised    
-* {++Transform++}: a CDM model is created and processed, given the extracted data and a [`json` transformation rules file](/docs/CoConnectTools/ETL/Rules/) which tells the software how to map (transform) the data.    
+* {++Transform++}: a CDM model is created and processed, given the extracted data and a [`json` transformation rules file](/docs/CaRROT-CDM/ETL/Rules/) which tells the software how to map (transform) the data.    
 * {++Load++}: inserts the data into a database or other destination.
 
 ## Workflow
