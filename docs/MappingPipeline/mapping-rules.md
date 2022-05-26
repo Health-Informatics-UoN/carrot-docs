@@ -85,11 +85,11 @@ def get_mapping_rules_json(qs:QuerySet) -> dict:
 builds a dictionary that is converted to a `json` format before it is downloaded when the "Download Mapping Rules" button is clicked.
 
 The function works as follows:
-Given a query set of all `StructuralMappingRules` associated to a given `ScanReport`:
+Given a query set of all `MappingRule`s associated to a given `ScanReport`:
 
    1. Group them based on the associated ScanReportConcept (object that spawned them)   
    1. Create a dictionary to contain each destination_table    
-   1. Start looping over all rules associated to each ScanReportConcept (>=5 rules)   
-   1. Retrieve the source_table, source_field, destination_field from the `StrucuralMappingRule`   
+   1. Loop over all rules associated to each ScanReportConcept (>=5 rules)   
+   1. Retrieve the source_table, source_field, destination_field from the `MappingRule`   
    1. If the `destination_field` is a `concept_id` add "Term Mapping" to the output json. Add this as
        map or a scalar, depending on if it’s a ScanReportValue or ScanReportField that is to be mapped   

@@ -3,9 +3,11 @@ Overview of the data structures and nomenclature
 
 ## Django ORM 
 
-The Django ORM has access to the models displayed in the diagram below, which also illustrates the {++ForeignKey++} or {++GenericRelation++} links between the objects.
+The Django ORM has access to the models displayed in the diagram below, which also illustrates the 
+{++ForeignKey++} or {++GenericRelation++} links between the objects.
 
-All models under the heading "mapping" are available in Postgresql under the `public` schema, e.g. `public.mapping_omopfield`. Whereas models associated with OMOP are available in Postgresql under the `omop` schema e.g. `omop.public`.
+All models under the heading "mapping" are available in Postgresql under the `public` schema, e.g. `public.mapping_omopfield`. 
+Models associated with OMOP are available in Postgresql under the `omop` schema e.g. `omop.person`.
 
 
 ### Diagram

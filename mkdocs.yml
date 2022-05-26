@@ -32,7 +32,7 @@ nav:
       - Mapping Rules: MappingPipeline/mapping-rules.md
       - API: MappingPipeline/API.md
       - Azure Functions:
-         - LocalFunctions: AzureFunctions/RunningLocally.md
+         - Local Functions: AzureFunctions/RunningLocally.md
          - ProcessQueue: AzureFunctions/ProcessQueue.md
          - NLPQueue: AzureFunctions/NlpQueue.md
       - Database Migrations: MappingPipeline/migrations.md
