@@ -31,14 +31,13 @@ There are 3 levels of protection between a user and data. These are
 The following are the rules for access. For a user to be able to see a `Dataset` or `Scan Report`,
 
 1. they must be a `member` of at least one `Project` in which the `Dataset` 
-2. (or the `Scan Report`'s parent `Dataset`) sits.
-3. the `Dataset` must be PUBLIC, or they must be an `admin`/`editor`/`viewer` of the `Dataset`.
+(or the `Scan Report`'s parent `Dataset`) sits.
+3. the `Dataset` must be `PUBLIC`, or they must be an `admin`/`editor`/`viewer` of the `Dataset`.
 4. To see the contents of the `Scan Report`, in addition, the `Scan Report` must be `PUBLIC`, or
 they must be an `author`/`editor`/`viewer` of the `Scan Report`.
 
-`editors` of a `Dataset` inherit `editor` access to all `Scan Report`s in the `Dataset`.
-
-Similarly, `admins` of a `Dataset` inherit `author` rights over all `Scan Report`s  in the `Dataset`.
+## Scan Report roles
+### `Viewers`
 
 `viewers` of a `Scan Report` can perform read-only actions:
 
@@ -46,12 +45,27 @@ Similarly, `admins` of a `Dataset` inherit `author` rights over all `Scan Report
 - view `Scan Report` details including `editors`, `author`, etc
 - regenerate and download mapping rule list
 
+### `Editors`
+
 `editors` of a `Scan Report` can additionally 
+
 - add/remove concepts
 - set PersonID and DataEvent on tables
 - set `is ignore` and `Pass from source` flags, and set description columns, on fields
 
-Dataset access is explained in more detail in this diagram:
+### `Authors`
+
+The `author` of a `Scan Report` can additionally
+
+- administrate access to the `Scan Report`
+- edit name and visibility
+- change parent `Dataset`
+
+## Permissions inheritance between `Dataset`s and `Scan Report`s
+
+`editors/admins` of a `Dataset` inherit `editor/author` access respectively to all `Scan Report`s in the `Dataset`.
+
+`Dataset` access is explained in more detail in this diagram:
 
 ![](images/Dataset_permissions.png)
 
