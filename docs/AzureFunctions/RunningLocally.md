@@ -3,15 +3,21 @@
 
 ## Introduction
 
-Running Azure Functions locally is a little involved; this guide has been written to get you up and running with Azure CLI and Functions. Note that this guide assumes you're using VSCode. All of the functionality described here can be replicated outside of VSCode (in Azure CLI) but instructions for doing so are not detailed in this guide.
+Running Azure Functions locally is a little involved; this guide has been written to get you up and running 
+with Azure CLI and Functions. Note that this guide assumes you're using VSCode. All of the functionality 
+described here can be replicated outside of VSCode (in Azure CLI) but instructions for doing so are not 
+detailed in this guide.
 
->Note that this guide is not intended to demonstrate how to create an Azure Function from scratch. Its purpose is to show you how to run pre-coded Functions.
+>Note that this guide is not intended to demonstrate how to create an Azure Function from scratch. 
+> Its purpose is to show you how to run pre-coded Functions.
 
 To follow this guide you need to install [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli).
 
 ## Azure Functions Basics
 
-Conceptually, queue-based Azure Functions are simple to follow. A **_message_** is posted to a **_message queue_**. A Function then executes on messages within a message queue. In Co-Connect, a message is posted to a message queue as JSON but other formats are possible (e.g. XML). Here's an example message destined for the `scanreports` queue:
+Conceptually, queue-based Azure Functions are simple to follow. A **_message_** is posted to a **_message queue_**. 
+A Function then executes on messages within a message queue. In CaRROT-Mapper, a message is posted to a message 
+queue as JSON but other formats are possible (e.g. XML). Here's an example message destined for the `scanreports` queue:
 
 ```
 {
@@ -34,7 +40,7 @@ And here is an example message destined for the `nlpqueue` queue:
 
 ```
 
-An [Azure function](https://docs.microsoft.com/en-us/azure/azure-functions/functions-overview) is made up of three key files. Two are kept in the function's directory (which itself lives within Co-Connect's root directory) and define what and how the function should run:
+An [Azure function](https://docs.microsoft.com/en-us/azure/azure-functions/functions-overview) is made up of three key files. Two are kept in the function's directory (which itself lives within CaRROt-Mapper's root directory) and define what and how the function should run:
 
 1. `init.py` - This contains the function's logic. The method `main()` should be present for the function to execute.
 2. `function.json` - This tells Azure what type of function you're developing and also what queue from which to pick messages up from.
@@ -60,15 +66,20 @@ Another file is kept outside of the function's directory and should not be commi
 }
 
 ```
-You only need to have 1 `local.settings.json` file for all functions within the Co-Connect project. Note, however, that it should be updated with extra queue names if/when the project requires them.
+You only need to have 1 `local.settings.json` file for all functions within the CaRROT-Mapper project. Note, 
+however, that it should be updated with extra queue names if/when the project requires them.
 
-### Azure Functions in Co-Connect
+### Azure Functions in CaRROT-Mapper
 
-As of July 2021, the Co-Connect project has two different Azure Functions: one for processing scan reports (called `ProcessQueue` which posts to the message queue called `scanreports`), another to run the NLP service (called `NLPQueue` which posts to the message queue called `nlpqueue`). The code for these functions lives in the directories ProcessQueue and NLPQueue, respectively.
+The CaRROT-Mapper project has two different Azure Functions: one for processing scan reports (called 
+`ProcessQueue` which posts to the message queue called `scanreports`), another to run the NLP service 
+(called `NLPQueue` which posts to the message queue called `nlpqueue`). The code for these functions lives 
+in the directories ProcessQueue and NLPQueue, respectively.
 
 ## Azure Functions Queues
 
-For each process (NLP and Scan Reports), we have two queues each - a 'local' queue and a 'live' queue (for a total of 4 unique queues.) As environment variables, they are encoded as:
+For each process (NLP and Scan Reports), we have two queues each - a 'local' queue and a 'live' queue 
+(for a total of 4 unique queues.) As environment variables, they are encoded as:
 
 ##### Local queues
 ```
@@ -82,24 +93,36 @@ NLP_QUEUE_NAME=nlpqueue
 SCAN_REPORT_QUEUE_NAME=scanreports
 ```
 
-The purpose of the local queues is that, when developing locally, messages are sent only to a 'local' queue. This stops 'development' messages from posting to the 'live' message queue.
+The purpose of the local queues is that, when developing locally, messages are sent only to a 'local' queue. 
+This stops 'development' messages from posting to the 'live' message queue.
 
 These environment variables which control where messages are sent must be maintained in the following locations:
 
-1. `local.settings.json` - A local file to hold Azure Function environment variables. Should point to 'local' (e.g. `NLP_QUEUE_NAME=nlpqueue-local`). To reiterate, this file must not be tracked on Github, otherwise secrets will be exposed!
-2. Within the Azure Function App. Env Vars need to be set within the Azure Portal to the 'live' vars. Speak to Sam Cox about adding vars on the Azure Portal.
-3. Within the CCOM webapp, the `.env` file must include variables for 'local' on your local machine and set to 'live' variables on App Service.
+1. `local.settings.json` - A local file to hold Azure Function environment variables. Should point to 'local' 
+(e.g. `NLP_QUEUE_NAME=nlpqueue-local`). To reiterate, this file must not be tracked on GitHub, otherwise 
+secrets will be exposed!
+2. Within the Azure Function App. Env Vars need to be set within the Azure Portal to the 'live' vars. Speak to 
+Sam Cox about adding vars on the Azure Portal.
+3. Within the CCOM webapp, the `.env` file must include variables for 'local' on your local machine and set to 
+'live' variables on App Service.
 
 
 ## Running Azure Functions Locally
 
-Because Azure Functions are cloud-based, it's somewhat of a misnomer to talk of running an Azure Function completely 'locally'. In reality, you're still posting to a message queue in the cloud, even when developing locally. However, Azure CLI--when running in debug mode (more on this later)--will 'hijack' the messages in the message queue (depending on how you've set the environment vairables in `local.settings.json` and `.env`) and allow you to process them with the code you're developing locally.
+Because Azure Functions are cloud-based, it's somewhat of a misnomer to talk of running an Azure Function 
+completely 'locally'. In reality, you're still posting to a message queue in the cloud, even when developing 
+locally. However, Azure CLI--when running in debug mode (more on this later)--will 'hijack' the messages in the 
+message queue (depending on how you've set the environment vairables in `local.settings.json` and `.env`) 
+and allow you to process them with the code you're developing locally.
 
-To start debugging locally in VSCode you must first ensure that CCOM is up and running locally ([see here for building and running the Co-Connect Docker image](https://github.com/CO-CONNECT/mapping-pipeline#readme) ). Once your local server is running, you can start Azure Function's debugging mode by clicking: 
+To start debugging locally in VSCode you must first ensure that CCOM is up and running locally 
+([see here for building and running the CaRROT-Mapper Docker image](https://github.com/HDRUK/CaRROT-Mapper#readme) ). 
+Once your local server is running, you can start Azure Function's debugging mode by clicking: 
 
 Run (top toolbar) -> Start Debugging
 
-After a few seconds, you'll see something like the following printed to the debugging terminal that's started when you run debugging:
+After a few seconds, you'll see something like the following printed to the debugging terminal that's 
+started when you run debugging:
 
 ```
 > Executing task: . .venv/bin/activate && func host start <
@@ -131,7 +154,11 @@ For detailed output, run func with --verbose flag.
 [2021-07-02T09:34:36.731Z] Host lock lease acquired by instance ID '000000000000000000000000DC4198B8'.
 ```
 You'll likely see a few errors/warnings about directories and permissions. At the time of writing this guide, it's safe to ignore these!
-Note that two functions are listed as you start debugging mode: `NLPQueue` and `ProcessQueue`. These are the names of the **_directories_** which hold the function's code, not the name of the **_message queue_** which holds the function's messages. The text after the function name (queueTrigger) specifies the _type_ of function it is (defined in `function.json`.) So far in Co-Connect, only queueTriggers are used. For more information on Function types, click [here](https://docs.microsoft.com/en-us/azure/azure-functions/functions-overview).
+Note that two functions are listed as you start debugging mode: `NLPQueue` and `ProcessQueue`. 
+These are the names of the **_directories_** which hold the function's code, not the name of the 
+**_message queue_** which holds the function's messages. The text after the function name (queueTrigger) 
+specifies the _type_ of function it is (defined in `function.json`). In CaRROT-Mapper, only queueTriggers are used. 
+For more information on Function types, click [here](https://docs.microsoft.com/en-us/azure/azure-functions/functions-overview).
 
 With the final console output saying 'Host lock lease acquired', you're ready to run your first Azure Functions job!
 
@@ -140,12 +167,14 @@ With the final console output saying 'Host lock lease acquired', you're ready to
 The remainder of this guide will show what to expect to see in the debugging console if you run NLP at the field level.
 
 1. Navigate to a field within a scan report.
-2. Ensure the field you've chosen has a meaningful description (e.g. "Patient has a cold"). If it doesn't have one, click 'Edit Field' and manually put one in.
+2. Ensure the field you've chosen has a meaningful description (e.g. "Patient has a cold"). If it doesn't have one, 
+click 'Edit Field' and manually put one in.
 3. Ensure that `pass_from_source` is set to `True` within the field's settings. This will cause CCOM to process the field only.
 4. Click 'Run NLP'
 5. After a short wait a green message banner will appear to say NLP is now running.
 
-Hop back to VSCode. After a few seconds, you should see the debugging console updating to say that it has received the message from the message queue:
+Hop back to VSCode. After a few seconds, you should see the debugging console updating to say that it has 
+received the message from the message queue:
 ```
 Executing 'Functions.NLPQueue' (Reason='New queue message detected on 'nlpqueue-local'.', Id=ea27d6be-eb0b-490c-9cab-82cf2a119355)
 Trigger Details: MessageId: f00a438f-9bad-4110-bb8b-5278461d7bb3, DequeueCount: 1, InsertionTime: 2021-07-02T10:57:26.000+00:00

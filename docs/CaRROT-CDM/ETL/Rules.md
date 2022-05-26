@@ -1,6 +1,6 @@
 The transform (mapping) rules `json` file encodes rules on how to create CDM objects.
 
-For co-connect datapartners, you will be supplied this `json` file by the co-connect team, who create this file based on a WhiteRabbit ScanReport uploaded and then mapped on the [CCOM](/docs/MappingPipeline/about/) mapping website.
+For co-connect datapartners, you will be supplied this `json` file by the co-connect team, who create this file based on a WhiteRabbit ScanReport uploaded and then mapped on the [CaRROT-Mapper](/docs/MappingPipeline/about/) mapping website.
 
 ## CLI helper
 

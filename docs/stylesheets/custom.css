@@ -1,4 +1,4 @@
-[data-md-color-scheme="co-connect"] {    
+[data-md-color-scheme="carrot"] {    
     --md-primary-fg-color:white;
     --md-primary-fg-color--dark:  #3db28c;
 
@@ -24,20 +24,20 @@
 }
 
 :root {
-  --md-admonition-icon--co-connect: url('/images/favicon.png')
+  --md-admonition-icon--carrot: url('/images/favicon.png')
 }
-.md-typeset .admonition.co-connect,
-.md-typeset details.co-connect {
+.md-typeset .admonition.carrot,
+.md-typeset details.carrot {
   border-color: #475da7;
 }
-.md-typeset .co-connect > .admonition-title,
-.md-typeset .co-connect > summary {
+.md-typeset .carrot > .admonition-title,
+.md-typeset .carrot > summary {
     background-color: #475da788;
 }
-.md-typeset .co-connect > .admonition-title::before,
-.md-typeset .co-connect > summary::before {
+.md-typeset .carrot > .admonition-title::before,
+.md-typeset .carrot > summary::before {
   background-color: #475da7;
-  -webkit-mask-image: var(--md-admonition-icon--co-connect);
-          mask-image: var(--md-admonition-icon--co-connect);
+  -webkit-mask-image: var(--md-admonition-icon--carrot);
+          mask-image: var(--md-admonition-icon--carrot);
 }
 

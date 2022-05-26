@@ -60,7 +60,7 @@ Otherwise, to be sure, uninstall the package and reinstall it.
 
 ## Installing from Source
 
-Alternatively you can [download the source code](https://github.com/CO-CONNECT/co-connect-tools/tags), unpack and install as a local package:
+Alternatively you can [download the source code](https://github.com/HDRUK/CaRROT-CDM/tags), unpack and install as a local package:
 ```
 cd <downloaded_source_code_folder>
 python3 -m pip install -e . 

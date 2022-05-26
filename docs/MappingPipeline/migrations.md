@@ -1,3 +1,5 @@
+# Migrations
+
 Building and applying database migrations relies upon migration files
 stored in `api/mapping/migrations/`.
 

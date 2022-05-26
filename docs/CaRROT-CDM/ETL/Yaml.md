@@ -29,7 +29,7 @@ Commands:
 To run the full ETL you need a `.yml`(or `.yaml`) file to configure various settings.
 
 <center>
-[Example yamls](https://github.com/CO-CONNECT/co-connect-tools/tree/master/coconnect/data/test/automation){ .md-button .md-button--secondary}
+[Example yamls](https://github.com/HDRUK/CaRROT_CDM/tree/master/coconnect/data/test/automation){ .md-button .md-button--secondary}
 </center>
 
 ## Setup your YAML config

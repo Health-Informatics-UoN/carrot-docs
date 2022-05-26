@@ -1,8 +1,8 @@
-site_name: CO-CONNECT Docs
+site_name: CaRROT Docs
 theme:
   name: material
   palette:
-    scheme: co-connect
+    scheme: carrot
   custom_dir: overrides      
   logo: images/favicon.png
   favicon: images/favicon.png
@@ -41,68 +41,68 @@ nav:
           - Writing Django Tests: Testing/django-testing-writing.md
       #- Downloading Mapping:   MappingPipeline/downloading-rules.md
       
-  - CO-CONNECT Tools:
-      - About: CoConnectTools/About.md
+  - CaRROT-CDM:
+      - About: CaRROT-CDM/About.md
       - User Guide:
-          - FAQ: CoConnectTools/FAQ.md
-          - Installing: CoConnectTools/Installing.md
+          - FAQ: CaRROT-CDM/FAQ.md
+          - Installing: CaRROT-CDM/Installing.md
           - ETL:
-              - About : CoConnectTools/ETL/About.md
-              - Quick Guide: CoConnectTools/ETL/ETL-Guide.md
+              - About : CaRROT-CDM/ETL/About.md
+              - Quick Guide: CaRROT-CDM/ETL/ETL-Guide.md
               - Detailed Guide:
-                  - Yaml Configuration: CoConnectTools/ETL/Yaml.md
+                  - Yaml Configuration: CaRROT-CDM/ETL/Yaml.md
                   - Extract:
-                      - Input Data:  CoConnectTools/ETL/Extract.md
-                      - Pseudonymisation: CoConnectTools/ETL/Pseudonymisation.md
+                      - Input Data:  CaRROT-CDM/ETL/Extract.md
+                      - Pseudonymisation: CaRROT-CDM/ETL/Pseudonymisation.md
                   - Transform:
-                      - JSON Rules: CoConnectTools/ETL/Rules.md   
-                      - Command Line: CoConnectTools/ETL/Transform.md   
-                      - GUI: CoConnectTools/ETL/Transform-GUI.md
-                  - Load: CoConnectTools/ETL/Load.md
-          - Common Errors: CoConnectTools/CommonErrors.md
+                      - JSON Rules: CaRROT-CDM/ETL/Rules.md
+                      - Command Line: CaRROT-CDM/ETL/Transform.md
+                      - GUI: CaRROT-CDM/ETL/Transform-GUI.md
+                  - Load: CaRROT-CDM/ETL/Load.md
+          - Common Errors: CaRROT-CDM/CommonErrors.md
           - Additional Tools:
-              - Command Line Interface: CoConnectTools/CommandLine.md
+              - Command Line Interface: CaRROT-CDM/CommandLine.md
               - Generating Synthetic Data:
-                  - Command Line: CoConnectTools/SyntheticData.md
-                  - By Hand: 'CoConnectTools/notebooks/Generating Synthetic Data By Hand.ipynb'
+                  - Command Line: CaRROT-CDM/SyntheticData.md
+                  - By Hand: 'CaRROT-CDM/notebooks/Generating Synthetic Data By Hand.ipynb'
       - Developer Guide:
           - CDM:
-              - Overview: CoConnectTools/CommonDataModel.md
+              - Overview: CaRROT-CDM/CommonDataModel.md
               - Tables:
-                  - Common: CoConnectTools/Common.md
-                  - Person: CoConnectTools/Person.md
-                  - Condition Occurrence: CoConnectTools/ConditionOccurrence.md
-                  - Visit Occurrence: CoConnectTools/VisitOccurrence.md
-                  - Measurement: CoConnectTools/Measurement.md
-                  - Observation: CoConnectTools/Observation.md
-                  - Drug Exposure: CoConnectTools/DrugExposure.md
-                  - Procedure Occurrence: CoConnectTools/ProcedureOccurrence.md
-                  - Specimen: CoConnectTools/Specimen.md
+                  - Common: CaRROT-CDM/Common.md
+                  - Person: CaRROT-CDM/Person.md
+                  - Condition Occurrence: CaRROT-CDM/ConditionOccurrence.md
+                  - Visit Occurrence: CaRROT-CDM/VisitOccurrence.md
+                  - Measurement: CaRROT-CDM/Measurement.md
+                  - Observation: CaRROT-CDM/Observation.md
+                  - Drug Exposure: CaRROT-CDM/DrugExposure.md
+                  - Procedure Occurrence: CaRROT-CDM/ProcedureOccurrence.md
+                  - Specimen: CaRROT-CDM/Specimen.md
           - Source documentation:
               - CLI:
-                  - CoConnectTools/CLI/CLI.md
-                  - CoConnectTools/CLI/Run.md
-              - Data Collections: CoConnectTools/DataCollection.md
-              - File Helpers: CoConnectTools/FileHelpers.md
-              - Rule Helpers: CoConnectTools/RuleHelpers.md
-              - Logging: CoConnectTools/Logger.md
-              - Profiling: CoConnectTools/Profiling.md
-          - Developer Guide: CoConnectTools/ETL/ETL-Developer-Guide.md
-          - ETL Workbook Example: "CoConnectTools/notebooks/Introduction\ -\ Using\ the\ ETLTool.ipynb"
+                  - CaRROT-CDM/CLI/CLI.md
+                  - CaRROT-CDM/CLI/Run.md
+              - Data Collections: CaRROT-CDM/DataCollection.md
+              - File Helpers: CaRROT-CDM/FileHelpers.md
+              - Rule Helpers: CaRROT-CDM/RuleHelpers.md
+              - Logging: CaRROT-CDM/Logger.md
+              - Profiling: CaRROT-CDM/Profiling.md
+          - Developer Guide: CaRROT-CDM/ETL/ETL-Developer-Guide.md
+          - ETL Workbook Example: "CaRROT-CDM/notebooks/Introduction\ -\ Using\ the\ ETLTool.ipynb"
           - Performance:
-              - cProfile: CoConnectTools/Performance/cProfile.md
+              - cProfile: CaRROT-CDM/Performance/cProfile.md
       - Notebooks:
-          - CoConnectTools/notebooks/Part 1 - Introduction.ipynb
-          - CoConnectTools/notebooks/Part 2 - Command Line .ipynb
-          - CoConnectTools/notebooks/Part 3 - ETL-Tool.ipynb
-          - CoConnectTools/notebooks/Part 4 - Local.ipynb
-          - CoConnectTools/notebooks/Part 5 - SQL.ipynb
-          - CoConnectTools/notebooks/Part 6 - BCLink.ipynb
-          - CoConnectTools/notebooks/Part 7 - Manually Loading Dataframes.ipynb
-          - CoConnectTools/notebooks/Part 8 - Create PyConfig.ipynb
-          - CoConnectTools/notebooks/Part 9 - Analysis.ipynb
-  - CO-CONNECT Pseudonymise:
-      - Pseudonymisation: CoConnectPseudonymise/Pseudonymisation.md
+          - CaRROT-CDM/notebooks/Part 1 - Introduction.ipynb
+          - CaRROT-CDM/notebooks/Part 2 - Command Line .ipynb
+          - CaRROT-CDM/notebooks/Part 3 - ETL-Tool.ipynb
+          - CaRROT-CDM/notebooks/Part 4 - Local.ipynb
+          - CaRROT-CDM/notebooks/Part 5 - SQL.ipynb
+          - CaRROT-CDM/notebooks/Part 6 - BCLink.ipynb
+          - CaRROT-CDM/notebooks/Part 7 - Manually Loading Dataframes.ipynb
+          - CaRROT-CDM/notebooks/Part 8 - Create PyConfig.ipynb
+          - CaRROT-CDM/notebooks/Part 9 - Analysis.ipynb
+  - CaRROT Pseudonymise:
+      - Pseudonymisation: CaRROT-Pseudonymise/Pseudonymisation.md
 
   - BCLink:
       - About: BCLink/About.md
@@ -134,7 +134,7 @@ plugins:
               - "^__init__$"  # but always include __init__ modules and methods
           setup_commands:
             - import sys
-            - sys.path.append("docs/CoConnectTools/source_code/")
+            - sys.path.append("docs/CaRROT-CDM/source_code/")
             - import coconnect
 
 

@@ -1,10 +1,10 @@
 ![images](../../images/ETL.jpeg)
 
 
-The co-connect ETL process runs via a Command Line Interface, installed with the co-connect-tools package.
+The CaRROT ETL process runs via a Command Line Interface, installed with the co-connect-tools package.
 
 
-In the context of the co-connect workflow {++ETL++} stands for (and means):
+In the context of the CaRROT workflow {++ETL++} stands for (and means):
 
 * {++Extract++}: input data is extracted into `.csv` format and (optionally) pseudonymised    
 * {++Transform++}: a CDM model is created and processed, given the extracted data and a [`json` transformation rules file](/docs/CoConnectTools/ETL/Rules/) which tells the software how to map (transform) the data.    
@@ -33,18 +33,18 @@ This is an automated tool, meaning it is able to run (optionally as a background
 Currently, automation using the `coconnect etl` CLI is possible for loading to a BC-Link or outputing to a local file storage system.
 
 
-### CO-CONNECT--BC-LINK Workflow
+### CaRROT--BC-LINK Workflow
 
 The whole point in transforming data into the OMOP CDM format is so the data can be uploaded to BC-Link. This workflow can be performed in one step with the correct configuration of the input `yaml` file when running `coconnect etl --config <yaml file>`, see:
 <center>
-[Configuring the Yaml File](/docs/CoConnectTools/ETL/Yaml/){ .md-button .md-button--primary}
+[Configuring the Yaml File](/docs/CaRROT-CDM/ETL/Yaml/){ .md-button .md-button--primary}
 </center>
 
 However, the process may need to be decoupled into multiple steps; for example, if BC-Link is not hosted on a machine that has access to the original data. In this scenario the `coconnect etl` or `coconnect run map` can be used to perform the transform (OMOP mapping), the output files can then be transfered to the machine hosting BC-Link and be uploaded (from the command-line, or using the BC-Link GUI)
 
 
 ### Architecture Overview
-A schematic diagram of the co-connect/bclink ETL is given below:
+A schematic diagram of the CaRROT/bclink ETL is given below:
 ![overview](../../images/etltool.png)
 
 
@@ -56,14 +56,14 @@ A schematic diagram of the co-connect/bclink ETL is given below:
 * Pseudonymises the input datasets, masking any person identifiers or person IDs **[optionally automated]**
 
 ### Transform
-* The transform mapping is executed with the command `coconnect run map [arguments]`, where additional arguments pass the paths to a mapping-rules [`json` file](/docs/CoConnectTools/ETL/Rules/) and input data `csv` files **[optionally automated]**:
+* The transform mapping is executed with the command `coconnect run map [arguments]`, where additional arguments pass the paths to a mapping-rules [`json` file](/docs/CaRROT-CDM/ETL/Rules/) and input data `csv` files **[optionally automated]**:
 
-    * A new pythonic [`CommonDataModel`](/docs/CoConnectTools/CommonDataModel/) is created.   
-    * [`DataCollection`](/docs/CoConnectTools/DataCollection/) is created to handle/chunk the input files and is added to the `CommonDataModel`.  
-    * The mapping-rules `json` is used to create new [CDM Tables](/docs/CoConnectTools/Common/#coconnect.cdm.objects.common.DestinationTable) (e.g. [Person](/docs/CoConnectTools/Person/)).
-        * For each CDM Table, multiple tables can be created. E.g. there may be multiple [Condition Occurrences](/docs/CoConnectTools/ConditionOccurrences/) defined across multiple input data files and columns (fields).  
-        * The rules `json` encodes so-called "term-mapping" - how to map raw values into OHDSI concept IDs for the output. These are setup as lambda functions and passed to the object's [`define` function](/docs/CoConnectTools/Common/#coconnect.cdm.objects.common.DestinationTable.define)  
-    * [Processing](/docs/CoConnectTools/CommonDataModel/#coconnect.cdm.model.CommonDataModel.process) of the `CommonDataModel` is triggered:   
+    * A new pythonic [`CommonDataModel`](/docs/CaRROT-CDM/CommonDataModel/) is created.   
+    * [`DataCollection`](/docs/CaRROT-CDM/DataCollection/) is created to handle/chunk the input files and is added to the `CommonDataModel`.  
+    * The mapping-rules `json` is used to create new [CDM Tables](/docs/CaRROT-CDM/Common/#coconnect.cdm.objects.common.DestinationTable) (e.g. [Person](/docs/CaRROT-CDM/Person/)).
+        * For each CDM Table, multiple tables can be created. E.g. there may be multiple [Condition Occurrences](/docs/CaRROT-CDM/ConditionOccurrences/) defined across multiple input data files and columns (fields).  
+        * The rules `json` encodes so-called "term-mapping" - how to map raw values into OHDSI concept IDs for the output. These are setup as lambda functions and passed to the object's [`define` function](/docs/CaRROT-CDM/Common/#coconnect.cdm.objects.common.DestinationTable.define)  
+    * [Processing](/docs/CaRROT-CDM/CommonDataModel/#coconnect.cdm.model.CommonDataModel.process) of the `CommonDataModel` is triggered:   
         * **[optionally chunked]** A new chunk of `DataCollection` is grabbed.   
         * Each CDM table is looped over:  
             * All objects of this CDM table are found and looped over:

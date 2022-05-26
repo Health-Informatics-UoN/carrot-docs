@@ -1,13 +1,13 @@
 
 !!! danger
-	This section is decrepid, please instead use [co-connect-pseudonymise](/docs/CoConnectPseudonymise/Pseudonymisation/) instead.
+	This section is decrepid, please instead use [co-connect-pseudonymise](/docs/CaRROT-Pseudonymise/Pseudonymisation/) instead.
 
 !!! warning
 	Please use the command:
 	```
 	pseudonymise csv --help
 	```
-	That comes with the [co-connect-pseudonymise](/docs/CoConnectPseudonymise/Pseudonymisation/) package, and is installed when you install `co-connect-tools`.
+	That comes with the [co-connect-pseudonymise](/docs/CaRROT-Pseudonymise/Pseudonymisation/) package, and is installed when you install `co-connect-tools`.
 
 
 # Decrepid Tool

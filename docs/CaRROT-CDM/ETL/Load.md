@@ -37,7 +37,7 @@ mkdir /usr/lib/bcos/MyWorkingDirectory/
 
 ## Prepare files
 
-Move the `tsv` files created by the [co-connect-tools transform](/docs/CoConnectTools/Transform/) into this directory, e.g. in a subfolder `mapped_data`:
+Move the `tsv` files created by the [co-connect-tools transform](/docs/CaRROT-CDM/Transform/) into this directory, e.g. in a subfolder `mapped_data`:
 ```
 mapped_data/
 test/

@@ -1,7 +1,7 @@
-Welcome to the documentation of the CO-CONNECT project!
+Welcome to the documentation of the CaRROT project!
 
-!!! co-connect "CO-CONNECT"
-    Bringing together COVID-19 data from across the UK
+!!! carrot "CaRROT"
+    *C*onvenient *a*nd *R*eusable *R*apid *O*MOP *T*ransformer: bringing together health data from across the UK
 
 What we do in a nutshell...
 ```python

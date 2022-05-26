@@ -1,0 +1,11 @@
+data
+.ipynb_checkpoints
+*_pycache_*
+*egg-info
+dist
+.DS_store
+build
+coconnect/cdm/classes/
+*.env
+scripts/*.json
+temp
