@@ -26,8 +26,9 @@ nav:
 
 
   - Mapping-Pipeline (CCOM):
-      - About:   MappingPipeline/about.md
-      - Uploading a Report:   MappingPipeline/uploading-scan-report.md
+      - About: MappingPipeline/about.md
+      - Projects, Datasets, Scan Reports, and Permissions: MappingPipeline/projects-datasets-and-scanreports.md
+      - Uploading a Report: MappingPipeline/uploading-scan-report.md
       - Mapping Rules: MappingPipeline/mapping-rules.md
       - API: MappingPipeline/API.md
       - Azure Functions:
