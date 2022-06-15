@@ -2,13 +2,13 @@ Before getting started, please take a look a the following frequently asked ques
 
 ## ETL
 
-### What is the co-connect ETL?
+### What is the CaRROT ETL (Tool)?
 
-Extract, transform and load of your dataset into a Common Data Model (CDM) format that is loaded into bclink.
+Extract, transform and load of your dataset into a Common Data Model (CDM) format that is loaded into bclink via a command line tool.
 
-Our command line tool has the ability to do the full process:
+The following command (CLI tool) has the ability to do the full process:
 ```
-coconnect etl --help
+carrot etl --help
 ```
 <center>
 [Overview](/docs/CaRROT-CDM/ETL/About/){ .md-button .md-button--primary }
@@ -25,10 +25,10 @@ Otherwise, you have to do each step manually:
 
 ### How can I pseudonymise my data?
 
-When `co-connect-tools` is installed a standalone package is also installed [`co-connect-pseudonymise`](https://pypi.org/project/co-connect-pseudonymise/) ([source code](https://github.com/CO-CONNECT/Pseudonymisation)).
+When `carrot-cdm` is installed a standalone package is also installed [`co-connect-pseudonymise`](https://pypi.org/project/co-connect-pseudonymise/) ([source code](https://github.com/CO-CONNECT/Pseudonymisation)).
 
 !!! note
-     The pseudonymisation script (`co-connect-pseudonymise`) can be install separately if you want to run the pseudonymisation in a separate environment and don't want to install all the addditonal packages that `co-connect-tools` will install.  
+     The pseudonymisation script (`co-connect-pseudonymise`) can be install separately if you want to run the pseudonymisation in a separate environment and don't want to install all the addditonal packages that `carrot-cdm` will install.  
 
 A CLI is setup called `pseudonymise` which can be run on `csv` files:
 ```
@@ -55,7 +55,7 @@ A detailed guide on how to use this feature can be found here:
 
 ### Can I pseudonymise the data myself?
 
-Yes. You do not need to use the tool packaged in co-connect-tools, you can do this process yourself to create a masked for the person (study) identifiers in your dataset.
+Yes. You do not need to use the tool packaged in carrot-cdm, you can do this process yourself to create a masked for the person (study) identifiers in your dataset.
 
 ## Transforming (mapping) a dataset
 
@@ -66,12 +66,12 @@ Our command line interface tool for performing only the 'T' part of the 'ETL' pr
 === "With commandline arguments"
 	Alternatively, using commandline arguments, the tool can be run as:
     ```
-	coconnect run map --help
+	carrot run map --help
 	```
 === "Using a configuration file"
 	If the input data and rules file are specified in a `yaml` configuration file, and no load section is specified, the `etl` command can be used:
     ```
-	coconnect etl --config <config> 
+	carrot etl --config <config> 
 	```
 
 <center>
@@ -97,13 +97,13 @@ Your input files need to be `csv` files. If the mapping instructions have been f
 
 The helper command:
 ```
-coconnect display rules json <rules file> --list-tables
+carrot display rules json <rules file> --list-tables
 ```
 can be used to display what input file names the tool will be trying to load. 
 
 !!! example
     ```
-    coconnect display rules json $(coconnect info data_folder)/test/rules/rules_14June2021.json --list-tables
+    carrot display rules json $(carrot info data_folder)/test/rules/rules_14June2021.json --list-tables
     ```
     ```
       [
@@ -125,10 +125,10 @@ The rules `.json` file is supplied via the option `--rules `.
 The `--help` message displays the following syntax for how the `map` tool (for transform) can be run:
 
 ```
-coconnect run map --help
+carrot run map --help
 ```
 ```
-Usage: coconnect run map [OPTIONS] [INPUTS]...
+Usage: carrot run map [OPTIONS] [INPUTS]...
 
   Perform OMOP Mapping given an json file and a series of input files
 
@@ -149,10 +149,10 @@ You need to download the source code and its dependencies, somewhere which has a
 ### Download wheel files
 
 * Make a new directory
-* Next execute the command `python3 -m pip download co-connect-tools`:
+* Next execute the command `python3 -m pip download carrot-cdm`:
 ```
-$ python3 -m pip download co-connect-tools
-Collecting co-connect-tools
+$ python3 -m pip download carrot-cdm
+Collecting carrot-cdm
   Downloading co_connect_tools-0.4.13-py3-none-any.whl (300 kB)
      |████████████████████████████████| 300 kB 3.4 MB/s            
 Collecting tabulate
@@ -175,7 +175,7 @@ PyYAML-6.0-cp38-cp38-macosx_10_9_x86_64.whl
 
 ### Transfer the wheel files 
 
-Now you can zip and move this folder to a location/machine that you want to install co-connect-tools, one that doesn't have an internet connection to pypi.org.
+Now you can zip and move this folder to a location/machine that you want to install carrot-cdm, one that doesn't have an internet connection to pypi.org.
 
 * In this new environment, create a new working directory and setup a virtual environment
 
@@ -195,7 +195,7 @@ source bin/activate
 
 You can use `pip` to install 
 ```
-pip install --no-index --find-links <path to folder containing .whl files> co-connect-tools
+pip install --no-index --find-links <path to folder containing .whl files> carrot-cdm
 ```
 
 !!! warning
@@ -206,29 +206,24 @@ pip install --no-index --find-links <path to folder containing .whl files> co-co
 
 Example:
 ```
-$ pip install --no-index --find-links . co-connect-tools
+$ pip install --no-index --find-links . carrot-cdm
 Looking in links: .
-Processing ./co_connect_tools-0.4.13-py3-none-any.whl
-Processing ./PySimpleGUI-4.55.1-py3-none-any.whl
-Processing ./requests-2.26.0-py2.py3-none-any.whl
-Processing ./pandas-1.3.5-cp38-cp38-macosx_10_9_x86_64.whl
-Processing ./tabulate-0.8.9-py3-none-any.whl
-Processing ./openpyxl-3.0.9-py2.py3-none-any.whl
-Processing ./numpy-1.21.4-cp38-cp38-macosx_10_9_x86_64.whl
-Processing ./psutil-5.8.0-cp38-cp38-macosx_10_9_x86_64.whl
-Processing ./PyYAML-6.0-cp38-cp38-macosx_10_9_x86_64.whl
-Processing ./inquirer-2.8.0-py2.py3-none-any.whl
+...
+...
 Processing ./click-8.0.3-py3-none-any.whl
 Processing ./Jinja2-3.0.3-py3-none-any.whl
 ...
 ...
-Successfully installed Jinja2-3.0.3 MarkupSafe-2.0.1 blessed-1.19.0 certifi-2021.10.8 charset-normalizer-2.0.9 click-8.0.3 co-connect-tools-0.4.13 coloredlogs-15.0.1 docutils-0.18.1 et-xmlfile-1.1.0 graphviz-0.19.1 humanfriendly-10.0 idna-3.3 inquirer-2.8.0 lockfile-0.12.2 numpy-1.21.4 openpyxl-3.0.9 pandas-1.3.5 psutil-5.8.0 pysimplegui-4.55.1 python-daemon-2.3.0 python-dateutil-2.8.2 python-editor-1.0.4 pytz-2021.3 pyyaml-6.0 readchar-2.0.1 requests-2.26.0 six-1.16.0 tabulate-0.8.9 urllib3-1.26.7 wcwidth-0.2.5
+Successfully installed Jinja2-3.0.3 MarkupSafe-2.0.1 blessed-1.19.0 certifi-2021.10.8 charset-normalizer-2.0.9 click-8.0.3 carrot-cdm-0.6.2 coloredlogs-15.0.1 docutils-0.18.1 et-xmlfile-1.1.0 graphviz-0.19.1 humanfriendly-10.0 idna-3.3 inquirer-2.8.0 lockfile-0.12.2 numpy-1.21.4 openpyxl-3.0.9 pandas-1.3.5 psutil-5.8.0 pysimplegui-4.55.1 python-daemon-2.3.0 python-dateutil-2.8.2 python-editor-1.0.4 pytz-2021.3 pyyaml-6.0 readchar-2.0.1 requests-2.26.0 six-1.16.0 tabulate-0.8.9 urllib3-1.26.7 wcwidth-0.2.5
 ```
 
 Check if the tool installed offline, and you're good to go
 ```
-$ coconnect --version
-0.4.13
+carrot --version
+```
+Outputs:
+```
+0.6.2
 ```
 
 

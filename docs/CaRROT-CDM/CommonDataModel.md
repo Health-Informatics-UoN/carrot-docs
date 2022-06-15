@@ -98,4 +98,4 @@ class DestinationField(object):
    * `self.pk`: specifies if this column is the __primary key__ for its associated table. This can be used to order the tables based on this.
 
 
-::: coconnect.cdm.model.CommonDataModel 
+::: carrot.cdm.model.CommonDataModel 
