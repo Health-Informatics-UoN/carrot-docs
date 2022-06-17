@@ -6,8 +6,8 @@ Generating synthetic data can be performed via WhiteRabbit, by hand or via the u
 Synthetic data can be generated from the CCOM website or from the original `xlsx` ScanReport file.
 
 ```
-$ coconnect generate synthetic --help
-Usage: coconnect generate synthetic [OPTIONS] COMMAND [ARGS]...
+$ carrot generate synthetic --help
+Usage: carrot generate synthetic [OPTIONS] COMMAND [ARGS]...
 
   Commands to generate synthetic data.
 
@@ -25,8 +25,8 @@ Commands:
 If you have the original WhiteRabbit scan report locally, you can use this command to generate the synthetic data.
 
 ```
-$ coconnect generate synthetic xlsx --help
-Usage: coconnect generate synthetic xlsx [OPTIONS] REPORT
+$ carrot generate synthetic xlsx --help
+Usage: carrot generate synthetic xlsx [OPTIONS] REPORT
 
   generate synthetic data from a ScanReport xlsx file
 
@@ -41,7 +41,7 @@ Options:
 !!! example
     The following command with use a local scan report (`ScanReport.xlsx`) to generate `1000` synthetic data events for each table in the report, it will fill all columns labelled `ID` with incrementing values (this is a feature to mimic genuine IDs) and put the output into a folder `synthetic_data`.
     ```
-    coconnect generate synthetic xlsx --fill-column-with-values ID -n 1000 -o synthetic_data ScanReport.xlsx
+    carrot generate synthetic xlsx --fill-column-with-values ID -n 1000 -o synthetic_data ScanReport.xlsx
     ```
 
 
@@ -50,8 +50,8 @@ Options:
 If you cannot obtain the original WhiteRabbit scan report, you can also generate synthetic data using our CCOM website by connecting via the [api](/docs/MappingPipeline/API/) to the database.
 
 ```
-$ coconnect generate synthetic ccom --help
-Usage: coconnect generate synthetic ccom [OPTIONS]
+$ carrot generate synthetic ccom --help
+Usage: carrot generate synthetic ccom [OPTIONS]
 
   generate synthetic data from a ScanReport ID from CCOM
 
@@ -61,7 +61,7 @@ Options:
   -o, --output-directory TEXT     folder to save the synthetic data to
                                   [required]
   --fill-column-with-values TEXT  select columns to fill values for
-  -t, --token TEXT                specify the coconnect_token for accessing
+  -t, --token TEXT                specify the carrot_token for accessing
                                   the CCOM website
   -u, --url TEXT                  url endpoint for the CCOM website to ping
   --help                          Show this message and exit.
@@ -74,5 +74,5 @@ Options:
 !!! example
     This feature can be used to also generate `1000` events for the [scan report table (ID: 106)](https://ccom.azurewebsites.net/tables/?search=106):
     ```
-    coconnect generate synthetic ccom -i 106 -n 1000 -o synthetic_data --token <hashed token>
+    carrot generate synthetic ccom -i 106 -n 1000 -o synthetic_data --token <hashed token>
     ```
