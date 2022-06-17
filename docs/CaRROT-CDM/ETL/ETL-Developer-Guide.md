@@ -18,14 +18,14 @@ It is assumed that BCLink systems has already been an installed on a host machin
     cd /usr/lib/bcos/MyWorkingDirectory/
     ```
     
-??? example "Installing co-connect-tools"  
+??? example "Installing carrot-cdm"  
     It is also best practise to setup a virtual python environment and install the tool:
 
     ```
     python3 -m venv automation
     source automation/bin/activate
     pip install pip --upgrade
-    pip install co-connect-tools
+    pip install carrot-cdm
     ```
 
     Check the version:

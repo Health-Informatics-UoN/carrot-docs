@@ -246,5 +246,5 @@ Which will additionally save and output a time series from the start of executin
 4   0.415116    0.061394  24.650
 ...
 2021-07-27 10:31:48 - Profiler - INFO - finished profiling
-2021-07-27 10:31:48 - CommonDataModel - INFO - Writen the memory/cpu statistics to /Users/calummacdonald/Usher/CO-CONNECT/Software/co-connect-tools/alspac/output_data//logs//statistics_2021-07-27T093143.csv
+2021-07-27 10:31:48 - CommonDataModel - INFO - Writen the memory/cpu statistics to /Users/calummacdonald/Usher/CO-CONNECT/Software/carrot-cdm/alspac/output_data//logs//statistics_2021-07-27T093143.csv
 ```

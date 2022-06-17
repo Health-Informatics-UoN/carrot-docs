@@ -1,7 +1,7 @@
 !!! caution
     On macOS the GUI only works with `python >= 3.9.0`
 
-A simple Graphical User Interface (GUI) is implemented in co-connect-tools in order to run the mapping.
+A simple Graphical User Interface (GUI) is implemented in carrot-cdm in order to run the mapping.
 
 
 ## 1. Prepare the inputs
