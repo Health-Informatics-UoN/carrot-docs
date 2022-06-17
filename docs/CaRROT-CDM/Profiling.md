@@ -1,1 +1,1 @@
-::: coconnect.tools.profiling.Profiler
+::: carrot.tools.profiling.Profiler

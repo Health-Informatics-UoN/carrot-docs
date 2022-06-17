@@ -1,7 +1,7 @@
-::: coconnect.io.DataCollection
+::: carrot.io.DataCollection
 
-::: coconnect.io.LocalDataCollection
-::: coconnect.io.SqlDataCollection
-::: coconnect.io.BCLinkDataCollection
+::: carrot.io.LocalDataCollection
+::: carrot.io.SqlDataCollection
+::: carrot.io.BCLinkDataCollection
 
-::: coconnect.io.DataBrick
+::: carrot.io.DataBrick

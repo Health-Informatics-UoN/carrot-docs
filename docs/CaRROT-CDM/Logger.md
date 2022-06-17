@@ -1,1 +1,1 @@
-::: coconnect.tools.logger.Logger
+::: carrot.tools.logger.Logger

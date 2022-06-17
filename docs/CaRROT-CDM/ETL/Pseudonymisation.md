@@ -7,16 +7,16 @@
 	```
 	pseudonymise csv --help
 	```
-	That comes with the [co-connect-pseudonymise](/docs/CaRROT-Pseudonymise/Pseudonymisation/) package, and is installed when you install `co-connect-tools`.
+	That comes with the [co-connect-pseudonymise](/docs/CaRROT-Pseudonymise/Pseudonymisation/) package, and is installed when you install `carrot-cdm`.
 
 
 # Decrepid Tool
 
-A dataset can be pseudonymised __in-house__, or via the use of the co-connect-tools `pseudonymise` command (also the command executed in the ETL automation process)
+A dataset can be pseudonymised __in-house__, or via the use of the carrot-cdm `pseudonymise` command (also the command executed in the ETL automation process)
 
 ```
-$ coconnect pseudonymise --help
-Usage: coconnect pseudonymise [OPTIONS] INPUT
+$ carrot pseudonymise --help
+Usage: carrot pseudonymise [OPTIONS] INPUT
 
   Command to help pseudonymise data.
 
@@ -31,16 +31,16 @@ Options:
 ## Example
 
 ```
-coconnect pseudonymise -s 123456 -i PersonID -o pseudoynmised_data $(coconnect info data_folder)/test/inputs/original/Demographics.csv 			      
+carrot pseudonymise -s 123456 -i PersonID -o pseudoynmised_data $(carrot info data_folder)/test/inputs/original/Demographics.csv 			      
 ```
 
 Which outputs:
 
 ```
-2021-10-07 14:55:55 - pseudonymise - INFO - Working on file /Users/calummacdonald/Usher/CO-CONNECT/Software/co-connect-tools/coconnect/data/test/inputs/original/Demographics.csv, pseudonymising column 'PersonID' with salt '123456'
+2021-10-07 14:55:55 - pseudonymise - INFO - Working on file /Users/calummacdonald/Usher/CO-CONNECT/Software/carrot-cdm/carrot/data/test/inputs/original/Demographics.csv, pseudonymising column 'PersonID' with salt '123456'
 2021-10-07 14:55:55 - pseudonymise - INFO - Saving new file to pseudoynmised_data/Demographics.csv
 2021-10-07 14:55:55 - InputData - INFO - InputData Object Created
-2021-10-07 14:55:56 - InputData - INFO - Registering  /Users/calummacdonald/Usher/CO-CONNECT/Software/co-connect-tools/coconnect/data/test/inputs/original/Demographics.csv [<class 'pandas.core.frame.DataFrame'>]
+2021-10-07 14:55:56 - InputData - INFO - Registering  /Users/calummacdonald/Usher/CO-CONNECT/Software/carrot-cdm/carrot/data/test/inputs/original/Demographics.csv [<class 'pandas.core.frame.DataFrame'>]
 2021-10-07 14:55:56 - pseudonymise - INFO - 0      16dc368a89b428b2485484313ba67a3912ca03f2b2b424...
 1      37834f2f25762f23e1f74a531cbe445db73d6765ebe608...
 2      454f63ac30c8322997ef025edff6abd23e0dbe7b8a3d51...

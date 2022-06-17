@@ -1,7 +1,7 @@
 
-The Pythonic version of the CommonDataModel is built object-orientated in the subfolder `coconnect/cdm/`:
+The Pythonic version of the CommonDataModel is built object-orientated in the subfolder `carrot/cdm/`:
 ```
-coconnect/cdm/
+carrot/cdm/
 ├── __init__.py
 ├── decorators.py
 ├── model.py
@@ -24,16 +24,16 @@ coconnect/cdm/
 
 ## Destination Tables
 
-All CDM destination tables are formed as objects and are defined in `coconnect/cdm/objects`, inheriting from a base class (`DestinationTable`, defined in `common.py`):
+All CDM destination tables are formed as objects and are defined in `carrot/cdm/objects`, inheriting from a base class (`DestinationTable`, defined in `common.py`):
 
-   * [Person](/docs/CaRROT-CDM/Person.md)
-   * [Condition Occurrence](/docs/CaRROT-CDM/ConditionOccurrence.md)
-   * [Visit Occurrence](/docs/CaRROT-CDM/VisitOccurrence.md)
-   * [Observation](/docs/CaRROT-CDM/Observation.md)
-   * [Measurement](/docs/CaRROT-CDM/Measurement.md)
-   * [Drug Exposure](/docs/CaRROT-CDM/DrugExposure.md)
-   * [Procedure Occurrence](/docs/CaRROT-CDM/ProcedureOccurrence.md)
-   * [Specimen](/docs/CaRROT-CDM/Specimen.md)
+   * [Person](/CaRROT-Docs/CaRROT-CDM/Person.md)
+   * [Condition Occurrence](/CaRROT-Docs/CaRROT-CDM/ConditionOccurrence.md)
+   * [Visit Occurrence](/CaRROT-Docs/CaRROT-CDM/VisitOccurrence.md)
+   * [Observation](/CaRROT-Docs/CaRROT-CDM/Observation.md)
+   * [Measurement](/CaRROT-Docs/CaRROT-CDM/Measurement.md)
+   * [Drug Exposure](/CaRROT-Docs/CaRROT-CDM/DrugExposure.md)
+   * [Procedure Occurrence](/CaRROT-Docs/CaRROT-CDM/ProcedureOccurrence.md)
+   * [Specimen](/CaRROT-Docs/CaRROT-CDM/Specimen.md)
 
 
 ### Generating More Tables
@@ -43,14 +43,14 @@ The package contains `.csv` dumps taken from BCLink that give descriptions of wh
 At present are only dumps from version `5.3.1` of the CDM:
 
 ```
-$ ls $(coconnect info data_folder)/cdm/BCLINK_EXPORT/5.3.1
+$ ls $(carrot info data_folder)/cdm/BCLINK_EXPORT/5.3.1
 export-CONDITION_OCCURRENCE.csv export-MEASUREMENT.csv          export-PERSON.csv
 export-DRUG_EXPOSURE.csv        export-OBSERVATION.csv
 ``` 
 
 To help generate a pythonic template for a CDM template, the CLI can be used to do this
 ```
-coconnect generate cdm drug_exposure 5.3.1
+carrot generate cdm drug_exposure 5.3.1
 ```
 This command tool outputs the following code that you could use to copy, paster and edit to create a new table for `drug_exposure`
 ```python
@@ -98,4 +98,4 @@ class DestinationField(object):
    * `self.pk`: specifies if this column is the __primary key__ for its associated table. This can be used to order the tables based on this.
 
 
-::: coconnect.cdm.model.CommonDataModel 
+::: carrot.cdm.model.CommonDataModel 

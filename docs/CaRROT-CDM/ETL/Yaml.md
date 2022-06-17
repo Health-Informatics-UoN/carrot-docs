@@ -1,13 +1,13 @@
 The following guide documents how you can use the co-connect command line tools to automate the ETL process for by defining a `yaml` configuration file.
 
 
-ETL workflows, configured with a `yaml` file are executed with the synthax `coconnect etl --config <path to config file> [optional additional COMMAND]` 
+ETL workflows, configured with a `yaml` file are executed with the synthax `carrot etl --config <path to config file> [optional additional COMMAND]` 
 
 ```
-coconnect etl --config config.yml --help
+carrot etl --config config.yml --help
 ```
 ```
-Usage: coconnect etl [OPTIONS] COMMAND [ARGS]...
+Usage: carrot etl [OPTIONS] COMMAND [ARGS]...
 
   Command group for running the full ETL of a dataset
 
@@ -29,7 +29,7 @@ Commands:
 To run the full ETL you need a `.yml`(or `.yaml`) file to configure various settings.
 
 <center>
-[Example yamls](https://github.com/HDRUK/CaRROT_CDM/tree/master/coconnect/data/test/automation){ .md-button .md-button--secondary}
+[Example yamls](https://github.com/HDRUK/CaRROT_CDM/tree/master/carrot/data/test/automation){ .md-button .md-button--secondary}
 </center>
 
 ## Setup your YAML config
@@ -69,7 +69,7 @@ Here are some details on how you can setup a yaml configuration file
 	  number_of_rows_per_chunk: 10000
     ```
 	
-	The names of these can be found in the [source documentation](/docs/CaRROT-CDM/CLI/Run/), corresponding to the options you will see via the command `coconnect run map --help`.
+	The names of these can be found in the [source documentation](/docs/CaRROT-CDM/CLI/Run/), corresponding to the options you will see via the command `carrot run map --help`.
 	For example, to not perform any column formatting and to not automatically fill missing columns (e.g. `year_of_birth` in the person table):
 	```yaml
 	- input: ...
@@ -273,7 +273,7 @@ By defining an extract tab in the `yaml` you are able to execute code __before__
 
 To run the ETL-Tool given a configuration file, simply run:
 ```
-coconnect etl --config config.yaml
+carrot etl --config config.yaml
 ```
 
 ### Daemon Mode
@@ -283,11 +283,11 @@ To run as a background process (more specifically as a "daemon"), that watches f
 
 Start the ETL process with the following command:
 ```
-coconnect etl --config config.yaml --daemon
+carrot etl --config config.yaml --daemon
 ```
 You'll see an output like:
 ```
-2022-03-16 11:10:30 - etl - INFO - running as a daemon process, logging to coconnect.log
+2022-03-16 11:10:30 - etl - INFO - running as a daemon process, logging to carrot.log
 2022-03-16 11:10:30 - etl - INFO - process_id in <TimeoutPIDLockFile: 'etl.pid' -- 'etl.pid'>
 ```
 
@@ -298,13 +298,13 @@ The file `etl.pid` will exist as long as the process is running, if you dont see
 
 The yaml file configures where log messages are saved. For example, you can `tail` the last two lines of the log to see the output:
 ```
-tail coconnect.log
+tail carrot.log
 ```
 ```
 2022-03-16 11:14:14 - CommonDataModel - INFO - working on drug_exposure
 2022-03-16 11:14:14 - CommonDataModel - INFO - starting on drug_exposure.COVID_19_vaccine_3035.0x117dff910.2022-03-16T111409
 2022-03-16 11:14:14 - CommonDataModel - INFO - finished drug_exposure.COVID_19_vaccine_3035.0x117dff910.2022-03-16T111409 (0x119468eb0) ... 1/1 completed, 23522 rows
-2022-03-16 11:14:14 - CommonDataModel - INFO - saving dataframe (0x11ba44ca0) to <coconnect.io.plugins.local.LocalDataCollection object at 0x117dfffd0>
+2022-03-16 11:14:14 - CommonDataModel - INFO - saving dataframe (0x11ba44ca0) to <carrot.io.plugins.local.LocalDataCollection object at 0x117dfffd0>
 2022-03-16 11:14:14 - LocalDataCollection - INFO - saving drug_exposure to cache//drug_exposure.tsv
 2022-03-16 11:14:14 - LocalDataCollection - INFO - finished save to file
 2022-03-16 11:14:14 - CommonDataModel - INFO - finalised drug_exposure on iteration 0 producing 23522 rows from 1 tables
@@ -334,7 +334,7 @@ kill -9 $(cat etl.pid)
 
 A simple command that only works if you have BCLink options setup in your `yaml` file
 ```
-coconnect etl --config config.yaml check-tables
+carrot etl --config config.yaml check-tables
 ```
 The command will display information about the number of rows in the BCLink tables the configuration file configures for.
 
@@ -342,7 +342,7 @@ The command will display information about the number of rows in the BCLink tabl
 ### Delete Tables
 The following command can be run even when the ETL tool is already running as a background process
 ```
-coconnect etl --config config.yaml delete-tables 
+carrot etl --config config.yaml delete-tables 
 ```
 Starting the command provides you with a prompt, asking which files you want to delete
 ```
@@ -368,7 +368,7 @@ Starts the process to delete this file (also deletes it from BCLink if it has be
 2022-03-16 11:19:42 - BCLinkHelpers - INFO - Called remove_table on /usr/lib/bcos/MyWorkingDirectory/Temp/cache/observation.Cancer_3045.0x7f0c563fa278.2022-03v
 2022-03-16 11:19:42 - LocalDataCollection - INFO - DataCollection Object Created
 2022-03-16 11:19:42 - LocalDataCollection - INFO - Using a chunksize of '1000' nrows
-2022-03-16 11:19:42 - LocalDataCollection - INFO - Registering  observation [<coconnect.io.common.DataBrick object at 0x7fa2a0471630>]
+2022-03-16 11:19:42 - LocalDataCollection - INFO - Registering  observation [<carrot.io.common.DataBrick object at 0x7fa2a0471630>]
 2022-03-16 11:19:42 - BCLinkHelpers - NOTICE - bc_sqlselect --user=bclink --query=SELECT column_name FROM INFORMATION_SCHEMA. COLUMNS WHERE table_name = 'obsek
 2022-03-16 11:19:42 - BCLinkHelpers - INFO - got pk observation_id
 2022-03-16 11:19:42 - LocalDataCollection - INFO - Retrieving initial dataframe for 'observation' for the first time

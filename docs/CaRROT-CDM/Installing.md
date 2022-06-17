@@ -2,10 +2,11 @@
 !!! caution
     This tool is only stable with python versions `>=3.6` on Unix distributions (macOS, Ubuntu, Centos7) and on Windows. 
 
+<!---
 [![asciicast](https://asciinema.org/a/443714.svg)](https://asciinema.org/a/443714)
+--->
 
-
-The co-connect-tools package is available to be [installed via pip](https://pypi.org/project/co-connect-tools/). The latest tagged version of the tool can be found here. See [the next section](/docs/CaRROT-CDM/Installing/#upgrading) on how to upgrade the package to the latest version.
+The carrot-cdm package is available to be [installed via pip](https://pypi.org/project/carrot-cdm/). The latest tagged version of the tool can be found here. See [the next section](/CaRROT-Docs/CaRROT-CDM/Installing/#upgrading) on how to upgrade the package to the latest version.
 
 !!! tip
     It is recommended that you setup your own virtual python environment, for example using [`venv`](https://docs.python.org/3/library/venv.html).
@@ -23,19 +24,19 @@ The co-connect-tools package is available to be [installed via pip](https://pypi
 
 To install the package via pip you should execute the command:
 ```
-python -m pip install co-connect-tools
+python -m pip install carrot-cdm
 ```
 
 Otherwise, to ensure the right version of python (python3) is used to install (as you may have installed `python2` and `python3`) from pip you can also do:
 ```
-python3 -m pip install co-connect-tools
+python3 -m pip install carrot-cdm
 ```
 
 
 !!! tip
     If you are struggling to install from `pip` due to lack of root permissions, or you are not using a virtual python environment (e.g. conda), you can install as a user with the command:
     ```
-    python3 -m pip install co-connect-tools --user
+    python3 -m pip install carrot-cdm --user
     ```
     This will install the package into a local user folder.
 
@@ -47,14 +48,14 @@ python3 -m pip install co-connect-tools
 
 To upgrade the tool to the latest version, run:
 ```
-python -m pip install co-connect-tools --upgrade
+python -m pip install carrot-cdm --upgrade
 ```
 Otherwise, to be sure, uninstall the package and reinstall it.
 
 !!! tip
     Running the command:
     ```
-    coconnect info version
+    carrot info version
     ```
     will display the installed verison of the tool.
 
@@ -74,12 +75,16 @@ To verify the package is installed you can test the following information comman
 * show the tool version (this may take a few seconds, the first time you run the package)
 
 ```
-coconnect info version
+carrot info version
+```
+Alternatively...
+```
+carrot --version
 ```
 
 * show the location of the installation folder  
 
 ```
-coconnect info install_folder
+carrot info install_folder
 ```
 

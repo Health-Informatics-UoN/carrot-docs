@@ -1,16 +1,16 @@
 Below are a list of common errors that are often encountered. 
 
-## `ERROR: No matching distribution found for co-connect-tools`
+## `ERROR: No matching distribution found for carrot-cdm`
 
-When installing co-connect-tools you see messages like this:
+When installing carrot-cdm you see messages like this:
 ```
-$ pip install co-connect-tools
-Collecting co-connect-tools
-  WARNING: Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.VerifiedHTTPSConnection object at 0x10d7c39a0>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known')': /simple/co-connect-tools/
+$ pip install carrot-cdm
+Collecting carrot-cdm
+  WARNING: Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.VerifiedHTTPSConnection object at 0x10d7c39a0>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known')': /simple/carrot-cdm/
 ...
 ...
-ERROR: Could not find a version that satisfies the requirement co-connect-tools (from versions: none)
-ERROR: No matching distribution found for co-connect-tools
+ERROR: Could not find a version that satisfies the requirement carrot-cdm (from versions: none)
+ERROR: No matching distribution found for carrot-cdm
 ```
 
 The most common cause of this error is a lack of internet connection or lack of connection to pypi.org
@@ -33,13 +33,13 @@ This means your machine cannot establish a connection to `pypi` to download and 
 </center>
 
 
-## `coconnect.tools.file_helpers.MissingInputFiles`
+## `carrot.tools.file_helpers.MissingInputFiles`
 
 One of the most common errors is due to missing or badly named files.
 
 For example you might see the following error:
 ```
-coconnect.tools.file_helpers.MissingInputFiles: Found the following files ['foo.csv','bar.csv'] in the json file, that are not in the loaded file list... ['Foo.csv','Bar.csv']
+carrot.tools.file_helpers.MissingInputFiles: Found the following files ['foo.csv','bar.csv'] in the json file, that are not in the loaded file list... ['Foo.csv','Bar.csv']
 ```
 
 The message is saying that the tool loaded the files `['Foo.csv','Bar.csv']` but in the `json` file for the rules, it is expecting the files `['foo.csv','bar.csv']`.
@@ -67,13 +67,13 @@ First you should check that the file supplied with the `--rules` argument is a v
 
 Often the `json.decoder.JSONDecodeError` will tell you what line and column there is an error coming from. Common issues are due to bad formating or accidental insertions of whitespace characters for a text editor, if the file has been opened up and manually edited.
 
-## coconnect.cdm.objects.common.FormattingError
+## carrot.cdm.objects.common.FormattingError
 
 This is an error message telling you that something in your input data is not in the right format for the tool to handle and format. 
 
 !!! example
     ```
-    coconnect.cdm.objects.common.FormattingError: The column person_id using the formatter function Integer produced NaN values in a required column
+    carrot.cdm.objects.common.FormattingError: The column person_id using the formatter function Integer produced NaN values in a required column
     ```
 
 In the above example, this error message means that while trying to format the `person_id` column into a Integer, every single value failed, meaning the column in the input data that is used for the `person_id` is not in a format that can be converted into an Integer.

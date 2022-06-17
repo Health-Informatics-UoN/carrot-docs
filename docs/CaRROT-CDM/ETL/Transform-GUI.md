@@ -1,12 +1,12 @@
 !!! caution
     On macOS the GUI only works with `python >= 3.9.0`
 
-A simple Graphical User Interface (GUI) is implemented in co-connect-tools in order to run the mapping.
+A simple Graphical User Interface (GUI) is implemented in carrot-cdm in order to run the mapping.
 
 
 ## 1. Prepare the inputs
 
-In this example, we use the test data that is available in the tool (see `coconnect info `)
+In this example, we use the test data that is available in the tool (see `carrot info `)
 We have:  
 
 * A `rules.json` file for the mapping-rules  
@@ -24,7 +24,7 @@ Assuming you have successfully installed the packaged, you need to enter the com
     ```
 === "Option 2" 
     ```
-    coconnect map gui
+    carrot map gui
     ```
 !!! note
     This can be started from any directory, as soon as you open up the command line. You do not need to be in the same directory as all your files.

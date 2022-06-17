@@ -100,7 +100,7 @@ nav:
           - CaRROT-CDM/notebooks/Part 6 - BCLink.ipynb
           - CaRROT-CDM/notebooks/Part 7 - Manually Loading Dataframes.ipynb
           - CaRROT-CDM/notebooks/Part 8 - Create PyConfig.ipynb
-          - CaRROT-CDM/notebooks/Part 9 - Analysis.ipynb
+          #- CaRROT-CDM/notebooks/Part 9 - Analysis.ipynb
   - CaRROT Pseudonymise:
       - Pseudonymisation: CaRROT-Pseudonymise/Pseudonymisation.md
 

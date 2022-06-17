@@ -6,10 +6,10 @@ For co-connect datapartners, you will be supplied this `json` file by the co-con
 
 The co-connect package comes with a CLI helper for displaying/manipulating rules files
 ```
-coconnect display rules --help
+carrot display rules --help
 ```
 ```
-Usage: coconnect display rules [OPTIONS] COMMAND [ARGS]...
+Usage: carrot display rules [OPTIONS] COMMAND [ARGS]...
 
   Commands for displaying json rules in various ways.
 
@@ -53,12 +53,12 @@ Commands:
 
 An example `json` file can be found in the following location:
 ```
-echo $(coconnect info data_folder)/test/rules/rules_14June2021.json
+echo $(carrot info data_folder)/test/rules/rules_14June2021.json
 ```
 
 It can be displayed to the terminal (Unix):
 ```
-coconnect display rules json $(coconnect info data_folder)/test/rules/rules_14June2021.json
+carrot display rules json $(carrot info data_folder)/test/rules/rules_14June2021.json
 ```
 
 ```json
@@ -379,8 +379,8 @@ demo-dataset/data/rules.json       demo-dataset/data/rules_small.json
 
 Example:
 ```
-coconnect display rules dag demo-dataset/data/rules_small.json
-coconnect display rules dag demo-dataset/data/rules.json
+carrot display rules dag demo-dataset/data/rules_small.json
+carrot display rules dag demo-dataset/data/rules.json
 ```
 
 <center>
@@ -395,7 +395,7 @@ You may want to extract a difference between two `json` rules files, for which t
 
 Extract the delta between two rules files (a small old, and bigger new), pipeing the output to a file:
 ```
-coconnect display rules delta demo-dataset/data/rules_small.json demo-dataset/data/rules.json | tee rules_delta.json
+carrot display rules delta demo-dataset/data/rules_small.json demo-dataset/data/rules.json | tee rules_delta.json
 ```
 Output example...
 ```
@@ -425,7 +425,7 @@ Output example...
 
 And displaying the delta of the rules created:
 ```
-coconnect display rules dag rules_delta.json
+carrot display rules dag rules_delta.json
 ```
 <center>
 <img src="../../../images/rules_delta.gv.png" width="550"/>

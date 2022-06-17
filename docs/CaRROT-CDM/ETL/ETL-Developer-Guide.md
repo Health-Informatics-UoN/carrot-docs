@@ -18,19 +18,19 @@ It is assumed that BCLink systems has already been an installed on a host machin
     cd /usr/lib/bcos/MyWorkingDirectory/
     ```
     
-??? example "Installing co-connect-tools"  
+??? example "Installing carrot-cdm"  
     It is also best practise to setup a virtual python environment and install the tool:
 
     ```
     python3 -m venv automation
     source automation/bin/activate
     pip install pip --upgrade
-    pip install co-connect-tools
+    pip install carrot-cdm
     ```
 
     Check the version:
     ```
-    coconnect info version
+    carrot info version
     ```
     Which should display version `>=0.4.1` for the automation to work.
 
@@ -40,7 +40,7 @@ It is assumed that BCLink systems has already been an installed on a host machin
 
     Test data can be found in th `data_folder`:
     ```
-    $ ls $(coconnect info data_folder)/test/
+    $ ls $(carrot info data_folder)/test/
     automation  expected_outputs  inputs  rules  scan_report
     ```
 
@@ -49,7 +49,7 @@ It is assumed that BCLink systems has already been an installed on a host machin
     $ pwd
     /usr/lib/bcos/MyWorkingDirectory
     $ mkdir input_data
-    $ cp -r $(coconnect info data_folder)/test/inputs/original input_data/001
+    $ cp -r $(carrot info data_folder)/test/inputs/original input_data/001
     $ ls input_data/001
     covid19_antibody.csv  Covid19_test.csv  Demographics.csv  Symptoms.csv  vaccine.csv
     ```
@@ -58,8 +58,8 @@ It is assumed that BCLink systems has already been an installed on a host machin
 
     As associated example mapping rules `json` file for this test dataset can be found and copied over to the working directory:
     ```
-    $ cp -r $(coconnect info data_folder)/test/rules/rules_14June2021.json rules.json
-    $ coconnect display json rules.json |& head -15
+    $ cp -r $(carrot info data_folder)/test/rules/rules_14June2021.json rules.json
+    $ carrot display json rules.json |& head -15
     {
       "metadata": {
             "date_created": "2021-06-14T15:27:37.123947",
@@ -135,7 +135,7 @@ The next step is to create and configure a `yaml` file for the tool to digest. T
     ```yaml
     clean: true
     rules: /usr/lib/bcos/MyWorkingDirectory/rules.json
-    log: /usr/lib/bcos/MyWorkingDirectory/coconnect.log
+    log: /usr/lib/bcos/MyWorkingDirectory/carrot.log
     data: 
       watch: 
          minutes: 1
@@ -162,11 +162,11 @@ By default, if the CaRROT documentation for setting up BCLink has been followed 
     With a minimal `yaml` configuration, you can perform a check to see if the tables exist and that the tool is able to interact with them.
 	
 	```
-	coconnect etl bclink --config config.yml check_tables
+	carrot etl bclink --config config.yml check_tables
 	```
 	Example output:
 	```
-	(automation) [bcos_srv@link-test-dt Demo]$ coconnect etl bclink --config config.yml check_tables
+	(automation) [bcos_srv@link-test-dt Demo]$ carrot etl bclink --config config.yml check_tables
     2021-11-17 10:33:31 - check_tables - INFO - printing to see if tables exist
 	2021-11-17 10:33:31 - run_bash_cmd - NOTICE - bc_sqlselect --user=bclink --query=SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = 'person' ) bclink
 	2021-11-17 10:33:31 - run_bash_cmd - NOTICE - bc_sqlselect --user=bclink --query=SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = 'condition_occurrence' ) bclink
@@ -201,7 +201,7 @@ By default, if the CaRROT documentation for setting up BCLink has been followed 
 
 	CO-CONNECT-Tools also has this feature to create tables based on what has been setup in the `yaml` configuration file
 	```
-    coconnect etl bclink --config <config> create_tables
+    carrot etl bclink --config <config> create_tables
 	```
 	Example output:
 	```
@@ -230,11 +230,11 @@ Before you run the ETL (for the first time), it's important to make sure there's
 
 ??? example "From the Command Line"
 	```
-	coconnect etl bclink --config config.yml clean_tables 
+	carrot etl bclink --config config.yml clean_tables 
 	```
 	Example output:
     ```
-	(automation) [bcos_srv@link-test-dt Demo]$ coconnect etl bclink --config config2.yml clean_tables
+	(automation) [bcos_srv@link-test-dt Demo]$ carrot etl bclink --config config2.yml clean_tables
 	2021-11-17 11:13:03 - bclink_helpers - INFO - Cleaning table person_001
 	2021-11-17 11:13:03 - run_bash_cmd - NOTICE - datasettool2 delete-all-rows person_001 --database=bclink
 	2021-11-17 11:13:05 - bclink_helpers - WARNING - Deleting all rows from dataset PERSON_001 (person_001)
@@ -258,7 +258,7 @@ Finally you are ready to execute the ETL...
 
 ??? example "Execute the full ETL"
 	```
-	coconnect etl bclink --config config.yml execute
+	carrot etl bclink --config config.yml execute
 	```
 	Example output:
 	
