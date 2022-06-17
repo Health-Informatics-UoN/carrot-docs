@@ -251,7 +251,7 @@ If there is an error here, you may need to manually configure the table in the y
 		...
 	```
 
-	CO-CONNECT-Tools also has this feature to create tables based on what has been setup in the `yaml` configuration file
+	CaRROT-CDM also has this feature to create tables based on what has been setup in the `yaml` configuration file
 	```
     carrot etl --config <config> create-tables
 	```
@@ -329,7 +329,7 @@ Before you run the ETL (for the first time), it's important to make sure there's
 
 Finally you are ready to execute the ETL...
 
-??? example "Start the co-connect ETL"
+??? example "Start the carrot ETL"
 	```
 	carrot etl --config config.yaml
 	```
