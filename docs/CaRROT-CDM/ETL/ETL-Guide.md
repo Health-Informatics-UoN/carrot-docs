@@ -30,7 +30,7 @@ It is assumed that BCLink systems has already been an installed on a host machin
 
     Check the version:
     ```
-    coconnect info version
+    carrot info version
     ```
     Which should display version `>=0.5.0` for the automation to work.
 
@@ -43,7 +43,7 @@ Setup your inputs and obtain the `rules.json` for performing the transform (OMOP
 
 ??? example "Get inputs"
 
-	We recommend that you download the test dataset from [CO-CONNECT/demo-dataset](https://github.com/CO-CONNECT/demo-dataset), otherwise a smaller test dataset can be foud in the following location: `$(coconnect info data_folder)/test/`
+	We recommend that you download the test dataset from [CO-CONNECT/demo-dataset](https://github.com/CO-CONNECT/demo-dataset), otherwise a smaller test dataset can be foud in the following location: `$(carrot info data_folder)/test/`
 	
 	!!! note
 		You will have to have `git` installed for this to work. You can do this while being `sudo` user, for example on CentOS:
@@ -65,7 +65,7 @@ Setup your inputs and obtain the `rules.json` for performing the transform (OMOP
 	```
 	We can check the rules.json file by testing displaying the first 15 liens of the `json` file:
 	```
-    coconnect display rules json demo-dataset/data/rules.json |& head -15
+    carrot display rules json demo-dataset/data/rules.json |& head -15
 	```
 	Outputs:
 	```
@@ -194,7 +194,7 @@ By default, if the CaRROT documentation for setting up BCLink has been followed 
     With a minimal `yaml` configuration, you can perform a check to see if the tables exist and that the tool is able to interact with them.
 	
 	```
-	coconnect etl --config config.yaml check-tables
+	carrot etl --config config.yaml check-tables
 	```
 	Example output:
 	```
@@ -253,7 +253,7 @@ If there is an error here, you may need to manually configure the table in the y
 
 	CO-CONNECT-Tools also has this feature to create tables based on what has been setup in the `yaml` configuration file
 	```
-    coconnect etl --config <config> create-tables
+    carrot etl --config <config> create-tables
 	```
 	Example output:
 	```
@@ -283,7 +283,7 @@ Before you run the ETL (for the first time), it's important to make sure there's
 
 ??? example "From the Command Line"
 	```
-	coconnect etl --config config.yaml clean-tables 
+	carrot etl --config config.yaml clean-tables 
 	```
 	Example output:
     ```
@@ -319,7 +319,7 @@ Before you run the ETL (for the first time), it's important to make sure there's
 	```
 	
 ??? example "Specify within the YAML"
-	Alternatively you can tell the tool to do this automatically by specifying it in the `yaml` configuration file, by appending the configuration. Everytime `coconnect etl` is executed, the tables present in BCLink will be cleaned:
+	Alternatively you can tell the tool to do this automatically by specifying it in the `yaml` configuration file, by appending the configuration. Everytime `carrot etl` is executed, the tables present in BCLink will be cleaned:
 	```
 	settings:
        clean: true
@@ -331,7 +331,7 @@ Finally you are ready to execute the ETL...
 
 ??? example "Start the co-connect ETL"
 	```
-	coconnect etl --config config.yaml
+	carrot etl --config config.yaml
 	```
 	Example output:
 	
@@ -339,8 +339,8 @@ Finally you are ready to execute the ETL...
 	```
 	2022-03-15 13:47:57 - run_etl - INFO - running etl on config.yaml (last modified: 1647352068.9562533)
 	2022-03-15 13:47:57 - LocalDataCollection - INFO - DataCollection Object Created
-	2022-03-15 13:47:57 - LocalDataCollection - INFO - Registering  Demographics.csv [<coconnect.io.common.DataBrick object at 0x7f0c5a82a5c0>]
-	2022-03-15 13:47:57 - LocalDataCollection - INFO - Registering  GP_Records.csv [<coconnect.io.common.DataBrick object at 0x7f0c5a82a9b0>]
+	2022-03-15 13:47:57 - LocalDataCollection - INFO - Registering  Demographics.csv [<carrot.io.common.DataBrick object at 0x7f0c5a82a5c0>]
+	2022-03-15 13:47:57 - LocalDataCollection - INFO - Registering  GP_Records.csv [<carrot.io.common.DataBrick object at 0x7f0c5a82a9b0>]
 	...
 	2022-03-15 13:47:57 - BCLinkHelpers - NOTICE - bc_sqlselect --user=bclink --query=SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = 'condition_occurrence' ) bclink
 	2022-03-15 13:47:57 - BCLinkHelpers - INFO - condition_occurrence (condition_occurrence) already exists --> all good

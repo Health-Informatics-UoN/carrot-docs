@@ -3,7 +3,7 @@ This section describes how CO-CONNECT-Tools can be used to manually perform the 
 The following guide will take you through the main steps to make sure the tool is installed correctly and that the ETL is performed correctly.
 
 !!! note
-	Running the transform part of the ETL process with `coconnect run map OPTIONS` instead of `coconnect etl --config <file>` gives you a lot more control over the command line options, although all options can be parsed as key-word-arguments in the config `yaml` used with the `coconnect etl`
+	Running the transform part of the ETL process with `carrot run map OPTIONS` instead of `carrot etl --config <file>` gives you a lot more control over the command line options, although all options can be parsed as key-word-arguments in the config `yaml` used with the `carrot etl`
 
 
 ### 1. Install the tool
@@ -27,31 +27,31 @@ Input data is expected in `csv` format,
 It is possible to do a quick check to display the first 10 rows of an input `csv`.
 Run:
 ```
-coconnect display dataframe --head 10 <input data csv file> 
+carrot display dataframe --head 10 <input data csv file> 
 ```
 !!! example
     === "Unix Users"
-        A test dataset is located in the install folder (`coconnect info install_folder`)
+        A test dataset is located in the install folder (`carrot info install_folder`)
         ```
-        coconnect display dataframe --head 10 $(coconnect info install_folder)/data/test/inputs/Demographics.csv
+        carrot display dataframe --head 10 $(carrot info install_folder)/data/test/inputs/Demographics.csv
         ```
 
     === "Windows Users"
-        A test dataset is located in the install folder (`coconnect info install_folder`), by listing this directory (`dir`) you can find the full path to an example file to test inplace of `<input data csv file>`
+        A test dataset is located in the install folder (`carrot info install_folder`), by listing this directory (`dir`) you can find the full path to an example file to test inplace of `<input data csv file>`
 	
 With a `json` file for the rules, you can quickly check the tool is able to read and display them via:
 ```
-coconnect display json rules.json
+carrot display json rules.json
 ```
 
 !!! example
     === "Unix Users"
         As with the input `csv` files, the test dataset comes packaged with a rules `json` file.
         ```
-        coconnect display json  $(coconnect info install_folder)/data/test/rules/rules_14June2021.json
+        carrot display json  $(carrot info install_folder)/data/test/rules/rules_14June2021.json
         ```   
     === "Windows Users"
-        As with the input `csv` files, the test dataset comes packaged with a rules `json` file, which can be found via the folder `coconnect info install_folder` followed by `\data\test\rules\`.
+        As with the input `csv` files, the test dataset comes packaged with a rules `json` file, which can be found via the folder `carrot info install_folder` followed by `\data\test\rules\`.
 
 
 
@@ -60,10 +60,10 @@ coconnect display json rules.json
 
 The synthax for running the tool can be seen from using `--help`:
 ```
-coconnect run map --help
+carrot run map --help
 ```
 ```
-Usage: coconnect run map [OPTIONS] [INPUTS]...
+Usage: carrot run map [OPTIONS] [INPUTS]...
 
   Perform OMOP Mapping given an json file and a series of input files
 
@@ -119,7 +119,7 @@ Options:
 The tool ==requires== you to pass a `.json` file for the rules, as well as space separated list of `.csv` files 
 
 ```
-coconnect run map --rules <.json file for rules> <csv file 1> <csv file 2> <csv file 3> ...
+carrot run map --rules <.json file for rules> <csv file 1> <csv file 2> <csv file 3> ...
 ```
 
 
@@ -130,13 +130,13 @@ coconnect run map --rules <.json file for rules> <csv file 1> <csv file 2> <csv 
         For macOS/Ubuntu/Centos etc. users, you can easily run from the CLI with a wildcard. Assuming your input data is located in the folder `data/` you can run:
 
         ``` bash
-    	coconnect run map --rules $(coconnect info install_folder)/data/test/rules/rules_14June2021.json  $(coconnect info install_folder)/data/test/inputs/*.csv
+    	carrot run map --rules $(carrot info install_folder)/data/test/rules/rules_14June2021.json  $(carrot info install_folder)/data/test/inputs/*.csv
         ```
 
     	The tool has the capability to also run on a folder containing the `.csv` files. The tool will look in the folder for `.csv` files and load them:
 
         ``` bash
-        coconnect run map --rules $(coconnect info install_folder)/data/test/rules/rules_14June2021.json  $(coconnect info install_folder)/data/test/inputs/
+        carrot run map --rules $(carrot info install_folder)/data/test/rules/rules_14June2021.json  $(carrot info install_folder)/data/test/inputs/
         ```
 
 
@@ -146,13 +146,13 @@ coconnect run map --rules <.json file for rules> <csv file 1> <csv file 2> <csv 
 
 
         ``` 
-    	coconnect run map --rules rules.json D:\Foo\Bar\data
+    	carrot run map --rules rules.json D:\Foo\Bar\data
         ```
 
         Or by manually passing the individual input csv files:
         
         ``` 
-        coconnect run map --rules rules.json D:\Foo\Bar\data\file_1.csv D:\Foo\Bar\data\file_2.csv
+        carrot run map --rules rules.json D:\Foo\Bar\data\file_1.csv D:\Foo\Bar\data\file_2.csv
         ```
 
         Wildcards for inputs ....
@@ -162,7 +162,7 @@ coconnect run map --rules <.json file for rules> <csv file 1> <csv file 2> <csv 
 
 By default, mapped `tsv` files are created in the folder `output_data` within your current working directory.
 !!! tip
-    To specify a different output folder, use the command line argument `--output-folder` when running `coconnect map run`
+    To specify a different output folder, use the command line argument `--output-folder` when running `carrot map run`
 
 Log files are also created in a subdirectory of the output folder, for example:
 ```
@@ -176,7 +176,7 @@ output_data/
 
 Other than opening up the output csv in your favourite viewer, you can also use the command line tools to display a simple dataframe
 ```
-coconnect display dataframe --drop-na output_data/condition_occurrence.tsv
+carrot display dataframe --drop-na output_data/condition_occurrence.tsv
 ```
 ```
        condition_occurrence_id  person_id  condition_concept_id  ... condition_end_datetime condition_source_value  condition_source_concept_id
@@ -190,7 +190,7 @@ coconnect display dataframe --drop-na output_data/condition_occurrence.tsv
 
 Markdown format can be outputed for convenience too:
 ```
-coconnect display dataframe --markdown --drop-na output_data/person.tsv
+carrot display dataframe --markdown --drop-na output_data/person.tsv
 ```
 
 |    |   person_id |   gender_concept_id | birth_datetime      | gender_source_value   |   gender_source_concept_id |
