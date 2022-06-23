@@ -19,7 +19,7 @@ jobs:
           pip3 install setuptools
           pip3 install -e docs/CaRROT-CDM/source_code/
 
-      - run: python -c 'import sys; sys.path.append("docs/CaRROT-CDM/source_code/"); import coconnect; print (coconnect.cdm.objects.DestinationTable)'
+      - run: python -c 'import sys; sys.path.append("docs/CaRROT-CDM/source_code/"); import carrot; print (carrot.cdm.objects.DestinationTable)'
       - name: deploy
         run: |
           mkdocs gh-deploy --force
