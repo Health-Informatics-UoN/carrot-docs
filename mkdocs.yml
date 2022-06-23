@@ -25,7 +25,7 @@ nav:
   #    - WhiteRabbit: GettingStarted/white-rabbit.md
 
 
-  - Mapping-Pipeline (CCOM):
+  - CaRROT-Mapper:
       - About: MappingPipeline/about.md
       - Projects, Datasets, Scan Reports, and Permissions: MappingPipeline/projects-datasets-and-scanreports.md
       - Uploading a Report: MappingPipeline/uploading-scan-report.md
@@ -105,8 +105,7 @@ nav:
       - Pseudonymisation: CaRROT-Pseudonymise/Pseudonymisation.md
 
   - BCLink:
-      - About: BCLink/About.md
-      - For Developers: 
+      - For Developers:
           - Test Link:
               - Via SSH: BCLink/TestLink/ssh.md
               - Notes:
