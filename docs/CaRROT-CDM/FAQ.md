@@ -226,4 +226,22 @@ Outputs:
 0.6.2
 ```
 
+## How do I install using conda?
 
+Create your virtual environment (with conda python>=3.6)
+```
+conda create --name myenv 
+```
+Activate it:
+```
+conda activate myenv
+```
+
+We could recommned that you just install pip in your virtual enviroment at this point and continue with the normal install instructions, i.e:
+```
+conda install pip
+```
+followed by:
+```
+pip install carrot-cdm
+```
