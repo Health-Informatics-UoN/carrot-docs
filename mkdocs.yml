@@ -105,13 +105,12 @@ nav:
       - Pseudonymisation: CaRROT-Pseudonymise/Pseudonymisation.md
 
   - BCLink:
-      - For Developers:
-          - Test Link:
-              - Via SSH: BCLink/TestLink/ssh.md
-              - Notes:
-                  - Sep 14: BCLink/TestLink/Notes/14Sep.md
-                  - Sep 15: BCLink/TestLink/Notes/15Sep.md
-                  - Sep 28: BCLink/TestLink/Notes/28Sep.md
+      - Test Link (for developers):
+          - Via SSH: BCLink/TestLink/ssh.md
+          - Notes:
+              - Sep 14: BCLink/TestLink/Notes/14Sep.md
+              - Sep 15: BCLink/TestLink/Notes/15Sep.md
+              - Sep 28: BCLink/TestLink/Notes/28Sep.md
 
 plugins:
   - mknotebooks:
