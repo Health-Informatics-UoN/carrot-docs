@@ -17,22 +17,22 @@ linked to this _Data Partner_. These are grouped by _Project_ that
 the user has access to. Select the correct _Dataset_ that the new
 _Scan Report_ should belong to.
 
-## Creating a new Dataset
-If there is no appropriate _Dataset_ already existing, click the 
-_Add New_ button to the right of the _Dataset_ dropdown. This opens
-a panel.
+!!! note "Creating a new Dataset"
+    If there is no appropriate _Dataset_ already existing, click the 
+    _Add New_ button to the right of the _Dataset_ dropdown. This opens
+    a panel.
 
-Enter a name for the _Dataset_ (which must be globally unique - if 
-you receive an error then it is likely that this _Dataset_ name is 
-already taken), and select at least one _Project_ to which it will 
-be associated. Then select the visibility, editor and admin options
-as appropriate (see 
-[Projects, Datasets, Scan Reports, and Permissions ](/CaRROT-Docs/MappingPipeline/projects-datasets-and-scanreports) 
-for an explanation of these. The _Dataset_ creator is automatically 
-assigned as an editor.
+    Enter a name for the _Dataset_ (which must be globally unique - if 
+    you receive an error then it is likely that this _Dataset_ name is 
+    already taken), and select at least one _Project_ to which it will 
+    be associated. Then select the visibility, editor and admin options
+    as appropriate (see 
+    [Projects, Datasets, Scan Reports, and Permissions ](/CaRROT-Docs/MappingPipeline/projects-datasets-and-scanreports) 
+    for an explanation of these. The _Dataset_ creator is automatically 
+    assigned as an editor.
 
-Finally, click the "Add new Dataset" button 
-to create the new _Dataset_.
+    Finally, click the "Add new Dataset" button 
+    to create the new _Dataset_.
 
 ## Setting visibility/viewers and editors - permissions
 Once a _Dataset_ has been selected, select the appropriate 
@@ -42,6 +42,12 @@ to the _Scan Report_. Additional users can be set as editors, and,
 if the _Scan Report_ is set as _RESTRICTED_, viewers. Note that 
 if a user has a given level of access to the _Dataset_, then they 
 inherit that same access to the _Scan Report_ automatically.
+
+## Upload Form
+Choose a Scan Report in the "WhiteRabbit ScanReport" field, and 
+optionally choose a dictionary file in the "Data Dictionary" field.
+The formats of these two files are as described below. Then click 
+the "Submit" button to begin the upload process.
 
 ## The Scan Report file format
 The Scan Report File should be in the format as output by the 
