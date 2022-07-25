@@ -116,4 +116,4 @@ Single sheet associated to a single table:
 ## The Data Dictionary file format
 The optionally-supplied Data Dictionary file must be in .csv format, and 
 with the format as defined at 
-https://co-connect.ac.uk/co-connect-data-files-and-meta-data-standardisation/ 
+[the CO-CONNECT data standards page](https://co-connect.ac.uk/co-connect-data-files-and-meta-data-standardisation/) 
