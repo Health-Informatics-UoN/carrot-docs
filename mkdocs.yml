@@ -28,7 +28,7 @@ nav:
   - CaRROT-Mapper:
       - About: MappingPipeline/about.md
       - Projects, Datasets, Scan Reports, and Permissions: MappingPipeline/projects-datasets-and-scanreports.md
-      - Uploading a Report: MappingPipeline/uploading-scan-report.md
+      - Uploading a Scan Report Form: MappingPipeline/uploading-scan-report.md
       - Mapping Rules: MappingPipeline/mapping-rules.md
       - API: MappingPipeline/API.md
       - Azure Functions:

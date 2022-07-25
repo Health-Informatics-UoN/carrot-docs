@@ -47,7 +47,8 @@ inherit that same access to the _Scan Report_ automatically.
 Choose a Scan Report in the "WhiteRabbit ScanReport" field, and 
 optionally choose a dictionary file in the "Data Dictionary" field.
 The formats of these two files are as described below. Then click 
-the "Submit" button to begin the upload process.
+the "Submit" button to begin the upload process. This will launch an
+instance of the [ProcessQueue](../AzureFunctions/ProcessQueue.md).
 
 ## The Scan Report file format
 The Scan Report File should be in the format as output by the 
