@@ -47,7 +47,7 @@ Options:
 
 ### CCOM 
 
-If you cannot obtain the original WhiteRabbit scan report, you can also generate synthetic data using our CCOM website by connecting via the [api](/docs/MappingPipeline/API/) to the database.
+If you cannot obtain the original WhiteRabbit scan report, you can also generate synthetic data using our CCOM website by connecting via the [api](/CaRROT-Docs/MappingPipeline/API/) to the database.
 
 ```
 $ carrot generate synthetic ccom --help
@@ -72,7 +72,7 @@ Options:
 
 
 !!! example
-    This feature can be used to also generate `1000` events for the [scan report table (ID: 106)](https://ccom.azurewebsites.net/tables/?search=106):
+    This feature can be used to also generate `1000` events for the scan report table with ID 106:
     ```
     carrot generate synthetic ccom -i 106 -n 1000 -o synthetic_data --token <hashed token>
     ```

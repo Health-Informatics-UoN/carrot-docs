@@ -29,7 +29,7 @@ Commands:
 To run the full ETL you need a `.yml`(or `.yaml`) file to configure various settings.
 
 <center>
-[Example yamls](https://github.com/HDRUK/CaRROT_CDM/tree/master/carrot/data/test/automation){ .md-button .md-button--secondary}
+[Example yamls](https://github.com/HDRUK/CaRROT-CDM/tree/master/carrot/data/test/automation){ .md-button .md-button--secondary}
 </center>
 
 ## Setup your YAML config
@@ -69,7 +69,7 @@ Here are some details on how you can setup a yaml configuration file
 	  number_of_rows_per_chunk: 10000
     ```
 	
-	The names of these can be found in the [source documentation](/docs/CaRROT-CDM/CLI/Run/), corresponding to the options you will see via the command `carrot run map --help`.
+	The names of these can be found in the [source documentation](/CaRROT-Docs/CaRROT-CDM/CLI/Run/), corresponding to the options you will see via the command `carrot run map --help`.
 	For example, to not perform any column formatting and to not automatically fill missing columns (e.g. `year_of_birth` in the person table):
 	```yaml
 	- input: ...
@@ -122,7 +122,7 @@ This tab specifies how the data is going to be transformed.
            output: /usr/lib/bcos/MyWorkingDirectory/Temp/cache/basic/
 	```
 
-	Additional valid keyword arguments to the `map` function (which can be found in [in `def map`](/docs/CaRROT-CDM/CLI/Run/)), can be passed here:
+	Additional valid keyword arguments to the `map` function (which can be found in [in `def map`](/CaRROT-Docs/CaRROT-CDM/CLI/Run/)), can be passed here:
 	```yaml
     transform:
        data:

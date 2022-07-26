@@ -1,7 +1,7 @@
 
 A separate package, to help with pseudonymisation of columns in data files by passing a ==salt==. [co-connect-pseudonymise](https://pypi.org/project/co-connect-pseudonymise/) is available to be installed via pypi, or via the [source code on GitHub](https://github.com/CO-CONNECT/Pseudonymisation).
 
-This is provided as a separate package for those who no not wish (e.g. for security reasons) or need to install the full package ([co-connect-tools](https://pypi.org/project/co-connect-tools/)).
+This is provided as a separate package for those who no not wish (e.g. for security reasons) or need to install the full package ([co-connect-tools](https://pypi.org/project/carrot-cdm/)).
 
 !!! info 
 	{++co-connect-pseudonymise++} will be installed if the packge {++co-connect-tools++} is installed, as it is a dependancy of the latter. 

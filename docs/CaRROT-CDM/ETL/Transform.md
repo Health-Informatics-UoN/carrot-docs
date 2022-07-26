@@ -10,14 +10,14 @@ The following guide will take you through the main steps to make sure the tool i
 
 Follow the install guide here:
 
-[Install Guide](/docs/CaRROT-CDM/Installing/){ .md-button .md-button--primary }
+[Install Guide](/CaRROT-Docs/CaRROT-CDM/Installing/){ .md-button .md-button--primary }
 
 ### 2. Gather Inputs
 
 To run the transformation to CDM you will need:   
 
-1. [Input Data](/docs/CaRROT-CDM/ETL/Extract/), in the form of `csv` files
-1. [`json`](/docs/CaRROT-CDM/ETL/Rules/) file containing the "mapping rules"
+1. [Input Data](/CaRROT-Docs/CaRROT-CDM/ETL/Extract/), in the form of `csv` files
+1. [`json`](/CaRROT-Docs/CaRROT-CDM/ETL/Rules/) file containing the "mapping rules"
 
 
 ### 3. Check Inputs

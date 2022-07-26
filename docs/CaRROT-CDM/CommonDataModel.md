@@ -26,14 +26,14 @@ carrot/cdm/
 
 All CDM destination tables are formed as objects and are defined in `carrot/cdm/objects`, inheriting from a base class (`DestinationTable`, defined in `common.py`):
 
-   * [Person](/CaRROT-Docs/CaRROT-CDM/Person.md)
-   * [Condition Occurrence](/CaRROT-Docs/CaRROT-CDM/ConditionOccurrence.md)
-   * [Visit Occurrence](/CaRROT-Docs/CaRROT-CDM/VisitOccurrence.md)
-   * [Observation](/CaRROT-Docs/CaRROT-CDM/Observation.md)
-   * [Measurement](/CaRROT-Docs/CaRROT-CDM/Measurement.md)
-   * [Drug Exposure](/CaRROT-Docs/CaRROT-CDM/DrugExposure.md)
-   * [Procedure Occurrence](/CaRROT-Docs/CaRROT-CDM/ProcedureOccurrence.md)
-   * [Specimen](/CaRROT-Docs/CaRROT-CDM/Specimen.md)
+   * [Person](/CaRROT-Docs/CaRROT-CDM/Person)
+   * [Condition Occurrence](/CaRROT-Docs/CaRROT-CDM/ConditionOccurrence)
+   * [Visit Occurrence](/CaRROT-Docs/CaRROT-CDM/VisitOccurrence)
+   * [Observation](/CaRROT-Docs/CaRROT-CDM/Observation)
+   * [Measurement](/CaRROT-Docs/CaRROT-CDM/Measurement)
+   * [Drug Exposure](/CaRROT-Docs/CaRROT-CDM/DrugExposure)
+   * [Procedure Occurrence](/CaRROT-Docs/CaRROT-CDM/ProcedureOccurrence)
+   * [Specimen](/CaRROT-Docs/CaRROT-CDM/Specimen)
 
 
 ### Generating More Tables

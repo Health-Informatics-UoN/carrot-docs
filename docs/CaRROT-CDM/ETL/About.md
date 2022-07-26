@@ -61,7 +61,7 @@ A schematic diagram of the CaRROT/bclink ETL is given below:
     * A new pythonic [`CommonDataModel`](/CaRROT-Docs/CaRROT-CDM/CommonDataModel/) is created.   
     * [`DataCollection`](/CaRROT-Docs/CaRROT-CDM/DataCollection/) is created to handle/chunk the input files and is added to the `CommonDataModel`.  
     * The mapping-rules `json` is used to create new [CDM Tables](/CaRROT-Docs/CaRROT-CDM/Common/#carrot.cdm.objects.common.DestinationTable) (e.g. [Person](/CaRROT-Docs/CaRROT-CDM/Person/)).
-        * For each CDM Table, multiple tables can be created. E.g. there may be multiple [Condition Occurrences](/CaRROT-Docs/CaRROT-CDM/ConditionOccurrences/) defined across multiple input data files and columns (fields).  
+        * For each CDM Table, multiple tables can be created. E.g. there may be multiple [Condition Occurrences](/CaRROT-Docs/CaRROT-CDM/ConditionOccurrence/) defined across multiple input data files and columns (fields).  
         * The rules `json` encodes so-called "term-mapping" - how to map raw values into OHDSI concept IDs for the output. These are setup as lambda functions and passed to the object's [`define` function](/CaRROT-Docs/CaRROT-CDM/Common/#carrot.cdm.objects.common.DestinationTable.define)  
     * [Processing](/CaRROT-Docs/CaRROT-CDM/CommonDataModel/#carrot.cdm.model.CommonDataModel.process) of the `CommonDataModel` is triggered:   
         * **[optionally chunked]** A new chunk of `DataCollection` is grabbed.   
