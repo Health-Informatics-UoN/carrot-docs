@@ -34,7 +34,7 @@ It is assumed that BCLink systems has already been an installed on a host machin
     ```
     Which should display version `>=0.4.1` for the automation to work.
 
-    [Detailed Installation Instructions](/docs/CaRROT-CDM/Installing/){ .md-button .md-button--primary}
+    [Detailed Installation Instructions](/CaRROT-Docs/CaRROT-CDM/Installing/){ .md-button .md-button--primary}
 
 ??? example "Get input data"
 
