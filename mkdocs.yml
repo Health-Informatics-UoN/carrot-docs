@@ -26,20 +26,20 @@ nav:
 
 
   - CaRROT-Mapper:
-      - About: MappingPipeline/about.md
-      - Projects, Datasets, Scan Reports, and Permissions: MappingPipeline/projects-datasets-and-scanreports.md
-      - Uploading a Scan Report file: MappingPipeline/uploading-scan-report.md
-      - Mapping Rules: MappingPipeline/mapping-rules.md
-      - API: MappingPipeline/API.md
+      - About: CaRROT-Mapper/about.md
+      - Projects, Datasets, Scan Reports, and Permissions: CaRROT-Mapper/projects-datasets-and-scanreports.md
+      - Uploading a Scan Report file: CaRROT-Mapper/uploading-scan-report.md
+      - Mapping Rules: CaRROT-Mapper/mapping-rules.md
+      - API: CaRROT-Mapper/API.md
       - Azure Functions:
          - Local Functions: AzureFunctions/RunningLocally.md
          - ProcessQueue: AzureFunctions/ProcessQueue.md
          - NLPQueue: AzureFunctions/NlpQueue.md
-      - Database Migrations: MappingPipeline/migrations.md
+      - Database Migrations: CaRROT-Mapper/migrations.md
       - Testing: 
           - Running Django Tests: Testing/django-testing.md
           - Writing Django Tests: Testing/django-testing-writing.md
-      #- Downloading Mapping:   MappingPipeline/downloading-rules.md
+      #- Downloading Mapping:   CaRROT-Mapper/downloading-rules.md
       
   - CaRROT-CDM:
       - About: CaRROT-CDM/About.md
