@@ -29,6 +29,7 @@ nav:
       - About: CaRROT-Mapper/about.md
       - Projects, Datasets, Scan Reports, and Permissions: CaRROT-Mapper/projects-datasets-and-scanreports.md
       - Uploading a Scan Report file: CaRROT-Mapper/uploading-scan-report.md
+      - Internal data structures: CaRROT-Mapper/internal-data-structures.md
       - Mapping Rules: CaRROT-Mapper/mapping-rules.md
       - API: CaRROT-Mapper/API.md
       - Azure Functions:
