@@ -47,8 +47,7 @@ below.
    environment variables are `COCONNECT_DB_NAME`, `COCONNECT_DB_USER`, 
    and `COCONNECT_DB_PASSWORD`.
 ```
-docker build --tag ccom . && docker run -it --volume $PWD/api:/api 
-   --env-file .env -p 8080:8000 ccom
+docker build --tag ccom . && docker run -it --volume $PWD/api:/api --env-file .env -p 8080:8000 ccom
 ```
 
 3. In another terminal tab, run the following to get the name of the 
@@ -87,8 +86,7 @@ Now continue with the below section to apply new migrations.
    environment variables are `COCONNECT_DB_NAME`, `COCONNECT_DB_USER`, 
    and `COCONNECT_DB_PASSWORD`.
 ```
-docker build --tag ccom . && docker run -it --volume $PWD/api:/api 
-   --env-file .env -p 8080:8000 ccom
+docker build --tag ccom . && docker run -it --volume $PWD/api:/api --env-file .env -p 8080:8000 ccom
 ```
 
 3. In another terminal tab, run the following to get the name of the 
