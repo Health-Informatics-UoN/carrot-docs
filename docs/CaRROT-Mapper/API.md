@@ -1,53 +1,116 @@
-# API for OMOP and Co-Connect DBs
+# The CaRROT-Mapper API 
 
-The mapping-pipeline API allows programmtic interaction with co-connect DB and OMOP CDM DB contents. The API is developed using the Django REST framework. A token based authentication is applied to access API endpoints. API endpoints can be tested through a tool called Postman. A postman is a tool to develop and test APIs. 
+The CaRROT-Mapper API allows programmatic interaction with the CaRROT-Mapper database. This API is developed using the Django REST framework. 
+Access to API endpoints is protected by token based authentication. The REST API is also the means of communication between the Django webapp and its supporting Azure Functions.  
+
+Our development team typically tests API endpoints using the Postman software. 
 
 ## API Root
-An API root can be accessed using: **http://localhost:8080/api** and this endpoint lists all the available endpoints in an API (see Figure 1). Figure 1 also demonstrates that for testing API endpoints, a token is required, that can be requested to the system administrator.   
+An API root can be accessed using: **http://localhost:8080/api** and this endpoint lists all the available endpoints in the API (see Figure 1). 
+Figure 1 also demonstrates that for testing API endpoints, a token is required, which can be requested from the system administrator.   
 
 ![](images/APIRootTest_Postman.png)
-**Figure 1** *A sample API endpoint testing through postman*
+**Figure 1** *A sample API endpoint testing through Postman*
+
+
+## Filter fields
+Many endpoints support selected filter fields. Here we define the syntax used to express the available filter options
+for a given endpoint.
+```commandline
+filter_fields:
+name: exact
+```
+indicates that the filter field `?name=ABC` can be optionally appended to the URL to filter by the `name` property.
+
+Supplying no filter field will return all results.
+```commandline
+filter_fields:
+    id: exact, in
+``` 
+indicates that the filter field `?id=ABC` can be appended to the URL to filter by the `id` property, or the filter field
+`?id__in=1,2,3` can be appended to return only results with `id` of either  `1`, `2`, or `3`. Similarly, supplying no
+filter field will return all results.
+
+Multiple filter fields can be defined for a given URL, leading to more complicated examples. Multiple filters are 
+separated by `&`, with no restriction on the ordering of the filters, thus
+```commandline
+filter_fields:
+    id: exact, in
+    name: exact
+```
+allows all of the following combinations:
+```commandline
+?id=1
+?id__in=1,2,3
+?name=ABC
+?id=1&name=ABC
+?name=ABC&id__in=1,2,3
+```
+
 
 ## OMOP DB 
-We have implemented enpoints for following 8 tables of OMOP CDM DB. The API endpoints for these tables are read only. 
+Read-only endpoints exist for 8 tables of the OMOP CDM DB. 
 
-1. concept table: 
-    * **http://localhost:8080/api/omop/concepts/** Returns all records in a concept table
-    * **http://localhost:8080/api/omop/concepts/1/** or **http://localhost:8080/api/omop/conceptsfilter/?concept_id=1** or **http://localhost:8080/api/omop/conceptsfilter/?concept_id__in=1** or   Returns concept details from the concept table for concept_id=1 
-    * **http://localhost:8080/api/omop/conceptsfilter/?concept_code=R51&vocabulary_id=ICD10CM** This will return a record that has "concept_code=R51" and "vocabulary_id=ICD10CM"
-    * **http://localhost:8080/api/omop/conceptsfilter/?vocabulary_id=Domain** This will return all records that has a "vocabulary_id=Domain". 
-    * **http://localhost:8080/api/omop/conceptsfilter/?vocabulary_id__in=Domain,Gender** This will return all records that either has "vocabulary_id=Domain" or "vocabulary_id=Gender"
-    * **http://localhost:8080/api/omop/conceptsfilter/?concept_code=OMOP generated** This will return all records that has a "concept_code=OMOP generated".
-    * **http://localhost:8080/api/omop/conceptsfilter/?concept_code__in=OMOP generated,M** This will return all records that either has "concept_code=OMOP generated" or "concept_code=M".
-    * **http://localhost:8080/api/omop/conceptsfilter/?concept_id__in=1,8507,8532** This will return records where concept_id= 1 or 8507 or 8532 (as concept_id is a primary key there will be a single record for each value). 
-2. vocabulary table: 
-    * **http://localhost:8080/api/omop/vocabularies/** Returns all records of a vocabulary table
-    * **http://localhost:8080/api/omop/vocabularies/Cost/**	Returns a record from a vocabulary table with vocabulary id=Cost
+1. Concept table: 
+    * **http://localhost:8080/api/omop/concepts/** Returns all records in the `concept` table.
+    * **http://localhost:8080/api/omop/concepts/1/** Returns concept details from the `concept` table for `concept_id=1`.
+    * **http://localhost:8080/api/omop/conceptsfilter/**
+      ```
+      filter_fields:
+        concept_id: in, exact
+        concept_code: in, exact
+        vocabulary_id: in, exact
+      ```
+ 
+2. Vocabulary table: 
+    * **http://localhost:8080/api/omop/vocabularies/** Returns all records from the `vocabulary` table
+    * **http://localhost:8080/api/omop/vocabularies/Cost/**	Returns a record from a `vocabulary` table with `vocabulary_id=Cost`
 
-3. concept_relationship table: 
-    * **http://localhost:8080/api/omop/conceptrelationships** Returns all records of a concept relationship table
-    * **http://localhost:8080/api/omop/conceptrelationships/?concept_id_1=5&concept_id_2=58&relationship_id=Concept%20replaced%20by** To get a unique row of concept_relationship table we need to give three query terms that consists of concept_id_1, concept_id_2 and relationship_id. However to get all records with a specific query terms for concept_id_1 or with concept_id_2 or relationship_id or any combination of these can be applied.
-    * Alternatively, for the concept_relationship table, the above two endpoints can also be used as: http://localhost:8080/api/omop/conceptrelationshipfilter and http://localhost:8080/api/omop/conceptrelationshipfilter/?concept_id_1=5&concept_id_2=58&relationship_id=Concept%20replaced%20by.
+3. Concept_relationship table: 
+    * **http://localhost:8080/api/omop/conceptrelationships/** Returns all records from the `conceptrelationship` table
+      ```
+      filter_fields:
+        concept_id_1: exact
+        concept_id_2: exact
+        relationship_id: exact
+      ```
+    * **http://localhost:8080/api/omop/conceptrelationshipfilter/** Returns all records from the `conceptrelationship` table
+      ```
+      filter_fields:
+        concept_id_1: in, exact
+        concept_id_2: in, exact
+        relationship_id: in, exact
+      ```
 
-4. concept_ancestor table: 
-    * **http://localhost:8080/api/omop/conceptancestors/** Returns all records of a concept_ancestor table
-    * **http://localhost:8080/api/omop/conceptancestors/262/** Returns a record from the concept_ancestor table with concept a concept ancestor id=262
+4. Concept_ancestor table: 
+    * **http://localhost:8080/api/omop/conceptancestors/** Returns all records from the `concept_ancestor` table
+    * **http://localhost:8080/api/omop/conceptancestors/262/** Returns all records from the `concept_ancestor` table with `concept_ancestor_id=262`
+    * **http://localhost:8080/api/omop/conceptancestors/**
+      ```
+      filter_fields:
+        ancestor_concept_id: exact
+        descendant_concept_id: exact
+      ```
 	
-5. concept_class table: 
-    * **http://localhost:8080/api/omop/conceptclasses**	Returns all records of a concept_class table
-    * **http://localhost:8080/api/omop/conceptclasses/10th%20level/** Returns a record from concept_class table with a concept id='10th level'
+5. Concept_class table: 
+    * **http://localhost:8080/api/omop/conceptclasses**	Returns all records from the `concept_class` table
+    * **http://localhost:8080/api/omop/conceptclasses/10th%20level/** Returns all records from `concept_class` table with `concept_class_id='10th level'`
 
-6. concept_synonym table: 
-    * **http://localhost:8080/api/omop/conceptsynonyms/** Returns all records of a concept_synonym table
-    * **http://localhost:8080/api/omop/conceptsynonyms/2/** Returns a record from concept_synonym table with a concept_id=2
+6. Concept_synonym table: 
+    * **http://localhost:8080/api/omop/conceptsynonyms/** Returns all records from the `concept_synonym` table
+    * **http://localhost:8080/api/omop/conceptsynonyms/2/** Returns all records from the `concept_synonym` table with `concept_id=2`
 	
-7. Domain Table: 
-    * **http://localhost:8080/api/omop/domains** Returns all records of a domain table
-    * **http://localhost:8080/api/omop/domains/Condition/**	Returns a record of a domain table with a domain_id='Condition'
+7. Domain table: 
+    * **http://localhost:8080/api/omop/domains** Returns all records from the `domain` table
+    * **http://localhost:8080/api/omop/domains/Condition/**	Returns all records from the `domain` table with `domain_id=Condition`
 
-8. drug_strength Table: 
-    * **http://localhost:8080/api/omop/drugstrengths/**	Returns all records of a drug_strength table
-    * **http://localhost:8080/api/omop/drugstrengths/?drug_concept_id=32763&ingredient_concept_id=32763** To get a unique row of drug_strength table we need to give two query terms that consists of drug_concept_id and ingredient_concept_id. However a query term can be defined to get all records either by giving drug_concept_id or ingredient_concept_id.)
+8. Drug_strength table: 
+    * **http://localhost:8080/api/omop/drugstrengths/**	Returns all records from the `drug_strength` table
+      ```
+      filter_fields:
+        drug_concept_id: in, exact
+        ingredient_concept_id: in, exact
+      ```
 
 ## Django User Models
 
