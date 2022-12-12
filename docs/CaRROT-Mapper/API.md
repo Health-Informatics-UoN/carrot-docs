@@ -147,6 +147,7 @@ user rights associated to the Token provided.
       * For this endpoint, making a GET/POST request shows the results. Making a PUT/PATCH/DELETE request allows 
         for editing.
     * **http://localhost:8080/api/scanreporttables/1** Return all records from the `mapping_scanreporttable` table with `id=1`.
+   
       !!! note "Unimplemented"
         * **http://localhost:8080/api/scanreporttablesfilter/?id=1** A record in a mapping_scanreportables table with id=1
         * **http://localhost:8080/api/scanreporttablesfilter/?scan_report=1&name=Freezer.csv** This will return a record that has a "scan_report=1" and "name=Freezer.csv"
