@@ -27,19 +27,22 @@ nav:
 
   - CaRROT-Mapper:
       - About: CaRROT-Mapper/about.md
-      - Projects, Datasets, Scan Reports, and Permissions: CaRROT-Mapper/projects-datasets-and-scanreports.md
-      - Uploading a Scan Report file: CaRROT-Mapper/uploading-scan-report.md
-      - Internal data structures: CaRROT-Mapper/internal-data-structures.md
-      - Mapping Rules: CaRROT-Mapper/mapping-rules.md
-      - API: CaRROT-Mapper/API.md
-      - Azure Functions:
-         - Local Functions: AzureFunctions/RunningLocally.md
-         - ProcessQueue: AzureFunctions/ProcessQueue.md
-         - NLPQueue: AzureFunctions/NlpQueue.md
-      - Database Migrations: CaRROT-Mapper/migrations.md
-      - Testing: 
-          - Running Django Tests: Testing/django-testing.md
-          - Writing Django Tests: Testing/django-testing-writing.md
+      - User Guide:
+          - Projects, Datasets, Scan Reports, and Permissions: CaRROT-Mapper/projects-datasets-and-scanreports.md
+          - Uploading a Scan Report file: CaRROT-Mapper/uploading-scan-report.md
+      - Developer Guide:
+          - Internal data structures: CaRROT-Mapper/internal-data-structures.md
+          - Mapping Rules: CaRROT-Mapper/mapping-rules.md
+          - API: CaRROT-Mapper/API.md
+          - Azure Functions:
+              - Local Functions: AzureFunctions/RunningLocally.md
+              - ProcessQueue: AzureFunctions/ProcessQueue.md
+              - NLPQueue: AzureFunctions/NlpQueue.md
+          - Database Migrations: CaRROT-Mapper/migrations.md
+          - Adding new vocabularies: CaRROT-Mapper/Adding-a-vocabulary.md
+          - Testing:
+              - Running Django Tests: Testing/django-testing.md
+              - Writing Django Tests: Testing/django-testing-writing.md
       #- Downloading Mapping:   CaRROT-Mapper/downloading-rules.md
       
   - CaRROT-CDM:
