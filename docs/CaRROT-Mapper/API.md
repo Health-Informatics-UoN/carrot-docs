@@ -61,12 +61,22 @@ Read-only endpoints exist for 8 tables of the OMOP CDM DB.
         concept_code: in, exact
         vocabulary_id: in, exact
       ```
- 
-2. Vocabulary table: 
-    * **http://localhost:8080/api/omop/vocabularies/** Returns all records from the `vocabulary` table
-    * **http://localhost:8080/api/omop/vocabularies/Cost/**	Returns a record from a `vocabulary` table with `vocabulary_id=Cost`
+    
+2. Concept_ancestor table: 
+    * **http://localhost:8080/api/omop/conceptancestors/** Returns all records from the `concept_ancestor` table
+    * **http://localhost:8080/api/omop/conceptancestors/262/** Returns all records from the `concept_ancestor` table with `concept_ancestor_id=262`
+    * **http://localhost:8080/api/omop/conceptancestors/**
+      ```
+      filter_fields:
+        ancestor_concept_id: exact
+        descendant_concept_id: exact
+      ```
+	
+3. Concept_class table: 
+    * **http://localhost:8080/api/omop/conceptclasses**	Returns all records from the `concept_class` table
+    * **http://localhost:8080/api/omop/conceptclasses/10th%20level/** Returns all records from `concept_class` table with `concept_class_id='10th level'`
 
-3. Concept_relationship table: 
+4. Concept_relationship table: 
     * **http://localhost:8080/api/omop/conceptrelationships/** Returns all records from the `conceptrelationship` table
       ```
       filter_fields:
@@ -81,30 +91,16 @@ Read-only endpoints exist for 8 tables of the OMOP CDM DB.
         concept_id_2: in, exact
         relationship_id: in, exact
       ```
-
-4. Concept_ancestor table: 
-    * **http://localhost:8080/api/omop/conceptancestors/** Returns all records from the `concept_ancestor` table
-    * **http://localhost:8080/api/omop/conceptancestors/262/** Returns all records from the `concept_ancestor` table with `concept_ancestor_id=262`
-    * **http://localhost:8080/api/omop/conceptancestors/**
-      ```
-      filter_fields:
-        ancestor_concept_id: exact
-        descendant_concept_id: exact
-      ```
-	
-5. Concept_class table: 
-    * **http://localhost:8080/api/omop/conceptclasses**	Returns all records from the `concept_class` table
-    * **http://localhost:8080/api/omop/conceptclasses/10th%20level/** Returns all records from `concept_class` table with `concept_class_id='10th level'`
-
-6. Concept_synonym table: 
+      
+5. Concept_synonym table: 
     * **http://localhost:8080/api/omop/conceptsynonyms/** Returns all records from the `concept_synonym` table
     * **http://localhost:8080/api/omop/conceptsynonyms/2/** Returns all records from the `concept_synonym` table with `concept_id=2`
 	
-7. Domain table: 
+6. Domain table: 
     * **http://localhost:8080/api/omop/domains** Returns all records from the `domain` table
     * **http://localhost:8080/api/omop/domains/Condition/**	Returns all records from the `domain` table with `domain_id=Condition`
 
-8. Drug_strength table: 
+7. Drug_strength table: 
     * **http://localhost:8080/api/omop/drugstrengths/**	Returns all records from the `drug_strength` table
       ```
       filter_fields:
@@ -112,34 +108,55 @@ Read-only endpoints exist for 8 tables of the OMOP CDM DB.
         ingredient_concept_id: in, exact
       ```
 
-## Django User Models
+8. Vocabulary table: 
+    * **http://localhost:8080/api/omop/vocabularies/** Returns all records from the `vocabulary` table
+    * **http://localhost:8080/api/omop/vocabularies/Cost/**	Returns a record from a `vocabulary` table with `vocabulary_id=Cost`
 
-We have implemented enpoints for following 1 table of django user model.
+## Carrot
+
+Note that many of these endpoints implement user permissions checks, and may restrict or filter results based upon the 
+user rights associated to the Token provided.
 
 1. User table
-    * **http://localhost:8080/api/users/** This endpoint returns user details (user ids and usernames) of all users. 
-    * **http://localhost:8080/api/users/6/** or **http://localhost:8080/api/usersfilter/?id=6** This endpoint returns user details (user ids and usernames) of a specific user with an id=6. 
-    * **http://localhost:8080/api/usersfilter/?id__in=6,10** This endpoint returns user details for a given list of user ids (i.e. 6 and 10). 
+    * **http://localhost:8080/api/users/** Returns user details (user ids and usernames) of all users. 
+    * **http://localhost:8080/api/users/6/**  Returns user details from the `user` table with `id=1`.
+    * **http://localhost:8080/api/usersfilter/** 
+      ```
+      filter_fields:
+        id: in, exact
+      ``` 
 
-## Co-Connect DB
-
-We have implemented enpoints for following 16 tables of co-connect DB. 
-
-1. mapping_scanreport table
-    * **http://localhost:8080/api/scanreports/** All scan reports in a mapping_scanreport table. For this endpoint, making a put request allows to accept a json array that is beneficial in its own right with a single call to an api endpoint. 
-    * **http://localhost:8080/api/scanreports/31/** A record in a mapping_scanreport table with id=31
+2. mapping_scanreport table
+    * **http://localhost:8080/api/scanreports/** Returns all records from the `mapping_scanreport` table. 
+      * For this endpoint, making a GET/POST request shows the results. Making a PUT/PATCH/DELETE request allows 
+        for editing. 
+      ```
+      filter_fields:
+        parent_dataset: exact
+      ``` 
+    * **http://localhost:8080/api/scanreports/31/** Return all records from the `mapping_scanreport` table with `id=31`.
 	
-2. mapping_scanreporttable table
-    * **http://localhost:8080/api/scanreporttables/** All scan report tables in a mapping_scanreporttables table. For this endpoint, making a put request allows to accept a json array that is beneficial in its own right with a single call to an api endpoint. 
-    * **http://localhost:8080/api/scanreporttables/1** or **http://localhost:8080/api/scanreporttablesfilter/?id=1** A record in a mapping_scanreportables table with id=1
-    * **http://localhost:8080/api/scanreporttablesfilter/?scan_report=1&name=Freezer.csv** This will return a record that has a "scan_report=1" and "name=Freezer.csv"
-    * **http://localhost:8080/api/scanreporttablesfilter/?scan_report=1** This endpoint returns all records in a scanreporttable for a scan_report having an id=1. 
-    * **http://localhost:8080/api/scanreporttablesfilter/?scan_report__in=1,40** This endpoint returns all records in a scanreporttable for a scan_report either having an id=1 or id=40.
-    * **http://localhost:8080/api/scanreporttablesfilter/?name=Freezer.csv** This returns a record(s) that has a "name=Freezer.csv".
-    * **http://localhost:8080/api/scanreporttablesfilter/?name__in=Freezer.csv,Questionnaire.csv** This returns records that either has a "name=Freezer.csv" or "name=Questionnaire.csv"
-    * **http://localhost:8080/api/scanreporttablesfilter/?id__in=1,284** This returns records that either has an "id=1" or "id=284" (as id is a primary key there will be a single record for each value).
+3. mapping_scanreporttable table
+    * **http://localhost:8080/api/scanreporttables/** All scan report tables in a `mapping_scanreporttables` table.
+      ```
+      filter_fields:
+        id: in, exact
+        name: in, exact
+        scan_report: in, exact
+      ``` 
+      * For this endpoint, making a GET/POST request shows the results. Making a PUT/PATCH/DELETE request allows 
+        for editing.
+    * **http://localhost:8080/api/scanreporttables/1** Return all records from the `mapping_scanreporttable` table with `id=1`.
+      !!! note "Unimplemented"
+        * **http://localhost:8080/api/scanreporttablesfilter/?id=1** A record in a mapping_scanreportables table with id=1
+        * **http://localhost:8080/api/scanreporttablesfilter/?scan_report=1&name=Freezer.csv** This will return a record that has a "scan_report=1" and "name=Freezer.csv"
+        * **http://localhost:8080/api/scanreporttablesfilter/?scan_report=1** This endpoint returns all records in a scanreporttable for a scan_report having an id=1. 
+        * **http://localhost:8080/api/scanreporttablesfilter/?scan_report__in=1,40** This endpoint returns all records in a scanreporttable for a scan_report either having an id=1 or id=40.
+        * **http://localhost:8080/api/scanreporttablesfilter/?name=Freezer.csv** This returns a record(s) that has a "name=Freezer.csv".
+        * **http://localhost:8080/api/scanreporttablesfilter/?name__in=Freezer.csv,Questionnaire.csv** This returns records that either has a "name=Freezer.csv" or "name=Questionnaire.csv"
+        * **http://localhost:8080/api/scanreporttablesfilter/?id__in=1,284** This returns records that either has an "id=1" or "id=284" (as id is a primary key there will be a single record for each value).
 	
-3. mapping_scanreportfield table
+4. mapping_scanreportfield table
     * **http://localhost:8080/api/scanreportfields/** All scan report fields in a mapping_scanreportfield table. For this endpoint, making a put request allows to accept a json array that is beneficial in its own right with a single call to an api endpoint. 
     * **http://localhost:8080/api/scanreportfields/4638/** or **http://localhost:8080/api/scanreportfieldsfilter/?id=4638** A record in a mapping_scanreportfields with id=4638 
     * **http://localhost:8080/api/scanreportfieldsfilter/?scan_report_table=419&name=altered_conscious_state** This will return a record from a mapping_scanreportfield table with "scan_report_table=419" and "name=altered_conscious_state"
@@ -149,7 +166,7 @@ We have implemented enpoints for following 16 tables of co-connect DB.
     * **http://localhost:8080/api/scanreportfieldsfilter/?name__in=mrn,personid** This return all records from a mapping_scanreportfield table either having a "name=mrn" or "name=personid=personid".
     * **http://localhost:8080/api/scanreportfieldsfilter/?id__in=4638,9942,9943** This return records from a mapping_scanreportfield table either having an "id=4638" or "id=9942" or "id=9943" (as id is a primary key there will be a single record for each value).
 
-4. mapping_scanreportvalue table
+5. mapping_scanreportvalue table
     * **http://localhost:8080/api/scanreportvalues/** All scan report values in a mapping_scanreportvalues. For this endpoint, making a put request allows to accept a json array that is beneficial in its own right with a single call to an api endpoint. 
     * **http://localhost:8080/api/scanreportvalues/2/** or **http://localhost:8080/api/scanreportvaluesfilter/?id=2** A record in a mapping_scanreportvalues with id=2
     * **http://localhost:8080/api/scanreportvaluesfilter/?scan_report_field=222&value=Surgery** This will return a record from a mapping_scanreportvalue table with "scan_report_field=222" and "value=surgery"
@@ -162,7 +179,7 @@ We have implemented enpoints for following 16 tables of co-connect DB.
     * **http://localhost:8080/api/scanreportvaluesfilter/?id__in=2,301,286,1360** This return records from a mapping_scanreportvalue table either having an "id=2" or "id=301" or "id=286" or "id=1360" (as id is a primary key there will be a single record for each value).
     * **http://localhost:8080/api/scanreportvaluepks/?scan_report=56** This will return all values where the conceptID!= -1 for a scan report with id=56
 
-5. mapping_scanreportconcept table	
+6. mapping_scanreportconcept table	
     * **http://localhost:8080/api/scanreportconcepts/** All scan report concepts in a mapping_scanreportconcepts. For this endpoint, making a put request allows to accept a json array that is beneficial in its own right with a single call to an api endpoint. 
     * **http://localhost:8080/api/scanreportconcepts/2/** or **http://localhost:8080/api/scanreportconceptsfilter/?id=2** A record in a mapping_scanreportconcepts with id=2
     * **http://localhost:8080/api/scanreportconceptsfilter/?object_id=513874** This returns all records (i.e. assigned scan report concepts) for a given object_id (i.e. object_id can be of an id of scanreportvalue or scanreportfield).
@@ -171,42 +188,42 @@ We have implemented enpoints for following 16 tables of co-connect DB.
     * **http://localhost:8080/api/scanreportconceptsfilter/?concept__concept_id__in=8507,8532** This returns all records (i.e. assigned scan report concepts) for a given list of concept_id.
     * **http://localhost:8080/api/scanreportconceptsfilter/?id__in=2,4** This return records from a mapping_scanreportconcepts table either having an "id=2" or "id=4" (as id is a primary key there will be a single record for each value).
 	
-6. mapping table	
+7. mapping table	
     * **http://localhost:8080/api/mappings/** All records in a mapping table
     * **http://localhost:8080/api/mappings/1/** A record in a mapping table with id=1
 
-7. mapping_classificationsystem table	
+8. mapping_classificationsystem table	
     * **http://localhost:8080/api/classificationsystems/** All records in a mapping_classificationsystem table
     * **http://localhost:8080/api/classificationsystems/2/** A record in a mapping_classificationsystem table with id=2
 
-8. mapping_datadictionary table	
+9. mapping_datadictionary table	
     * **http://localhost:8080/api/datadictionaries** All records in a mapping_datadictionary table
     * **http://localhost:8080/api/datadictionaries/2/** A record in a mapping_datadictionary table with id=2
 
-9. mapping_document table	
-    * **http://localhost:8080/api/documents/** All records in a mapping_document table
-    * **http://localhost:8080/api/documents/2** A record in a mapping_document table with id=2
+10. mapping_document table	
+     * **http://localhost:8080/api/documents/** All records in a mapping_document table
+     * **http://localhost:8080/api/documents/2** A record in a mapping_document table with id=2
 
-10. mapping_documentfile table	
+11. mapping_documentfile table	
     * **http://localhost:8080/api/documentfiles/** All records in a mapping_documentfiles table
     * **http://localhost:8080/api/documentfiles/2** A record in a mapping_documentfiles table with id=2
 
-11. datapartner table	
+12. datapartner table	
      * **http://localhost:8080/api/datapartners/** All records in a datapartner table. For this endpoint, making a put request allows to accept a json array that is beneficial in its own right with a single call to an api endpoint. 
      * **http://localhost:8080/api/datapartners/2/** A record in a datapartner table with id=2
      * **http://localhost:8080/api/datapartnersfilter/?name=University%20of%20Liverpool** This will return a record that has "name=University of Liverpool"
 	
-12. mapping_omoptable table	
+13. mapping_omoptable table	
      * **http://localhost:8080/api/omoptables/** All records in a mapping_omoptable table
      * **http://localhost:8080/api/omoptables/1673/** or **http://localhost:8080/api/omoptablesfilter/?id=1673** A record in a mapping_omoptable table with "id=1673"
      * **http://localhost:8080/api/omoptablesfilter/?id__in=1673,1674** This return records from a mapping_omoptable table either having an "id=1673" or "id=1674" (as id is a primary key there will be a single record for each value).
 
-13. mapping_omopfield table	
+14. mapping_omopfield table	
      * **http://localhost:8080/api/omopfields/** All records in a mapping_omopfield table
      * **http://localhost:8080/api/omopfields/450/** or **http://localhost:8080/api/omopfieldsfilter/?id=450** A record in a mapping_omopfield table with id=2
      * **http://localhost:8080/api/omopfieldsfilter/?id__in=449,450** This return records from a mapping_omopfield table either having an "id=449" or "id=450" (as id is a primary key there will be a single record for each value). 
 
-14. mapping_mappingrule table	
+15. mapping_mappingrule table	
      * **http://localhost:8080/api/mappingrules/** All records in a mapping_mappingrule
      * **http://localhost:8080/api/mappingrules/12200** or **http://localhost:8080/api/mappingrulesfilter/?id=12200** A record in a mapping_mappingrule table with id=8194
      * **http://localhost:8080/api/mappingrulesfilter/?scan_report=40** This returns all records in mapping_mappingrule table for a scan_report=40. 
@@ -214,11 +231,11 @@ We have implemented enpoints for following 16 tables of co-connect DB.
      * **http://localhost:8080/api/mappingrulesfilter/?id__in=12200,12208** This returns records from a mapping_mappingrul table either having an "id=1673" or "id=1674" (as id is a primary key there will be a single record for each value).
      * **http://localhost:8080/api/mappingruleslist/?id=56** This returns all mapping rules for scan report with id=56
 	
-15. source table	
+16. source table	
      * **http://localhost:8080/api/sources/** All records in a source table
      * **http://localhost:8080/api/sources/1/** A record in a source table with id=1   (Currently there is no record in the azure dev DB version)
 		
-16. documenttype table	
+17. documenttype table	
      * **http://localhost:8080/api/documenttypes/** All records in a documenttype table
      * **http://localhost:8080/api/documenttypes/2/** A record in a documenttype table with id=2
 
@@ -234,7 +251,7 @@ We have implemented enpoints for following 16 tables of co-connect DB.
 * **http://localhost:8080/api/scanreports/526/download** Downloads the scan report with id=526 from azure blob storage and returns an .xlsx file as an HTTP Response.
 
 ### Specifying returning fields 
-For all the endpoints, user have an option of specifying returning fields and in case if you don't supply returning fields parameter, it will return values of all fields.
+TODO: For some endpoints (those defined using DynamicFieldsMixin), users have an option of specifying returning fields and in case if you don't supply returning fields parameter, it will return values of all fields. This needs documenting here, which support this.
 
 (API endpoints without filter)
 API_URL/?fields=returningfield1,returningfield2
