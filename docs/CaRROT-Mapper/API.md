@@ -136,17 +136,17 @@ user rights associated to the Token provided.
       ``` 
 
 2. mapping_scanreport table
-    * **scanreports/** :material-filter: Returns all records from the `mapping_scanreport` table. 
+    * **scanreports/** [:material-filter:](./#specifying-returning-fields) Returns all records from the `mapping_scanreport` table. 
       * For this endpoint, making a GET/POST request shows the results. Making a PUT/PATCH/DELETE request allows 
         for editing. 
       ```
       filter_fields:
         parent_dataset: exact
       ``` 
-    * **scanreports/<ScanReport_id\>/** Returns all records from the `mapping_scanreport` table by `id`.
+    * **scanreports/<ScanReport_id\>/** :material-filter: Returns all records from the `mapping_scanreport` table by `id`.
 	
 3. mapping_scanreporttable table
-    * **scanreporttables/** Returns all records from the `mapping_scanreporttables` table.
+    * **scanreporttables/** [:material-filter:](https://hdruk.github.io/CaRROT-Docs/CaRROT-Mapper/API/#specifying-returning-fields) Returns all records from the `mapping_scanreporttables` table.
       ```
       filter_fields:
         id: in, exact
@@ -155,7 +155,7 @@ user rights associated to the Token provided.
       ``` 
       * For this endpoint, making a GET/POST request shows the results. Making a PUT/PATCH/DELETE request allows 
         for editing.
-    * **scanreporttables/<ScanReportTable_id\>/** Returns all records from the `mapping_scanreporttable` table by `id`.
+    * **scanreporttables/<ScanReportTable_id\>/** :material-filter: Returns all records from the `mapping_scanreporttable` table by `id`.
     
 	
 4. mapping_scanreportfield table
@@ -263,18 +263,18 @@ user rights associated to the Token provided.
        * This also supports pagination, using the page number parameter `p` and page size parameter `page_size`, e.g. `mappingruleslist/?id=56&p=1&page_size=30` 
 
 13. mapping_dataset table
-    * **datasets/** Returns all `Datasets` which the user is able to view.
+    * **datasets/** :material-filter: Returns all `Datasets` which the user is able to view.
       ```
       filter_fields:
         id: in, exact
         data_partner: in, exact
         hidden: in, exact 
       ```
-    * **datasets/<Dataset_id\>** Return a single `Dataset` by `id`.
-    * **datasets/update/<Dataset_id\>** Update a single `Dataset` by `id`.
-    * **datasets/delete/<Dataset_id\>** Delete a single `Dataset` by `id`.
+    * **datasets/<Dataset_id\>** :material-filter: Return a single `Dataset` by `id`.
+    * **datasets/update/<Dataset_id\>** :material-filter: Update a single `Dataset` by `id`.
+    * **datasets/delete/<Dataset_id\>** :material-filter: Delete a single `Dataset` by `id`.
     * **datasets/create** Create a single `Dataset`.
-    * * **datasets_data_partners/** Returns all `Datasets` which the user is able to view, while providing a pagination option, and pre-fetching (for performance) Data Partner information associated to each.
+    * **datasets_data_partners/** :material-filter: Returns all `Datasets` which the user is able to view, while providing a pagination option, and pre-fetching (for performance) Data Partner information associated to each.
       ```
       filter_fields:
         id: in, exact
@@ -308,14 +308,3 @@ user rights associated to the Token provided.
 
 * **json/?id=<ScanReport_id\>** Returns a json representation of the mapping rules for a `ScanReport` with `id`.
 * **scanreports/<ScanReport_id\>/download** Returns the `ScanReport` file in `.xlsx` format with `id` from Azure blob storage as an HTTP Response.
-
-
-(API endpoints without filter)
-API_URL/?fields=returningfield1,returningfield2
-(e.g. scanreporttables/?fields=id,name
-and scanreporttables/1/?fields=id,name)
-
-(API endpoints with filter)
-API_URL/?filterfield=value1&filterfield2=value2&fields=returningfield1,returningfield2
-(e.g. scanreporttablesfilter/?scan_report=1&fields=id,name,person_id)
-
