@@ -1,3 +1,5 @@
+# Quickstart Guide
+
 !!! warning
     This page is a work in progress, and should not be relied upon.
 
@@ -19,7 +21,7 @@ This Quickstart guide is intended as a brief introduction to each of the areas.
 Users requiring more details should follow the links or search the documentation for their specific query.
 Developers should use the Developer Guide for technical documentation.
 
-# Gaining Access
+## Gaining Access
 The deployed CaRROT-Mapper is available at https://ccom.azurewebsites.net.
 
 User login is required to access the site. 
@@ -32,8 +34,7 @@ Once logged in, the user is presented with the [Home page](#the-home-page).
 This is a simple dashboard displaying statistics about the data the user has
 access to.
 
-# My First Scan Report
-## Upload
+## Upload a first Scan Report
 To begin, navigate using the bar across the top of the screen to "Scan Reports > Upload New Scan Report" to open the Scan Report Upload form.
 
 **TODO:** Provide a sample ScanReport file and Data Dictionary file.
