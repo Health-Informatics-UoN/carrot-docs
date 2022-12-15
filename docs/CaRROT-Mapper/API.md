@@ -128,7 +128,7 @@ user rights associated to the Token provided.
 
 1. User table
     * **users/** Returns all records from the `auth_users` table. 
-    * **users/\<User_id\>/**  Returns user details from the `auth_users` table by `id`.
+    * **users/<User_id\>/**  Returns user details from the `auth_users` table by `id`.
     * **usersfilter/** 
       ```
       filter_fields:
@@ -143,7 +143,7 @@ user rights associated to the Token provided.
       filter_fields:
         parent_dataset: exact
       ``` 
-    * **scanreports/\<ScanReport_id\>/** Returns all records from the `mapping_scanreport` table by `id`.
+    * **scanreports/<ScanReport_id\>/** Returns all records from the `mapping_scanreport` table by `id`.
 	
 3. mapping_scanreporttable table
     * **scanreporttables/** Returns all records from the `mapping_scanreporttables` table.
@@ -155,7 +155,7 @@ user rights associated to the Token provided.
       ``` 
       * For this endpoint, making a GET/POST request shows the results. Making a PUT/PATCH/DELETE request allows 
         for editing.
-    * **scanreporttables/\<ScanReportTable_id\>/** Returns all records from the `mapping_scanreporttable` table by `id`.
+    * **scanreporttables/<ScanReportTable_id\>/** Returns all records from the `mapping_scanreporttable` table by `id`.
     
 	
 4. mapping_scanreportfield table
@@ -168,7 +168,7 @@ user rights associated to the Token provided.
       ``` 
       * For this endpoint, making a GET/POST request shows the results. Making a PUT/PATCH/DELETE request allows 
         for editing.
-    * **scanreportfields/\<ScanReportField_id\>/** Returns all records in the `mapping_scanreportfields` table by `id`.
+    * **scanreportfields/<ScanReportField_id\>/** Returns all records in the `mapping_scanreportfields` table by `id`.
 
 5. mapping_scanreportvalue table
     * **scanreportvalues/** Returns all records from the `mapping_scanreportvalues` table. 
@@ -180,9 +180,9 @@ user rights associated to the Token provided.
       ``` 
       * For this endpoint, making a GET/POST request shows the results. Making a PUT/PATCH/DELETE request allows 
         for editing.
-    * **scanreportvalues/\<ScanReportValue_id\>/** Returns all records from the `mapping_scanreportvalues` table by `id`.
+    * **scanreportvalues/<ScanReportValue_id\>/** Returns all records from the `mapping_scanreportvalues` table by `id`.
     
-    * **SPECIAL - CONSIDER MOVING** **scanreportvaluepks/?scan_report=\<ScanReport_id\>** Returns all records from the `mapping_scanreportvalues` table 
+    * **SPECIAL - CONSIDER MOVING** **scanreportvaluepks/?scan_report=<ScanReport_id\>** Returns all records from the `mapping_scanreportvalues` table 
       which are linked to the scan report by `id` through the chain of `ScanReportValue -> ScanReportField -> ScanReportTable -> ScanReport`, and which 
       additionally do not have `conceptID=-1` (which is the default for those without an associated ScanReportConcept).
     * **scanreportvaluesfilterscanreporttable** Returns all ScanReportValues associated to the supplied `ScanReportTable` id.
@@ -193,7 +193,7 @@ user rights associated to the Token provided.
 
 6. mapping_scanreportconcept table	
     * **scanreportconcepts/** Returns all records from the `mapping_scanreportconcepts` table. For this endpoint, making a put request allows to accept a json array that is beneficial in its own right with a single call to an api endpoint. 
-    * **scanreportconcepts/\<ScanReportConcept_id\>/** Returns all records from the `mapping_scanreportconcepts` table by `id`.
+    * **scanreportconcepts/<ScanReportConcept_id\>/** Returns all records from the `mapping_scanreportconcepts` table by `id`.
     * **scanreportconceptsfilter/**
       ```
       filter_fields:
@@ -214,16 +214,16 @@ user rights associated to the Token provided.
 7. mapping_classificationsystem table	
     * **UNUSED**
     * **classificationsystems/** Returns all records from the `mapping_classificationsystem` table.
-    * **classificationsystems/\<ClassificationSystem_id\>/** Returns all records from the `mapping_classificationsystem` table by `id`.
+    * **classificationsystems/<ClassificationSystem_id\>/** Returns all records from the `mapping_classificationsystem` table by `id`.
 
 8. mapping_datadictionary table	
     * **UNUSED**
     * **datadictionaries** Returns all records from the `mapping_datadictionary` table.
-    * **datadictionaries/\<DataDictionary_id\>/** Returns all records from the `mapping_datadictionary` table by `id`.
+    * **datadictionaries/<DataDictionary_id\>/** Returns all records from the `mapping_datadictionary` table by `id`.
 
 9. datapartner table	
     * **datapartners/** :material-filter: Returns all records from the `datapartner` table.  
-    * **datapartners/\<DataPartner_id\>/** :material-filter: Returns all records from the `datapartner` table by `id`.
+    * **datapartners/<DataPartner_id\>/** :material-filter: Returns all records from the `datapartner` table by `id`.
     * **datapartnersfilter/** :material-filter:
       ```
       filter_fields:
@@ -232,7 +232,7 @@ user rights associated to the Token provided.
     
 10. mapping_omoptable table	
      * **omoptables/** Returns all records from the `mapping_omoptable` table.
-     * **omoptables/\<OmopTable_id\>/** Returns all records from the `mapping_omoptable` table by `id`.
+     * **omoptables/<OmopTable_id\>/** Returns all records from the `mapping_omoptable` table by `id`.
      * **UNUSED**
      * **omoptablesfilter/**
        ```
@@ -242,7 +242,7 @@ user rights associated to the Token provided.
 
 11. mapping_omopfield table	
      * **omopfields/** Returns all records from the `mapping_omopfield` table.
-     * **omopfields/\<OmopField_id\>/** Returns all records from the `mapping_omopfield` table by `id`.
+     * **omopfields/<OmopField_id\>/** Returns all records from the `mapping_omopfield` table by `id`.
      * **UNUSED**
      * **omopfieldsfilter/**
        ```
@@ -252,14 +252,14 @@ user rights associated to the Token provided.
 
 12. mapping_mappingrule table	
      * **mappingrules/** Returns all records from the `mapping_mappingrule` table.
-     * **mappingrules/\<MappingRule_id\>** Returns all records from the `mapping_mappingrule` table by `id`.
+     * **mappingrules/<MappingRule_id\>** Returns all records from the `mapping_mappingrule` table by `id`.
      * **mappingrulesfilter/**
        ```
        filter_fields:
          scan_report: in, exact
          concept: in, exact
        ``` 
-     * **mappingruleslist/?id=\<ScanReport_id\>** This returns all mapping rules associated to the `ScanReport` with `id`. This requires looking up a number of foreign keys and may be rather slow.
+     * **mappingruleslist/?id=<ScanReport_id\>** This returns all mapping rules associated to the `ScanReport` with `id`. This requires looking up a number of foreign keys and may be rather slow.
        * This also supports pagination, using the page number parameter `p` and page size parameter `page_size`, e.g. `mappingruleslist/?id=56&p=1&page_size=30` 
 
 13. mapping_dataset table
@@ -270,9 +270,9 @@ user rights associated to the Token provided.
         data_partner: in, exact
         hidden: in, exact 
       ```
-    * **datasets/\<Dataset_id\>** Return a single `Dataset` by `id`.
-    * **datasets/update/\<Dataset_id\>** Update a single `Dataset` by `id`.
-    * **datasets/delete/\<Dataset_id\>** Delete a single `Dataset` by `id`.
+    * **datasets/<Dataset_id\>** Return a single `Dataset` by `id`.
+    * **datasets/update/<Dataset_id\>** Update a single `Dataset` by `id`.
+    * **datasets/delete/<Dataset_id\>** Delete a single `Dataset` by `id`.
     * **datasets/create** Create a single `Dataset`.
     * * **datasets_data_partners/** Returns all `Datasets` which the user is able to view, while providing a pagination option, and pre-fetching (for performance) Data Partner information associated to each.
       ```
@@ -290,24 +290,24 @@ user rights associated to the Token provided.
         name: in, exact
         dataset: exact 
       ```
-    * **projects/\<Project_id\>** Returns a single `Project` by `id`.
-    * **projects/update/\<Project_id\>** Update a single `Project` by `id`.
+    * **projects/<Project_id\>** Returns a single `Project` by `id`.
+    * **projects/update/<Project_id\>** Update a single `Project` by `id`.
     
 ## Count Stats
 
 * **countstats/** Returns the total number of `ScanReports`, `ScanReportTables`, `ScanReportFields`, `ScanReportValues` & `MappingRules` in the database.
-* **countstatsscanreport/?scan_report=\<ScanReport_id\>** Returns the total number of tables, fields, values and mapping rules in a `ScanReport` by `id`.
-* **countstatsscanreporttable/?scan_report_table=\<ScanReportTable_id\>** Returns the total number of `ScanReportFields` and `ScanReportValues` in a `ScanReportTable` by `id`.
-* **countstatsscanreporttablefield/?scan_report_field=\<ScanReportField_id\>** Returns the total number of `ScanReportValues` in a `ScanReportField` by `id`.
+* **countstatsscanreport/?scan_report=<ScanReport_id\>** Returns the total number of tables, fields, values and mapping rules in a `ScanReport` by `id`.
+* **countstatsscanreporttable/?scan_report_table=<ScanReportTable_id\>** Returns the total number of `ScanReportFields` and `ScanReportValues` in a `ScanReportTable` by `id`.
+* **countstatsscanreporttablefield/?scan_report_field=<ScanReportField_id\>** Returns the total number of `ScanReportValues` in a `ScanReportField` by `id`.
 
 ## Assorted others
-* **analyse/\<ScanReport_id\>/** Returns an analysis of the `ScanReportConcepts` in the `ScanReport` with `id`. This analysis compares to all other `ScanReports`, 
+* **analyse/<ScanReport_id\>/** Returns an analysis of the `ScanReportConcepts` in the `ScanReport` with `id`. This analysis compares to all other `ScanReports`, 
   finding ancestor and descendants of each, and reporting the results (specifically, any mismatched `Concepts` found between this `ScanReport` and any other)
 
-* **countprojects/\<Dataset_id\>/** Returns the count of distinct projects to which the provided `Dataset` `id` is associated.
+* **countprojects/<Dataset_id\>/** Returns the count of distinct projects to which the provided `Dataset` `id` is associated.
 
-* **json/?id=\<ScanReport_id\>** Returns a json representation of the mapping rules for a `ScanReport` with `id`.
-* **scanreports/\<ScanReport_id\>/download** Returns the `ScanReport` file in `.xlsx` format with `id` from Azure blob storage as an HTTP Response.
+* **json/?id=<ScanReport_id\>** Returns a json representation of the mapping rules for a `ScanReport` with `id`.
+* **scanreports/<ScanReport_id\>/download** Returns the `ScanReport` file in `.xlsx` format with `id` from Azure blob storage as an HTTP Response.
 
 
 (API endpoints without filter)
