@@ -183,7 +183,7 @@ user rights associated to the Token provided.
         for editing.
     * **scanreportvalues/<ScanReportValue_id\>/** [:material-filter:](./#specifying-returning-fields) Returns all records from the `mapping_scanreportvalues` table by `id`.
     
-    * **SPECIAL - CONSIDER MOVING** **scanreportvaluepks/?scan_report=<ScanReport_id\>** Returns all records from the `mapping_scanreportvalues` table 
+    * **scanreportvaluepks/?scan_report=<ScanReport_id\>** Returns all records from the `mapping_scanreportvalues` table 
       which are linked to the scan report by `id` through the chain of `ScanReportValue -> ScanReportField -> ScanReportTable -> ScanReport`, and which 
       additionally do not have `conceptID=-1` (which is the default for those without an associated ScanReportConcept).
     * **scanreportvaluesfilterscanreporttable** [:material-filter:](./#specifying-returning-fields) Returns all ScanReportValues associated to the supplied `ScanReportTable` id.
@@ -213,13 +213,11 @@ user rights associated to the Token provided.
       ``` 
       
 7. mapping_classificationsystem table	
-    * **UNUSED**
-    * **classificationsystems/** [:material-filter:](./#specifying-returning-fields) Returns all records from the `mapping_classificationsystem` table.
+    * **UNUSED!** **classificationsystems/** [:material-filter:](./#specifying-returning-fields) Returns all records from the `mapping_classificationsystem` table.
     * **classificationsystems/<ClassificationSystem_id\>/** [:material-filter:](./#specifying-returning-fields) Returns all records from the `mapping_classificationsystem` table by `id`.
 
 8. mapping_datadictionary table	
-    * **UNUSED**
-    * **datadictionaries/** [:material-filter:](./#specifying-returning-fields) Returns all records from the `mapping_datadictionary` table.
+    * **UNUSED!** **datadictionaries/** [:material-filter:](./#specifying-returning-fields) Returns all records from the `mapping_datadictionary` table.
     * **datadictionaries/<DataDictionary_id\>/** [:material-filter:](./#specifying-returning-fields) Returns all records from the `mapping_datadictionary` table by `id`.
 
 9. datapartner table	
@@ -234,8 +232,7 @@ user rights associated to the Token provided.
 10. mapping_omoptable table	
      * **omoptables/** Returns all records from the `mapping_omoptable` table.
      * **omoptables/<OmopTable_id\>/** Returns all records from the `mapping_omoptable` table by `id`.
-     * **UNUSED**
-     * **omoptablesfilter/**
+     * **UNUSED!** **omoptablesfilter/**
        ```
        filter_fields:
          id: in, exact
@@ -244,8 +241,7 @@ user rights associated to the Token provided.
 11. mapping_omopfield table	
      * **omopfields/** [:material-filter:](./#specifying-returning-fields) Returns all records from the `mapping_omopfield` table.
      * **omopfields/<OmopField_id\>/** [:material-filter:](./#specifying-returning-fields) Returns all records from the `mapping_omopfield` table by `id`.
-     * **UNUSED**
-     * **omopfieldsfilter/** [:material-filter:](./#specifying-returning-fields)
+     * **UNUSED!** **omopfieldsfilter/** [:material-filter:](./#specifying-returning-fields)
        ```
        filter_fields:
          id: in, exact
