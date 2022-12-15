@@ -27,6 +27,7 @@ nav:
 
   - CaRROT-Mapper:
       - About: CaRROT-Mapper/about.md
+      - Quickstart [WIP]: CaRROT-Mapper/quickstart.md
       - User Guide:
           - Projects, Datasets, Scan Reports, and Permissions: CaRROT-Mapper/projects-datasets-and-scanreports.md
           - Uploading a Scan Report file: CaRROT-Mapper/uploading-scan-report.md
