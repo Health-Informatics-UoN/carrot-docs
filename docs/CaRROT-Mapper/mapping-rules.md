@@ -1,5 +1,5 @@
-Mapping Rules determine how to link (and potentially modify) between `source_fields` (in
-put data) and `destination_fields` (output data) when building `CDM` objects. 
+Mapping Rules determine how to link (and potentially modify) between `source_fields` 
+(input data) and `destination_fields` (output data) when building `CDM` objects. 
 
 ## Prerequisites 
 
