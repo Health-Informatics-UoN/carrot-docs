@@ -144,17 +144,17 @@ All the Mapping Rules associated to the Concepts, which were automatically added
 
 ### Add further Concepts
 
-Before we are ready to declare our mapping complete, we can also add further mappings manually.
+Further mappings can be added manually.
 
 Navigate to the `Demographics.csv` table, and the `Sex` field. 
-You will see a table with 3 rows: `F`, `M` and an empty row.
+There will be a table with 3 rows: `F`, `M` and an empty row.
 Note that, thanks to our Data Dictionary file, the `Value description` column has been populated with helpful information.
 It indicates that `F` means "Female", and `M` "Male".
 To add the correct OMOP Concepts, click in the text box to the left of the `Add` button on the right-hand side of the screen, in the row associated with `F`.
 Type `8532` and press `Add`. After a moment, a green `Success: Mapping Rules created` banner appears, along with a blue Concept tag inside the table.
 Similarly, add `8507` for the `M` row.
 
-Now that we have added these Concepts, press the `Go to Rules` button.
+Now that these Concepts have been added, press the `Go to Rules` button.
 Note that new rows have been added associated to the `F` and `M` values. These were generated at the time of adding the Concepts on the previous page.
 
 You can also try _removing_ a Concept by pressing the grey `x` on the right of any Concept tag, then return to the Rules page to see that the associated Mapping Rules have been deleted.
