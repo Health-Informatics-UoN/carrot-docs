@@ -22,15 +22,17 @@ Users requiring more details should follow the links or search the documentation
 Developers should use the Developer Guide for technical documentation.
 
 ## Gaining Access
-The deployed CaRROT-Mapper is available at [https://ccom.azurewebsites.net](https://ccom.azurewebsites.net).
+The deployed CaRROT-Mapper is available at https://ccom.azurewebsites.net.
 
-A user account is required to access the site; one can be requested from the site administrator. 
+User login is required to access the site. 
+A user account can be requested from the site administrator. 
 
-Users must be a member of at least one Project.
+A user must be a member of at least one Project.
 Project membership is currently handled by the site administrator.
 
 Once logged in, the user is presented with the [Home page](#the-home-page). 
-This is a simple dashboard displaying statistics about the data the user can access.
+This is a simple dashboard displaying statistics about the data the user has
+access to.
 
 ## Upload a first Scan Report
 To begin, navigate using the bar across the top of the screen to "Scan Reports > Upload New Scan Report" to open the Scan Report Upload form.
