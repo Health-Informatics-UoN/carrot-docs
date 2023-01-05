@@ -33,29 +33,29 @@ Once logged in, the user is presented with the [Home page](#the-home-page).
 This is a simple dashboard displaying statistics about the data the user can access.
 
 ## Upload a first Scan Report
-To begin, navigate using the bar across the top of the screen to "Scan Reports > Upload New Scan Report" to open the Scan Report Upload form.
+To begin, navigate to "Scan Reports > Upload New Scan Report" using the navbar at the top of the screen.
 
 **TODO:** Provide a sample ScanReport file and Data Dictionary file.
 
 Fill in the details as required, and upload a valid Scan Report File. 
 You may optionally provide a Data Dictionary file.
-If an error message occurs, fix the error in the Scan Report File (or Data Dictionary file if provided) and retry upload.
+If an error message occurs, fix the error in the Scan Report File (or Data Dictionary file if provided) and try again to upload.
 
-!!! note
-    Not all possible errors are checked in the files. If you are directed to the Scan Reports page after upload, this indicates that all pre-checks have completed.
-    However, other errors can be checked only during the processing of the file. If these occur, the `Status` of the Scan Report may change to `Upload Failed`, or it may stay as `Upload in Progress` forever (over 30 minutes indicates an error).
+!!! caution
+    Not all possible errors in the files can be checked before upload. If you are directed to the Scan Reports page after upload, this indicates that all pre-checks have completed.
+    However, other errors can be checked only during the processing of the file after upload. If these occur, the `Status` of the Scan Report may change to `Upload Failed`, or it may stay as `Upload in Progress` forever (over 30 minutes indicates an error).
     If this occurs, please check your files yourself for possible errors, and if that fails then contact the system administrator to check the logs.
 
 Once a valid Scan Report File is uploaded, the user will be redirected to the Scan Report list page.
 This should show the newly created Scan Report at the top of the table.
 
 After upload, an automated task is launched to ingest the contents of the file and perform a number of processing steps. 
-This process can take several minutes for large Scan Report Files, with a timeout of 30 minutes.
+This process can take several minutes for large Scan Report Files.
 While this process is running, the "Status" visible to the right of the row will be "Upload in Progress".
 Once the process completes, the status will change (once the page is reloaded) to "Upload Complete".
 In the case of an unrecoverable error in processing, the status will be set to "Upload Failed".
 
-!!! note
+!!! Caution
     Please note that sometimes errors in processing do not result in the status being set to "Upload Failed", with the status incorrectly remaining as "Upload in Progress".
     If this status remains for more than 30 minutes then you can be sure that the process has failed.
     Please report this to the development team with a copy of the Scan Report File being used, to help us improve the checks run.
