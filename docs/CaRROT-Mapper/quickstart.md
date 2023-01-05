@@ -101,14 +101,14 @@ The Tables list will now show both tables have filled `PERSON ID` and `EVENT DAT
 
 ### Generate Initial Mapping Rules
 Navigate to the Mapping Rules page associated to your Scan Report. 
-This can be either (a) from the Scan Reports page - press the `Rules` button - ; or (b) from any of the Tables, Fields or Values pages - press the `Go to Rules` button near the top of the page.
+This can be either **(a)** from the Scan Reports page - press the `Rules` button; or **(b)** from any of the Tables, Fields or Values pages - press the `Go to Rules` button near the top of the page.
 This page will contain an empty table with the contents `Nothing`. 
 
-But we have Concepts already mapped for some of our Fields and Values, so what is going on?
+Some of the Fields and Values already have associated Concepts based on the Dictionary file and reuse of previously seen mappings.
 
 Mapping Rules cannot be generated without the Person ID and Date Event being set.
 During the initial upload and processing, these were not set, and so the Mapping Rules associated to the Concepts could not be generated.
-Now that we have set `Person ID` and `Date Event` for each of the tables, we are ready to generate the Mapping Rules associated to those Concepts!
+Now that `Person ID` and `Date Event` are set for each of the tables, the Mapping Rules associated to those Concepts can be generated.
 
 Press the green `Refresh Rules` button at the top of the page. 
 After a few moments, the table will be populated by the Mapping Rules associated to the Concepts already mapped (in this example, there should be 16 Mapping Rules generated).
@@ -116,19 +116,19 @@ After a few moments, the table will be populated by the Mapping Rules associated
 !!! note
     If you don't see any Mapping Rules appear after refresh, this is usually an indication that you have not set the `Person ID` and `Date Event` on the tables.
 
-You will note that there are 5 or 6 rows in the table associated to each Concept. 
-Using the `Rule ID` column in the table, you can see 5 or 6 with a given ID. 
+Note that there are 5 or 6 rows in the table associated to each Concept. 
+In the `Rule ID` column in the table, there are 5 or 6 with a given ID. 
 This fully describes how to map the source term to the OMOP standard.
 
-If you prefer, you can see a cleaner Summary view using the `Show Summary view` button at the top of the page. 
+A Summary view using the `Show Summary view` button at the top of the page. 
 This shows only one of the Rules associated to each source-concept pair, which can be useful for reviewing.
 
 !!! note
     The Summary view only shows Rules that are shown on the current pagination view. 
     Often this means only 5 or 6 Rules are visible in Summary View at any one time.
-    You may find it more helpful to change the page size (by editing the URL so that `page_size=300`, for example) to increase the number of Rules visible in Summary View at one time.
+    By editing the URL so that `page_size=300`, for example, to increase the number of Rules visible in Summary View at one time.
 
-We now have all the Mapping Rules associated to the Concepts which were automatically added to our Scan Report by using a Data Dictionary file.
+All the Mapping Rules associated to the Concepts, which were automatically added to our Scan Report by using a Data Dictionary file, are now available.
 
 !!! tip
     The `Refresh Rules` button will only need to be pressed once, as (see below) any later addition or removal of Concepts will be immediately reflected in the Mapping Rules.
