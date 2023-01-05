@@ -67,15 +67,16 @@ Refresh the Scan Reports page to check that the Status of your Scan Report has b
 After upload, the user is directed to the Scan Reports page before the new Scan Report has been fully processed. 
 While the Scan Report continues to be processed, the contents visible on CaRROT-Mapper will be populated over time.
 
-Click on the name of the Scan Report to navigate to the list of Tables (Tables List) within the Scan Report.
-Assuming that processing has progressed sufficiently far, you can click on the name of each Table to navigate to the list of Fields (Field List) within that Table.
-Similarly, clicking on a Field name will display the list of Values (Value List) within that Field.
+Click on the name of the Scan Report to navigate to the list of Tables ("Tables List") within the Scan Report.
+As Tables are processed, the user can click on the name of each Table to navigate to the list of Fields ("Field List") within that Table.
+Similarly, clicking on a Field name in a Table will display the list of Values ("Value List") within that Field.
 In this way, the structure of the Scan Report can be navigated.
-If the page supports pagination, use the grey buttons at the top of the page to navigate through pages.
+
+Sometimes a list is too large to be displayed all at once. In which case, the list comes as many pages. Use the grey buttons at the top of the page to navigate through the pages.
 
 **TODO**: note somewhere how to navigate pagination URLs.
 
-Return via the breadcrumbs along the top of the page.
+Use the breadcrumbs at the top of the page to quickly navigate back up the Scan Report.
 
 ## Creating Mapping Rules
 The example Scan Report and Data Dictionary will have added some OMOP Concepts to fields and values in the Scan Report.
