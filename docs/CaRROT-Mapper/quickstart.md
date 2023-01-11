@@ -72,7 +72,7 @@ As Tables are processed, the user can click on the name of each Table to navigat
 Similarly, clicking on a Field name in a Table will display the list of Values ("Value List") within that Field.
 In this way, the structure of the Scan Report can be navigated.
 
-Sometimes a list is too large to be displayed all at once. In which case, the list comes as many pages. Use the grey buttons at the top of the page to navigate through the pages.
+Sometimes a list is too large to be displayed all at once. In this case, the list will be displayed over a number of pages. Use the grey buttons at the top of the page to navigate through the pages.
 
 **TODO**: note somewhere how to navigate pagination URLs.
 
@@ -120,7 +120,7 @@ Note that there are 5 or 6 rows in the table associated to each Concept.
 In the `Rule ID` column in the table, there are 5 or 6 with a given ID. 
 This fully describes how to map the source term to the OMOP standard.
 
-A Summary view using the `Show Summary view` button at the top of the page. 
+A Summary view is available using the `Show Summary view` button at the top of the page. 
 This shows only one of the Rules associated to each source-concept pair, which can be useful for reviewing.
 
 !!! note
