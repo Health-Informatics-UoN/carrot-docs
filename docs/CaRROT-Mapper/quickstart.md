@@ -104,7 +104,7 @@ Navigate to the Mapping Rules page associated to your Scan Report.
 This can be either **(a)** from the Scan Reports page - press the `Rules` button; or **(b)** from any of the Tables, Fields or Values pages - press the `Go to Rules` button near the top of the page.
 This page will contain an empty table with the contents `Nothing`. 
 
-Some of the Fields and Values already have associated Concepts based on the Dictionary file and reuse of previously seen mappings.
+This might be surprising, as some of the Fields and Values already have associated Concepts based on the Dictionary file and reuse of previously seen mappings.
 
 Mapping Rules cannot be generated without the Person ID and Date Event being set.
 During the initial upload and processing, these were not set, and so the Mapping Rules associated to the Concepts could not be generated.
