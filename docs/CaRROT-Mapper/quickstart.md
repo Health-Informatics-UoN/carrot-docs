@@ -164,7 +164,7 @@ You can also try _removing_ a Concept by pressing the grey `x` on the right of a
 The final task in the simplest end-to-end process in CaRROT-Mapper is to download the Mapping Rules in a form that can be used as input to CaRROT-CDM (which will perform the transformations on the data).
 
 Navigate to the Mapping Rules page, and press the `Download Mapping JSON` button.
-This will download a `.json` file containing the Mapping Rulesto your machine.
+This will download to your machine a `.json` file containing the Mapping Rules.
 
 To view a more human-readable version, press the `Download Mapping CSV` for a `.csv` file instead. This however cannot be used as input to CaRROT-CDM.
 
