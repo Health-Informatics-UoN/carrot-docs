@@ -126,7 +126,7 @@ This shows only one of the Rules associated to each source-concept pair, which c
 !!! note
     The Summary view only shows Rules that are shown on the current pagination view. 
     Often this means only 5 or 6 Rules are visible in Summary View at any one time.
-    By editing the URL so that `page_size=300`, for example, to increase the number of Rules visible in Summary View at one time.
+    By editing the URL so that `page_size=300`, for example, one can increase the number of Rules visible in Summary View at one time.
 
 All the Mapping Rules associated to the Concepts, which were automatically added to our Scan Report by using a Data Dictionary file, are now available.
 
