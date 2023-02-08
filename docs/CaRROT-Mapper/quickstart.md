@@ -106,7 +106,7 @@ This page will contain an empty table with the contents `Nothing`.
 
 This might be surprising, as some of the Fields and Values already have associated Concepts based on the Dictionary file and reuse of previously seen mappings.
 
-Mapping Rules cannot be generated without the Person ID and Date Event being set.
+This is because Mapping Rules cannot be generated without the Person ID and Date Event being set.
 During the initial upload and processing, these were not set, and so the Mapping Rules associated to the Concepts could not be generated.
 Now that `Person ID` and `Date Event` are set for each of the tables, the Mapping Rules associated to those Concepts can be generated.
 
