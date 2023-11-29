@@ -58,6 +58,8 @@ To run the functions, in the project root:
 1. Install the dependencies: `pip install -r requirements.txt`
 2. Run the functions: `func start`
 
+You should now be setup to run the [user quickstart](./quickstart).
+
 ## Python Environment
 
 You can run the web app directly in a Python environment instead of the Docker image.
