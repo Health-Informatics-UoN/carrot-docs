@@ -24,9 +24,9 @@ If you would rather not use the R package, here's a manual approach:
 5. Connect to the Postgres process: `psql -U postgres -d postgres`
 6. Create the OMOP schema: `CREATE SCHEMA omop;`
 7. Run the create tables ddl: `\i OMOPCDM_postgresql_5.4_ddl.sql`
-8. Load in the vocabulary data.
+8. Load in your vocabulary data.
 9. Now run the other ddls:
 
-    * OMOPCDM_postgresql_5.4_primary_keys.sql
-    * OMOPCDM_postgresql_5.4_constraints.sql
-    * OMOPCDM_postgresql_5.4_indices.sql
+    * `OMOPCDM_postgresql_5.4_primary_keys.sql`
+    * `OMOPCDM_postgresql_5.4_constraints.sql`
+    * `OMOPCDM_postgresql_5.4_indices.sql`

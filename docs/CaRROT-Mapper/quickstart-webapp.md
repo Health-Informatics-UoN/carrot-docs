@@ -28,7 +28,7 @@ The application stack interacts with a PostgreSQL Server database, and uses code
 
 ### OMOP Tables
 
-You need a pre-seeded OMOP CDM database, with the schema `omop`.
+You need a pre-seeded OMOP CDM database, with the schema `omop`. See [OMOP quickstart](../quickstart-omop) for how to get this running.
 
 ### Postgres
 
@@ -58,7 +58,7 @@ To run the functions, in the project root:
 1. Install the dependencies: `pip install -r requirements.txt`
 2. Run the functions: `func start`
 
-You should now be setup to run the [user quickstart](./quickstart).
+You should now be setup to run the [user quickstart](../quickstart).
 
 ## Python Environment
 
