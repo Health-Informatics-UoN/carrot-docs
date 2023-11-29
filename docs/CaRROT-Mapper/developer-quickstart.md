@@ -3,7 +3,7 @@
 - Docker
 - Python Environment >3.8
 - Pip
-- Azure Functions Core Tools
+- Azure Functions Core Tools v4
 - Azure CLI
 
 ## Getting Started
