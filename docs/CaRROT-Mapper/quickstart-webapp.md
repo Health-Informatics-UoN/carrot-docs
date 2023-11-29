@@ -8,7 +8,7 @@
 
 ## Getting Started
 
-The most direct route to running the application is using the Docker quickstart.
+The most direct route to running the application locally is using the Docker quickstart.
 
 The repository contains a docker-compose for development, so after you have setup the [configuration](#configuration), just run `docker-compose up -d` to start the application stack. This runs the database, Azurite emulator, and will build and run the web app container.
 
