@@ -64,10 +64,17 @@ You should now be setup to run the [user quickstart](../quickstart).
 
 ## Python Environment
 
-You can run the web app directly in a Python environment instead of the Docker image.
+You can also run the web app directly in a Python environment instead of the Docker image.
 
-1. Be sure to have a separate Python environment for the web app and Azure functions.
-2. Inside the `/api` directory, install the dependencies: `pip install -r requirements.txt`
-3. Change the environment [configuration](#configuration) to point to the running docker containers, for example `localhost` instead of `Azurite`.
-4. TODO: Javascript.
-5. To run the app: `python manage.py runserver`.
+Prequisites:
+
+- A separate Python environment for the web app and Azure functions.
+- [graphviz](https://graphviz.org/download/) package installed.
+- Node 12.18.3
+
+1. Inside the `/api` directory, install the Python dependencies: `pip install -r requirements.txt`
+2. Change the environment [configuration](#configuration) to point to the running docker containers, for example `localhost` instead of `azurite`.
+3. Inside the `/react-client-app` directory, install the npm dependencies: `npm i`
+4. Build the react app: `npm run build`
+5. Collect the Django static files: `python manage.py collectstatic`
+6. To run the app: `python manage.py runserver`.
