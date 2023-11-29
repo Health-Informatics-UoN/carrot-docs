@@ -30,7 +30,7 @@ The application stack interacts with a PostgreSQL Server database, and uses code
 
 You need a pre-seeded OMOP CDM database, with the schema `omop`. See [OMOP quickstart](../quickstart-omop) for how to get this running.
 
-### Postgres
+### Web App Tables
 
 When setting up a new environment, or running a newer version of the codebase if there have been schema changes, you need to run the migrations against your web app database.
 
