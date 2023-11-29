@@ -23,9 +23,9 @@ If you would rather not use the R package, here's a manual approach, each databa
 4. Access the database container's shell: `docker exec -it carrot-mapper-dev-db-1 bash`
 5. Connect to the Postgres process: `psql -U postgres -d postgres`
 6. Create the OMOP schema: `CREATE SCHEMA omop;`
-7. Run the create tables DDL: `\i OMOPCDM_postgresql_5.4_ddl.sql`
+7. Create the tables by running the first DDL: `\i OMOPCDM_postgresql_5.4_ddl.sql`
 8. Load in your vocabulary data to the created tables. For example the concept table: `\copy concept FROM 'concept.csv' DELIMITER E'\t' CSV HEADER;`
-9. Run the remaining DDLs:
+9. Apply the primary keys, constraints, and indexes by running the remaining DDLs:
 
     * `\i OMOPCDM_postgresql_5.4_primary_keys.sql`
     * `\i OMOPCDM_postgresql_5.4_constraints.sql`
