@@ -55,8 +55,10 @@ To create the storage containers and queues, use the Azure CLI:
 
 To run the functions, in the project root:
 
-1. Install the dependencies: `pip install -r requirements.txt`
-2. Run the functions: `func start`
+1. In the web app `/admin`, generate a new `auth token` for the admin user.
+2. Add the token to `local.settings.json` : `AZ_FUNCTION_KEY`
+3. Install the dependencies: `pip install -r requirements.txt`
+4. Run the functions: `func start`
 
 You should now be setup to run the [user quickstart](../quickstart).
 
