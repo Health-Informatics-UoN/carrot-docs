@@ -50,8 +50,8 @@ To create the storage containers and queues, use the Azure CLI:
 
 - `az storage container create -n scan-reports --connection-string <CONNECTIONSTRING>`
 - `az storage container create -m data-dictionaries --connection-string <CONNECTIONSTRING>`
-- `az storage queue create -n nlpqueue --connection-string <CONNECTIONSTRING>`
-- `az storage queue create -n scan-reports --connection-string <CONNECTIONSTRING>`
+- `az storage queue create -n nlpqueue-local --connection-string <CONNECTIONSTRING>`
+- `az storage queue create -n scanreports-local --connection-string <CONNECTIONSTRING>`
 
 To run the functions, in the project root:
 
