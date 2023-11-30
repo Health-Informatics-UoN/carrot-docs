@@ -76,9 +76,11 @@ Prequisites:
 2. Inside the `/react-client-app` directory, install the npm dependencies: `npm i`
 3. Change the `snowpack.config.js` to use a relative file path:
 ```json
-buildOptions: {
-    out: '../api/static/javascript/react',
-  },
+{
+  buildOptions: {
+      out: '../api/static/javascript/react',
+    }
+}
 ```
 4. Build the react app: `npm run build`.
 5. Inside the `/api` directory, install the Python dependencies: `pip install -r requirements.txt`.
