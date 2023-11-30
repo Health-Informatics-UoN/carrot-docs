@@ -75,7 +75,7 @@ Prequisites:
 1. Change the environment [configuration](#configuration) to point to the running docker containers, for example `localhost` instead of `azurite`.
 2. Inside the `/react-client-app` directory, install the npm dependencies: `npm i`
 3. Change the `snowpack.config.js` to use a relative file path:
-```json
+```
 {
   buildOptions: {
       out: '../api/static/javascript/react',
