@@ -32,6 +32,9 @@ nav:
           - Projects, Datasets, Scan Reports, and Permissions: CaRROT-Mapper/projects-datasets-and-scanreports.md
           - Uploading a Scan Report file: CaRROT-Mapper/uploading-scan-report.md
       - Developer Guide:
+          - Quickstart: 
+              - Web Application: CaRROT-Mapper/quickstart-webapp.md
+              - OMOP: CaRROT-Mapper/quickstart-omop.md
           - Internal data structures: CaRROT-Mapper/internal-data-structures.md
           - Mapping Rules: CaRROT-Mapper/mapping-rules.md
           - API: CaRROT-Mapper/API.md
