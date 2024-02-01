@@ -3,7 +3,7 @@
 
 Use 
 ```
-git clone --recurse-submodules git@github.com:HDRUK/CaRROT-Docs.git
+git clone --recurse-submodules git@github.com:health-informatics-uon/carrot-docs.git
 ```
 to get required CaRROT-CDM submodule.
 
