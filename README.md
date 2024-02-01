@@ -1,5 +1,5 @@
 # 
-[https://health-informatics-uon.github.io/CaRROT-Docs/](https://health-informatics-uon.github.io/CaRROT-Docs/)
+[https://health-informatics-uon.github.io/carrot-docs/](https://health-informatics-uon.github.io/carrot-docs/)
 
 Use 
 ```
