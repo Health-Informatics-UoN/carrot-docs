@@ -14,4 +14,4 @@ researcher.data = coconnect.find('patient_data',
                                  anonymous=True)
 ```
 
-If you are a Data Partner using our [ETL Tool](https://github.com/HDRUK/CaRROT-CDM), please go straight to the documentation [here](/CaRROT-Docs/CaRROT-CDM/About).
+If you are a Data Partner using our [ETL Tool](https://github.com/HDRUK/CaRROT-CDM), please go straight to the documentation [here](/CaRROT-CDM/About).

@@ -137,17 +137,17 @@ user rights associated to the Token provided.
       ``` 
 
 2. mapping_scanreport table
-    * **scanreports/** [:material-filter:](./#specifying-returning-fields) Returns all records from the `mapping_scanreport` table. 
+    * **scanreports/** [:material-filter:](#specifying-returning-fields) Returns all records from the `mapping_scanreport` table. 
       * For this endpoint, making a GET/POST request shows the results. Making a PUT/PATCH/DELETE request allows 
         for editing. 
       ```
       filter_fields:
         parent_dataset: exact
       ``` 
-    * **scanreports/<ScanReport_id\>/** [:material-filter:](./#specifying-returning-fields) Returns all records from the `mapping_scanreport` table by `id`.
+    * **scanreports/<ScanReport_id\>/** [:material-filter:](#specifying-returning-fields) Returns all records from the `mapping_scanreport` table by `id`.
 	
 3. mapping_scanreporttable table
-    * **scanreporttables/** [:material-filter:](./#specifying-returning-fields) Returns all records from the `mapping_scanreporttables` table.
+    * **scanreporttables/** [:material-filter:](#specifying-returning-fields) Returns all records from the `mapping_scanreporttables` table.
       ```
       filter_fields:
         id: in, exact
@@ -156,11 +156,11 @@ user rights associated to the Token provided.
       ``` 
       * For this endpoint, making a GET/POST request shows the results. Making a PUT/PATCH/DELETE request allows 
         for editing.
-    * **scanreporttables/<ScanReportTable_id\>/** [:material-filter:](./#specifying-returning-fields) Returns all records from the `mapping_scanreporttable` table by `id`.
+    * **scanreporttables/<ScanReportTable_id\>/** [:material-filter:](#specifying-returning-fields) Returns all records from the `mapping_scanreporttable` table by `id`.
     
 	
 4. mapping_scanreportfield table
-    * **scanreportfields/** [:material-filter:](./#specifying-returning-fields) Returns all records from the `mapping_scanreportfield` table.
+    * **scanreportfields/** [:material-filter:](#specifying-returning-fields) Returns all records from the `mapping_scanreportfield` table.
       ```
       filter_fields:
         id: in, exact
@@ -169,10 +169,10 @@ user rights associated to the Token provided.
       ``` 
       * For this endpoint, making a GET/POST request shows the results. Making a PUT/PATCH/DELETE request allows 
         for editing.
-    * **scanreportfields/<ScanReportField_id\>/** [:material-filter:](./#specifying-returning-fields) Returns all records in the `mapping_scanreportfields` table by `id`.
+    * **scanreportfields/<ScanReportField_id\>/** [:material-filter:](#specifying-returning-fields) Returns all records in the `mapping_scanreportfields` table by `id`.
 
 5. mapping_scanreportvalue table
-    * **scanreportvalues/** [:material-filter:](./#specifying-returning-fields) Returns all records from the `mapping_scanreportvalues` table. 
+    * **scanreportvalues/** [:material-filter:](#specifying-returning-fields) Returns all records from the `mapping_scanreportvalues` table. 
       ```
       filter_fields:
         id: in, exact
@@ -181,21 +181,21 @@ user rights associated to the Token provided.
       ``` 
       * For this endpoint, making a GET/POST request shows the results. Making a PUT/PATCH/DELETE request allows 
         for editing.
-    * **scanreportvalues/<ScanReportValue_id\>/** [:material-filter:](./#specifying-returning-fields) Returns all records from the `mapping_scanreportvalues` table by `id`.
+    * **scanreportvalues/<ScanReportValue_id\>/** [:material-filter:](#specifying-returning-fields) Returns all records from the `mapping_scanreportvalues` table by `id`.
     
     * **scanreportvaluepks/?scan_report=<ScanReport_id\>** Returns all records from the `mapping_scanreportvalues` table 
       which are linked to the scan report by `id` through the chain of `ScanReportValue -> ScanReportField -> ScanReportTable -> ScanReport`, and which 
       additionally do not have `conceptID=-1` (which is the default for those without an associated ScanReportConcept).
-    * **scanreportvaluesfilterscanreporttable** [:material-filter:](./#specifying-returning-fields) Returns all ScanReportValues associated to the supplied `ScanReportTable` id.
+    * **scanreportvaluesfilterscanreporttable** [:material-filter:](#specifying-returning-fields) Returns all ScanReportValues associated to the supplied `ScanReportTable` id.
       ```
       filter_fields:
         scan_report_table: exact
       ``` 
 
 6. mapping_scanreportconcept table	
-    * **scanreportconcepts/** [:material-filter:](./#specifying-returning-fields) Returns all records from the `mapping_scanreportconcepts` table. For this endpoint, making a put request allows to accept a json array that is beneficial in its own right with a single call to an api endpoint. 
-    * **scanreportconcepts/<ScanReportConcept_id\>/** [:material-filter:](./#specifying-returning-fields) Returns all records from the `mapping_scanreportconcepts` table by `id`.
-    * **scanreportconceptsfilter/** [:material-filter:](./#specifying-returning-fields) Returns all records from the `mapping_scanreportconcepts` table, with additional filtering capabilities on `concept_id`.
+    * **scanreportconcepts/** [:material-filter:](#specifying-returning-fields) Returns all records from the `mapping_scanreportconcepts` table. For this endpoint, making a put request allows to accept a json array that is beneficial in its own right with a single call to an api endpoint. 
+    * **scanreportconcepts/<ScanReportConcept_id\>/** [:material-filter:](#specifying-returning-fields) Returns all records from the `mapping_scanreportconcepts` table by `id`.
+    * **scanreportconceptsfilter/** [:material-filter:](#specifying-returning-fields) Returns all records from the `mapping_scanreportconcepts` table, with additional filtering capabilities on `concept_id`.
       ```
       filter_fields:
         id: in, exact
@@ -203,7 +203,7 @@ user rights associated to the Token provided.
         content_type: in, exact
         concept_id: in, exact
       ``` 
-    * **scanreportactiveconceptfilter/** [:material-filter:](./#specifying-returning-fields) Returns all records from the `mapping_scanreportconcepts` table
+    * **scanreportactiveconceptfilter/** [:material-filter:](#specifying-returning-fields) Returns all records from the `mapping_scanreportconcepts` table
       which (1) are associated to an object with the given `content_type` (`15` for `ScanReportField`, `17` for `ScanReportValue` - any other value will return None);
       and (2) are associated to a `ScanReport` which is both active (not hidden) and has Status `Mapping Complete`.
       This endpoint is only available to the Azure Function superuser.
@@ -213,17 +213,17 @@ user rights associated to the Token provided.
       ``` 
       
 7. mapping_classificationsystem table	
-    * **UNUSED!** **classificationsystems/** [:material-filter:](./#specifying-returning-fields) Returns all records from the `mapping_classificationsystem` table.
-    * **classificationsystems/<ClassificationSystem_id\>/** [:material-filter:](./#specifying-returning-fields) Returns all records from the `mapping_classificationsystem` table by `id`.
+    * **UNUSED!** **classificationsystems/** [:material-filter:](#specifying-returning-fields) Returns all records from the `mapping_classificationsystem` table.
+    * **classificationsystems/<ClassificationSystem_id\>/** [:material-filter:](#specifying-returning-fields) Returns all records from the `mapping_classificationsystem` table by `id`.
 
 8. mapping_datadictionary table	
-    * **UNUSED!** **datadictionaries/** [:material-filter:](./#specifying-returning-fields) Returns all records from the `mapping_datadictionary` table.
-    * **datadictionaries/<DataDictionary_id\>/** [:material-filter:](./#specifying-returning-fields) Returns all records from the `mapping_datadictionary` table by `id`.
+    * **UNUSED!** **datadictionaries/** [:material-filter:](#specifying-returning-fields) Returns all records from the `mapping_datadictionary` table.
+    * **datadictionaries/<DataDictionary_id\>/** [:material-filter:](#specifying-returning-fields) Returns all records from the `mapping_datadictionary` table by `id`.
 
 9. datapartner table	
-    * **datapartners/** [:material-filter:](./#specifying-returning-fields) Returns all records from the `datapartner` table.  
-    * **datapartners/<DataPartner_id\>/** [:material-filter:](./#specifying-returning-fields) Returns all records from the `datapartner` table by `id`.
-    * **datapartnersfilter/** [:material-filter:](./#specifying-returning-fields)
+    * **datapartners/** [:material-filter:](#specifying-returning-fields) Returns all records from the `datapartner` table.  
+    * **datapartners/<DataPartner_id\>/** [:material-filter:](#specifying-returning-fields) Returns all records from the `datapartner` table by `id`.
+    * **datapartnersfilter/** [:material-filter:](#specifying-returning-fields)
       ```
       filter_fields:
         name: exact
@@ -239,18 +239,18 @@ user rights associated to the Token provided.
        ```
 
 11. mapping_omopfield table	
-     * **omopfields/** [:material-filter:](./#specifying-returning-fields) Returns all records from the `mapping_omopfield` table.
-     * **omopfields/<OmopField_id\>/** [:material-filter:](./#specifying-returning-fields) Returns all records from the `mapping_omopfield` table by `id`.
-     * **UNUSED!** **omopfieldsfilter/** [:material-filter:](./#specifying-returning-fields)
+     * **omopfields/** [:material-filter:](#specifying-returning-fields) Returns all records from the `mapping_omopfield` table.
+     * **omopfields/<OmopField_id\>/** [:material-filter:](#specifying-returning-fields) Returns all records from the `mapping_omopfield` table by `id`.
+     * **UNUSED!** **omopfieldsfilter/** [:material-filter:](#specifying-returning-fields)
        ```
        filter_fields:
          id: in, exact
        ``` 
 
 12. mapping_mappingrule table	
-     * **mappingrules/** [:material-filter:](./#specifying-returning-fields) Returns all records from the `mapping_mappingrule` table.
-     * **mappingrules/<MappingRule_id\>** [:material-filter:](./#specifying-returning-fields) Returns all records from the `mapping_mappingrule` table by `id`.
-     * **mappingrulesfilter/** [:material-filter:](./#specifying-returning-fields)
+     * **mappingrules/** [:material-filter:](#specifying-returning-fields) Returns all records from the `mapping_mappingrule` table.
+     * **mappingrules/<MappingRule_id\>** [:material-filter:](#specifying-returning-fields) Returns all records from the `mapping_mappingrule` table by `id`.
+     * **mappingrulesfilter/** [:material-filter:](#specifying-returning-fields)
        ```
        filter_fields:
          scan_report: in, exact
@@ -260,18 +260,18 @@ user rights associated to the Token provided.
        * This also supports pagination, using the page number parameter `p` and page size parameter `page_size`, e.g. `mappingruleslist/?id=56&p=1&page_size=30` 
 
 13. mapping_dataset table
-    * **datasets/** [:material-filter:](./#specifying-returning-fields) Returns all `Datasets` which the user is able to view.
+    * **datasets/** [:material-filter:](#specifying-returning-fields) Returns all `Datasets` which the user is able to view.
       ```
       filter_fields:
         id: in, exact
         data_partner: in, exact
         hidden: in, exact 
       ```
-    * **datasets/<Dataset_id\>** [:material-filter:](./#specifying-returning-fields) Return a single `Dataset` by `id`.
-    * **datasets/update/<Dataset_id\>** [:material-filter:](./#specifying-returning-fields) Update a single `Dataset` by `id`.
-    * **datasets/delete/<Dataset_id\>** [:material-filter:](./#specifying-returning-fields) Delete a single `Dataset` by `id`.
+    * **datasets/<Dataset_id\>** [:material-filter:](#specifying-returning-fields) Return a single `Dataset` by `id`.
+    * **datasets/update/<Dataset_id\>** [:material-filter:](#specifying-returning-fields) Update a single `Dataset` by `id`.
+    * **datasets/delete/<Dataset_id\>** [:material-filter:](#specifying-returning-fields) Delete a single `Dataset` by `id`.
     * **datasets/create** Create a single `Dataset`.
-    * **datasets_data_partners/** [:material-filter:](./#specifying-returning-fields) Returns all `Datasets` which the user is able to view, while providing a pagination option, and pre-fetching (for performance) Data Partner information associated to each.
+    * **datasets_data_partners/** [:material-filter:](#specifying-returning-fields) Returns all `Datasets` which the user is able to view, while providing a pagination option, and pre-fetching (for performance) Data Partner information associated to each.
       ```
       filter_fields:
         id: in, exact
@@ -281,14 +281,14 @@ user rights associated to the Token provided.
       * This also supports pagination, using the page number parameter `p` and page size parameter `page_size`, e.g. `datasets_data_partners/?id=56&p=1&page_size=30` 
 
 14. mapping_projects table
-    * **projects/** [:material-filter:](./#specifying-returning-fields) Returns all `Projects` which the user is able to view.
+    * **projects/** [:material-filter:](#specifying-returning-fields) Returns all `Projects` which the user is able to view.
       ```
       filter_fields:
         name: in, exact
         dataset: exact 
       ```
-    * **projects/<Project_id\>** [:material-filter:](./#specifying-returning-fields) Returns a single `Project` by `id`.
-    * **projects/update/<Project_id\>** [:material-filter:](./#specifying-returning-fields) Update a single `Project` by `id`.
+    * **projects/<Project_id\>** [:material-filter:](#specifying-returning-fields) Returns a single `Project` by `id`.
+    * **projects/update/<Project_id\>** [:material-filter:](#specifying-returning-fields) Update a single `Project` by `id`.
     
 ## Count Stats
 
@@ -298,7 +298,7 @@ user rights associated to the Token provided.
 * **countstatsscanreporttablefield/?scan_report_field=<ScanReportField_id\>** Returns the total number of `ScanReportValues` in a `ScanReportField` by `id`.
 
 ## Assorted others
-* **analyse/<ScanReport_id\>/** [:material-filter:](./#specifying-returning-fields) Returns an analysis of the `ScanReportConcepts` in the `ScanReport` with `id`. This analysis compares to all other `ScanReports`, 
+* **analyse/<ScanReport_id\>/** [:material-filter:](#specifying-returning-fields) Returns an analysis of the `ScanReportConcepts` in the `ScanReport` with `id`. This analysis compares to all other `ScanReports`, 
   finding ancestor and descendants of each, and reporting the results (specifically, any mismatched `Concepts` found between this `ScanReport` and any other)
 
 * **countprojects/<Dataset_id\>/** Returns the count of distinct projects to which the provided `Dataset` `id` is associated.
