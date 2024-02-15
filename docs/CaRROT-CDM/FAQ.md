@@ -11,16 +11,16 @@ The following command (CLI tool) has the ability to do the full process:
 carrot etl --help
 ```
 <center>
-[Overview](CaRROT-CDM/ETL/About/){ .md-button .md-button--primary }
-[Setting up automation](CaRROT-CDM/ETL/Yaml/){ .md-button .md-button--secondary }
+[Overview](ETL/About.md){ .md-button .md-button--primary }
+[Setting up automation](ETL/Yaml.md){ .md-button .md-button--secondary }
 </center>
 
 Otherwise, you have to do each step manually:
 
 <center>
-[Extract](CaRROT-CDM/ETL/Extract){ .md-button .md-button--primary }
-[Transform](CaRROT-CDM/ETL/Transform){ .md-button .md-button--primary }
-[Load](CaRROT-CDM/ETL/Load){ .md-button .md-button--primary }
+[Extract](ETL/Extract.md){ .md-button .md-button--primary }
+[Transform](ETL/Transform.md){ .md-button .md-button--primary }
+[Load](ETL/Load.md){ .md-button .md-button--primary }
 </center>
 
 ### How can I pseudonymise my data?
@@ -50,7 +50,7 @@ Options:
 A detailed guide on how to use this feature can be found here:
 
 <center>
-[Pseudonymisation guide](CaRROT-CDM/ETL/Pseudonymisation/){ .md-button .md-button--primary }
+[Pseudonymisation guide](ETL/Pseudonymisation.md){ .md-button .md-button--primary }
 </center>
 
 ### Can I pseudonymise the data myself?
@@ -75,18 +75,18 @@ Our command line interface tool for performing only the 'T' part of the 'ETL' pr
 	```
 
 <center>
-[Overview](CaRROT-CDM/ETL/About/#transform){ .md-button .md-button--primary }
-[Manual from the Command Line](CaRROT-CDM/ETL/Transform/){ .md-button .md-button--secondary }
-[Manual from a GUI](CaRROT-CDM/ETL/Transform-GUI/){ .md-button .md-button--secondary }
+[Overview](ETL/About.md#transform){ .md-button .md-button--primary }
+[Manual from the Command Line](ETL/Transform.md){ .md-button .md-button--secondary }
+[Manual from a GUI](ETL/Transform-GUI.md){ .md-button .md-button--secondary }
 </center>
 
 
 ### What is the rules `.json`?
 
-A `json` encoded file that contains information of how multiple CDM tables and CDM objects need to be created by the [transform process](CaRROT-CDM/ETL/Transform/)
+A `json` encoded file that contains information of how multiple CDM tables and CDM objects need to be created by the [transform process](ETL/Transform.md)
 
 <center>
-[Rules JSON](CaRROT-CDM/ETL/Rules/){ .md-button .md-button--primary }
+[Rules JSON](ETL/Rules.md){ .md-button .md-button--primary }
 </center>
 
 ### What should my input files be called?
