@@ -27,7 +27,7 @@ _Scan Report_ should belong to.
     already taken), and select at least one _Project_ to which it will 
     be associated. Then select the visibility, editor and admin options
     as appropriate (see 
-    [Projects, Datasets, Scan Reports, and Permissions ](/CaRROT-Docs/CaRROT-Mapper/projects-datasets-and-scanreports) 
+    [Projects, Datasets, Scan Reports, and Permissions ](CaRROT-Mapper/projects-datasets-and-scanreports) 
     for an explanation of these. The _Dataset_ creator is automatically 
     assigned as an editor.
 

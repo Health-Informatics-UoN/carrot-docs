@@ -14,4 +14,6 @@ researcher.data = coconnect.find('patient_data',
                                  anonymous=True)
 ```
 
-If you are a Data Partner using our [ETL Tool](https://github.com/HDRUK/CaRROT-CDM), please go straight to the documentation [here](/CaRROT-CDM/About).
+The Carrot tools depend on a set of [data standards]()
+
+If you are a Data Partner using our [CaRROT-CDM ETL Tool](https://github.com/HDRUK/CaRROT-CDM), please go straight to the documentation [here](CaRROT-CDM/About).

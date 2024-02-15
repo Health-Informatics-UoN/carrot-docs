@@ -7,7 +7,7 @@ The CaRROT ETL process runs via a Command Line Interface, installed with the car
 In the context of the CaRROT workflow {++ETL++} stands for (and means):
 
 * {++Extract++}: input data is extracted into `.csv` format and (optionally) pseudonymised    
-* {++Transform++}: a CDM model is created and processed, given the extracted data and a [`json` transformation rules file](/CaRROT-Docs/CaRROT-CDM/ETL/Rules/) which tells the software how to map (transform) the data.    
+* {++Transform++}: a CDM model is created and processed, given the extracted data and a [`json` transformation rules file](CaRROT-CDM/ETL/Rules/) which tells the software how to map (transform) the data.    
 * {++Load++}: inserts the data into a database or other destination.
 
 ## Workflow
@@ -37,7 +37,7 @@ Currently, automation using the `carrot etl` CLI is possible for loading to a BC
 
 The whole point in transforming data into the OMOP CDM format is so the data can be uploaded to BC-Link. This workflow can be performed in one step with the correct configuration of the input `yaml` file when running `carrot etl --config <yaml file>`, see:
 <center>
-[Configuring the Yaml File](/CaRROT-Docs/CaRROT-CDM/ETL/Yaml/){ .md-button .md-button--primary}
+[Configuring the Yaml File](CaRROT-CDM/ETL/Yaml/){ .md-button .md-button--primary}
 </center>
 
 However, the process may need to be decoupled into multiple steps; for example, if BC-Link is not hosted on a machine that has access to the original data. In this scenario the `carrot etl` or `carrot run map` can be used to perform the transform (OMOP mapping), the output files can then be transfered to the machine hosting BC-Link and be uploaded (from the command-line, or using the BC-Link GUI)
@@ -56,14 +56,14 @@ A schematic diagram of the CaRROT/bclink ETL is given below:
 * Pseudonymises the input datasets, masking any person identifiers or person IDs **[optionally automated]**
 
 ### Transform
-* The transform mapping is executed with the command `carrot run map [arguments]`, where additional arguments pass the paths to a mapping-rules [`json` file](/CaRROT-Docs/CaRROT-CDM/ETL/Rules/) and input data `csv` files **[optionally automated]**:
+* The transform mapping is executed with the command `carrot run map [arguments]`, where additional arguments pass the paths to a mapping-rules [`json` file](CaRROT-CDM/ETL/Rules/) and input data `csv` files **[optionally automated]**:
 
-    * A new pythonic [`CommonDataModel`](/CaRROT-Docs/CaRROT-CDM/CommonDataModel/) is created.   
-    * [`DataCollection`](/CaRROT-Docs/CaRROT-CDM/DataCollection/) is created to handle/chunk the input files and is added to the `CommonDataModel`.  
-    * The mapping-rules `json` is used to create new [CDM Tables](/CaRROT-Docs/CaRROT-CDM/Common/#carrot.cdm.objects.common.DestinationTable) (e.g. [Person](/CaRROT-Docs/CaRROT-CDM/Person/)).
-        * For each CDM Table, multiple tables can be created. E.g. there may be multiple [Condition Occurrences](/CaRROT-Docs/CaRROT-CDM/ConditionOccurrence/) defined across multiple input data files and columns (fields).  
-        * The rules `json` encodes so-called "term-mapping" - how to map raw values into OHDSI concept IDs for the output. These are setup as lambda functions and passed to the object's [`define` function](/CaRROT-Docs/CaRROT-CDM/Common/#carrot.cdm.objects.common.DestinationTable.define)  
-    * [Processing](/CaRROT-Docs/CaRROT-CDM/CommonDataModel/#carrot.cdm.model.CommonDataModel.process) of the `CommonDataModel` is triggered:   
+    * A new pythonic [`CommonDataModel`](CaRROT-CDM/CommonDataModel/) is created.   
+    * [`DataCollection`](CaRROT-CDM/DataCollection/) is created to handle/chunk the input files and is added to the `CommonDataModel`.  
+    * The mapping-rules `json` is used to create new [CDM Tables](CaRROT-CDM/Common/#carrot.cdm.objects.common.DestinationTable) (e.g. [Person](CaRROT-CDM/Person/)).
+        * For each CDM Table, multiple tables can be created. E.g. there may be multiple [Condition Occurrences](CaRROT-CDM/ConditionOccurrence/) defined across multiple input data files and columns (fields).  
+        * The rules `json` encodes so-called "term-mapping" - how to map raw values into OHDSI concept IDs for the output. These are setup as lambda functions and passed to the object's [`define` function](CaRROT-CDM/Common/#carrot.cdm.objects.common.DestinationTable.define)  
+    * [Processing](CaRROT-CDM/CommonDataModel/#carrot.cdm.model.CommonDataModel.process) of the `CommonDataModel` is triggered:   
         * **[optionally chunked]** A new chunk of `DataCollection` is grabbed.   
         * Each CDM table is looped over:  
             * All objects of this CDM table are found and looped over:

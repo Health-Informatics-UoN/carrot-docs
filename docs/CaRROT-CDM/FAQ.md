@@ -11,16 +11,16 @@ The following command (CLI tool) has the ability to do the full process:
 carrot etl --help
 ```
 <center>
-[Overview](/CaRROT-Docs/CaRROT-CDM/ETL/About/){ .md-button .md-button--primary }
-[Setting up automation](/CaRROT-Docs/CaRROT-CDM/ETL/Yaml/){ .md-button .md-button--secondary }
+[Overview](CaRROT-CDM/ETL/About/){ .md-button .md-button--primary }
+[Setting up automation](CaRROT-CDM/ETL/Yaml/){ .md-button .md-button--secondary }
 </center>
 
 Otherwise, you have to do each step manually:
 
 <center>
-[Extract](/CaRROT-Docs/CaRROT-CDM/ETL/Extract){ .md-button .md-button--primary }
-[Transform](/CaRROT-Docs/CaRROT-CDM/ETL/Transform){ .md-button .md-button--primary }
-[Load](/CaRROT-Docs/CaRROT-CDM/ETL/Load){ .md-button .md-button--primary }
+[Extract](CaRROT-CDM/ETL/Extract){ .md-button .md-button--primary }
+[Transform](CaRROT-CDM/ETL/Transform){ .md-button .md-button--primary }
+[Load](CaRROT-CDM/ETL/Load){ .md-button .md-button--primary }
 </center>
 
 ### How can I pseudonymise my data?
@@ -50,7 +50,7 @@ Options:
 A detailed guide on how to use this feature can be found here:
 
 <center>
-[Pseudonymisation guide](/CaRROT-Docs/CaRROT-CDM/ETL/Pseudonymisation/){ .md-button .md-button--primary }
+[Pseudonymisation guide](CaRROT-CDM/ETL/Pseudonymisation/){ .md-button .md-button--primary }
 </center>
 
 ### Can I pseudonymise the data myself?
@@ -75,18 +75,18 @@ Our command line interface tool for performing only the 'T' part of the 'ETL' pr
 	```
 
 <center>
-[Overview](/CaRROT-Docs/CaRROT-CDM/ETL/About/#transform){ .md-button .md-button--primary }
-[Manual from the Command Line](/CaRROT-Docs/CaRROT-CDM/ETL/Transform/){ .md-button .md-button--secondary }
-[Manual from a GUI](/CaRROT-Docs/CaRROT-CDM/ETL/Transform-GUI/){ .md-button .md-button--secondary }
+[Overview](CaRROT-CDM/ETL/About/#transform){ .md-button .md-button--primary }
+[Manual from the Command Line](CaRROT-CDM/ETL/Transform/){ .md-button .md-button--secondary }
+[Manual from a GUI](CaRROT-CDM/ETL/Transform-GUI/){ .md-button .md-button--secondary }
 </center>
 
 
 ### What is the rules `.json`?
 
-A `json` encoded file that contains information of how multiple CDM tables and CDM objects need to be created by the [transform process](/CaRROT-Docs/CaRROT-CDM/ETL/Transform/)
+A `json` encoded file that contains information of how multiple CDM tables and CDM objects need to be created by the [transform process](CaRROT-CDM/ETL/Transform/)
 
 <center>
-[Rules JSON](/CaRROT-Docs/CaRROT-CDM/ETL/Rules/){ .md-button .md-button--primary }
+[Rules JSON](CaRROT-CDM/ETL/Rules/){ .md-button .md-button--primary }
 </center>
 
 ### What should my input files be called?

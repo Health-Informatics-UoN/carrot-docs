@@ -185,7 +185,7 @@ After some time (around 15-30 seconds), you should notice further updates to the
 ```
 MESSAGE >>>  {'id': 'f00a438f-9bad-4110-bb8b-5278461d7bb3', 'body': '{"documents": [{"language": "en", "id": "17569_field", "text": "patient has a cold"}]}'}
 ```
-After job submission, the `NLPQueue` function works through the stages detailed in [NLP Processing](/CaRROT-Docs/AzureFunctions/NlpQueue/). Having received concept **_codes_** from the NLP API, the function looks up a standard and valid **_conceptID_** using the CCOM API. Sometimes, a concept code will be returned which doesn't have a standard and valid conceptID. In such instances you will see the following in the debugging console:
+After job submission, the `NLPQueue` function works through the stages detailed in [NLP Processing](NlpQueue.md). Having received concept **_codes_** from the NLP API, the function looks up a standard and valid **_conceptID_** using the CCOM API. Sometimes, a concept code will be returned which doesn't have a standard and valid conceptID. In such instances you will see the following in the debugging console:
 ```
 Concept Code C34500 not found!
 ```
