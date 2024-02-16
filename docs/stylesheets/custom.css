@@ -1,22 +1,23 @@
 [data-md-color-scheme="carrot"] {    
     --md-primary-fg-color:white;
-    --md-primary-fg-color--dark:  #3db28c;
+    --md-primary-fg-color--dark:  #479226;
+    --md-accent-fg-color--dark:  #479226;
 
     --md-primary-bg-color: #3c3c3b;
-    --md-typeset-a-color: #3db28c;
+    --md-typeset-a-color: #479226;
 
-    --md-footer-bg-color: #475da7;
+    --md-footer-bg-color: #fda54a;
 
 }
 
 .md-button--primary{
     color: white !important;
-    background-color: #475da7 !important;
+    background-color: #fda54a !important;
 }
 
 .md-button--secondary{
     color: white !important;
-    background-color: #3db28c !important;
+    background-color: #479226 !important;
 }
 
 .center{
@@ -28,15 +29,15 @@
 }
 .md-typeset .admonition.carrot,
 .md-typeset details.carrot {
-  border-color: #475da7;
+  border-color: #ff7400;
 }
 .md-typeset .carrot > .admonition-title,
 .md-typeset .carrot > summary {
-    background-color: #475da788;
+    background-color: #ff740088;
 }
 .md-typeset .carrot > .admonition-title::before,
 .md-typeset .carrot > summary::before {
-  background-color: #475da7;
+  background-color: #ff7400;
   -webkit-mask-image: var(--md-admonition-icon--carrot);
           mask-image: var(--md-admonition-icon--carrot);
 }
