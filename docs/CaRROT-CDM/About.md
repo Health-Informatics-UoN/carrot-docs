@@ -31,7 +31,7 @@ To get started with the [ETL](ETL/About.md) process, follow the instructions for
 More detailed guides and documentation for users and developers can be found in the following locations:
 
 <center>
-[User Guide](CaRROT-CDM/Installing/){ .md-button .md-button--primary}
-[Developer Guide](CaRROT-CDM/CommonDataModel/){ .md-button .md-button--secondary }
+[User Guide](Installing.md){ .md-button .md-button--primary}
+[Developer Guide](CommonDataModel.md){ .md-button .md-button--secondary }
 </center>
 

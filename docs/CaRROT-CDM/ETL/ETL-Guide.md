@@ -34,7 +34,7 @@ It is assumed that BCLink systems has already been an installed on a host machin
     ```
     Which should display version `>=0.5.0` for the automation to work.
 
-    [Detailed Installation Instructions](CaRROT-CDM/Installing/){ .md-button .md-button--primary}
+    [Detailed Installation Instructions](../Installing.md){ .md-button .md-button--primary}
 
 
 ## 2. Setup Data
@@ -217,7 +217,7 @@ By default, if the CaRROT documentation for setting up BCLink has been followed 
       },
     ...
 	```
-If there is an error here, you may need to manually configure the table in the yaml file (see [here](CaRROT-CDM/ETL/Yaml/))
+If there is an error here, you may need to manually configure the table in the yaml file (see [here](Yaml.md))
 
 ??? example "If you need to create new tables via the GUI"
  

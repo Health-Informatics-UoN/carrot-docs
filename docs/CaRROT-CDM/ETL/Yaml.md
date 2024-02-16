@@ -69,7 +69,7 @@ Here are some details on how you can setup a yaml configuration file
 	  number_of_rows_per_chunk: 10000
     ```
 	
-	The names of these can be found in the [source documentation](CaRROT-CDM/CLI/Run/), corresponding to the options you will see via the command `carrot run map --help`.
+	The names of these can be found in the [source documentation](../CLI/Run/), corresponding to the options you will see via the command `carrot run map --help`.
 	For example, to not perform any column formatting and to not automatically fill missing columns (e.g. `year_of_birth` in the person table):
 	```yaml
 	- input: ...
