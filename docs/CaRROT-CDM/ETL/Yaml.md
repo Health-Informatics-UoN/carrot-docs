@@ -69,7 +69,7 @@ Here are some details on how you can setup a yaml configuration file
 	  number_of_rows_per_chunk: 10000
     ```
 	
-	The names of these can be found in the [source documentation](../CLI/Run/), corresponding to the options you will see via the command `carrot run map --help`.
+	The names of these can be found in the [source documentation](../CLI/Run.md), corresponding to the options you will see via the command `carrot run map --help`.
 	For example, to not perform any column formatting and to not automatically fill missing columns (e.g. `year_of_birth` in the person table):
 	```yaml
 	- input: ...
@@ -122,7 +122,7 @@ This tab specifies how the data is going to be transformed.
            output: /usr/lib/bcos/MyWorkingDirectory/Temp/cache/basic/
 	```
 
-	Additional valid keyword arguments to the `map` function (which can be found in [in `def map`](CaRROT-CDM/CLI/Run/)), can be passed here:
+	Additional valid keyword arguments to the `map` function (which can be found in [in `def map`](../CLI/Run.md)), can be passed here:
 	```yaml
     transform:
        data:

@@ -5,7 +5,7 @@ CaRROT-CDM contains a pythonic version[^1] of the OHDSI CDM, implemented via the
 
 [^1]: In the default setup a __slightly__ (`visit_detail_id` link has been removed from Measurement, Observation and Condition Occurrence tables) modified CDM version [`5.3.1`](https://github.com/OHDSI/CommonDataModel/releases/tag/v5.3.1) is used to define a subset of tables in python.
 
-![](../../images/data-mapping.png)
+![](../images/data-mapping.png)
 
 
 The primary purpose of the CaRROT-CDM package is to {==Extract==} input datasets and {==Transform==} them using __mapping rules__ defined in a json file, outputting formatted datasets in `tsv` format that can be {==Loaded==} into a database or other destination ({==ETL==}).

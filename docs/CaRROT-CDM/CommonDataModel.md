@@ -26,14 +26,14 @@ carrot/cdm/
 
 All CDM destination tables are formed as objects and are defined in `carrot/cdm/objects`, inheriting from a base class (`DestinationTable`, defined in `common.py`):
 
-   * [Person](CaRROT-CDM/Person)
-   * [Condition Occurrence](CaRROT-CDM/ConditionOccurrence)
-   * [Visit Occurrence](CaRROT-CDM/VisitOccurrence)
-   * [Observation](CaRROT-CDM/Observation)
-   * [Measurement](CaRROT-CDM/Measurement)
-   * [Drug Exposure](CaRROT-CDM/DrugExposure)
-   * [Procedure Occurrence](CaRROT-CDM/ProcedureOccurrence)
-   * [Specimen](CaRROT-CDM/Specimen)
+   * [Person](Person.md)
+   * [Condition Occurrence](ConditionOccurrence.md)
+   * [Visit Occurrence](VisitOccurrence.md)
+   * [Observation](Observation.md)
+   * [Measurement](Measurement.md)
+   * [Drug Exposure](DrugExposure.md)
+   * [Procedure Occurrence](ProcedureOccurrence.md)
+   * [Specimen](Specimen.md)
 
 
 ### Generating More Tables

@@ -29,7 +29,7 @@ ping: cannot resolve pypi.org: Unknown host
 This means your machine cannot establish a connection to `pypi` to download and install the tool. 
 
 <center>
-[FAQ: How can I install the tool offline?](CaRROT-CDM/FAQ/#how-can-i-install-the-software-offline-no-internet-connection){ .md-button .md-button--primary}
+[FAQ: How can I install the tool offline?](FAQ.md#how-can-i-install-the-software-offline-no-internet-connection){ .md-button .md-button--primary}
 </center>
 
 
