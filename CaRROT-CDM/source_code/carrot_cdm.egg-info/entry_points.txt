@@ -1,0 +1,2 @@
+[console_scripts]
+carrot = carrot.cli.cli:carrot
