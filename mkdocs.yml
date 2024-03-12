@@ -12,6 +12,7 @@ theme:
     - navigation.sections
     - navigation.tracking
     - navigation.indexes
+    - navigation.top
     #- toc.integrate
     - content.action.edit
 extra_css:
