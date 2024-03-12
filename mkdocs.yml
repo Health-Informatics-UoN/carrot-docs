@@ -10,7 +10,8 @@ theme:
     repo: fontawesome/brands/github
   features:
     - navigation.sections
-    #- navigation.expand 
+    - navigation.tracking
+    - navigation.indexes
     #- toc.integrate
     - content.action.edit
 extra_css:
@@ -33,7 +34,7 @@ nav:
 
 
   - CaRROT-Mapper:
-      - About: CaRROT-Mapper/about.md
+      - CaRROT-Mapper/index.md
       - Quickstart [WIP]: CaRROT-Mapper/quickstart.md
       - User Guide:
           - Projects, Datasets, Scan Reports, and Permissions: CaRROT-Mapper/projects-datasets-and-scanreports.md
@@ -57,12 +58,12 @@ nav:
       #- Downloading Mapping:   CaRROT-Mapper/downloading-rules.md
       
   - CaRROT-CDM:
-      - About: CaRROT-CDM/About.md
+      - CaRROT-CDM/index.md
       - User Guide:
           - FAQ: CaRROT-CDM/FAQ.md
           - Installing: CaRROT-CDM/Installing.md
           - ETL:
-              - About : CaRROT-CDM/ETL/About.md
+              - CaRROT-CDM/ETL/index.md
               - Quick Guide: CaRROT-CDM/ETL/ETL-Guide.md
               - Detailed Guide:
                   - Yaml Configuration: CaRROT-CDM/ETL/Yaml.md

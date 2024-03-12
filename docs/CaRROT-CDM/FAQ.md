@@ -11,7 +11,7 @@ The following command (CLI tool) has the ability to do the full process:
 carrot etl --help
 ```
 <center>
-[Overview](ETL/About.md){ .md-button .md-button--primary }
+[Overview](ETL/index.md){ .md-button .md-button--primary }
 [Setting up automation](ETL/Yaml.md){ .md-button .md-button--secondary }
 </center>
 
@@ -75,7 +75,7 @@ Our command line interface tool for performing only the 'T' part of the 'ETL' pr
 	```
 
 <center>
-[Overview](ETL/About.md#transform){ .md-button .md-button--primary }
+[Overview](ETL/index.md#transform){ .md-button .md-button--primary }
 [Manual from the Command Line](ETL/Transform.md){ .md-button .md-button--secondary }
 [Manual from a GUI](ETL/Transform-GUI.md){ .md-button .md-button--secondary }
 </center>

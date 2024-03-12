@@ -1,3 +1,4 @@
+# Carrot-CDM
 
 Welcome to our repo for `python` tools used by/with the CaRROT project. The primary functionality is used for performing ETL on health datasets, converting them to the OHDSI Common Data Model (CDM), via a command line interface.
 
@@ -13,12 +14,12 @@ The primary purpose of the CaRROT-CDM package is to {==Extract==} input datasets
 
 ## Getting Started
 
-To get started with the [ETL](ETL/About.md) process, follow the instructions for installing the CaRROT-CDM package and running the ETL on the following pages:
+To get started with the [ETL](ETL/index.md) process, follow the instructions for installing the CaRROT-CDM package and running the ETL on the following pages:
 
 !!! success "ETL"
     1. [Frequently Asked Questions](FAQ.md)  
     1. [Installing](Installing.md)  
-    1. [About the ETL Process](ETL/About.md)
+    1. [About the ETL Process](ETL/index.md)
     1. [Guide](ETL/ETL-Guide.md)  
 	    1. [Configuration](ETL/Yaml.md)
         1. [Extract](ETL/Extract.md)
