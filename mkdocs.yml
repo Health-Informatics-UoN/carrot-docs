@@ -25,14 +25,6 @@ edit_uri: edit/main/docs/
 nav:
   - Welcome: index.md
   - Data Standards: standards.md
-  #- Getting Started:
-  #    - Introduction: GettingStarted/index-data-team.md
-  #    - OHDSI-in-a-Box:
-  #      - What is it?: GettingStarted/OHDSI-in-a-Box.md
-  #      - Install: GettingStarted/install-OHDSI-in-a-Box.md
-  #      - Exploring Datasets with Python: GettingStarted/explore-datasets-python.ipynb
-  #    - WhiteRabbit: GettingStarted/white-rabbit.md
-
 
   - CaRROT-Mapper:
       - CaRROT-Mapper/index.md
