@@ -1,7 +1,7 @@
 # Overview of process
 
 A Scan Report is the basic unit representing a single data source. 
-In order to create a new Scan Report in the CaRROT-Mapper system, 
+In order to create a new Scan Report in the Carrot-Mapper system, 
 one must upload a _Scan Report Form_ to the system. Once uploaded, 
 an ingestion process reads this file and populates the system with
 its contents. The documentation below explains this process and the

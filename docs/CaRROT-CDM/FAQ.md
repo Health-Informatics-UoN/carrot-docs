@@ -2,7 +2,7 @@ Before getting started, please take a look a the following frequently asked ques
 
 ## ETL
 
-### What is the CaRROT ETL (Tool)?
+### What is the Carrot ETL (Tool)?
 
 Extract, transform and load of your dataset into a Common Data Model (CDM) format that is loaded into bclink via a command line tool.
 

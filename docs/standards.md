@@ -92,15 +92,15 @@ Here is an example to demonstrate the expected format.
     Rows that indicate a vocabulary must still contain an empty column at the end of the row in the csv file.
     In the above, the last two rows contain a comma after the vocabulary name to achieve this.
 
-This will instruct CaRROT-Mapper to perform the following:
+This will instruct Carrot-Mapper to perform the following:
 
-1. Rows 1-7 will add Value Descriptions to the CaRROT-Mapper interface at the respective locations.
+1. Rows 1-7 will add Value Descriptions to the Carrot-Mapper interface at the respective locations.
 For example, the first row will ensure the text "Male" is displayed next to the value "0" in the "gender" field in the 
 "questionnaire table". This means a human user of the interface can quickly identify the meaning of the value "0",
 rather than having to look up the value from the data dictionary themselves. Note that this mechanism *does not* perform any
 automated mapping, but is a helpful feature for a human user.
 2. Rows 8 and 9 indicate that the 2 fields "Q3" and "Q4" in the "results" table should be automatically mapped
-from the supplied vocabulary to the OMOP standard. Any values in this field that CaRROT-Mapper recognises as valid 
+from the supplied vocabulary to the OMOP standard. Any values in this field that Carrot-Mapper recognises as valid 
 codes from the supplied vocabulary will be automatically converted to OMOP.
 
 

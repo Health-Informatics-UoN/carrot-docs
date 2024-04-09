@@ -3,7 +3,7 @@
 !!! warning
     This page is a work in progress, and should not be relied upon.
 
-This Quickstart guide will guide you through the usage of CaRROT-Mapper. Specifically, it covers:
+This Quickstart guide will guide you through the usage of Carrot-Mapper. Specifically, it covers:
 
 1. [Gaining access](#gaining-access)
 2. Uploading a new Scan Report
@@ -22,7 +22,7 @@ Users requiring more details should follow the links or search the documentation
 Developers should use the Developer Guide for technical documentation.
 
 ## Gaining Access
-The deployed CaRROT-Mapper is available at [https://ccom.azurewebsites.net](https://ccom.azurewebsites.net).
+The deployed Carrot-Mapper is available at [https://ccom.azurewebsites.net](https://ccom.azurewebsites.net).
 
 A user account is required to access the site; one can be requested from the site administrator. 
 
@@ -65,7 +65,7 @@ Refresh the Scan Reports page to check that the Status of your Scan Report has b
 
 ## Navigation
 After upload, the user is directed to the Scan Reports page before the new Scan Report has been fully processed. 
-While the Scan Report continues to be processed, the contents visible on CaRROT-Mapper will be populated over time.
+While the Scan Report continues to be processed, the contents visible on Carrot-Mapper will be populated over time.
 
 Click on the name of the Scan Report to navigate to the list of Tables ("Tables List") within the Scan Report.
 As Tables are processed, the user can click on the name of each Table to navigate to the list of Fields ("Field List") within that Table.
@@ -161,11 +161,11 @@ You can also try _removing_ a Concept by pressing the grey `x` on the right of a
 
 ## Downloading Mapping Rules
 
-The final task in the simplest end-to-end process in CaRROT-Mapper is to download the Mapping Rules in a form that can be used as input to CaRROT-CDM (which will perform the transformations on the data).
+The final task in the simplest end-to-end process in Carrot-Mapper is to download the Mapping Rules in a form that can be used as input to Carrot-CDM (which will perform the transformations on the data).
 
 Navigate to the Mapping Rules page, and press the `Download Mapping JSON` button.
 This will download to your machine a `.json` file containing the Mapping Rules.
 
-To view a more human-readable version, press the `Download Mapping CSV` for a `.csv` file instead. This however cannot be used as input to CaRROT-CDM.
+To view a more human-readable version, press the `Download Mapping CSV` for a `.csv` file instead. This however cannot be used as input to Carrot-CDM.
 
 Finally, a diagram of the Mapping Rules can be viewed and downloaded using the yellow `View Map Diagram` and red `Download Map Diagram` buttons.

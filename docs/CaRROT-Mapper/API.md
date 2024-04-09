@@ -1,6 +1,6 @@
-# The CaRROT-Mapper API 
+# The Carrot-Mapper API 
 
-The CaRROT-Mapper API allows programmatic interaction with the CaRROT-Mapper database. This API is developed using the Django REST framework. 
+The Carrot-Mapper API allows programmatic interaction with the Carrot-Mapper database. This API is developed using the Django REST framework. 
 Access to API endpoints is protected by token based authentication. The REST API is also the means of communication between the Django webapp and its supporting Azure Functions.  
 
 This page documents _most_ of the endpoints defined. The only exceptions are some page-view URLs that are not designed for REST access, but rather are for internal use by the webapp.

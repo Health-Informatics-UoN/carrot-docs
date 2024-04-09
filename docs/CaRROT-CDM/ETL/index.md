@@ -2,10 +2,10 @@
 ![images](../../images/ETL.jpeg)
 
 
-The CaRROT ETL process runs via a Command Line Interface, installed with the carrot-cdm package.
+The Carrot ETL process runs via a Command Line Interface, installed with the carrot-cdm package.
 
 
-In the context of the CaRROT workflow {++ETL++} stands for (and means):
+In the context of the Carrot workflow {++ETL++} stands for (and means):
 
 * {++Extract++}: input data is extracted into `.csv` format and (optionally) pseudonymised    
 * {++Transform++}: a CDM model is created and processed, given the extracted data and a [`json` transformation rules file](Rules.md) which tells the software how to map (transform) the data.    
@@ -34,7 +34,7 @@ This is an automated tool, meaning it is able to run (optionally as a background
 Currently, automation using the `carrot etl` CLI is possible for loading to a BC-Link or outputing to a local file storage system.
 
 
-### CaRROT--BC-LINK Workflow
+### Carrot--BC-LINK Workflow
 
 The whole point in transforming data into the OMOP CDM format is so the data can be uploaded to BC-Link. This workflow can be performed in one step with the correct configuration of the input `yaml` file when running `carrot etl --config <yaml file>`, see:
 <center>
@@ -45,7 +45,7 @@ However, the process may need to be decoupled into multiple steps; for example, 
 
 
 ### Architecture Overview
-A schematic diagram of the CaRROT/bclink ETL is given below:
+A schematic diagram of the Carrot/bclink ETL is given below:
 ![overview](../../images/etltool.png)
 
 

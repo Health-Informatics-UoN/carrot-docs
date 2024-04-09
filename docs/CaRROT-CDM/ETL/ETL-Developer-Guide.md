@@ -148,7 +148,7 @@ The next step is to create and configure a `yaml` file for the tool to digest. T
 
 ## 4. Setup and Check BCLink tables
 
-By default, if the CaRROT documentation for setting up BCLink has been followed correctly, you should already have tables created for the various bclink tables, e.g.:  
+By default, if the Carrot documentation for setting up BCLink has been followed correctly, you should already have tables created for the various bclink tables, e.g.:  
 
 * person  
 * condition_occurrence  

@@ -47,7 +47,7 @@ Options:
 
 ### CCOM 
 
-If you cannot obtain the original WhiteRabbit scan report, you can also generate synthetic data using our CCOM website by connecting via the [api](../CaRROT-Mapper/API.md) to the database.
+If you cannot obtain the original WhiteRabbit scan report, you can also generate synthetic data using our CCOM website by connecting via the [api](../Carrot-Mapper/API.md) to the database.
 
 ```
 $ carrot generate synthetic ccom --help

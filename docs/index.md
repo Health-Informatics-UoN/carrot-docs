@@ -2,7 +2,7 @@ Welcome to the documentation of the Carrot project!
 
 !!! carrot "Carrot"
     *C*onvenient *a*nd *r*eusable *r*apid *O*MOP *t*ransformer: bringing together health data from across the UK.
-    consists of two tools: [CaRROT-Mapper web tool](CaRROT-Mapper/index.md) for generating mapping rules, and 
+    consists of two tools: [Carrot-Mapper web tool](Carrot-Mapper/index.md) for generating mapping rules, and 
     [CaRROT-CDM ETL tool](CaRROT-CDM/index.md) for applying mapping rules to data.
 
 What we do in a nutshell...

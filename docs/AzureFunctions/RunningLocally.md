@@ -16,7 +16,7 @@ To follow this guide you need to install [Azure CLI](https://docs.microsoft.com/
 ## Azure Functions Basics
 
 Conceptually, queue-based Azure Functions are simple to follow. A **_message_** is posted to a **_message queue_**. 
-A Function then executes on messages within a message queue. In CaRROT-Mapper, a message is posted to a message 
+A Function then executes on messages within a message queue. In Carrot-Mapper, a message is posted to a message 
 queue as JSON but other formats are possible (e.g. XML). Here's an example message destined for the `scanreports` queue:
 
 ```
@@ -66,12 +66,12 @@ Another file is kept outside of the function's directory and should not be commi
 }
 
 ```
-You only need to have 1 `local.settings.json` file for all functions within the CaRROT-Mapper project. Note, 
+You only need to have 1 `local.settings.json` file for all functions within the Carrot-Mapper project. Note, 
 however, that it should be updated with extra queue names if/when the project requires them.
 
-### Azure Functions in CaRROT-Mapper
+### Azure Functions in Carrot-Mapper
 
-The CaRROT-Mapper project has two different Azure Functions: one for processing scan reports (called 
+The Carrot-Mapper project has two different Azure Functions: one for processing scan reports (called 
 `ProcessQueue` which posts to the message queue called `scanreports`), another to run the NLP service 
 (called `NLPQueue` which posts to the message queue called `nlpqueue`). The code for these functions lives 
 in the directories ProcessQueue and NLPQueue, respectively.
@@ -116,7 +116,7 @@ message queue (depending on how you've set the environment vairables in `local.s
 and allow you to process them with the code you're developing locally.
 
 To start debugging locally in VSCode you must first ensure that CCOM is up and running locally 
-([see here for building and running the CaRROT-Mapper Docker image](https://github.com/HDRUK/CaRROT-Mapper#readme) ). 
+([see here for building and running the Carrot-Mapper Docker image](https://github.com/Health-Informatics-UoN/CaRROT-Mapper#readme) ). 
 Once your local server is running, you can start Azure Function's debugging mode by clicking: 
 
 Run (top toolbar) -> Start Debugging
@@ -157,7 +157,7 @@ You'll likely see a few errors/warnings about directories and permissions. At th
 Note that two functions are listed as you start debugging mode: `NLPQueue` and `ProcessQueue`. 
 These are the names of the **_directories_** which hold the function's code, not the name of the 
 **_message queue_** which holds the function's messages. The text after the function name (queueTrigger) 
-specifies the _type_ of function it is (defined in `function.json`). In CaRROT-Mapper, only queueTriggers are used. 
+specifies the _type_ of function it is (defined in `function.json`). In Carrot-Mapper, only queueTriggers are used. 
 For more information on Function types, click [here](https://docs.microsoft.com/en-us/azure/azure-functions/functions-overview).
 
 With the final console output saying 'Host lock lease acquired', you're ready to run your first Azure Functions job!
