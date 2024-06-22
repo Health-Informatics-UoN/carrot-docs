@@ -1,7 +1,8 @@
 ## Prerequisites
 
 - Docker
-- Python Environment >3.8
+- Python 3.11
+- Poetry
 - Pip
 - Azure Functions Core Tools v4
 - Azure CLI
@@ -57,8 +58,8 @@ To run the functions, in the project root:
 
 1. In the web app `/admin`, generate a new `auth token` for the admin user.
 2. Add the token to `local.settings.json` : `AZ_FUNCTION_KEY`
-3. Install the dependencies: `pip install -r requirements.txt`
-4. Run the functions: `func start`
+3. Install the dependencies in `app/workers`: `poetry install`
+4. Run the functions: `poetry run func start`
 
 You should now be setup to run the [user quickstart](quickstart.md).
 
@@ -68,7 +69,7 @@ You can also run the web app directly in a Python environment instead of the Doc
 
 Prequisites:
 
-- A separate Python environment for the web app.
+- A separate Poetry environment for the web app.
 - [graphviz](https://graphviz.org/download/) package installed.
 - Node v12.18.3
 
@@ -83,6 +84,8 @@ Prequisites:
 }
 ```
 4. Build the react app: `npm run build`.
-5. Inside the `/api` directory, install the Python dependencies: `pip install -r requirements.txt`.
-6. Collect the Django static files: `python manage.py collectstatic`.
-7. Run the app: `python manage.py runserver`.
+5. Inside the `/api` directory, install the Python dependencies: `poetry install`.
+6. Collect the Django static files: `poetry run python manage.py collectstatic`.
+7. Run the app: `poetry run python manage.py runserver`.
+
+If you are using VSCode, you can also run the application through the Run & Debug menu.
