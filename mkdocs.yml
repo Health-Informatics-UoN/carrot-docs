@@ -26,7 +26,7 @@ nav:
   - Welcome: index.md
   - Data Standards: standards.md
 
-  - Carrot-Mapper:
+  - Carrot Mapper:
       - Carrot-Mapper/index.md
       - Quickstart [WIP]: Carrot-Mapper/quickstart.md
       - User Guide:
@@ -41,7 +41,7 @@ nav:
           - API: Carrot-Mapper/API.md
           - Azure Functions:
               - Local Functions: AzureFunctions/RunningLocally.md
-              - ProcessQueue: AzureFunctions/ProcessQueue.md
+              - UploadQueue: AzureFunctions/UploadQueue.md
               - NLPQueue: AzureFunctions/NlpQueue.md
           - Database Migrations: Carrot-Mapper/migrations.md
           - Adding new vocabularies: Carrot-Mapper/Adding-a-vocabulary.md
@@ -50,7 +50,7 @@ nav:
               - Writing Django Tests: Testing/django-testing-writing.md
       #- Downloading Mapping:   Carrot-Mapper/downloading-rules.md
       
-  - CaRROT-CDM:
+  - Carrot CDM:
       - CaRROT-CDM/index.md
       - User Guide:
           - FAQ: CaRROT-CDM/FAQ.md
