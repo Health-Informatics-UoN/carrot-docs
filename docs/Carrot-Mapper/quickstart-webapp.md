@@ -35,11 +35,11 @@ You need a pre-seeded OMOP CDM database, with the schema `omop`. See [OMOP quick
 
 When setting up a new environment, or running a newer version of the codebase if there have been schema changes, you need to run the migrations against your web app database.
 
-Inside the web app container, run: `python manage.py migrate`.
+Inside the web app container `api` directory, run: `python manage.py migrate`.
 
 ### Seed Data
 
-You need to seed the web app database with the OMOP table and field names, inside the web app container run: `python manage.py loaddata mapping`.  
+You need to seed the web app database with the OMOP table and field names, inside the web app container `api` directory run: `python manage.py loaddata mapping`.  
 
 To add a new admin user run: `python manage.py createsuperuser`.
 
@@ -56,7 +56,7 @@ To create the storage containers and queues, use the Azure CLI:
 
 To run the functions, in the project root:
 
-1. In the web app `/admin`, generate a new `auth token` for the admin user.
+1. In the web app Django `http://localhost:8000/admin`, generate a new `auth token` for the admin user.
 2. Add the token to `local.settings.json` : `AZ_FUNCTION_KEY`
 3. Install the dependencies in `app/workers`: `poetry install`
 4. Run the functions: `poetry run func start`
@@ -74,7 +74,7 @@ Prequisites:
 - Node v12.18.3
 
 1. Change the environment [configuration](#configuration) to point to the running docker containers, for example `localhost` instead of `azurite`.
-2. Inside the `/react-client-app` directory, install the npm dependencies: `npm i`
+2. Inside the `app/react-client-app` directory, install the npm dependencies: `npm i`
 3. Change the `snowpack.config.js` to use a relative file path:
 ```
 {
@@ -84,8 +84,8 @@ Prequisites:
 }
 ```
 4. Build the react app: `npm run build`.
-5. Inside the `/api` directory, install the Python dependencies: `poetry install`.
+5. Inside the `app/api` directory, install the Python dependencies: `poetry install`.
 6. Collect the Django static files: `poetry run python manage.py collectstatic`.
 7. Run the app: `poetry run python manage.py runserver`.
 
-If you are using VSCode, you can also run the application through the Run & Debug menu.
+If you're using VSCode, you can use the Workspaces to manage your Python virtual environments, and the debugging tool to run the web app and functions.
