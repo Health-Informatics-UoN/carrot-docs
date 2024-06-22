@@ -2,9 +2,9 @@
     This page is for developers of Azure Functions - not users
 
 ## Introduction
-**ProcessQueue** refers to an Azure Queue Trigger function which processes and saves a scan report and data dictionary to the CCOM database. It is also the name of the directory in the webapp's root directory which houses the Azure Function code. The function is triggered when a new message is added to the queue. Messages are added to the queue when a user uploads a Scan Report and Data Dictionary to the webapp.
+**UploadQueue** refers to an Azure Queue Trigger function which processes and saves a scan report and data dictionary to the Carrot database. It is also the name of the directory in the webapp's root directory which houses the Azure Function code. The function is triggered when a new message is added to the queue. Messages are added to the queue when a user uploads a Scan Report and Data Dictionary to the webapp.
 
-This guide documents the process when a scan report **and** and a data dictionary are uploaded to the system (i.e. the most complex scenario). Note, however, that a user can choose to upload a scan report without a data dictionary. The code snippets below have been extracted from `ScanReportFormView` in views.py. The snippets contain only the key code to illustrate a point/functionality, rather than offering the full FormView class code required for successful execution. Please refer to views.py for unabridged code.
+This guide documents the process when a scan report **and** and a data dictionary are uploaded to the system (i.e. the most complex scenario). Note, however, that a user can choose to upload a scan report without a data dictionary. The code snippets below have been extracted from `ScanReportFormView` in `views.py`. The snippets contain only the key code to illustrate a point/functionality, rather than offering the full FormView class code required for successful execution. Please refer to `api/views.py` for unabridged code.
 
 ## Triggering the function
 The function is triggered when a White Rabbit Scan Report file and a data dictionary are uploaded on the webapp. The code in `ScanReportFormView` carries out the following steps after form submission and during form validation:
@@ -16,7 +16,7 @@ The function is triggered when a White Rabbit Scan Report file and a data dictio
 5. Uploads data to our Azure blob storage accounts (`scan-reports` and `data-dictionaries`) using the connecting string from Step 2
 6. Submits `azure_dict` to the message queue so the Azure function using the connection string from Step 2. This messages is requires so the function ca get the correct files from Azure blob storage
 
-After  uploading the raw data and submitting a message to the queue, views.py doesn't carry out any further code execution - the online Azure function takes over, processes the scan report and dictionary (more on this below) and then POSTs the data back to the webapp via the CCOM API using the `requests` library. 
+After  uploading the raw data and submitting a message to the queue, views.py doesn't carry out any further code execution - the online Azure function takes over, processes the scan report and dictionary (more on this below) and then POSTs the data back to the webapp via the Carrot API using the `requests` library. 
 
 ### Creating a `ScanReport` object
 We create a model object in `ScanReport` so that tables, fields and values can later be associated with the correct scan report (as the scan report/dictionary is processed within the Azure Function and POST'd back to the webapp.)
@@ -178,159 +178,4 @@ If a user uploads a data dictionary, there is a small subroutine during the `Sca
 ```python
 val_desc = next((row['value_description'] for row in data_dictionary if str(row['field_name']) == str(name) and str(row['code']) == str(value)), None)
 ```
-
-## Converting Concept Codes to ConceptIDs
-### Introduction
-Some scan reports (most likely from the larger data providers) will be supplied with concept *codes* as values. In effect the mapping has already been done for us-- we just need to make sure we return valid and standard OMOP conceptIDs. In instances where concept *codes* are provided, they will be coded within a given vocabulary e.g. SNOMED or RxNorm. The ProcessQueue Azure function has therefore been updated with the ability to look up concept codes and convert them to standard and valid OMOP codes. This removes the requirement from the data team of manually looking up concept codes and finding the relevant conceptID.
-
-The Data Team have specified a list of vocabularies that are most likely to be used. These can be found at the top of `ProcessQueue/__init__.py`.
-
-### Operation
-The concept code to conceptID lookup occurs as each scan report value is processed in `__init__.py`. Immediately after a value description is looked up (see above), the code checks to see whether the dictionary contains any information on a vocabulary coding system. A dictionary may look something like:
-
- csv_file_name  | field_name    | code |value
-----------| -------------|----------|---------
-  questionnaire | sex  | 0  | male
-  survey | question1  | SNOMED | 
-
-In this example, all of the values within the field `question1` will be encoded as SNOMED concept codes. For example, the question might be: "Main symptom" and the answer of 'cough' would be encoded as "49727002" under the SNOMED vocabulary.
-
-For a given value, we determine whether it falls within a field defined as a vocabulary field with:
-
-```python
-code = next(
-    (
-        row["code"]
-        for row in data_dictionary
-        if str(row["field_name"]) == str(name)
-    ),
-    None,
-)
-```
-If the value of `code` is within our list of vocabularies, we use `omop_helpers.get_concept_from_concept_code()` to look up the standard and valid OMOP conceptID with the following:
-
-```python
-# If 'code' is in our vocab list, try and convert the ScanReportValue (concept code) to conceptID
-# If there's a faulty concept code for the vocab, fail gracefully and set concept_id to default (-1)
-if code in vocabs:
-    try:
-        concept_id = omop_helpers.get_concept_from_concept_code(
-            concept_code=value,
-            vocabulary_id=code,
-            no_source_concept=True,
-        )
-        concept_id = concept_id["concept_id"]
-    except:
-        concept_id = -1
-else:
-    concept_id = -1
-```
-
-Where `value` is the scan report value (i.e. the concept code) in that loop's iteration and `code` is the name of the vocabulary from the data dictionary's 'code' column (see [here](https://co-connect.ac.uk/co-connect-data-files-and-meta-data-standardisation/) for a standard data dictionary template.) If the supplied scan report value (concept code) is incorrect for any reason, ProcessQueue will simply default to setting `concept_id` to the default of -1.
-
-Here is an example if you wanted to manually look up a concept code:
-
-```python
-concept_id = omop_helpers.get_concept_from_concept_code(
-                                concept_code=49727002,
-                                vocabulary_id="SNOMED,
-                                no_source_concept=True,
-                            )
-```
-The argument `no_source_concept` tells the function to not return the non-standard conceptID. It will only return the standard and valid conceptID when this is set to `True`.
-
-With a conceptID in hand, we construct a dictionary called `scan_report_value_entry` with all the necessary details and append it to a list for a single `POST` to the database:
-
-```python
-
-data = []
-
-scan_report_value_entry = {
-    "created_at": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%S.%fZ"),
-    "updated_at": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%S.%fZ"),
-    "value": value,
-    "frequency": int(frequency),
-    "conceptID": concept_id,
-    "value_description": val_desc,
-    "scan_report_field": names_x_ids[name],
-}
-
-data.append(scan_report_value_entry)
-
-```
-
-After iterating over all scan report values we serialise `data` to JSON and POST it to the model `ScanReportValue`:
-
-```python
-# Create JSON array for POSTing
-json_data = json.dumps(data)
-
-# POST data to ScanReportValues model
-response = requests.post(
-    url=api_url + "scanreportvalues/", data=json_data, headers=headers
-)
-```
-
-!!! Important
-    In the above process we are actually doing something a little hacky - we're leveraging a redundant field in `ScanReportValue` called `conceptID` to *temporarily* hold information on the newly looked up concept code -> conceptID operation. The `conceptID` field was  created in the early days of the project when it was assumed that scan report values mapped 1:1 with a conceptID. After moving to a 1:n relationship and saving conceptIDs to the `ScanReportConcept` model, the `conceptID` field was retired but never removed from the `ScanReportValue` model.
-
-### Updating ScanReportConcept
-By this point, we have not associated conceptIDs with scan report values using the `ScanReportConcept` model. In effect, any conceptID information from the scan report is--at present--held in the model `ScanReportValue`. We therefore need to 'move' the conceptID data from the `conceptID` field and create a record for it in `ScanReportConcept`. 
-
-!!! Important
-    The reason we have to do this is--prior to POSTing scan report values to `ScanReportValue`--we have no primary keys for any scan report values. Without the PKs, we can't establish a relationship between `ScanReportValue` and `ScanReportConcept`. After the `POST` request we have the PKs required to associate a `ScanReportConcept` to a `ScanReportValue`.
-
-After POSTing the scan report values to the database, we must then return all `ScanReportValues` where the conceptID != -1. In other words, we want to return all records where we performed a concept code -> conceptID operation. We do this with:
-
-```python
-new_data = requests.get(
-    url=api_url+ "scanreportvaluepks/?scan_report="+ str(body["scan_report_id"]),
-    headers=headers,
-)
-```
-We created a custom `ViewSet` called `ScanReportValuePKViewSet` which takes a Scan Report ID and returns all scan report values where there is a conceptID in the `conceptID` field. We then iterate over these model objects and create legitimate concept entries in `ScanReportConcept`:
-
-```python
-data = json.loads(new_data.content.decode("utf-8"))
-
-# Create a list for a bulk data upload to the ScanReportConcept model
-concept_id_data = []
-    for concept in data:
-
-        entry = {
-            "nlp_entity": None,
-            "nlp_entity_type": None,
-            "nlp_confidence": None,
-            "nlp_vocabulary": None,
-            "nlp_processed_string": None,
-            "concept": concept["conceptID"],
-            "object_id": concept["id"],
-            "content_type": 17,
-        }
-
-    concept_id_data.append(entry)
-
-concept_id_data_json = json.dumps(concept_id_data)
-
-# POST the ScanReportConcept data to the model
-response = requests.post(
-    url=api_url + "scanreportconcepts/",
-    headers=headers,
-    data=concept_id_data_json,
-)
-```
-As mentioned previously, saving data to `conceptID` in `ScanReportValue` was a temporary operation. To avoid any confusion, we therefore must remove the data in the `conceptID` field and replace it with the default value of -1:
-
-```python
-put_update = {"conceptID": -1}
-put_update_json = json.dumps(put_update)
-
-for concept in data:
-    response = requests.patch(
-        url=api_url + "scanreportvalues/" + str(concept["id"]) + "/",
-        headers=headers,
-        data=put_update_json,
-    )
-```
-
 
