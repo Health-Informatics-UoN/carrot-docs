@@ -42,6 +42,7 @@ nav:
           - Azure Functions:
               - Local Functions: AzureFunctions/RunningLocally.md
               - UploadQueue: AzureFunctions/UploadQueue.md
+              - Rules: AzureFunctions/Rules.md
               - NLPQueue: AzureFunctions/NlpQueue.md
           - Database Migrations: Carrot-Mapper/migrations.md
           - Adding new vocabularies: Carrot-Mapper/Adding-a-vocabulary.md
