@@ -26,7 +26,7 @@ nav:
   - Welcome: index.md
   - Data Standards: standards.md
 
-  - Carrot Mapper:
+  - Carrot-Mapper:
       - Carrot-Mapper/index.md
       - Quickstart [WIP]: Carrot-Mapper/quickstart.md
       - User Guide:
@@ -51,7 +51,7 @@ nav:
               - Writing Django Tests: Testing/django-testing-writing.md
       #- Downloading Mapping:   Carrot-Mapper/downloading-rules.md
       
-  - Carrot CDM:
+  - Carrot-CDM:
       - CaRROT-CDM/index.md
       - User Guide:
           - FAQ: CaRROT-CDM/FAQ.md
