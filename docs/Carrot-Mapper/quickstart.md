@@ -97,24 +97,18 @@ You will be taken back to the Tables list, and the `PERSON ID` and `EVENT DATE` 
 
 Now do the same for `Covid.csv`, selecting `PersonID` and `Date`.
 
-The Tables list will now show both tables have filled `PERSON ID` and `EVENT DATE` columns, and we are ready to proceed with generating Mapping Rules
+The Tables list will now show both tables have filled `PERSON ID` and `EVENT DATE` columns. And we are ready to proceed with generating Mapping Rules
 
 ### Generate Initial Mapping Rules
 Navigate to the Mapping Rules page associated to your Scan Report. 
 This can be either **(a)** from the Scan Reports page - press the `Rules` button; or **(b)** from any of the Tables, Fields or Values pages - press the `Go to Rules` button near the top of the page.
-This page will contain an empty table with the contents `Nothing`. 
 
-This might be surprising, as some of the Fields and Values already have associated Concepts based on the Dictionary file and reuse of previously seen mappings.
+Now that `Person ID` and `Date Event` are set for each of the tables, the Mapping Rules associated to those Concepts have been generated.
 
-This is because Mapping Rules cannot be generated without the Person ID and Date Event being set.
-During the initial upload and processing, these were not set, and so the Mapping Rules associated to the Concepts could not be generated.
-Now that `Person ID` and `Date Event` are set for each of the tables, the Mapping Rules associated to those Concepts can be generated.
-
-Press the green `Refresh Rules` button at the top of the page. 
 After a few moments, the table will be populated by the Mapping Rules associated to the Concepts already mapped (in this example, there should be 16 Mapping Rules generated).
 
 !!! note
-    If you don't see any Mapping Rules appear after refresh, this is usually an indication that you have not set the `Person ID` and `Date Event` on the tables.
+    If you don't see any Mapping Rules appear, this is usually an indication that you have not set the `Person ID` and `Date Event` on the tables.
 
 Note that there are 5 or 6 rows in the table associated to each Concept. 
 In the `Rule ID` column in the table, there are 5 or 6 with a given ID. 
@@ -129,18 +123,6 @@ This shows only one of the Rules associated to each source-concept pair, which c
     By editing the URL so that `page_size=300`, for example, one can increase the number of Rules visible in Summary View at one time.
 
 All the Mapping Rules associated to the Concepts, which were automatically added to our Scan Report by using a Data Dictionary file, are now available.
-
-!!! tip
-    The `Refresh Rules` button will only need to be pressed once, as (see below) any later addition or removal of Concepts will be immediately reflected in the Mapping Rules.
-
-!!! warning
-    If the Scan Report contains a large number of associated Concepts (more than 100, say) the `Refresh Rules` button can timeout before it finishes its task.
-    In this case, please be warned that the list of Mapping Rules generated may only be partial.
-    Currently, there is no reporting of when this happens, but this will be addressed in a future update.
-    For the time being, if you have a Scan Report with a large number of Concepts, please contact the system administrator who can run the required task offline. This can take a while!
-    In a future update, the Refresh Rules button will trigger a background task that will 
-    (a) be a lot faster; and 
-    (b) not suffer from the same timeout issue.  
 
 ### Add further Concepts
 
