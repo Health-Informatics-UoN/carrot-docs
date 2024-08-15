@@ -22,7 +22,7 @@ Users requiring more details should follow the links or search the documentation
 Developers should use the Developer Guide for technical documentation.
 
 ## Gaining Access
-The deployed Carrot-Mapper is available at [https://ccom.azurewebsites.net](https://ccom.azurewebsites.net).
+The deployed Carrot-Mapper is available at [carrot.ac.uk](https://carrot.ac.uk).
 
 A user account is required to access the site; one can be requested from the site administrator. 
 
