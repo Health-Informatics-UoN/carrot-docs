@@ -7,7 +7,17 @@
 
 The most direct route to running the application locally is using the Docker quickstart.
 
-The repository contains a docker-compose for development, so after you have setup the [configuration](#configuration), just run `docker-compose up -d` or `docker compose up` to start the application stack. This runs the database, Azurite emulator, Azure functions (`workers`) and will build Carrot's backend (`web`) and frontend (`next-client`). After the command run successfully, Carrot can be accessed through `http://localhost:8000/`
+The repository contains a docker-compose for development, so after you have setup the [configuration](#configuration), just run
+
+```bash
+docker-compose up -d
+
+or
+
+docker compose up
+```
+
+to start the application stack. This runs the database, Azurite emulator, Azure functions (`workers`) and will build Carrot's backend (`web`) and frontend (`next-client`). After the command run successfully, Carrot can be accessed through `http://localhost:8000/`
 
 <!-- Should be changed to http://localhost:3000/ after the PR about next-auth merged -->
 
