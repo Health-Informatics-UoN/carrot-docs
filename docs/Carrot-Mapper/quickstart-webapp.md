@@ -7,7 +7,7 @@
 
 The most direct route to running the application locally is using the Docker quickstart.
 
-The repository contains a docker-compose for development, so after you have setup the [configuration](#configuration), just run `docker-compose up -d` to start the application stack. This runs the database, Azurite emulator, Azure functions (`workers`) and will build Carrot's backend (`web`) and frontend (`next-client`). After the command run successfully, Carrot can be accessed through `http://localhost:8000/`
+The repository contains a docker-compose for development, so after you have setup the [configuration](#configuration), just run `docker-compose up -d` or `docker compose up` to start the application stack. This runs the database, Azurite emulator, Azure functions (`workers`) and will build Carrot's backend (`web`) and frontend (`next-client`). After the command run successfully, Carrot can be accessed through `http://localhost:8000/`
 
 <!-- Should be changed to http://localhost:3000/ after the PR about next-auth merged -->
 
@@ -27,7 +27,7 @@ There are a few steps to set up the data and environment for Carrot to run with 
 
 You need a pre-seeded OMOP CDM database inside the database of Carrot.
 
-To do this, add a folder named `vocabs` in the `root` directory of Carrot, then place there vocabulary files downloaded from [Athena](https://athena.ohdsi.org/vocabulary/list).
+To do this, add a folder named `vocabs` in the `root` directory of Carrot, then place there vocabulary files downloaded from [Athena](https://athena.ohdsi.org/vocabulary/list). This should be done before running `docker compose up` for the first time.
 
 When running `docker compose up`, OMOP CDM will be created and loaded to Carrot's database, thanks to [OMOP Lite](https://github.com/andyrae/omop-lite/pkgs/container/omop-lite) container.
 
@@ -70,7 +70,7 @@ This setting will create the local storages for Azure functions of Carrot.
 
 #### Authentication for Azure functions
 
-For local developement using Docker, when `web` container wants to send request to `workers` container, an authentication need setting up.
+For local developement using Docker, when `web` container wants to send request to `workers` container, an authentication need setting up. This should be done before running `docker compose up` for the first time.
 
 In the `app/workers` directory, add a folder named `Secrets`, and then inside that folder, add a new file named `rulestrigger.json` with the following content:
 
