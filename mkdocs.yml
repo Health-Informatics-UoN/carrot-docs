@@ -43,7 +43,6 @@ nav:
               - Local Functions: AzureFunctions/RunningLocally.md
               - UploadQueue: AzureFunctions/UploadQueue.md
               - Rules: AzureFunctions/Rules.md
-              - NLPQueue: AzureFunctions/NlpQueue.md
           - Database Migrations: Carrot-Mapper/migrations.md
           - Adding new vocabularies: Carrot-Mapper/Adding-a-vocabulary.md
           - Testing:
@@ -111,16 +110,6 @@ nav:
           - CaRROT-CDM/notebooks/Part 7 - Manually Loading Dataframes.ipynb
           - CaRROT-CDM/notebooks/Part 8 - Create PyConfig.ipynb
           #- CaRROT-CDM/notebooks/Part 9 - Analysis.ipynb
-  - Carrot Pseudonymise:
-      - Pseudonymisation: CaRROT-Pseudonymise/Pseudonymisation.md
-
-  - BCLink:
-      - Test Link (for developers):
-          - Via SSH: BCLink/TestLink/ssh.md
-          - Notes:
-              - Sep 14: BCLink/TestLink/Notes/14Sep.md
-              - Sep 15: BCLink/TestLink/Notes/15Sep.md
-              - Sep 28: BCLink/TestLink/Notes/28Sep.md
 
 plugins:
   - mknotebooks:

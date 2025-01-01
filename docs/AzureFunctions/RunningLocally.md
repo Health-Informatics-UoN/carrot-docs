@@ -154,63 +154,6 @@ For more information on Function types, click [here](https://docs.microsoft.com/
 
 With the final console output saying 'Host lock lease acquired', you're ready to run your first Azure Functions job!
 
-### Running an NLP task
-
-The remainder of this guide will show what to expect to see in the debugging console if you run NLP at the field level.
-
-1. Navigate to a field within a scan report.
-2. Ensure the field you've chosen has a meaningful description (e.g. "Patient has a cold"). If it doesn't have one, 
-click 'Edit Field' and manually put one in.
-3. Ensure that `pass_from_source` is set to `True` within the field's settings. This will cause CCOM to process the field only.
-4. Click 'Run NLP'
-5. After a short wait a green message banner will appear to say NLP is now running.
-
-Hop back to VSCode. After a few seconds, you should see the debugging console updating to say that it has 
-received the message from the message queue:
-```
-Executing 'Functions.NLPQueue' (Reason='New queue message detected on 'nlpqueue-local'.', Id=ea27d6be-eb0b-490c-9cab-82cf2a119355)
-Trigger Details: MessageId: f00a438f-9bad-4110-bb8b-5278461d7bb3, DequeueCount: 1, InsertionTime: 2021-07-02T10:57:26.000+00:00
-```
-If you have configured `.env` and `local.settings.json` correctly, you will see that the job was posted to the queue `nlpqueue-local`.
-
-After some time (around 15-30 seconds), you should notice further updates to the debugging console. Due to various `print()` statements in the init.py file (remember, this holds the function's logic), the console will start logging what's occurring as the function processes the message in the message queue. First, the console shows you what message was sent to the queue:
-```
-MESSAGE >>>  {'id': 'f00a438f-9bad-4110-bb8b-5278461d7bb3', 'body': '{"documents": [{"language": "en", "id": "17569_field", "text": "patient has a cold"}]}'}
-```
-After job submission, the `NLPQueue` function works through the stages detailed in [NLP Processing](NlpQueue.md). Having received concept **_codes_** from the NLP API, the function looks up a standard and valid **_conceptID_** using the CCOM API. Sometimes, a concept code will be returned which doesn't have a standard and valid conceptID. In such instances you will see the following in the debugging console:
-```
-Concept Code C34500 not found!
-```
-However, if a standard and valid conceptID is found, the Azure function then saves the data to the `ScanReportConcept` model. This is shown to you in the debugging console with the `PAYLOAD` print statement like so:
-```
-SAVING TO FIELD LEVEL...
-PAYLOAD >>> {'nlp_entity': 'cold', 'nlp_entity_type': 'SymptomOrSign', 'nlp_confidence': 0.75, 'nlp_vocabulary': 'ICD10CM', 'nlp_concept_code': 'J00', 'concept': 260427, 'object_id': '17569', 'content_type': 15}
-SAVING TO FIELD LEVEL...
-PAYLOAD >>> {'nlp_entity': 'cold', 'nlp_entity_type': 'SymptomOrSign', 'nlp_confidence': 0.75, 'nlp_vocabulary': 'ICD9CM', 'nlp_concept_code': '460', 'concept': 260427, 'object_id': '17569', 'content_type': 15}
-SAVING TO FIELD LEVEL...
-PAYLOAD >>> {'nlp_entity': 'cold', 'nlp_entity_type': 'SymptomOrSign', 'nlp_confidence': 0.75, 'nlp_vocabulary': 'SNOMEDCT_US', 'nlp_concept_code': '82272006', 'concept': 260427, 'object_id': '17569', 'content_type': 15}
-```
-Here, three conceptIDs were found for three different vocabularies (ICD10CM, ICD9CM and SNOWMEDCT_US). Therefore, three records are saved to `ScanReportConcepts` (hence the three `SAVING TO FIELD LEVEL...` statements)
-
-After successful execution, the debug console will finally tell you that the job has finished:
-```
-Executed 'Functions.NLPQueue' (Succeeded, Id=ea27d6be-eb0b-490c-9cab-82cf2a119355, Duration=30234ms)
-```
-
-Here is a full interrupted trace of the above process:
-```
-Executing 'Functions.NLPQueue' (Reason='New queue message detected on 'nlpqueue-local'.', Id=ea27d6be-eb0b-490c-9cab-82cf2a119355)
-Trigger Details: MessageId: f00a438f-9bad-4110-bb8b-5278461d7bb3, DequeueCount: 1, InsertionTime: 2021-07-02T10:57:26.000+00:00
-MESSAGE >>>  {'id': 'f00a438f-9bad-4110-bb8b-5278461d7bb3', 'body': '{"documents": [{"language": "en", "id": "17569_field", "text": "patient has a cold"}]}'}
-Concept Code C34500 not found!
-SAVING TO FIELD LEVEL...
-PAYLOAD >>> {'nlp_entity': 'cold', 'nlp_entity_type': 'SymptomOrSign', 'nlp_confidence': 0.75, 'nlp_vocabulary': 'ICD10CM', 'nlp_concept_code': 'J00', 'concept': 260427, 'object_id': '17569', 'content_type': 15}
-SAVING TO FIELD LEVEL...
-PAYLOAD >>> {'nlp_entity': 'cold', 'nlp_entity_type': 'SymptomOrSign', 'nlp_confidence': 0.75, 'nlp_vocabulary': 'ICD9CM', 'nlp_concept_code': '460', 'concept': 260427, 'object_id': '17569', 'content_type': 15}
-SAVING TO FIELD LEVEL...
-PAYLOAD >>> {'nlp_entity': 'cold', 'nlp_entity_type': 'SymptomOrSign', 'nlp_confidence': 0.75, 'nlp_vocabulary': 'SNOMEDCT_US', 'nlp_concept_code': '82272006', 'concept': 260427, 'object_id': '17569', 'content_type': 15}
-Executed 'Functions.NLPQueue' (Succeeded, Id=ea27d6be-eb0b-490c-9cab-82cf2a119355, Duration=30234ms)
-```
 ### Stopping Debugging
 
 Debugging can be stopped by clicking:
