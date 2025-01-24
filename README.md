@@ -6,18 +6,20 @@
 
 [Carrot CDM repository.](https://github.com/HDRUK/CaRROT-CDM)
 
-
 ## Develop
 
-Use 
+Use
+
 ```
 git clone --recurse-submodules git@github.com:health-informatics-uon/carrot-docs.git
 ```
+
 to get the required Carrot CDM submodule.
 
 For local dev, after creating a virtual environment:
+
 ```
-pip install -r requirements
+pip install -r requirements.txt
 pip install docs/CaRROT-CDM/source_code/
 mkdocs serve
 ```

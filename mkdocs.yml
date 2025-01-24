@@ -3,7 +3,7 @@ theme:
   name: material
   palette:
     scheme: carrot
-  custom_dir: overrides      
+  custom_dir: overrides
   logo: images/favicon.png
   favicon: images/favicon.png
   icon:
@@ -21,7 +21,6 @@ repo_url: https://github.com/Health-Informatics-UoN/carrot-docs
 repo_name: Health-Informatics-UoN/carrot-docs
 edit_uri: edit/main/docs/
 
-  
 nav:
   - Welcome: index.md
   - Data Standards: standards.md
@@ -33,9 +32,7 @@ nav:
           - Projects, Datasets, Scan Reports, and Permissions: Carrot-Mapper/projects-datasets-and-scanreports.md
           - Uploading a Scan Report file: Carrot-Mapper/uploading-scan-report.md
       - Developer Guide:
-          - Quickstart: 
-              - Web Application: Carrot-Mapper/quickstart-webapp.md
-              - OMOP: Carrot-Mapper/quickstart-omop.md
+          - Quickstart: Carrot-Mapper/quickstart-webapp.md
           - Internal data structures: Carrot-Mapper/internal-data-structures.md
           - Mapping Rules: Carrot-Mapper/mapping-rules.md
           - API: Carrot-Mapper/API.md
@@ -50,7 +47,7 @@ nav:
               - Running Django Tests: Testing/django-testing.md
               - Writing Django Tests: Testing/django-testing-writing.md
       #- Downloading Mapping:   Carrot-Mapper/downloading-rules.md
-      
+
   - Carrot-CDM:
       - CaRROT-CDM/index.md
       - User Guide:
@@ -62,7 +59,7 @@ nav:
               - Detailed Guide:
                   - Yaml Configuration: CaRROT-CDM/ETL/Yaml.md
                   - Extract:
-                      - Input Data:  CaRROT-CDM/ETL/Extract.md
+                      - Input Data: CaRROT-CDM/ETL/Extract.md
                       - Pseudonymisation: CaRROT-CDM/ETL/Pseudonymisation.md
                   - Transform:
                       - JSON Rules: CaRROT-CDM/ETL/Rules.md
@@ -74,7 +71,7 @@ nav:
               - Command Line Interface: CaRROT-CDM/CommandLine.md
               - Generating Synthetic Data:
                   - Command Line: CaRROT-CDM/SyntheticData.md
-                  - By Hand: 'CaRROT-CDM/notebooks/Generating Synthetic Data By Hand.ipynb'
+                  - By Hand: "CaRROT-CDM/notebooks/Generating Synthetic Data By Hand.ipynb"
       - Developer Guide:
           - CDM:
               - Overview: CaRROT-CDM/CommonDataModel.md
@@ -138,13 +135,12 @@ plugins:
             show_root_heading: true
           selection:
             filters:
-              - "!^_"  # exlude all members starting with _
-              - "^__init__$"  # but always include __init__ modules and methods
+              - "!^_" # exlude all members starting with _
+              - "^__init__$" # but always include __init__ modules and methods
           setup_commands:
             - import sys
             - sys.path.append("docs/CaRROT-CDM/source_code/")
             - import coconnect
-
 
 markdown_extensions:
   - toc:
@@ -173,10 +169,9 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
   - md_in_html
-  
 #extra_css:
 #  - stylesheets/extra.css
-  
+
 #extra_javascript:
 #  - javascripts/config.js
 #  - https://polyfill.io/v3/polyfill.min.js?features=es6

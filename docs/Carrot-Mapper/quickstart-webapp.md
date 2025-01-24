@@ -1,92 +1,99 @@
 ## Prerequisites
 
-- Docker
-- Python 3.11
-- Poetry
-- Pip
-- Azure Functions Core Tools v4
-- Azure CLI
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+- [MS Azure Storage Explorer](https://azure.microsoft.com/en-us/products/storage/storage-explorer/#Download-4)
 
 ## Getting Started
 
 The most direct route to running the application locally is using the Docker quickstart.
 
-The repository contains a docker-compose for development, so after you have setup the [configuration](#configuration), just run `docker-compose up -d` to start the application stack. This runs the database, Azurite emulator, and will build and run the web app container.
+The repository contains a docker-compose for development, so after you have setup the [configuration](#configuration), just run
 
-Docker will mount the `api` directory to the web app container, so any changes in the Python code will be reflected in the running application.
+```bash
+docker-compose up -d
 
-You will need to run some commands using the web app entrypoint, to access the container run: `docker exec -it carrot-mapper-web-1 bash`
+or
+
+docker compose up
+```
+
+to start the application stack. This runs the database, Azurite emulator, Azure functions (`workers`) and will build Carrot's backend (`web`) and frontend (`next-client`). After the command run successfully, Carrot can be accessed through `http://localhost:8000/`
+
+<!-- Should be changed to http://localhost:3000/ after the PR about next-auth merged -->
+
+Docker will mount the `app/api` directory to the web app container, so any changes in the Python code of the backend will be reflected in the running application.
+
+Any code changes in the frontend app, i.e., `next-client-app`, will be reflected as well in the UI, thanks to the `app/next-client-app` directory mounted on Docker environment.
+
+Note: You may need to refresh the browser to see the UI changes after code changed in `next-client-app`.
+
+ <!--After React client app to be deleted, the note above may be removed, cause the hot reload function of NextJS may then be fully applied  -->
 
 ## Configuration
 
-The application is configured through environment variables, and a `local.settings.json` file.
+There are a few steps to set up the data and environment for Carrot to run with Docker compose.
 
-Rename the existing `sample-env.txt` to `.env`, and `sample-local.settings.json` to `local.settings.json` to use the default values with the Docker setup.
+### OMOP CDM setting
 
-## Database Setup
+You need a pre-seeded OMOP CDM database inside the database of Carrot.
 
-The application stack interacts with a PostgreSQL Server database, and uses code-first migrations for managing the database schema.
+To do this, add a folder named `vocabs` in the `root` directory of Carrot, then place there vocabulary files downloaded from [Athena](https://athena.ohdsi.org/vocabulary/list). This should be done before running `docker compose up` for the first time.
 
-### OMOP Tables
+When running `docker compose up`, OMOP CDM will be created and loaded to Carrot's database, thanks to [OMOP Lite](https://github.com/andyrae/omop-lite/pkgs/container/omop-lite) container.
 
-You need a pre-seeded OMOP CDM database, with the schema `omop`. See [OMOP quickstart](quickstart-omop.md) for how to get this running.
+### Preparing initial data
 
-### Web App Tables
+You need to seed the web app database with the OMOP table and field names. You can do this by using your terminal and access the `web` container on Docker or you can use Docker Desktop directly. The following instructions is for the latter method.
 
-When setting up a new environment, or running a newer version of the codebase if there have been schema changes, you need to run the migrations against your web app database.
+Navigate to your Docker Desktop, choose `web` container, choose `Exec` tab, then run: `python manage.py loaddata mapping filetypes`.
 
-Inside the web app container `api` directory, run: `python manage.py migrate`.
+To add a new admin user (Django superuser) run: `python manage.py createsuperuser`.
 
-### Seed Data
+Following this order, create inital `Data Partner`, `Dataset` (with admin as the admin user) and `Project` (with `Datasets` as the created dataset and `Members` as the admin user) by using Django Admin panel `http://localhost:8000/admin/`
 
-You need to seed the web app database with the OMOP table and field names, inside the web app container `api` directory run: `python manage.py loaddata mapping`.  
+### Azure Functions
 
-To add a new admin user run: `python manage.py createsuperuser`.
+#### Local Storage
 
-## Azure Functions
+You need to set up a local storage for local development of Carrot
 
-Whilst the rest of the stack runs in containers, the worker functions run directly in your Python environment.
+With the `workers` container in Docker Desktop is running, open `MS Azure Storage Explorer`, and create the following `queues` (under the tab `Storage Accounts - Emulator - Queues`) and `blob containers` (under the tab `Storage Accounts - Emulator - Blob Containers`)
 
-To create the storage containers and queues, use the Azure CLI:
+For `queues`:
 
-- `az storage container create -n scan-reports --connection-string <CONNECTIONSTRING>`
-- `az storage container create -m data-dictionaries --connection-string <CONNECTIONSTRING>`
-- `az storage queue create -n nlpqueue-local --connection-string <CONNECTIONSTRING>`
-- `az storage queue create -n uploadreports-local --connection-string <CONNECTIONSTRING>`
-- `az storage queue create -n rules-local --connection-string <CONNECTIONSTRING>`
-
-To run the functions, in the project root:
-
-1. In the web app Django `http://localhost:8000/admin`, generate a new `auth token` for the admin user.
-2. Add the token to `local.settings.json` : `AZ_FUNCTION_KEY`
-3. Install the dependencies in `app/workers`: `poetry install`
-4. Run the functions: `poetry run func start`
-
-You should now be setup to run the [user quickstart](quickstart.md).
-
-## Python Environment
-
-You can also run the web app directly in a Python environment instead of the Docker image.
-
-Prequisites:
-
-- A separate Poetry environment for the web app.
-- [graphviz](https://graphviz.org/download/) package installed.
-- Node v12.18.3
-
-1. Change the environment [configuration](#configuration) to point to the running docker containers, for example `localhost` instead of `azurite`.
-2. Inside the `app/react-client-app` directory, install the npm dependencies: `npm i`
-3. Change the `snowpack.config.js` to use a relative file path:
 ```
+rules-local
+scanreports-local
+rules-exports-local
+uploadreports-local
+```
+
+For `blob containers`:
+
+```
+scan-reports
+data-dictionaries
+rules-exports
+```
+
+This setting will create the local storages for Azure functions of Carrot.
+
+#### Authentication for Azure functions
+
+For local developement using Docker, when `web` container wants to send request to `workers` container, an authentication need setting up. This should be done before running `docker compose up` for the first time.
+
+In the `app/workers` directory, add a folder named `Secrets`, and then inside that folder, add a new file named `rulestrigger.json` with the following content:
+
+```json
 {
-  buildOptions: {
-      out: '../api/static/javascript/react',
+  "keys": [
+    {
+      "name": "default",
+      "value": "rules_key",
+      "encrypted": false
     }
+  ]
 }
 ```
-4. Build the react app: `npm run build`.
-5. Inside the `app/api` directory, install the Python dependencies: `poetry install`.
-6. Collect the Django static files: `poetry run python manage.py collectstatic`.
-7. Run the app: `poetry run python manage.py runserver`.
 
-If you're using VSCode, you can use the Workspaces to manage your Python virtual environments, and the debugging tool to run the web app and functions.
+You should now be setup to run the [user quickstart](quickstart.md) using the credentials of the Django Admin user.
