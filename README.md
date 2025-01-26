@@ -1,10 +1,13 @@
+[!CAUTION]
+> Carrot documentation is now moved to a [new repository](https://github.com/Health-Informatics-UoN/carrot).
+
 # Carrot Documentation
 
-[Link to documentation.](https://health-informatics-uon.github.io/carrot-docs/)
+[Link to documentation.](https://health-informatics-uon.github.io/carrot)
 
 [Carrot Mapper repository.](https://github.com/Health-Informatics-UoN/Carrot-Mapper)
 
-[Carrot CDM repository.](https://github.com/HDRUK/CaRROT-CDM)
+[Carrot Transform repository.](https://github.com/HDRUK/CaRROT-Transform)
 
 
 ## Develop
