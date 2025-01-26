@@ -1,0 +1,684 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.18">
+    
+    
+      
+        <title>FAQ - Carrot Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.66ac8b77.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/custom.css">
+    
+      <link rel="stylesheet" href="../../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../../css/pandas-dataframe.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="carrot" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#etl" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Carrot Docs" class="md-header__button md-logo" aria-label="Carrot Docs" data-md-component="logo">
+      
+  <img src="../../images/favicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Carrot Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              FAQ
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Health-Informatics-UoN/carrot-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Health-Informatics-UoN/carrot-docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Carrot Docs" class="md-nav__button md-logo" aria-label="Carrot Docs" data-md-component="logo">
+      
+  <img src="../../images/favicon.png" alt="logo">
+
+    </a>
+    Carrot Docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Health-Informatics-UoN/carrot-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Health-Informatics-UoN/carrot-docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#etl" class="md-nav__link">
+    <span class="md-ellipsis">
+      ETL
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ETL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-the-carrot-etl-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is the Carrot ETL (Tool)?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-can-i-pseudonymise-my-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      How can I pseudonymise my data?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#can-i-pseudonymise-the-data-myself" class="md-nav__link">
+    <span class="md-ellipsis">
+      Can I pseudonymise the data myself?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transforming-mapping-a-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transforming (mapping) a dataset
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Transforming (mapping) a dataset">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-the-transform-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is the transform tool?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-is-the-rules-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is the rules .json?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-should-my-input-files-be-called" class="md-nav__link">
+    <span class="md-ellipsis">
+      What should my input files be called?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-should-i-pass-as-inputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      What should I pass as INPUTS?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-can-i-install-the-software-offline-no-internet-connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      How can I install the software offline (no internet connection)?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How can I install the software offline (no internet connection)?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#download-wheel-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Download wheel files
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transfer-the-wheel-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transfer the wheel files
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-the-package-offline" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install the package offline
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-do-i-install-using-conda" class="md-nav__link">
+    <span class="md-ellipsis">
+      How do I install using conda?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/Health-Informatics-UoN/carrot-docs/edit/main/docs/CaRROT-CDM/FAQ.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+    </a>
+  
+  
+
+
+  <h1>FAQ</h1>
+
+<p>Before getting started, please take a look a the following frequently asked questions.</p>
+<h2 id="etl">ETL<a class="headerlink" href="#etl" title="Permanent link">&para;</a></h2>
+<h3 id="what-is-the-carrot-etl-tool">What is the Carrot ETL (Tool)?<a class="headerlink" href="#what-is-the-carrot-etl-tool" title="Permanent link">&para;</a></h3>
+<p>Extract, transform and load of your dataset into a Common Data Model (CDM) format that is loaded into bclink via a command line tool.</p>
+<p>The following command (CLI tool) has the ability to do the full process:
+<div class="highlight"><pre><span></span><code>carrot etl --help
+</code></pre></div>
+<center>
+<a class="md-button md-button--primary" href="../ETL/">Overview</a>
+<a class="md-button md-button--secondary" href="../ETL/Yaml/">Setting up automation</a>
+</center></p>
+<p>Otherwise, you have to do each step manually:</p>
+<p><center>
+<a class="md-button md-button--primary" href="../ETL/Extract/">Extract</a>
+<a class="md-button md-button--primary" href="../ETL/Transform/">Transform</a>
+<a class="md-button md-button--primary" href="../ETL/Load/">Load</a>
+</center></p>
+<h3 id="how-can-i-pseudonymise-my-data">How can I pseudonymise my data?<a class="headerlink" href="#how-can-i-pseudonymise-my-data" title="Permanent link">&para;</a></h3>
+<p>When <code>carrot-cdm</code> is installed a standalone package is also installed <a href="https://pypi.org/project/co-connect-pseudonymise/"><code>co-connect-pseudonymise</code></a> (<a href="https://github.com/CO-CONNECT/Pseudonymisation">source code</a>).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The pseudonymisation script (<code>co-connect-pseudonymise</code>) can be install separately if you want to run the pseudonymisation in a separate environment and don't want to install all the addditonal packages that <code>carrot-cdm</code> will install.  </p>
+</div>
+<p>A CLI is setup called <code>pseudonymise</code> which can be run on <code>csv</code> files:
+<div class="highlight"><pre><span></span><code>$ pseudonymise csv --help
+Usage: pseudonymise csv [OPTIONS] INPUT
+
+  Command to pseudonymise csv files, given a salt, the name of the columns to
+  pseudonymise and the input file.
+
+Options:
+  -s, --salt TEXT           salt hash  [required]
+  -c, --column, --id TEXT   name of the identifier columns  [required]
+  -o, --output-folder TEXT  path of the output folder  [required]
+  --chunksize INTEGER       set the chunksize when loading data, useful for
+                            large files
+  --help                    Show this message and exit.
+</code></pre></div></p>
+<p>A detailed guide on how to use this feature can be found here:</p>
+<p><center>
+<a class="md-button md-button--primary" href="../ETL/Pseudonymisation/">Pseudonymisation guide</a>
+</center></p>
+<h3 id="can-i-pseudonymise-the-data-myself">Can I pseudonymise the data myself?<a class="headerlink" href="#can-i-pseudonymise-the-data-myself" title="Permanent link">&para;</a></h3>
+<p>Yes. You do not need to use the tool packaged in carrot-cdm, you can do this process yourself to create a masked for the person (study) identifiers in your dataset.</p>
+<h2 id="transforming-mapping-a-dataset">Transforming (mapping) a dataset<a class="headerlink" href="#transforming-mapping-a-dataset" title="Permanent link">&para;</a></h2>
+<h3 id="what-is-the-transform-tool">What is the transform tool?<a class="headerlink" href="#what-is-the-transform-tool" title="Permanent link">&para;</a></h3>
+<p>Our command line interface tool for performing only the 'T' part of the 'ETL' process.. a transformation of your dataset into a Common Data Model (CDM):</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">With commandline arguments</label><label for="__tabbed_1_2">Using a configuration file</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Alternatively, using commandline arguments, the tool can be run as:
+<div class="highlight"><pre><span></span><code>carrot run map --help
+</code></pre></div></p>
+</div>
+<div class="tabbed-block">
+<p>If the input data and rules file are specified in a <code>yaml</code> configuration file, and no load section is specified, the <code>etl</code> command can be used:
+<div class="highlight"><pre><span></span><code>carrot etl --config &lt;config&gt; 
+</code></pre></div></p>
+</div>
+</div>
+</div>
+<p><center>
+<a class="md-button md-button--primary" href="../ETL/#transform">Overview</a>
+<a class="md-button md-button--secondary" href="../ETL/Transform/">Manual from the Command Line</a>
+<a class="md-button md-button--secondary" href="../ETL/Transform-GUI/">Manual from a GUI</a>
+</center></p>
+<h3 id="what-is-the-rules-json">What is the rules <code>.json</code>?<a class="headerlink" href="#what-is-the-rules-json" title="Permanent link">&para;</a></h3>
+<p>A <code>json</code> encoded file that contains information of how multiple CDM tables and CDM objects need to be created by the <a href="../ETL/Transform/">transform process</a></p>
+<p><center>
+<a class="md-button md-button--primary" href="../ETL/Rules/">Rules JSON</a>
+</center></p>
+<h3 id="what-should-my-input-files-be-called">What should my input files be called?<a class="headerlink" href="#what-should-my-input-files-be-called" title="Permanent link">&para;</a></h3>
+<p>The rules <code>.json</code> file can be called anything.</p>
+<p>Your input files need to be <code>csv</code> files. If the mapping instructions have been followed correctly, the names encoded in the WhiteRabbit scan report should match the names of your input files, and therefore match the names in the <code>.json</code> file.</p>
+<p>The helper command:
+<div class="highlight"><pre><span></span><code>carrot display rules json &lt;rules file&gt; --list-tables
+</code></pre></div>
+can be used to display what input file names the tool will be trying to load. </p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><div class="highlight"><pre><span></span><code>carrot display rules json $(carrot info data_folder)/test/rules/rules_14June2021.json --list-tables
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>  [
+     &quot;Demographics.csv&quot;,
+     &quot;Symptoms.csv&quot;,
+     &quot;covid19_antibody.csv&quot;
+  ]
+</code></pre></div></p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If these names differ from the names of your input files, you'll have to rename the files or manually edit the <code>.json</code> files and replace all occurrences of a bad file name with the correct file name.</p>
+</div>
+<h3 id="what-should-i-pass-as-inputs">What should I pass as <code>INPUTS</code>?<a class="headerlink" href="#what-should-i-pass-as-inputs" title="Permanent link">&para;</a></h3>
+<p>You need to pass a space separated list of files (or directories containing <code>.csv</code> files). </p>
+<p>The rules <code>.json</code> file is supplied via the option <code>--rules</code>.</p>
+<p>The <code>--help</code> message displays the following syntax for how the <code>map</code> tool (for transform) can be run:</p>
+<p><div class="highlight"><pre><span></span><code>carrot run map --help
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Usage: carrot run map [OPTIONS] [INPUTS]...
+
+  Perform OMOP Mapping given an json file and a series of input files
+
+  INPUTS should be a space separated list of individual input files or
+  directories (which contain .csv files)
+
+Options:
+  --rules TEXT                    input json file containing all the mapping
+                                  rules to be applied  [required]
+...
+</code></pre></div></p>
+<h2 id="how-can-i-install-the-software-offline-no-internet-connection">How can I install the software offline (no internet connection)?<a class="headerlink" href="#how-can-i-install-the-software-offline-no-internet-connection" title="Permanent link">&para;</a></h2>
+<p>You need to download the source code and its dependencies, somewhere which has a stable internet connection.</p>
+<h3 id="download-wheel-files">Download wheel files<a class="headerlink" href="#download-wheel-files" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Make a new directory</li>
+<li>Next execute the command <code>python3 -m pip download carrot-cdm</code>:
+<div class="highlight"><pre><span></span><code>$ python3 -m pip download carrot-cdm
+Collecting carrot-cdm
+  Downloading co_connect_tools-0.4.13-py3-none-any.whl (300 kB)
+     |████████████████████████████████| 300 kB 3.4 MB/s            
+Collecting tabulate
+  Using cached tabulate-0.8.9-py3-none-any.whl (25 kB)
+Collecting requests
+  Using cached requests-2.26.0-py2.py3-none-any.whl (62 kB)
+Collecting openpyxl
+  Using cached openpyxl-3.0.9-py2.py3-none-any.whl (242 kB)
+</code></pre></div></li>
+</ul>
+<p>Which will download <code>.whl</code> files into your directory:
+<div class="highlight"><pre><span></span><code>$ ls 
+Jinja2-3.0.3-py3-none-any.whl
+MarkupSafe-2.0.1-cp38-cp38-macosx_10_9_x86_64.whl
+PySimpleGUI-4.55.1-py3-none-any.whl
+PyYAML-6.0-cp38-cp38-macosx_10_9_x86_64.whl
+...
+</code></pre></div></p>
+<h3 id="transfer-the-wheel-files">Transfer the wheel files<a class="headerlink" href="#transfer-the-wheel-files" title="Permanent link">&para;</a></h3>
+<p>Now you can zip and move this folder to a location/machine that you want to install carrot-cdm, one that doesn't have an internet connection to pypi.org.</p>
+<ul>
+<li>In this new environment, create a new working directory and setup a virtual environment</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>this new environment should be the same architecture, i.e. if you download on a Windows environment and then try to install on MacOS, this won't work.</p>
+</div>
+<ul>
+<li>Copy/unzip the .whl files into a new folder, e.g. <code>deps/</code></li>
+</ul>
+<div class="highlight"><pre><span></span><code>python3 -m venv .
+source bin/activate
+</code></pre></div>
+<h3 id="install-the-package-offline">Install the package offline<a class="headerlink" href="#install-the-package-offline" title="Permanent link">&para;</a></h3>
+<p>You can use <code>pip</code> to install 
+<div class="highlight"><pre><span></span><code>pip install --no-index --find-links &lt;path to folder containing .whl files&gt; carrot-cdm
+</code></pre></div></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Dependening on your python version, you made need a recent version of pip. You can <a href="https://pypi.org/project/pip/#modal-close">download the latest version of pip</a> and tranfer the .whl file to this offline environment, and install the update with:
+<div class="highlight"><pre><span></span><code>pip install pip-21.3.1-py3-none-any.whl
+</code></pre></div></p>
+</div>
+<p>Example:
+<div class="highlight"><pre><span></span><code>$ pip install --no-index --find-links . carrot-cdm
+Looking in links: .
+...
+...
+Processing ./click-8.0.3-py3-none-any.whl
+Processing ./Jinja2-3.0.3-py3-none-any.whl
+...
+...
+Successfully installed Jinja2-3.0.3 MarkupSafe-2.0.1 blessed-1.19.0 certifi-2021.10.8 charset-normalizer-2.0.9 click-8.0.3 carrot-cdm-0.6.2 coloredlogs-15.0.1 docutils-0.18.1 et-xmlfile-1.1.0 graphviz-0.19.1 humanfriendly-10.0 idna-3.3 inquirer-2.8.0 lockfile-0.12.2 numpy-1.21.4 openpyxl-3.0.9 pandas-1.3.5 psutil-5.8.0 pysimplegui-4.55.1 python-daemon-2.3.0 python-dateutil-2.8.2 python-editor-1.0.4 pytz-2021.3 pyyaml-6.0 readchar-2.0.1 requests-2.26.0 six-1.16.0 tabulate-0.8.9 urllib3-1.26.7 wcwidth-0.2.5
+</code></pre></div></p>
+<p>Check if the tool installed offline, and you're good to go
+<div class="highlight"><pre><span></span><code>carrot --version
+</code></pre></div>
+Outputs:
+<div class="highlight"><pre><span></span><code>0.6.2
+</code></pre></div></p>
+<h2 id="how-do-i-install-using-conda">How do I install using conda?<a class="headerlink" href="#how-do-i-install-using-conda" title="Permanent link">&para;</a></h2>
+<p>Create your virtual environment (with conda python&gt;=3.6)
+<div class="highlight"><pre><span></span><code>conda create --name myenv 
+</code></pre></div>
+Activate it:
+<div class="highlight"><pre><span></span><code>conda activate myenv
+</code></pre></div></p>
+<p>We could recommned that you just install pip in your virtual enviroment at this point and continue with the normal install instructions, i.e:
+<div class="highlight"><pre><span></span><code>conda install pip
+</code></pre></div>
+followed by:
+<div class="highlight"><pre><span></span><code>pip install carrot-cdm
+</code></pre></div></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+ 
+        
+      </div>
+      <div class="md-social">
+  
+</div>
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.tracking", "navigation.indexes", "navigation.top", "content.action.edit"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.3220b9d7.min.js"></script>
+      
+    
+  </body>
+</html>

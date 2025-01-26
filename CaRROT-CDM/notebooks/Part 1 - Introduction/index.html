@@ -1,0 +1,2939 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.18">
+    
+    
+      
+        <title>Part 1 Introduction - Carrot Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.66ac8b77.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/custom.css">
+    
+      <link rel="stylesheet" href="../../../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../../../css/pandas-dataframe.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="carrot" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#what-is-co-connect-tools" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Carrot Docs" class="md-header__button md-logo" aria-label="Carrot Docs" data-md-component="logo">
+      
+  <img src="../../../images/favicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Carrot Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Part 1   Introduction
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Health-Informatics-UoN/carrot-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Health-Informatics-UoN/carrot-docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Carrot Docs" class="md-nav__button md-logo" aria-label="Carrot Docs" data-md-component="logo">
+      
+  <img src="../../../images/favicon.png" alt="logo">
+
+    </a>
+    Carrot Docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Health-Informatics-UoN/carrot-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Health-Informatics-UoN/carrot-docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-co-connect-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is CO-CONNECT Tools?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-are-the-health-data-elements" class="md-nav__link">
+    <span class="md-ellipsis">
+      What are the Health Data Elements ?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-do-you-mean-by-io" class="md-nav__link">
+    <span class="md-ellipsis">
+      What do you mean by I/O ?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-are-the-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      What are the tools?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-the-commondatamodel" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is the CommonDataModel ?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/Health-Informatics-UoN/carrot-docs/edit/main/docs/CaRROT-CDM/notebooks/Part 1 - Introduction.ipynb" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+    </a>
+  
+  
+
+
+  <h1>Part 1   Introduction</h1>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script>
+(function() {
+  function addWidgetsRenderer() {
+    var requireJsScript = document.createElement('script');
+    requireJsScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js';
+
+    var mimeElement = document.querySelector('script[type="application/vnd.jupyter.widget-view+json"]');
+    var jupyterWidgetsScript = document.createElement('script');
+    var widgetRendererSrc = 'https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js';
+    var widgetState;
+
+    // Fallback for older version:
+    try {
+      widgetState = mimeElement && JSON.parse(mimeElement.innerHTML);
+
+      if (widgetState && (widgetState.version_major < 2 || !widgetState.version_major)) {
+        widgetRendererSrc = 'jupyter-js-widgets@*/dist/embed.js';
+      }
+    } catch(e) {}
+
+    jupyterWidgetsScript.src = widgetRendererSrc;
+
+    document.body.appendChild(requireJsScript);
+    document.body.appendChild(jupyterWidgetsScript);
+  }
+
+  document.addEventListener('DOMContentLoaded', addWidgetsRenderer);
+}());
+</script>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="what-is-co-connect-tools">What is CO-CONNECT Tools?<a class="headerlink" href="#what-is-co-connect-tools" title="Permanent link">&para;</a></h2>
+<p><code>carrot.cdm</code> is a software package. The main component is the `carrot.module that contains python classes and tools for:</p>
+<ul>
+<li>Common Data Model</li>
+<li>Health Data Elements (person, condition_occurence...)</li>
+<li>I/O </li>
+<li>Command Line Interface</li>
+<li>Various Tools</li>
+</ul>
+<p><img alt="image-2.png" src="image-2.png" /></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="what-are-the-health-data-elements">What are the Health Data Elements ?<a class="headerlink" href="#what-are-the-health-data-elements" title="Permanent link">&para;</a></h2>
+<p>Classes for controlling and handling the building of elements such as the <code>person</code> table. </p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">carrot.cdm.objects</span><span class="w"> </span><span class="kn">import</span> <span class="n">Person</span>
+<span class="n">Person</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>carrot.cdm.objects.versions.v5_3_1.person.Person</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">person</span> <span class="o">=</span> <span class="n">Person</span><span class="p">()</span>
+<span class="n">person</span><span class="o">.</span><span class="n">get_field_names</span><span class="p">()</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>['person_id',
+ 'gender_concept_id',
+ 'year_of_birth',
+ 'month_of_birth',
+ 'day_of_birth',
+ 'birth_datetime',
+ 'race_concept_id',
+ 'ethnicity_concept_id',
+ 'location_id',
+ 'provider_id',
+ 'care_site_id',
+ 'person_source_value',
+ 'gender_source_value',
+ 'gender_source_concept_id',
+ 'race_source_value',
+ 'race_source_concept_id',
+ 'ethnicity_source_value',
+ 'ethnicity_source_concept_id']</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">person</span><span class="o">.</span><span class="n">get_field_dtypes</span><span class="p">()</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>{'person_id': 'Integer',
+ 'gender_concept_id': 'Integer',
+ 'year_of_birth': 'Integer',
+ 'month_of_birth': 'Integer',
+ 'day_of_birth': 'Integer',
+ 'birth_datetime': 'Timestamp',
+ 'race_concept_id': 'Integer',
+ 'ethnicity_concept_id': 'Integer',
+ 'location_id': 'Integer',
+ 'provider_id': 'Integer',
+ 'care_site_id': 'Integer',
+ 'person_source_value': 'Text50',
+ 'gender_source_value': 'Text50',
+ 'gender_source_concept_id': 'Integer',
+ 'race_source_value': 'Text50',
+ 'race_source_concept_id': 'Integer',
+ 'ethnicity_source_value': 'Text50',
+ 'ethnicity_source_concept_id': 'Integer'}</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">build_person</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">person_id</span><span class="o">.</span><span class="n">series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">((</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="n">n</span><span class="p">)))</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">gender_concept_id</span><span class="o">.</span><span class="n">series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="mi">8507</span><span class="p">,</span><span class="mi">8532</span><span class="p">],</span><span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">))</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">birth_datetime</span><span class="o">.</span><span class="n">series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s1">&#39;1970-01-01&#39;</span><span class="p">,</span><span class="s1">&#39;1990-01-01&#39;</span><span class="p">],</span><span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">))</span>
+
+<span class="n">person</span><span class="o">.</span><span class="n">define</span> <span class="o">=</span> <span class="n">build_person</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">person</span><span class="o">.</span><span class="n">get_df</span><span class="p">(</span><span class="n">force_rebuild</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+<code><span class="ansi-green-fg">2022-06-17 14:47:43</span> - <span class="ansi-blue-fg">Person</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Automatically formatting data columns.
+<span class="ansi-green-fg">2022-06-17 14:47:43</span> - <span class="ansi-blue-fg">Person</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - created df (0x10e2485e0)[0x10e19ee50]
+</code>
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>person_id</th>
+<th>gender_concept_id</th>
+<th>year_of_birth</th>
+<th>month_of_birth</th>
+<th>day_of_birth</th>
+<th>birth_datetime</th>
+<th>race_concept_id</th>
+<th>ethnicity_concept_id</th>
+<th>location_id</th>
+<th>provider_id</th>
+<th>care_site_id</th>
+<th>person_source_value</th>
+<th>gender_source_value</th>
+<th>gender_source_concept_id</th>
+<th>race_source_value</th>
+<th>race_source_concept_id</th>
+<th>ethnicity_source_value</th>
+<th>ethnicity_source_concept_id</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>0</td>
+<td>8532</td>
+<td>1970</td>
+<td>1</td>
+<td>1</td>
+<td>1970-01-01 00:00:00.000000</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr>
+<th>1</th>
+<td>1</td>
+<td>8507</td>
+<td>1990</td>
+<td>1</td>
+<td>1</td>
+<td>1990-01-01 00:00:00.000000</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr>
+<th>2</th>
+<td>2</td>
+<td>8507</td>
+<td>1970</td>
+<td>1</td>
+<td>1</td>
+<td>1970-01-01 00:00:00.000000</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr>
+<th>3</th>
+<td>3</td>
+<td>8507</td>
+<td>1970</td>
+<td>1</td>
+<td>1</td>
+<td>1970-01-01 00:00:00.000000</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr>
+<th>4</th>
+<td>4</td>
+<td>8532</td>
+<td>1990</td>
+<td>1</td>
+<td>1</td>
+<td>1990-01-01 00:00:00.000000</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr>
+<th>5</th>
+<td>5</td>
+<td>8532</td>
+<td>1970</td>
+<td>1</td>
+<td>1</td>
+<td>1970-01-01 00:00:00.000000</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr>
+<th>6</th>
+<td>6</td>
+<td>8507</td>
+<td>1970</td>
+<td>1</td>
+<td>1</td>
+<td>1970-01-01 00:00:00.000000</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr>
+<th>7</th>
+<td>7</td>
+<td>8507</td>
+<td>1990</td>
+<td>1</td>
+<td>1</td>
+<td>1990-01-01 00:00:00.000000</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr>
+<th>8</th>
+<td>8</td>
+<td>8532</td>
+<td>1970</td>
+<td>1</td>
+<td>1</td>
+<td>1970-01-01 00:00:00.000000</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr>
+<th>9</th>
+<td>9</td>
+<td>8507</td>
+<td>1970</td>
+<td>1</td>
+<td>1</td>
+<td>1970-01-01 00:00:00.000000</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="what-do-you-mean-by-io">What do you mean by I/O ?<a class="headerlink" href="#what-do-you-mean-by-io" title="Permanent link">&para;</a></h2>
+<p>Various helper classes for data collections that control the Input/Output</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">carrot.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">LocalDataCollection</span><span class="p">,</span> <span class="n">SqlDataCollection</span><span class="p">,</span> <span class="n">BCLinkDataCollection</span>
+<span class="n">LocalDataCollection</span><span class="p">,</span> <span class="n">SqlDataCollection</span><span class="p">,</span> <span class="n">BCLinkDataCollection</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>(carrot.io.plugins.local.LocalDataCollection,
+ carrot.io.plugins.sql.SqlDataCollection,
+ carrot.io.plugins.bclink.BCLinkDataCollection)</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>A <code>LocalDataCollection</code> can be used to load local csv files</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">local</span> <span class="o">=</span> <span class="n">LocalDataCollection</span><span class="p">({</span><span class="s1">&#39;Demographics.csv&#39;</span><span class="p">:</span><span class="s1">&#39;../data/part1/Demographics.csv&#39;</span><span class="p">},</span><span class="n">nrows</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">chunksize</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">local</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+<code><span class="ansi-green-fg">2022-06-17 14:47:43</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - DataCollection Object Created
+<span class="ansi-green-fg">2022-06-17 14:47:43</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Using a chunksize of '5' nrows
+<span class="ansi-green-fg">2022-06-17 14:47:43</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Registering  Demographics.csv [&lt;carrot.io.common.DataBrick object at 0x10a500370&gt;]
+</code>
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>&lt;carrot.io.plugins.local.LocalDataCollection at 0x10a500b80&gt;</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">local</span><span class="p">[</span><span class="s1">&#39;Demographics.csv&#39;</span><span class="p">]</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+<code><span class="ansi-green-fg">2022-06-17 14:47:43</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Retrieving initial dataframe for 'Demographics.csv' for the first time
+</code>
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>ID</th>
+<th>Age</th>
+<th>Sex</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>pk1</td>
+<td>57.0</td>
+<td>Male</td>
+</tr>
+<tr>
+<th>1</th>
+<td>pk2</td>
+<td>68.0</td>
+<td>Female</td>
+</tr>
+<tr>
+<th>2</th>
+<td>pk3</td>
+<td>78.0</td>
+<td>Female</td>
+</tr>
+<tr>
+<th>3</th>
+<td>pk4</td>
+<td>51.0</td>
+<td>Female</td>
+</tr>
+<tr>
+<th>4</th>
+<td>pk5</td>
+<td>51.0</td>
+<td>Male</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">local</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+<code><span class="ansi-green-fg">2022-06-17 14:47:43</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Getting next chunk of data
+<span class="ansi-green-fg">2022-06-17 14:47:44</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Getting the next chunk of size '5' for 'Demographics.csv'
+<span class="ansi-green-fg">2022-06-17 14:47:44</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - --&gt; Got 5 rows
+</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">local</span><span class="p">[</span><span class="s1">&#39;Demographics.csv&#39;</span><span class="p">]</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>ID</th>
+<th>Age</th>
+<th>Sex</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>5</th>
+<td>pk6</td>
+<td>64.0</td>
+<td>Male</td>
+</tr>
+<tr>
+<th>6</th>
+<td>pk7</td>
+<td>76.0</td>
+<td>Female</td>
+</tr>
+<tr>
+<th>7</th>
+<td>pk8</td>
+<td>60.0</td>
+<td>Male</td>
+</tr>
+<tr>
+<th>8</th>
+<td>pk9</td>
+<td>92.0</td>
+<td>Female</td>
+</tr>
+<tr>
+<th>9</th>
+<td>pk10</td>
+<td>58.0</td>
+<td>Male</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">local</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+<code><span class="ansi-green-fg">2022-06-17 14:47:44</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - resetting used bricks
+</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>A <code>BCLinkDataCollection</code> is used to interact with BCLink (for either I/O)</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">bclink</span> <span class="o">=</span> <span class="n">BCLinkDataCollection</span><span class="p">({</span><span class="s1">&#39;dry_run&#39;</span><span class="p">:</span><span class="kc">True</span><span class="p">,</span><span class="s1">&#39;tables&#39;</span><span class="p">:{</span><span class="s1">&#39;person&#39;</span><span class="p">:</span><span class="s1">&#39;ds1000&#39;</span><span class="p">,</span><span class="s1">&#39;observation&#39;</span><span class="p">:</span><span class="s1">&#39;ds10002&#39;</span><span class="p">}},</span>
+                              <span class="n">output_folder</span><span class="o">=</span><span class="s1">&#39;cache&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+<code><span class="ansi-green-fg">2022-06-17 14:47:44</span> - <span class="ansi-blue-fg">BCLinkDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - setup bclink collection
+<span class="ansi-green-fg">2022-06-17 14:47:44</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = 'ds1000' ) bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:47:44</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - ds1000 (person) already exists --&gt; all good
+<span class="ansi-green-fg">2022-06-17 14:47:44</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = 'ds10002' ) bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:47:44</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - ds10002 (observation) already exists --&gt; all good
+<span class="ansi-green-fg">2022-06-17 14:47:44</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT count(*) FROM ds1000 bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:47:44</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT count(*) FROM ds10002 bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:47:44</span> - <span class="ansi-blue-fg">BCLinkDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - DataCollection Object Created
+</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">bclink</span><span class="o">.</span><span class="n">bclink_helpers</span><span class="o">.</span><span class="n">get_table_map</span><span class="p">()</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>{'person': 'ds1000', 'observation': 'ds10002'}</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">bclink</span><span class="o">.</span><span class="n">bclink_helpers</span><span class="o">.</span><span class="n">check_table_exists</span><span class="p">(</span><span class="s1">&#39;person&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+<code><span class="ansi-green-fg">2022-06-17 14:47:44</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = 'person' ) bclink</span>
+</code>
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>True</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Example, create an indexing map by retrieving the last index of the table currently in BCLink:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">bclink</span><span class="o">.</span><span class="n">load_indexing</span><span class="p">()</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+<code><span class="ansi-green-fg">2022-06-17 14:47:44</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT count(*) FROM ds1000 bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:47:44</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT column_name FROM INFORMATION_SCHEMA. COLUMNS WHERE table_name = 'ds1000' LIMIT 1  bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:47:44</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT person_id FROM ds1000 ORDER BY -person_id LIMIT 1;  bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:47:44</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT count(*) FROM ds10002 bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:47:44</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT column_name FROM INFORMATION_SCHEMA. COLUMNS WHERE table_name = 'ds10002' LIMIT 1  bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:47:44</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT person_id FROM ds10002 ORDER BY -person_id LIMIT 1;  bclink</span>
+</code>
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>{}</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="what-are-the-tools">What are the tools?<a class="headerlink" href="#what-are-the-tools" title="Permanent link">&para;</a></h2>
+<p>Lots of different features, mostly helper functions used throughout the code</p>
+<p>For example, loading a json rules file:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">SVG</span><span class="p">,</span> <span class="n">display</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">carrot.tools</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_json</span><span class="p">,</span><span class="n">make_dag</span>
+
+<span class="n">rules</span> <span class="o">=</span> <span class="n">load_json</span><span class="p">(</span><span class="s1">&#39;../data/rules.json&#39;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">show_svg</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">display</span><span class="p">(</span><span class="n">SVG</span><span class="p">(</span><span class="n">make_dag</span><span class="p">(</span><span class="n">rules</span><span class="p">[</span><span class="s1">&#39;cdm&#39;</span><span class="p">])))</span>
+<span class="n">show_svg</span><span class="p">()</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_svg output_subarea">
+<svg height="1287pt" viewbox="0.00 0.00 714.00 1287.00" width="714pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g class="graph" id="graph0" transform="scale(1 1) rotate(0) translate(4 1283)">
+<polygon fill="white" points="-4,4 -4,-1283 710,-1283 710,4 -4,4" stroke="transparent"></polygon>
+<g class="cluster" id="clust2">
+<title>cluster_1</title>
+<polygon fill="#e5f5e0" points="8,-8 8,-1271 304,-1271 304,-8 8,-8" stroke="black" stroke-width="0"></polygon>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="156" y="-1255.8">Source</text>
+</g>
+<g class="cluster" id="clust3">
+<title>cluster_0</title>
+<polygon fill="#deebf7" points="324,-62 324,-1271 698,-1271 698,-62 324,-62" stroke="black" stroke-width="0"></polygon>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="511" y="-1255.8">Common Data Model</text>
+</g>
+
+<!-- person_birth_datetime -->
+
+
+<g class="node" id="node1">
+<title>person_birth_datetime</title>
+<path d="M462,-1240C462,-1240 390,-1240 390,-1240 384,-1240 378,-1234 378,-1228 378,-1228 378,-1216 378,-1216 378,-1210 384,-1204 390,-1204 390,-1204 462,-1204 462,-1204 468,-1204 474,-1210 474,-1216 474,-1216 474,-1228 474,-1228 474,-1234 468,-1240 462,-1240" fill="#2b8cbe" stroke="black"></path>
+<text fill="white" font-family="Times,serif" font-size="14.00" text-anchor="middle" x="426" y="-1218.3">birth_datetime</text>
+</g>
+
+<!-- Demographics.csv_Age -->
+
+
+<g class="node" id="node2">
+<title>Demographics.csv_Age</title>
+<path d="M248,-1240C248,-1240 218,-1240 218,-1240 212,-1240 206,-1234 206,-1228 206,-1228 206,-1216 206,-1216 206,-1210 212,-1204 218,-1204 218,-1204 248,-1204 248,-1204 254,-1204 260,-1210 260,-1216 260,-1216 260,-1228 260,-1228 260,-1234 254,-1240 248,-1240" fill="#7bccc4" stroke="black"></path>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="233" y="-1218.3">Age</text>
+</g>
+
+<!-- person_birth_datetime&#45;&gt;Demographics.csv_Age -->
+
+
+<g class="edge" id="edge1">
+<title>person_birth_datetime-&gt;Demographics.csv_Age</title>
+<path d="M367.49,-1222C331.79,-1222 287.63,-1222 260.13,-1222" fill="none" stroke="black" stroke-width="2"></path>
+<polygon fill="black" points="367.79,-1225.5 377.79,-1222 367.79,-1218.5 367.79,-1225.5" stroke="black" stroke-width="2"></polygon>
+</g>
+
+<!-- Demographics.csv -->
+
+
+<g class="node" id="node46">
+<title>Demographics.csv</title>
+<polygon fill="#a8ddb5" points="134,-1186 28,-1186 28,-1190 16,-1190 16,-1150 134,-1150 134,-1186" stroke="black"></polygon>
+<polyline fill="none" points="16,-1186 28,-1186 " stroke="black"></polyline>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="75" y="-1164.3">Demographics.csv</text>
+</g>
+
+<!-- Demographics.csv_Age&#45;&gt;Demographics.csv -->
+
+
+<g class="edge" id="edge55">
+<title>Demographics.csv_Age-&gt;Demographics.csv</title>
+<path d="M205.89,-1212.96C184.73,-1205.64 154.23,-1195.08 128.11,-1186.04" fill="none" stroke="black"></path>
+</g>
+
+<!-- person_gender_concept_id -->
+
+
+<g class="node" id="node3">
+<title>person_gender_concept_id</title>
+<path d="M473.5,-1132C473.5,-1132 378.5,-1132 378.5,-1132 372.5,-1132 366.5,-1126 366.5,-1120 366.5,-1120 366.5,-1108 366.5,-1108 366.5,-1102 372.5,-1096 378.5,-1096 378.5,-1096 473.5,-1096 473.5,-1096 479.5,-1096 485.5,-1102 485.5,-1108 485.5,-1108 485.5,-1120 485.5,-1120 485.5,-1126 479.5,-1132 473.5,-1132" fill="#2b8cbe" stroke="black"></path>
+<text fill="white" font-family="Times,serif" font-size="14.00" text-anchor="middle" x="426" y="-1110.3">gender_concept_id</text>
+</g>
+
+<!-- Demographics.csv_Sex -->
+
+
+<g class="node" id="node4">
+<title>Demographics.csv_Sex</title>
+<path d="M248,-1186C248,-1186 218,-1186 218,-1186 212,-1186 206,-1180 206,-1174 206,-1174 206,-1162 206,-1162 206,-1156 212,-1150 218,-1150 218,-1150 248,-1150 248,-1150 254,-1150 260,-1156 260,-1162 260,-1162 260,-1174 260,-1174 260,-1180 254,-1186 248,-1186" fill="#7bccc4" stroke="black"></path>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="233" y="-1164.3">Sex</text>
+</g>
+
+<!-- person_gender_concept_id&#45;&gt;Demographics.csv_Sex -->
+
+
+<g class="edge" id="edge2">
+<title>person_gender_concept_id-&gt;Demographics.csv_Sex</title>
+<path d="M356.52,-1132.01C345.63,-1134.96 334.49,-1138.02 324,-1141 302.5,-1147.1 278.24,-1154.4 260.32,-1159.87" fill="none" stroke="black" stroke-width="2"></path>
+<polygon fill="black" points="357.69,-1135.32 366.44,-1129.33 355.87,-1128.56 357.69,-1135.32" stroke="black" stroke-width="2"></polygon>
+</g>
+
+<!-- Demographics.csv_Sex&#45;&gt;Demographics.csv -->
+
+
+<g class="edge" id="edge56">
+<title>Demographics.csv_Sex-&gt;Demographics.csv</title>
+<path d="M205.89,-1168C186.37,-1168 158.93,-1168 134.29,-1168" fill="none" stroke="black"></path>
+</g>
+
+<!-- person_gender_source_concept_id -->
+
+
+<g class="node" id="node5">
+<title>person_gender_source_concept_id</title>
+<path d="M494.5,-1078C494.5,-1078 357.5,-1078 357.5,-1078 351.5,-1078 345.5,-1072 345.5,-1066 345.5,-1066 345.5,-1054 345.5,-1054 345.5,-1048 351.5,-1042 357.5,-1042 357.5,-1042 494.5,-1042 494.5,-1042 500.5,-1042 506.5,-1048 506.5,-1054 506.5,-1054 506.5,-1066 506.5,-1066 506.5,-1072 500.5,-1078 494.5,-1078" fill="#2b8cbe" stroke="black"></path>
+<text fill="white" font-family="Times,serif" font-size="14.00" text-anchor="middle" x="426" y="-1056.3">gender_source_concept_id</text>
+</g>
+
+<!-- person_gender_source_concept_id&#45;&gt;Demographics.csv_Sex -->
+
+
+<g class="edge" id="edge3">
+<title>person_gender_source_concept_id-&gt;Demographics.csv_Sex</title>
+<path d="M336.46,-1077.86C332,-1080.51 327.8,-1083.54 324,-1087 305.08,-1104.23 321.98,-1122.78 304,-1141 292.29,-1152.87 274.79,-1159.62 260.22,-1163.4" fill="none" stroke="black" stroke-width="2"></path>
+<polygon fill="black" points="338.08,-1080.97 345.32,-1073.23 334.84,-1074.76 338.08,-1080.97" stroke="black" stroke-width="2"></polygon>
+</g>
+
+<!-- person_gender_source_value -->
+
+
+<g class="node" id="node6">
+<title>person_gender_source_value</title>
+<path d="M479.5,-1186C479.5,-1186 372.5,-1186 372.5,-1186 366.5,-1186 360.5,-1180 360.5,-1174 360.5,-1174 360.5,-1162 360.5,-1162 360.5,-1156 366.5,-1150 372.5,-1150 372.5,-1150 479.5,-1150 479.5,-1150 485.5,-1150 491.5,-1156 491.5,-1162 491.5,-1162 491.5,-1174 491.5,-1174 491.5,-1180 485.5,-1186 479.5,-1186" fill="#2b8cbe" stroke="black"></path>
+<text fill="white" font-family="Times,serif" font-size="14.00" text-anchor="middle" x="426" y="-1164.3">gender_source_value</text>
+</g>
+
+<!-- person_gender_source_value&#45;&gt;Demographics.csv_Sex -->
+
+
+<g class="edge" id="edge4">
+<title>person_gender_source_value-&gt;Demographics.csv_Sex</title>
+<path d="M350.17,-1168C318.44,-1168 283.52,-1168 260.33,-1168" fill="none" stroke="black" stroke-width="2"></path>
+<polygon fill="black" points="350.34,-1171.5 360.34,-1168 350.34,-1164.5 350.34,-1171.5" stroke="black" stroke-width="2"></polygon>
+</g>
+
+<!-- person_person_id -->
+
+
+<g class="node" id="node7">
+<title>person_person_id</title>
+<path d="M449,-1024C449,-1024 403,-1024 403,-1024 397,-1024 391,-1018 391,-1012 391,-1012 391,-1000 391,-1000 391,-994 397,-988 403,-988 403,-988 449,-988 449,-988 455,-988 461,-994 461,-1000 461,-1000 461,-1012 461,-1012 461,-1018 455,-1024 449,-1024" fill="#2b8cbe" stroke="black"></path>
+<text fill="white" font-family="Times,serif" font-size="14.00" text-anchor="middle" x="426" y="-1002.3">person_id</text>
+</g>
+
+<!-- Demographics.csv_ID -->
+
+
+<g class="node" id="node8">
+<title>Demographics.csv_ID</title>
+<path d="M248,-1132C248,-1132 218,-1132 218,-1132 212,-1132 206,-1126 206,-1120 206,-1120 206,-1108 206,-1108 206,-1102 212,-1096 218,-1096 218,-1096 248,-1096 248,-1096 254,-1096 260,-1102 260,-1108 260,-1108 260,-1120 260,-1120 260,-1126 254,-1132 248,-1132" fill="#7bccc4" stroke="black"></path>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="233" y="-1110.3">ID</text>
+</g>
+
+<!-- person_person_id&#45;&gt;Demographics.csv_ID -->
+
+
+<g class="edge" id="edge5">
+<title>person_person_id-&gt;Demographics.csv_ID</title>
+<path d="M380.86,-1008.76C361.37,-1012.08 339.43,-1018.95 324,-1033 305.08,-1050.23 321.98,-1068.78 304,-1087 292.29,-1098.87 274.79,-1105.62 260.22,-1109.4" fill="none" stroke="black" stroke-width="2"></path>
+<polygon fill="black" points="381.38,-1012.22 390.78,-1007.34 380.38,-1005.3 381.38,-1012.22" stroke="black" stroke-width="2"></polygon>
+</g>
+
+<!-- Demographics.csv_ID&#45;&gt;Demographics.csv -->
+
+
+<g class="edge" id="edge57">
+<title>Demographics.csv_ID-&gt;Demographics.csv</title>
+<path d="M205.89,-1123.04C184.73,-1130.36 154.23,-1140.92 128.11,-1149.96" fill="none" stroke="black"></path>
+</g>
+
+<!-- observation_observation_concept_id -->
+
+
+<g class="node" id="node9">
+<title>observation_observation_concept_id</title>
+<path d="M487,-754C487,-754 365,-754 365,-754 359,-754 353,-748 353,-742 353,-742 353,-730 353,-730 353,-724 359,-718 365,-718 365,-718 487,-718 487,-718 493,-718 499,-724 499,-730 499,-730 499,-742 499,-742 499,-748 493,-754 487,-754" fill="#2b8cbe" stroke="black"></path>
+<text fill="white" font-family="Times,serif" font-size="14.00" text-anchor="middle" x="426" y="-732.3">observation_concept_id</text>
+</g>
+
+<!-- Serology.csv_IgG -->
+
+
+<g class="node" id="node10">
+<title>Serology.csv_IgG</title>
+<path d="M248,-970C248,-970 218,-970 218,-970 212,-970 206,-964 206,-958 206,-958 206,-946 206,-946 206,-940 212,-934 218,-934 218,-934 248,-934 248,-934 254,-934 260,-940 260,-946 260,-946 260,-958 260,-958 260,-964 254,-970 248,-970" fill="#7bccc4" stroke="black"></path>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="233" y="-948.3">IgG</text>
+</g>
+
+<!-- observation_observation_concept_id&#45;&gt;Serology.csv_IgG -->
+
+
+<g class="edge" id="edge6">
+<title>observation_observation_concept_id-&gt;Serology.csv_IgG</title>
+<path d="M343.36,-748.15C336.06,-751.93 329.4,-756.79 324,-763 276.37,-817.72 348.64,-867.81 304,-925 293.5,-938.45 275.42,-945.21 260.26,-948.6" fill="none" stroke="black" stroke-width="2"></path>
+<polygon fill="black" points="345.19,-751.16 352.91,-743.9 342.35,-744.77 345.19,-751.16" stroke="black" stroke-width="2"></polygon>
+</g>
+
+<!-- Hospital_Visit.csv_reason -->
+
+
+<g class="node" id="node17">
+<title>Hospital_Visit.csv_reason</title>
+<path d="M248,-808C248,-808 218,-808 218,-808 212,-808 206,-802 206,-796 206,-796 206,-784 206,-784 206,-778 212,-772 218,-772 218,-772 248,-772 248,-772 254,-772 260,-778 260,-784 260,-784 260,-796 260,-796 260,-802 254,-808 248,-808" fill="#7bccc4" stroke="black"></path>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="233" y="-786.3">reason</text>
+</g>
+
+<!-- observation_observation_concept_id&#45;&gt;Hospital_Visit.csv_reason -->
+
+
+<g class="edge" id="edge11">
+<title>observation_observation_concept_id-&gt;Hospital_Visit.csv_reason</title>
+<path d="M346.74,-756.67C339.05,-758.78 331.37,-760.91 324,-763 302.5,-769.1 278.24,-776.4 260.32,-781.87" fill="none" stroke="black" stroke-width="2"></path>
+<polygon fill="black" points="347.74,-760.03 356.47,-754.02 345.9,-753.27 347.74,-760.03" stroke="black" stroke-width="2"></polygon>
+</g>
+
+<!-- Serology.csv -->
+
+
+<g class="node" id="node47">
+<title>Serology.csv</title>
+<polygon fill="#a8ddb5" points="118,-1024 44,-1024 44,-1028 32,-1028 32,-988 118,-988 118,-1024" stroke="black"></polygon>
+<polyline fill="none" points="32,-1024 44,-1024 " stroke="black"></polyline>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="75" y="-1002.3">Serology.csv</text>
+</g>
+
+<!-- Serology.csv_IgG&#45;&gt;Serology.csv -->
+
+
+<g class="edge" id="edge58">
+<title>Serology.csv_IgG-&gt;Serology.csv</title>
+<path d="M205.89,-961.04C181.95,-969.33 146.08,-981.74 118.09,-991.43" fill="none" stroke="black"></path>
+</g>
+
+<!-- observation_observation_datetime -->
+
+
+<g class="node" id="node11">
+<title>observation_observation_datetime</title>
+<path d="M481,-970C481,-970 371,-970 371,-970 365,-970 359,-964 359,-958 359,-958 359,-946 359,-946 359,-940 365,-934 371,-934 371,-934 481,-934 481,-934 487,-934 493,-940 493,-946 493,-946 493,-958 493,-958 493,-964 487,-970 481,-970" fill="#2b8cbe" stroke="black"></path>
+<text fill="white" font-family="Times,serif" font-size="14.00" text-anchor="middle" x="426" y="-948.3">observation_datetime</text>
+</g>
+
+<!-- Serology.csv_Date -->
+
+
+<g class="node" id="node12">
+<title>Serology.csv_Date</title>
+<path d="M248,-1078C248,-1078 218,-1078 218,-1078 212,-1078 206,-1072 206,-1066 206,-1066 206,-1054 206,-1054 206,-1048 212,-1042 218,-1042 218,-1042 248,-1042 248,-1042 254,-1042 260,-1048 260,-1054 260,-1054 260,-1066 260,-1066 260,-1072 254,-1078 248,-1078" fill="#7bccc4" stroke="black"></path>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="233" y="-1056.3">Date</text>
+</g>
+
+<!-- observation_observation_datetime&#45;&gt;Serology.csv_Date -->
+
+
+<g class="edge" id="edge7">
+<title>observation_observation_datetime-&gt;Serology.csv_Date</title>
+<path d="M349.51,-963.42C340.17,-967.25 331.35,-972.31 324,-979 305.08,-996.23 321.98,-1014.78 304,-1033 292.29,-1044.87 274.79,-1051.62 260.22,-1055.4" fill="none" stroke="black" stroke-width="2"></path>
+<polygon fill="black" points="350.76,-966.69 358.97,-959.99 348.38,-960.1 350.76,-966.69" stroke="black" stroke-width="2"></polygon>
+</g>
+
+<!-- Hospital_Visit.csv_admission_date -->
+
+
+<g class="node" id="node18">
+<title>Hospital_Visit.csv_admission_date</title>
+<path d="M271.5,-916C271.5,-916 194.5,-916 194.5,-916 188.5,-916 182.5,-910 182.5,-904 182.5,-904 182.5,-892 182.5,-892 182.5,-886 188.5,-880 194.5,-880 194.5,-880 271.5,-880 271.5,-880 277.5,-880 283.5,-886 283.5,-892 283.5,-892 283.5,-904 283.5,-904 283.5,-910 277.5,-916 271.5,-916" fill="#7bccc4" stroke="black"></path>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="233" y="-894.3">admission_date</text>
+</g>
+
+<!-- observation_observation_datetime&#45;&gt;Hospital_Visit.csv_admission_date -->
+
+
+<g class="edge" id="edge12">
+<title>observation_observation_datetime-&gt;Hospital_Visit.csv_admission_date</title>
+<path d="M349.02,-931.95C340.57,-929.65 332.1,-927.3 324,-925 310.97,-921.31 296.93,-917.17 283.91,-913.26" fill="none" stroke="black" stroke-width="2"></path>
+<polygon fill="black" points="348.34,-935.4 358.91,-934.64 350.18,-928.64 348.34,-935.4" stroke="black" stroke-width="2"></polygon>
+</g>
+
+<!-- Serology.csv_Date&#45;&gt;Serology.csv -->
+
+
+<g class="edge" id="edge59">
+<title>Serology.csv_Date-&gt;Serology.csv</title>
+<path d="M205.89,-1050.96C181.95,-1042.67 146.08,-1030.26 118.09,-1020.57" fill="none" stroke="black"></path>
+</g>
+
+<!-- observation_observation_source_concept_id -->
+
+
+<g class="node" id="node13">
+<title>observation_observation_source_concept_id</title>
+<path d="M508,-808C508,-808 344,-808 344,-808 338,-808 332,-802 332,-796 332,-796 332,-784 332,-784 332,-778 338,-772 344,-772 344,-772 508,-772 508,-772 514,-772 520,-778 520,-784 520,-784 520,-796 520,-796 520,-802 514,-808 508,-808" fill="#2b8cbe" stroke="black"></path>
+<text fill="white" font-family="Times,serif" font-size="14.00" text-anchor="middle" x="426" y="-786.3">observation_source_concept_id</text>
+</g>
+
+<!-- observation_observation_source_concept_id&#45;&gt;Serology.csv_IgG -->
+
+
+<g class="edge" id="edge8">
+<title>observation_observation_source_concept_id-&gt;Serology.csv_IgG</title>
+<path d="M326.38,-814.57C325.56,-815.36 324.77,-816.17 324,-817 290.86,-852.84 335.18,-887.44 304,-925 293.18,-938.03 275.3,-944.79 260.32,-948.28" fill="none" stroke="black" stroke-width="2"></path>
+<polygon fill="black" points="328.71,-817.19 334.23,-808.14 324.27,-811.77 328.71,-817.19" stroke="black" stroke-width="2"></polygon>
+</g>
+
+<!-- observation_observation_source_concept_id&#45;&gt;Hospital_Visit.csv_reason -->
+
+
+<g class="edge" id="edge13">
+<title>observation_observation_source_concept_id-&gt;Hospital_Visit.csv_reason</title>
+<path d="M321.56,-790C298.7,-790 276.44,-790 260.09,-790" fill="none" stroke="black" stroke-width="2"></path>
+<polygon fill="black" points="321.74,-793.5 331.74,-790 321.74,-786.5 321.74,-793.5" stroke="black" stroke-width="2"></polygon>
+</g>
+
+<!-- observation_observation_source_value -->
+
+
+<g class="node" id="node14">
+<title>observation_observation_source_value</title>
+<path d="M493,-862C493,-862 359,-862 359,-862 353,-862 347,-856 347,-850 347,-850 347,-838 347,-838 347,-832 353,-826 359,-826 359,-826 493,-826 493,-826 499,-826 505,-832 505,-838 505,-838 505,-850 505,-850 505,-856 499,-862 493,-862" fill="#2b8cbe" stroke="black"></path>
+<text fill="white" font-family="Times,serif" font-size="14.00" text-anchor="middle" x="426" y="-840.3">observation_source_value</text>
+</g>
+
+<!-- observation_observation_source_value&#45;&gt;Serology.csv_IgG -->
+
+
+<g class="edge" id="edge9">
+<title>observation_observation_source_value-&gt;Serology.csv_IgG</title>
+<path d="M337.7,-861.15C332.78,-863.96 328.15,-867.22 324,-871 305.08,-888.23 321.98,-906.78 304,-925 292.29,-936.87 274.79,-943.62 260.22,-947.4" fill="none" stroke="black" stroke-width="2"></path>
+<polygon fill="black" points="339.47,-864.17 346.84,-856.55 336.33,-857.92 339.47,-864.17" stroke="black" stroke-width="2"></polygon>
+</g>
+
+<!-- observation_observation_source_value&#45;&gt;Hospital_Visit.csv_reason -->
+
+
+<g class="edge" id="edge14">
+<title>observation_observation_source_value-&gt;Hospital_Visit.csv_reason</title>
+<path d="M346.74,-823.33C339.05,-821.22 331.37,-819.09 324,-817 302.5,-810.9 278.24,-803.6 260.32,-798.13" fill="none" stroke="black" stroke-width="2"></path>
+<polygon fill="black" points="345.9,-826.73 356.47,-825.98 347.74,-819.97 345.9,-826.73" stroke="black" stroke-width="2"></polygon>
+</g>
+
+<!-- observation_person_id -->
+
+
+<g class="node" id="node15">
+<title>observation_person_id</title>
+<path d="M449,-916C449,-916 403,-916 403,-916 397,-916 391,-910 391,-904 391,-904 391,-892 391,-892 391,-886 397,-880 403,-880 403,-880 449,-880 449,-880 455,-880 461,-886 461,-892 461,-892 461,-904 461,-904 461,-910 455,-916 449,-916" fill="#2b8cbe" stroke="black"></path>
+<text fill="white" font-family="Times,serif" font-size="14.00" text-anchor="middle" x="426" y="-894.3">person_id</text>
+</g>
+
+<!-- Serology.csv_ID -->
+
+
+<g class="node" id="node16">
+<title>Serology.csv_ID</title>
+<path d="M248,-1024C248,-1024 218,-1024 218,-1024 212,-1024 206,-1018 206,-1012 206,-1012 206,-1000 206,-1000 206,-994 212,-988 218,-988 218,-988 248,-988 248,-988 254,-988 260,-994 260,-1000 260,-1000 260,-1012 260,-1012 260,-1018 254,-1024 248,-1024" fill="#7bccc4" stroke="black"></path>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="233" y="-1002.3">ID</text>
+</g>
+
+<!-- observation_person_id&#45;&gt;Serology.csv_ID -->
+
+
+<g class="edge" id="edge10">
+<title>observation_person_id-&gt;Serology.csv_ID</title>
+<path d="M380.86,-900.76C361.37,-904.08 339.43,-910.95 324,-925 305.08,-942.23 321.98,-960.78 304,-979 292.29,-990.87 274.79,-997.62 260.22,-1001.4" fill="none" stroke="black" stroke-width="2"></path>
+<polygon fill="black" points="381.38,-904.22 390.78,-899.34 380.38,-897.3 381.38,-904.22" stroke="black" stroke-width="2"></polygon>
+</g>
+
+<!-- Hospital_Visit.csv_ID -->
+
+
+<g class="node" id="node19">
+<title>Hospital_Visit.csv_ID</title>
+<path d="M248,-862C248,-862 218,-862 218,-862 212,-862 206,-856 206,-850 206,-850 206,-838 206,-838 206,-832 212,-826 218,-826 218,-826 248,-826 248,-826 254,-826 260,-832 260,-838 260,-838 260,-850 260,-850 260,-856 254,-862 248,-862" fill="#7bccc4" stroke="black"></path>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="233" y="-840.3">ID</text>
+</g>
+
+<!-- observation_person_id&#45;&gt;Hospital_Visit.csv_ID -->
+
+
+<g class="edge" id="edge15">
+<title>observation_person_id-&gt;Hospital_Visit.csv_ID</title>
+<path d="M380.75,-886.48C363.07,-881.8 342.54,-876.26 324,-871 302.5,-864.9 278.24,-857.6 260.32,-852.13" fill="none" stroke="black" stroke-width="2"></path>
+<polygon fill="black" points="380.24,-889.97 390.8,-889.13 382.03,-883.2 380.24,-889.97" stroke="black" stroke-width="2"></polygon>
+</g>
+
+<!-- Serology.csv_ID&#45;&gt;Serology.csv -->
+
+
+<g class="edge" id="edge60">
+<title>Serology.csv_ID-&gt;Serology.csv</title>
+<path d="M205.89,-1006C181.95,-1006 146.08,-1006 118.09,-1006" fill="none" stroke="black"></path>
+</g>
+
+<!-- Hospital_Visit.csv -->
+
+
+<g class="node" id="node48">
+<title>Hospital_Visit.csv</title>
+<polygon fill="#a8ddb5" points="133,-862 29,-862 29,-866 17,-866 17,-826 133,-826 133,-862" stroke="black"></polygon>
+<polyline fill="none" points="17,-862 29,-862 " stroke="black"></polyline>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="75" y="-840.3">Hospital_Visit.csv</text>
+</g>
+
+<!-- Hospital_Visit.csv_reason&#45;&gt;Hospital_Visit.csv -->
+
+
+<g class="edge" id="edge61">
+<title>Hospital_Visit.csv_reason-&gt;Hospital_Visit.csv</title>
+<path d="M205.89,-799.04C184.73,-806.36 154.23,-816.92 128.11,-825.96" fill="none" stroke="black"></path>
+</g>
+
+<!-- Hospital_Visit.csv_admission_date&#45;&gt;Hospital_Visit.csv -->
+
+
+<g class="edge" id="edge62">
+<title>Hospital_Visit.csv_admission_date-&gt;Hospital_Visit.csv</title>
+<path d="M182.21,-880.77C164.91,-874.78 145.47,-868.05 128,-862" fill="none" stroke="black"></path>
+</g>
+
+<!-- Hospital_Visit.csv_ID&#45;&gt;Hospital_Visit.csv -->
+
+
+<g class="edge" id="edge63">
+<title>Hospital_Visit.csv_ID-&gt;Hospital_Visit.csv</title>
+<path d="M205.89,-844C186.11,-844 158.19,-844 133.3,-844" fill="none" stroke="black"></path>
+</g>
+
+<!-- condition_occurrence_condition_concept_id -->
+
+
+<g class="node" id="node20">
+<title>condition_occurrence_condition_concept_id</title>
+<path d="M481,-484C481,-484 371,-484 371,-484 365,-484 359,-478 359,-472 359,-472 359,-460 359,-460 359,-454 365,-448 371,-448 371,-448 481,-448 481,-448 487,-448 493,-454 493,-460 493,-460 493,-472 493,-472 493,-478 487,-484 481,-484" fill="#2b8cbe" stroke="black"></path>
+<text fill="white" font-family="Times,serif" font-size="14.00" text-anchor="middle" x="426" y="-462.3">condition_concept_id</text>
+</g>
+
+<!-- condition_occurrence_condition_concept_id&#45;&gt;Hospital_Visit.csv_reason -->
+
+
+<g class="edge" id="edge37">
+<title>condition_occurrence_condition_concept_id-&gt;Hospital_Visit.csv_reason</title>
+<path d="M349.43,-474.85C339.68,-479 330.76,-484.84 324,-493 285.62,-539.33 339.85,-714.68 304,-763 293.76,-776.81 275.46,-783.56 260.15,-786.85" fill="none" stroke="black" stroke-width="2"></path>
+<polygon fill="black" points="350.8,-478.07 358.99,-471.35 348.4,-471.5 350.8,-478.07" stroke="black" stroke-width="2"></polygon>
+</g>
+
+<!-- Symptoms.csv_Headache -->
+
+
+<g class="node" id="node21">
+<title>Symptoms.csv_Headache</title>
+<path d="M256,-322C256,-322 210,-322 210,-322 204,-322 198,-316 198,-310 198,-310 198,-298 198,-298 198,-292 204,-286 210,-286 210,-286 256,-286 256,-286 262,-286 268,-292 268,-298 268,-298 268,-310 268,-310 268,-316 262,-322 256,-322" fill="#7bccc4" stroke="black"></path>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="233" y="-300.3">Headache</text>
+</g>
+
+<!-- condition_occurrence_condition_concept_id&#45;&gt;Symptoms.csv_Headache -->
+
+
+<g class="edge" id="edge16">
+<title>condition_occurrence_condition_concept_id-&gt;Symptoms.csv_Headache</title>
+<path d="M349.15,-456.03C339.69,-452 330.93,-446.5 324,-439 290.86,-403.16 335.18,-368.56 304,-331 295.01,-320.18 281.15,-313.68 268.13,-309.79" fill="none" stroke="black" stroke-width="2"></path>
+<polygon fill="black" points="348.19,-459.41 358.79,-459.58 350.62,-452.84 348.19,-459.41" stroke="black" stroke-width="2"></polygon>
+</g>
+
+<!-- Symptoms.csv_Fatigue -->
+
+
+<g class="node" id="node29">
+<title>Symptoms.csv_Fatigue</title>
+<path d="M249.5,-268C249.5,-268 216.5,-268 216.5,-268 210.5,-268 204.5,-262 204.5,-256 204.5,-256 204.5,-244 204.5,-244 204.5,-238 210.5,-232 216.5,-232 216.5,-232 249.5,-232 249.5,-232 255.5,-232 261.5,-238 261.5,-244 261.5,-244 261.5,-256 261.5,-256 261.5,-262 255.5,-268 249.5,-268" fill="#7bccc4" stroke="black"></path>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="233" y="-246.3">Fatigue</text>
+</g>
+
+<!-- condition_occurrence_condition_concept_id&#45;&gt;Symptoms.csv_Fatigue -->
+
+
+<g class="edge" id="edge22">
+<title>condition_occurrence_condition_concept_id-&gt;Symptoms.csv_Fatigue</title>
+<path d="M349.4,-456.69C339.75,-452.59 330.86,-446.89 324,-439 276.37,-384.28 348.64,-334.19 304,-277 293.82,-263.96 276.51,-257.21 261.66,-253.72" fill="none" stroke="black" stroke-width="2"></path>
+<polygon fill="black" points="348.26,-460 358.85,-460.16 350.67,-453.43 348.26,-460" stroke="black" stroke-width="2"></polygon>
+</g>
+
+<!-- Symptoms.csv_Dizzy -->
+
+
+<g class="node" id="node30">
+<title>Symptoms.csv_Dizzy</title>
+<path d="M248,-214C248,-214 218,-214 218,-214 212,-214 206,-208 206,-202 206,-202 206,-190 206,-190 206,-184 212,-178 218,-178 218,-178 248,-178 248,-178 254,-178 260,-184 260,-190 260,-190 260,-202 260,-202 260,-208 254,-214 248,-214" fill="#7bccc4" stroke="black"></path>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="233" y="-192.3">Dizzy</text>
+</g>
+
+<!-- condition_occurrence_condition_concept_id&#45;&gt;Symptoms.csv_Dizzy -->
+
+
+<g class="edge" id="edge25">
+<title>condition_occurrence_condition_concept_id-&gt;Symptoms.csv_Dizzy</title>
+<path d="M349.37,-456.96C339.68,-452.83 330.79,-447.04 324,-439 292.91,-402.16 333.08,-261.45 304,-223 293.63,-209.29 275.34,-202.54 260.06,-199.22" fill="none" stroke="black" stroke-width="2"></path>
+<polygon fill="black" points="348.28,-460.29 358.88,-460.44 350.69,-453.72 348.28,-460.29" stroke="black" stroke-width="2"></polygon>
+</g>
+
+<!-- Symptoms.csv_Cough -->
+
+
+<g class="node" id="node31">
+<title>Symptoms.csv_Cough</title>
+<path d="M248,-484C248,-484 218,-484 218,-484 212,-484 206,-478 206,-472 206,-472 206,-460 206,-460 206,-454 212,-448 218,-448 218,-448 248,-448 248,-448 254,-448 260,-454 260,-460 260,-460 260,-472 260,-472 260,-478 254,-484 248,-484" fill="#7bccc4" stroke="black"></path>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="233" y="-462.3">Cough</text>
+</g>
+
+<!-- condition_occurrence_condition_concept_id&#45;&gt;Symptoms.csv_Cough -->
+
+
+<g class="edge" id="edge28">
+<title>condition_occurrence_condition_concept_id-&gt;Symptoms.csv_Cough</title>
+<path d="M348.68,-466C317.37,-466 283.18,-466 260.36,-466" fill="none" stroke="black" stroke-width="2"></path>
+<polygon fill="black" points="348.73,-469.5 358.73,-466 348.73,-462.5 348.73,-469.5" stroke="black" stroke-width="2"></polygon>
+</g>
+
+<!-- Symptoms.csv_Fever -->
+
+
+<g class="node" id="node32">
+<title>Symptoms.csv_Fever</title>
+<path d="M248,-430C248,-430 218,-430 218,-430 212,-430 206,-424 206,-418 206,-418 206,-406 206,-406 206,-400 212,-394 218,-394 218,-394 248,-394 248,-394 254,-394 260,-400 260,-406 260,-406 260,-418 260,-418 260,-424 254,-430 248,-430" fill="#7bccc4" stroke="black"></path>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="233" y="-408.3">Fever</text>
+</g>
+
+<!-- condition_occurrence_condition_concept_id&#45;&gt;Symptoms.csv_Fever -->
+
+
+<g class="edge" id="edge31">
+<title>condition_occurrence_condition_concept_id-&gt;Symptoms.csv_Fever</title>
+<path d="M349.02,-445.95C340.57,-443.65 332.1,-441.3 324,-439 302.5,-432.9 278.24,-425.6 260.32,-420.13" fill="none" stroke="black" stroke-width="2"></path>
+<polygon fill="black" points="348.34,-449.4 358.91,-448.64 350.18,-442.64 348.34,-449.4" stroke="black" stroke-width="2"></polygon>
+</g>
+
+<!-- Symptoms.csv_Muscle_Pain -->
+
+
+<g class="node" id="node33">
+<title>Symptoms.csv_Muscle_Pain</title>
+<path d="M265,-376C265,-376 201,-376 201,-376 195,-376 189,-370 189,-364 189,-364 189,-352 189,-352 189,-346 195,-340 201,-340 201,-340 265,-340 265,-340 271,-340 277,-346 277,-352 277,-352 277,-364 277,-364 277,-370 271,-376 265,-376" fill="#7bccc4" stroke="black"></path>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="233" y="-354.3">Muscle_Pain</text>
+</g>
+
+<!-- condition_occurrence_condition_concept_id&#45;&gt;Symptoms.csv_Muscle_Pain -->
+
+
+<g class="edge" id="edge34">
+<title>condition_occurrence_condition_concept_id-&gt;Symptoms.csv_Muscle_Pain</title>
+<path d="M349.51,-454.58C340.17,-450.75 331.35,-445.69 324,-439 305.08,-421.77 321.98,-403.22 304,-385 296.59,-377.49 286.86,-372.03 277.02,-368.07" fill="none" stroke="black" stroke-width="2"></path>
+<polygon fill="black" points="348.38,-457.9 358.97,-458.01 350.76,-451.31 348.38,-457.9" stroke="black" stroke-width="2"></polygon>
+</g>
+
+<!-- GP_Records.csv_comorbidity -->
+
+
+<g class="node" id="node34">
+<title>GP_Records.csv_comorbidity</title>
+<path d="M262.5,-538C262.5,-538 203.5,-538 203.5,-538 197.5,-538 191.5,-532 191.5,-526 191.5,-526 191.5,-514 191.5,-514 191.5,-508 197.5,-502 203.5,-502 203.5,-502 262.5,-502 262.5,-502 268.5,-502 274.5,-508 274.5,-514 274.5,-514 274.5,-526 274.5,-526 274.5,-532 268.5,-538 262.5,-538" fill="#7bccc4" stroke="black"></path>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="233" y="-516.3">comorbidity</text>
+</g>
+
+<!-- condition_occurrence_condition_concept_id&#45;&gt;GP_Records.csv_comorbidity -->
+
+
+<g class="edge" id="edge43">
+<title>condition_occurrence_condition_concept_id-&gt;GP_Records.csv_comorbidity</title>
+<path d="M349.02,-486.05C340.57,-488.35 332.1,-490.7 324,-493 307.84,-497.58 290.11,-502.85 274.69,-507.51" fill="none" stroke="black" stroke-width="2"></path>
+<polygon fill="black" points="350.18,-489.36 358.91,-483.36 348.34,-482.6 350.18,-489.36" stroke="black" stroke-width="2"></polygon>
+</g>
+
+<!-- Symptoms.csv -->
+
+
+<g class="node" id="node49">
+<title>Symptoms.csv</title>
+<polygon fill="#a8ddb5" points="124,-403 38,-403 38,-407 26,-407 26,-367 124,-367 124,-403" stroke="black"></polygon>
+<polyline fill="none" points="26,-403 38,-403 " stroke="black"></polyline>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="75" y="-381.3">Symptoms.csv</text>
+</g>
+
+<!-- Symptoms.csv_Headache&#45;&gt;Symptoms.csv -->
+
+
+<g class="edge" id="edge64">
+<title>Symptoms.csv_Headache-&gt;Symptoms.csv</title>
+<path d="M197.9,-318.04C188.74,-322.03 178.91,-326.52 170,-331 147.97,-342.08 123.88,-355.96 105.59,-366.87" fill="none" stroke="black"></path>
+</g>
+
+<!-- condition_occurrence_condition_end_datetime -->
+
+
+<g class="node" id="node22">
+<title>condition_occurrence_condition_end_datetime</title>
+<path d="M488,-646C488,-646 364,-646 364,-646 358,-646 352,-640 352,-634 352,-634 352,-622 352,-622 352,-616 358,-610 364,-610 364,-610 488,-610 488,-610 494,-610 500,-616 500,-622 500,-622 500,-634 500,-634 500,-640 494,-646 488,-646" fill="#2b8cbe" stroke="black"></path>
+<text fill="white" font-family="Times,serif" font-size="14.00" text-anchor="middle" x="426" y="-624.3">condition_end_datetime</text>
+</g>
+
+<!-- condition_occurrence_condition_end_datetime&#45;&gt;Hospital_Visit.csv_admission_date -->
+
+
+<g class="edge" id="edge38">
+<title>condition_occurrence_condition_end_datetime-&gt;Hospital_Visit.csv_admission_date</title>
+<path d="M342.66,-640.25C335.6,-644.03 329.19,-648.86 324,-655 292.91,-691.84 333.08,-832.55 304,-871 298.74,-877.96 291.43,-883.13 283.52,-886.96" fill="none" stroke="black" stroke-width="2"></path>
+<polygon fill="black" points="344.29,-643.35 351.91,-636 341.37,-636.99 344.29,-643.35" stroke="black" stroke-width="2"></polygon>
+</g>
+
+<!-- Symptoms.csv_date_occurrence -->
+
+
+<g class="node" id="node23">
+<title>Symptoms.csv_date_occurrence</title>
+<path d="M273.5,-700C273.5,-700 192.5,-700 192.5,-700 186.5,-700 180.5,-694 180.5,-688 180.5,-688 180.5,-676 180.5,-676 180.5,-670 186.5,-664 192.5,-664 192.5,-664 273.5,-664 273.5,-664 279.5,-664 285.5,-670 285.5,-676 285.5,-676 285.5,-688 285.5,-688 285.5,-694 279.5,-700 273.5,-700" fill="#7bccc4" stroke="black"></path>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="233" y="-678.3">date_occurrence</text>
+</g>
+
+<!-- condition_occurrence_condition_end_datetime&#45;&gt;Symptoms.csv_date_occurrence -->
+
+
+<g class="edge" id="edge17">
+<title>condition_occurrence_condition_end_datetime-&gt;Symptoms.csv_date_occurrence</title>
+<path d="M346.74,-648.67C339.05,-650.78 331.37,-652.91 324,-655 311.6,-658.52 298.28,-662.43 285.8,-666.17" fill="none" stroke="black" stroke-width="2"></path>
+<polygon fill="black" points="347.74,-652.03 356.47,-646.02 345.9,-645.27 347.74,-652.03" stroke="black" stroke-width="2"></polygon>
+</g>
+
+<!-- GP_Records.csv_date_of_visit -->
+
+
+<g class="node" id="node35">
+<title>GP_Records.csv_date_of_visit</title>
+<path d="M264.5,-754C264.5,-754 201.5,-754 201.5,-754 195.5,-754 189.5,-748 189.5,-742 189.5,-742 189.5,-730 189.5,-730 189.5,-724 195.5,-718 201.5,-718 201.5,-718 264.5,-718 264.5,-718 270.5,-718 276.5,-724 276.5,-730 276.5,-730 276.5,-742 276.5,-742 276.5,-748 270.5,-754 264.5,-754" fill="#7bccc4" stroke="black"></path>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="233" y="-732.3">date_of_visit</text>
+</g>
+
+<!-- condition_occurrence_condition_end_datetime&#45;&gt;GP_Records.csv_date_of_visit -->
+
+
+<g class="edge" id="edge44">
+<title>condition_occurrence_condition_end_datetime-&gt;GP_Records.csv_date_of_visit</title>
+<path d="M342.54,-642.57C335.8,-645.91 329.49,-650 324,-655 305.08,-672.23 321.98,-690.78 304,-709 296.5,-716.6 286.62,-722.11 276.66,-726.07" fill="none" stroke="black" stroke-width="2"></path>
+<polygon fill="black" points="344.19,-645.66 351.95,-638.45 341.38,-639.25 344.19,-645.66" stroke="black" stroke-width="2"></polygon>
+</g>
+
+<!-- Symptoms.csv_date_occurrence&#45;&gt;Symptoms.csv -->
+
+
+<g class="edge" id="edge65">
+<title>Symptoms.csv_date_occurrence-&gt;Symptoms.csv</title>
+<path d="M180.59,-663.93C176.72,-661.32 173.11,-658.36 170,-655 134.32,-616.51 93.43,-457.33 80.3,-403.15" fill="none" stroke="black"></path>
+</g>
+
+<!-- condition_occurrence_condition_source_concept_id -->
+
+
+<g class="node" id="node24">
+<title>condition_occurrence_condition_source_concept_id</title>
+<path d="M502,-538C502,-538 350,-538 350,-538 344,-538 338,-532 338,-526 338,-526 338,-514 338,-514 338,-508 344,-502 350,-502 350,-502 502,-502 502,-502 508,-502 514,-508 514,-514 514,-514 514,-526 514,-526 514,-532 508,-538 502,-538" fill="#2b8cbe" stroke="black"></path>
+<text fill="white" font-family="Times,serif" font-size="14.00" text-anchor="middle" x="426" y="-516.3">condition_source_concept_id</text>
+</g>
+
+<!-- condition_occurrence_condition_source_concept_id&#45;&gt;Hospital_Visit.csv_reason -->
+
+
+<g class="edge" id="edge39">
+<title>condition_occurrence_condition_source_concept_id-&gt;Hospital_Visit.csv_reason</title>
+<path d="M329.62,-541.25C327.62,-543.02 325.74,-544.94 324,-547 292.91,-583.84 333.08,-724.55 304,-763 293.63,-776.71 275.34,-783.46 260.06,-786.78" fill="none" stroke="black" stroke-width="2"></path>
+<polygon fill="black" points="331.96,-543.86 337.85,-535.06 327.75,-538.27 331.96,-543.86" stroke="black" stroke-width="2"></polygon>
+</g>
+
+<!-- condition_occurrence_condition_source_concept_id&#45;&gt;Symptoms.csv_Headache -->
+
+
+<g class="edge" id="edge18">
+<title>condition_occurrence_condition_source_concept_id-&gt;Symptoms.csv_Headache</title>
+<path d="M329.52,-498.53C327.57,-496.82 325.72,-494.98 324,-493 276.37,-438.28 348.64,-388.19 304,-331 295.26,-319.81 281.28,-313.25 268.09,-309.41" fill="none" stroke="black" stroke-width="2"></path>
+<polygon fill="black" points="327.44,-501.34 337.55,-504.52 331.63,-495.73 327.44,-501.34" stroke="black" stroke-width="2"></polygon>
+</g>
+
+<!-- condition_occurrence_condition_source_concept_id&#45;&gt;Symptoms.csv_Fatigue -->
+
+
+<g class="edge" id="edge23">
+<title>condition_occurrence_condition_source_concept_id-&gt;Symptoms.csv_Fatigue</title>
+<path d="M329.62,-498.75C327.62,-496.98 325.74,-495.06 324,-493 292.91,-456.16 333.08,-315.45 304,-277 294.02,-263.81 276.72,-257.06 261.81,-253.61" fill="none" stroke="black" stroke-width="2"></path>
+<polygon fill="black" points="327.75,-501.73 337.85,-504.94 331.96,-496.14 327.75,-501.73" stroke="black" stroke-width="2"></polygon>
+</g>
+
+<!-- condition_occurrence_condition_source_concept_id&#45;&gt;Symptoms.csv_Dizzy -->
+
+
+<g class="edge" id="edge26">
+<title>condition_occurrence_condition_source_concept_id-&gt;Symptoms.csv_Dizzy</title>
+<path d="M329.57,-498.8C327.59,-497.01 325.72,-495.08 324,-493 285.62,-446.67 339.85,-271.32 304,-223 293.76,-209.19 275.46,-202.44 260.15,-199.15" fill="none" stroke="black" stroke-width="2"></path>
+<polygon fill="black" points="327.67,-501.75 337.75,-505.02 331.91,-496.18 327.67,-501.75" stroke="black" stroke-width="2"></polygon>
+</g>
+
+<!-- condition_occurrence_condition_source_concept_id&#45;&gt;Symptoms.csv_Cough -->
+
+
+<g class="edge" id="edge29">
+<title>condition_occurrence_condition_source_concept_id-&gt;Symptoms.csv_Cough</title>
+<path d="M346.74,-499.33C339.05,-497.22 331.37,-495.09 324,-493 302.5,-486.9 278.24,-479.6 260.32,-474.13" fill="none" stroke="black" stroke-width="2"></path>
+<polygon fill="black" points="345.9,-502.73 356.47,-501.98 347.74,-495.97 345.9,-502.73" stroke="black" stroke-width="2"></polygon>
+</g>
+
+<!-- condition_occurrence_condition_source_concept_id&#45;&gt;Symptoms.csv_Fever -->
+
+
+<g class="edge" id="edge32">
+<title>condition_occurrence_condition_source_concept_id-&gt;Symptoms.csv_Fever</title>
+<path d="M329.29,-497.36C327.46,-495.99 325.69,-494.54 324,-493 305.08,-475.77 321.98,-457.22 304,-439 292.29,-427.13 274.79,-420.38 260.22,-416.6" fill="none" stroke="black" stroke-width="2"></path>
+<polygon fill="black" points="327.44,-500.33 337.73,-502.87 331.27,-494.47 327.44,-500.33" stroke="black" stroke-width="2"></polygon>
+</g>
+
+<!-- condition_occurrence_condition_source_concept_id&#45;&gt;Symptoms.csv_Muscle_Pain -->
+
+
+<g class="edge" id="edge35">
+<title>condition_occurrence_condition_source_concept_id-&gt;Symptoms.csv_Muscle_Pain</title>
+<path d="M329.68,-498.39C327.68,-496.72 325.78,-494.92 324,-493 290.86,-457.16 335.18,-422.56 304,-385 297.09,-376.68 287.31,-370.92 277.24,-366.93" fill="none" stroke="black" stroke-width="2"></path>
+<polygon fill="black" points="327.69,-501.27 337.86,-504.24 331.76,-495.57 327.69,-501.27" stroke="black" stroke-width="2"></polygon>
+</g>
+
+<!-- condition_occurrence_condition_source_concept_id&#45;&gt;GP_Records.csv_comorbidity -->
+
+
+<g class="edge" id="edge45">
+<title>condition_occurrence_condition_source_concept_id-&gt;GP_Records.csv_comorbidity</title>
+<path d="M327.79,-520C309.04,-520 290.39,-520 274.71,-520" fill="none" stroke="black" stroke-width="2"></path>
+<polygon fill="black" points="327.88,-523.5 337.88,-520 327.88,-516.5 327.88,-523.5" stroke="black" stroke-width="2"></polygon>
+</g>
+
+<!-- condition_occurrence_condition_source_value -->
+
+
+<g class="node" id="node25">
+<title>condition_occurrence_condition_source_value</title>
+<path d="M487,-430C487,-430 365,-430 365,-430 359,-430 353,-424 353,-418 353,-418 353,-406 353,-406 353,-400 359,-394 365,-394 365,-394 487,-394 487,-394 493,-394 499,-400 499,-406 499,-406 499,-418 499,-418 499,-424 493,-430 487,-430" fill="#2b8cbe" stroke="black"></path>
+<text fill="white" font-family="Times,serif" font-size="14.00" text-anchor="middle" x="426" y="-408.3">condition_source_value</text>
+</g>
+
+<!-- condition_occurrence_condition_source_value&#45;&gt;Hospital_Visit.csv_reason -->
+
+
+<g class="edge" id="edge40">
+<title>condition_occurrence_condition_source_value-&gt;Hospital_Visit.csv_reason</title>
+<path d="M343.8,-423.38C336.25,-427.29 329.41,-432.39 324,-439 278.33,-494.84 346.62,-704.8 304,-763 293.84,-776.87 275.55,-783.62 260.21,-786.9" fill="none" stroke="black" stroke-width="2"></path>
+<polygon fill="black" points="345.24,-426.57 352.96,-419.32 342.4,-420.18 345.24,-426.57" stroke="black" stroke-width="2"></polygon>
+</g>
+
+<!-- condition_occurrence_condition_source_value&#45;&gt;Symptoms.csv_Headache -->
+
+
+<g class="edge" id="edge19">
+<title>condition_occurrence_condition_source_value-&gt;Symptoms.csv_Headache</title>
+<path d="M343.7,-398C336.53,-394.55 329.8,-390.28 324,-385 305.08,-367.77 321.98,-349.22 304,-331 294.39,-321.26 280.89,-314.97 268.31,-310.94" fill="none" stroke="black" stroke-width="2"></path>
+<polygon fill="black" points="342.41,-401.26 352.98,-401.94 345.14,-394.81 342.41,-401.26" stroke="black" stroke-width="2"></polygon>
+</g>
+
+<!-- condition_occurrence_condition_source_value&#45;&gt;Symptoms.csv_Fatigue -->
+
+
+<g class="edge" id="edge24">
+<title>condition_occurrence_condition_source_value-&gt;Symptoms.csv_Fatigue</title>
+<path d="M343.4,-399.34C336.16,-395.65 329.5,-390.95 324,-385 290.86,-349.16 335.18,-314.56 304,-277 293.52,-264.37 276.4,-257.63 261.71,-254.05" fill="none" stroke="black" stroke-width="2"></path>
+<polygon fill="black" points="342.27,-402.67 352.83,-403.51 345.1,-396.27 342.27,-402.67" stroke="black" stroke-width="2"></polygon>
+</g>
+
+<!-- condition_occurrence_condition_source_value&#45;&gt;Symptoms.csv_Dizzy -->
+
+
+<g class="edge" id="edge27">
+<title>condition_occurrence_condition_source_value-&gt;Symptoms.csv_Dizzy</title>
+<path d="M343.36,-399.85C336.06,-396.07 329.4,-391.21 324,-385 276.37,-330.28 348.64,-280.19 304,-223 293.5,-209.55 275.42,-202.79 260.26,-199.4" fill="none" stroke="black" stroke-width="2"></path>
+<polygon fill="black" points="342.35,-403.23 352.91,-404.1 345.19,-396.84 342.35,-403.23" stroke="black" stroke-width="2"></polygon>
+</g>
+
+<!-- condition_occurrence_condition_source_value&#45;&gt;Symptoms.csv_Cough -->
+
+
+<g class="edge" id="edge30">
+<title>condition_occurrence_condition_source_value-&gt;Symptoms.csv_Cough</title>
+<path d="M346.74,-432.67C339.05,-434.78 331.37,-436.91 324,-439 302.5,-445.1 278.24,-452.4 260.32,-457.87" fill="none" stroke="black" stroke-width="2"></path>
+<polygon fill="black" points="347.74,-436.03 356.47,-430.02 345.9,-429.27 347.74,-436.03" stroke="black" stroke-width="2"></polygon>
+</g>
+
+<!-- condition_occurrence_condition_source_value&#45;&gt;Symptoms.csv_Fever -->
+
+
+<g class="edge" id="edge33">
+<title>condition_occurrence_condition_source_value-&gt;Symptoms.csv_Fever</title>
+<path d="M342.78,-412C312.99,-412 281.46,-412 260.05,-412" fill="none" stroke="black" stroke-width="2"></path>
+<polygon fill="black" points="342.79,-415.5 352.79,-412 342.79,-408.5 342.79,-415.5" stroke="black" stroke-width="2"></polygon>
+</g>
+
+<!-- condition_occurrence_condition_source_value&#45;&gt;Symptoms.csv_Muscle_Pain -->
+
+
+<g class="edge" id="edge36">
+<title>condition_occurrence_condition_source_value-&gt;Symptoms.csv_Muscle_Pain</title>
+<path d="M346.74,-391.33C339.05,-389.22 331.37,-387.09 324,-385 308.78,-380.68 292.17,-375.76 277.41,-371.31" fill="none" stroke="black" stroke-width="2"></path>
+<polygon fill="black" points="345.9,-394.73 356.47,-393.98 347.74,-387.97 345.9,-394.73" stroke="black" stroke-width="2"></polygon>
+</g>
+
+<!-- condition_occurrence_condition_source_value&#45;&gt;GP_Records.csv_comorbidity -->
+
+
+<g class="edge" id="edge46">
+<title>condition_occurrence_condition_source_value-&gt;GP_Records.csv_comorbidity</title>
+<path d="M343.7,-426C336.53,-429.45 329.8,-433.72 324,-439 305.08,-456.23 321.98,-474.78 304,-493 296.04,-501.07 285.41,-506.77 274.84,-510.78" fill="none" stroke="black" stroke-width="2"></path>
+<polygon fill="black" points="345.14,-429.19 352.98,-422.06 342.41,-422.74 345.14,-429.19" stroke="black" stroke-width="2"></polygon>
+</g>
+
+<!-- condition_occurrence_condition_start_datetime -->
+
+
+<g class="node" id="node26">
+<title>condition_occurrence_condition_start_datetime</title>
+<path d="M490,-700C490,-700 362,-700 362,-700 356,-700 350,-694 350,-688 350,-688 350,-676 350,-676 350,-670 356,-664 362,-664 362,-664 490,-664 490,-664 496,-664 502,-670 502,-676 502,-676 502,-688 502,-688 502,-694 496,-700 490,-700" fill="#2b8cbe" stroke="black"></path>
+<text fill="white" font-family="Times,serif" font-size="14.00" text-anchor="middle" x="426" y="-678.3">condition_start_datetime</text>
+</g>
+
+<!-- condition_occurrence_condition_start_datetime&#45;&gt;Hospital_Visit.csv_admission_date -->
+
+
+<g class="edge" id="edge41">
+<title>condition_occurrence_condition_start_datetime-&gt;Hospital_Visit.csv_admission_date</title>
+<path d="M340.48,-695.72C334.31,-699.25 328.68,-703.62 324,-709 276.37,-763.72 348.64,-813.81 304,-871 298.71,-877.78 291.5,-882.85 283.7,-886.66" fill="none" stroke="black" stroke-width="2"></path>
+<polygon fill="black" points="342.43,-698.66 349.86,-691.11 339.34,-692.38 342.43,-698.66" stroke="black" stroke-width="2"></polygon>
+</g>
+
+<!-- condition_occurrence_condition_start_datetime&#45;&gt;Symptoms.csv_date_occurrence -->
+
+
+<g class="edge" id="edge20">
+<title>condition_occurrence_condition_start_datetime-&gt;Symptoms.csv_date_occurrence</title>
+<path d="M339.62,-682C321.19,-682 302.25,-682 285.59,-682" fill="none" stroke="black" stroke-width="2"></path>
+<polygon fill="black" points="339.79,-685.5 349.79,-682 339.79,-678.5 339.79,-685.5" stroke="black" stroke-width="2"></polygon>
+</g>
+
+<!-- condition_occurrence_condition_start_datetime&#45;&gt;GP_Records.csv_date_of_visit -->
+
+
+<g class="edge" id="edge47">
+<title>condition_occurrence_condition_start_datetime-&gt;GP_Records.csv_date_of_visit</title>
+<path d="M346.74,-702.67C339.05,-704.78 331.37,-706.91 324,-709 308.46,-713.41 291.48,-718.44 276.5,-722.96" fill="none" stroke="black" stroke-width="2"></path>
+<polygon fill="black" points="347.74,-706.03 356.47,-700.02 345.9,-699.27 347.74,-706.03" stroke="black" stroke-width="2"></polygon>
+</g>
+
+<!-- condition_occurrence_person_id -->
+
+
+<g class="node" id="node27">
+<title>condition_occurrence_person_id</title>
+<path d="M449,-592C449,-592 403,-592 403,-592 397,-592 391,-586 391,-580 391,-580 391,-568 391,-568 391,-562 397,-556 403,-556 403,-556 449,-556 449,-556 455,-556 461,-562 461,-568 461,-568 461,-580 461,-580 461,-586 455,-592 449,-592" fill="#2b8cbe" stroke="black"></path>
+<text fill="white" font-family="Times,serif" font-size="14.00" text-anchor="middle" x="426" y="-570.3">person_id</text>
+</g>
+
+<!-- condition_occurrence_person_id&#45;&gt;Hospital_Visit.csv_ID -->
+
+
+<g class="edge" id="edge42">
+<title>condition_occurrence_person_id-&gt;Hospital_Visit.csv_ID</title>
+<path d="M380.66,-574.81C360.37,-577.61 337.82,-584.62 324,-601 292.91,-637.84 333.08,-778.55 304,-817 293.63,-830.71 275.34,-837.46 260.06,-840.78" fill="none" stroke="black" stroke-width="2"></path>
+<polygon fill="black" points="381.14,-578.28 390.7,-573.72 380.38,-571.32 381.14,-578.28" stroke="black" stroke-width="2"></polygon>
+</g>
+
+<!-- Symptoms.csv_ID -->
+
+
+<g class="node" id="node28">
+<title>Symptoms.csv_ID</title>
+<path d="M248,-592C248,-592 218,-592 218,-592 212,-592 206,-586 206,-580 206,-580 206,-568 206,-568 206,-562 212,-556 218,-556 218,-556 248,-556 248,-556 254,-556 260,-562 260,-568 260,-568 260,-580 260,-580 260,-586 254,-592 248,-592" fill="#7bccc4" stroke="black"></path>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="233" y="-570.3">ID</text>
+</g>
+
+<!-- condition_occurrence_person_id&#45;&gt;Symptoms.csv_ID -->
+
+
+<g class="edge" id="edge21">
+<title>condition_occurrence_person_id-&gt;Symptoms.csv_ID</title>
+<path d="M380.74,-574C343.4,-574 291.21,-574 260.18,-574" fill="none" stroke="black" stroke-width="2"></path>
+<polygon fill="black" points="380.85,-577.5 390.85,-574 380.85,-570.5 380.85,-577.5" stroke="black" stroke-width="2"></polygon>
+</g>
+
+<!-- GP_Records.csv_ID -->
+
+
+<g class="node" id="node36">
+<title>GP_Records.csv_ID</title>
+<path d="M248,-646C248,-646 218,-646 218,-646 212,-646 206,-640 206,-634 206,-634 206,-622 206,-622 206,-616 212,-610 218,-610 218,-610 248,-610 248,-610 254,-610 260,-616 260,-622 260,-622 260,-634 260,-634 260,-640 254,-646 248,-646" fill="#7bccc4" stroke="black"></path>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="233" y="-624.3">ID</text>
+</g>
+
+<!-- condition_occurrence_person_id&#45;&gt;GP_Records.csv_ID -->
+
+
+<g class="edge" id="edge48">
+<title>condition_occurrence_person_id-&gt;GP_Records.csv_ID</title>
+<path d="M380.75,-585.52C363.07,-590.2 342.54,-595.74 324,-601 302.5,-607.1 278.24,-614.4 260.32,-619.87" fill="none" stroke="black" stroke-width="2"></path>
+<polygon fill="black" points="382.03,-588.8 390.8,-582.87 380.24,-582.03 382.03,-588.8" stroke="black" stroke-width="2"></polygon>
+</g>
+
+<!-- Symptoms.csv_ID&#45;&gt;Symptoms.csv -->
+
+
+<g class="edge" id="edge66">
+<title>Symptoms.csv_ID-&gt;Symptoms.csv</title>
+<path d="M205.78,-566.74C193.85,-562.45 180.17,-556.06 170,-547 123.63,-505.68 94.13,-435.84 82.13,-403.04" fill="none" stroke="black"></path>
+</g>
+
+<!-- Symptoms.csv_Fatigue&#45;&gt;Symptoms.csv -->
+
+
+<g class="edge" id="edge67">
+<title>Symptoms.csv_Fatigue-&gt;Symptoms.csv</title>
+<path d="M204.36,-259C193.09,-263.42 180.32,-269.43 170,-277 135.12,-302.57 104.23,-343.28 88.02,-366.73" fill="none" stroke="black"></path>
+</g>
+
+<!-- Symptoms.csv_Dizzy&#45;&gt;Symptoms.csv -->
+
+
+<g class="edge" id="edge68">
+<title>Symptoms.csv_Dizzy-&gt;Symptoms.csv</title>
+<path d="M205.78,-203.26C193.85,-207.55 180.17,-213.94 170,-223 123.63,-264.32 94.13,-334.16 82.13,-366.96" fill="none" stroke="black"></path>
+</g>
+
+<!-- Symptoms.csv_Cough&#45;&gt;Symptoms.csv -->
+
+
+<g class="edge" id="edge69">
+<title>Symptoms.csv_Cough-&gt;Symptoms.csv</title>
+<path d="M205.76,-455.33C194.61,-450.6 181.54,-444.8 170,-439 147.97,-427.92 123.88,-414.04 105.59,-403.13" fill="none" stroke="black"></path>
+</g>
+
+<!-- Symptoms.csv_Fever&#45;&gt;Symptoms.csv -->
+
+
+<g class="edge" id="edge70">
+<title>Symptoms.csv_Fever-&gt;Symptoms.csv</title>
+<path d="M205.89,-407.48C183.68,-403.64 151.21,-398.02 124.29,-393.36" fill="none" stroke="black"></path>
+</g>
+
+<!-- Symptoms.csv_Muscle_Pain&#45;&gt;Symptoms.csv -->
+
+
+<g class="edge" id="edge71">
+<title>Symptoms.csv_Muscle_Pain-&gt;Symptoms.csv</title>
+<path d="M188.96,-365.45C168.85,-368.93 144.83,-373.09 124.12,-376.67" fill="none" stroke="black"></path>
+</g>
+
+<!-- GP_Records.csv -->
+
+
+<g class="node" id="node50">
+<title>GP_Records.csv</title>
+<polygon fill="#a8ddb5" points="128.5,-646 33.5,-646 33.5,-650 21.5,-650 21.5,-610 128.5,-610 128.5,-646" stroke="black"></polygon>
+<polyline fill="none" points="21.5,-646 33.5,-646 " stroke="black"></polyline>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="75" y="-624.3">GP_Records.csv</text>
+</g>
+
+<!-- GP_Records.csv_comorbidity&#45;&gt;GP_Records.csv -->
+
+
+<g class="edge" id="edge72">
+<title>GP_Records.csv_comorbidity-&gt;GP_Records.csv</title>
+<path d="M191.41,-535.58C184.08,-538.97 176.66,-542.82 170,-547 141,-565.22 111.76,-592.06 93.77,-609.77" fill="none" stroke="black"></path>
+</g>
+
+<!-- GP_Records.csv_date_of_visit&#45;&gt;GP_Records.csv -->
+
+
+<g class="edge" id="edge73">
+<title>GP_Records.csv_date_of_visit-&gt;GP_Records.csv</title>
+<path d="M189.44,-719.5C182.76,-716.34 176.06,-712.81 170,-709 141,-690.78 111.76,-663.94 93.77,-646.23" fill="none" stroke="black"></path>
+</g>
+
+<!-- GP_Records.csv_ID&#45;&gt;GP_Records.csv -->
+
+
+<g class="edge" id="edge74">
+<title>GP_Records.csv_ID-&gt;GP_Records.csv</title>
+<path d="M205.89,-628C184.9,-628 154.73,-628 128.75,-628" fill="none" stroke="black"></path>
+</g>
+
+<!-- drug_exposure_drug_concept_id -->
+
+
+<g class="node" id="node37">
+<title>drug_exposure_drug_concept_id</title>
+<path d="M467.5,-106C467.5,-106 384.5,-106 384.5,-106 378.5,-106 372.5,-100 372.5,-94 372.5,-94 372.5,-82 372.5,-82 372.5,-76 378.5,-70 384.5,-70 384.5,-70 467.5,-70 467.5,-70 473.5,-70 479.5,-76 479.5,-82 479.5,-82 479.5,-94 479.5,-94 479.5,-100 473.5,-106 467.5,-106" fill="#2b8cbe" stroke="black"></path>
+<text fill="white" font-family="Times,serif" font-size="14.00" text-anchor="middle" x="426" y="-84.3">drug_concept_id</text>
+</g>
+
+<!-- Vaccinations.csv_type -->
+
+
+<g class="node" id="node38">
+<title>Vaccinations.csv_type</title>
+<path d="M248,-52C248,-52 218,-52 218,-52 212,-52 206,-46 206,-40 206,-40 206,-28 206,-28 206,-22 212,-16 218,-16 218,-16 248,-16 248,-16 254,-16 260,-22 260,-28 260,-28 260,-40 260,-40 260,-46 254,-52 248,-52" fill="#7bccc4" stroke="black"></path>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="233" y="-30.3">type</text>
+</g>
+
+<!-- drug_exposure_drug_concept_id&#45;&gt;Vaccinations.csv_type -->
+
+
+<g class="edge" id="edge49">
+<title>drug_exposure_drug_concept_id-&gt;Vaccinations.csv_type</title>
+<path d="M362.25,-70.26C327.58,-60.46 286.36,-48.8 260.19,-41.4" fill="none" stroke="black" stroke-width="2"></path>
+<polygon fill="black" points="361.73,-73.75 372.3,-73.1 363.63,-67.01 361.73,-73.75" stroke="black" stroke-width="2"></polygon>
+</g>
+
+<!-- Vaccinations.csv -->
+
+
+<g class="node" id="node51">
+<title>Vaccinations.csv</title>
+<polygon fill="#a8ddb5" points="128.5,-106 33.5,-106 33.5,-110 21.5,-110 21.5,-70 128.5,-70 128.5,-106" stroke="black"></polygon>
+<polyline fill="none" points="21.5,-106 33.5,-106 " stroke="black"></polyline>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="75" y="-84.3">Vaccinations.csv</text>
+</g>
+
+<!-- Vaccinations.csv_type&#45;&gt;Vaccinations.csv -->
+
+
+<g class="edge" id="edge75">
+<title>Vaccinations.csv_type-&gt;Vaccinations.csv</title>
+<path d="M205.89,-43.04C184.73,-50.36 154.23,-60.92 128.11,-69.96" fill="none" stroke="black"></path>
+</g>
+
+<!-- drug_exposure_drug_exposure_end_datetime -->
+
+
+<g class="node" id="node39">
+<title>drug_exposure_drug_exposure_end_datetime</title>
+<path d="M502.5,-322C502.5,-322 349.5,-322 349.5,-322 343.5,-322 337.5,-316 337.5,-310 337.5,-310 337.5,-298 337.5,-298 337.5,-292 343.5,-286 349.5,-286 349.5,-286 502.5,-286 502.5,-286 508.5,-286 514.5,-292 514.5,-298 514.5,-298 514.5,-310 514.5,-310 514.5,-316 508.5,-322 502.5,-322" fill="#2b8cbe" stroke="black"></path>
+<text fill="white" font-family="Times,serif" font-size="14.00" text-anchor="middle" x="426" y="-300.3">drug_exposure_end_datetime</text>
+</g>
+
+<!-- Vaccinations.csv_date_of_vaccination -->
+
+
+<g class="node" id="node40">
+<title>Vaccinations.csv_date_of_vaccination</title>
+<path d="M284,-160C284,-160 182,-160 182,-160 176,-160 170,-154 170,-148 170,-148 170,-136 170,-136 170,-130 176,-124 182,-124 182,-124 284,-124 284,-124 290,-124 296,-130 296,-136 296,-136 296,-148 296,-148 296,-154 290,-160 284,-160" fill="#7bccc4" stroke="black"></path>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="233" y="-138.3">date_of_vaccination</text>
+</g>
+
+<!-- drug_exposure_drug_exposure_end_datetime&#45;&gt;Vaccinations.csv_date_of_vaccination -->
+
+
+<g class="edge" id="edge50">
+<title>drug_exposure_drug_exposure_end_datetime-&gt;Vaccinations.csv_date_of_vaccination</title>
+<path d="M329.09,-281.88C327.3,-280.36 325.6,-278.73 324,-277 290.86,-241.16 335.18,-206.56 304,-169 301.17,-165.59 297.86,-162.61 294.24,-160.01" fill="none" stroke="black" stroke-width="2"></path>
+<polygon fill="black" points="327.26,-284.88 337.4,-287.95 331.39,-279.23 327.26,-284.88" stroke="black" stroke-width="2"></polygon>
+</g>
+
+<!-- Vaccinations.csv_date_of_vaccination&#45;&gt;Vaccinations.csv -->
+
+
+<g class="edge" id="edge76">
+<title>Vaccinations.csv_date_of_vaccination-&gt;Vaccinations.csv</title>
+<path d="M179.62,-123.87C163.07,-118.14 144.78,-111.81 128.24,-106.08" fill="none" stroke="black"></path>
+</g>
+
+<!-- drug_exposure_drug_exposure_start_datetime -->
+
+
+<g class="node" id="node41">
+<title>drug_exposure_drug_exposure_start_datetime</title>
+<path d="M504.5,-376C504.5,-376 347.5,-376 347.5,-376 341.5,-376 335.5,-370 335.5,-364 335.5,-364 335.5,-352 335.5,-352 335.5,-346 341.5,-340 347.5,-340 347.5,-340 504.5,-340 504.5,-340 510.5,-340 516.5,-346 516.5,-352 516.5,-352 516.5,-364 516.5,-364 516.5,-370 510.5,-376 504.5,-376" fill="#2b8cbe" stroke="black"></path>
+<text fill="white" font-family="Times,serif" font-size="14.00" text-anchor="middle" x="426" y="-354.3">drug_exposure_start_datetime</text>
+</g>
+
+<!-- drug_exposure_drug_exposure_start_datetime&#45;&gt;Vaccinations.csv_date_of_vaccination -->
+
+
+<g class="edge" id="edge51">
+<title>drug_exposure_drug_exposure_start_datetime-&gt;Vaccinations.csv_date_of_vaccination</title>
+<path d="M327.26,-334.44C326.13,-333.35 325.04,-332.2 324,-331 276.37,-276.28 348.64,-226.19 304,-169 301.36,-165.61 298.23,-162.65 294.79,-160.06" fill="none" stroke="black" stroke-width="2"></path>
+<polygon fill="black" points="325.34,-337.4 335.3,-341.02 329.78,-331.98 325.34,-337.4" stroke="black" stroke-width="2"></polygon>
+</g>
+
+<!-- drug_exposure_drug_source_concept_id -->
+
+
+<g class="node" id="node42">
+<title>drug_exposure_drug_source_concept_id</title>
+<path d="M488.5,-160C488.5,-160 363.5,-160 363.5,-160 357.5,-160 351.5,-154 351.5,-148 351.5,-148 351.5,-136 351.5,-136 351.5,-130 357.5,-124 363.5,-124 363.5,-124 488.5,-124 488.5,-124 494.5,-124 500.5,-130 500.5,-136 500.5,-136 500.5,-148 500.5,-148 500.5,-154 494.5,-160 488.5,-160" fill="#2b8cbe" stroke="black"></path>
+<text fill="white" font-family="Times,serif" font-size="14.00" text-anchor="middle" x="426" y="-138.3">drug_source_concept_id</text>
+</g>
+
+<!-- drug_exposure_drug_source_concept_id&#45;&gt;Vaccinations.csv_type -->
+
+
+<g class="edge" id="edge52">
+<title>drug_exposure_drug_source_concept_id-&gt;Vaccinations.csv_type</title>
+<path d="M342.2,-127.27C335.59,-123.95 329.4,-119.91 324,-115 305.08,-97.77 321.98,-79.22 304,-61 292.29,-49.13 274.79,-42.38 260.22,-38.6" fill="none" stroke="black" stroke-width="2"></path>
+<polygon fill="black" points="340.87,-130.5 351.43,-131.35 343.7,-124.1 340.87,-130.5" stroke="black" stroke-width="2"></polygon>
+</g>
+
+<!-- drug_exposure_drug_source_value -->
+
+
+<g class="node" id="node43">
+<title>drug_exposure_drug_source_value</title>
+<path d="M473.5,-214C473.5,-214 378.5,-214 378.5,-214 372.5,-214 366.5,-208 366.5,-202 366.5,-202 366.5,-190 366.5,-190 366.5,-184 372.5,-178 378.5,-178 378.5,-178 473.5,-178 473.5,-178 479.5,-178 485.5,-184 485.5,-190 485.5,-190 485.5,-202 485.5,-202 485.5,-208 479.5,-214 473.5,-214" fill="#2b8cbe" stroke="black"></path>
+<text fill="white" font-family="Times,serif" font-size="14.00" text-anchor="middle" x="426" y="-192.3">drug_source_value</text>
+</g>
+
+<!-- drug_exposure_drug_source_value&#45;&gt;Vaccinations.csv_type -->
+
+
+<g class="edge" id="edge53">
+<title>drug_exposure_drug_source_value-&gt;Vaccinations.csv_type</title>
+<path d="M356.51,-188.83C344.29,-184.68 332.7,-178.41 324,-169 290.86,-133.16 335.18,-98.56 304,-61 293.18,-47.97 275.3,-41.21 260.32,-37.72" fill="none" stroke="black" stroke-width="2"></path>
+<polygon fill="black" points="355.82,-192.28 366.4,-191.73 357.78,-185.56 355.82,-192.28" stroke="black" stroke-width="2"></polygon>
+</g>
+
+<!-- drug_exposure_person_id -->
+
+
+<g class="node" id="node44">
+<title>drug_exposure_person_id</title>
+<path d="M449,-268C449,-268 403,-268 403,-268 397,-268 391,-262 391,-256 391,-256 391,-244 391,-244 391,-238 397,-232 403,-232 403,-232 449,-232 449,-232 455,-232 461,-238 461,-244 461,-244 461,-256 461,-256 461,-262 455,-268 449,-268" fill="#2b8cbe" stroke="black"></path>
+<text fill="white" font-family="Times,serif" font-size="14.00" text-anchor="middle" x="426" y="-246.3">person_id</text>
+</g>
+
+<!-- Vaccinations.csv_ID -->
+
+
+<g class="node" id="node45">
+<title>Vaccinations.csv_ID</title>
+<path d="M248,-106C248,-106 218,-106 218,-106 212,-106 206,-100 206,-94 206,-94 206,-82 206,-82 206,-76 212,-70 218,-70 218,-70 248,-70 248,-70 254,-70 260,-76 260,-82 260,-82 260,-94 260,-94 260,-100 254,-106 248,-106" fill="#7bccc4" stroke="black"></path>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="233" y="-84.3">ID</text>
+</g>
+
+<!-- drug_exposure_person_id&#45;&gt;Vaccinations.csv_ID -->
+
+
+<g class="edge" id="edge54">
+<title>drug_exposure_person_id-&gt;Vaccinations.csv_ID</title>
+<path d="M380.59,-248.53C360.63,-245.53 338.38,-238.55 324,-223 290.86,-187.16 335.18,-152.56 304,-115 293.18,-101.97 275.3,-95.21 260.32,-91.72" fill="none" stroke="black" stroke-width="2"></path>
+<polygon fill="black" points="380.41,-252.03 390.76,-249.76 381.25,-245.08 380.41,-252.03" stroke="black" stroke-width="2"></polygon>
+</g>
+
+<!-- Vaccinations.csv_ID&#45;&gt;Vaccinations.csv -->
+
+
+<g class="edge" id="edge77">
+<title>Vaccinations.csv_ID-&gt;Vaccinations.csv</title>
+<path d="M205.89,-88C184.9,-88 154.73,-88 128.75,-88" fill="none" stroke="black"></path>
+</g>
+
+<!-- person -->
+
+
+<g class="node" id="node52">
+<title>person</title>
+<polygon fill="#084081" points="650,-1132 647,-1136 626,-1136 623,-1132 596,-1132 596,-1096 650,-1096 650,-1132" stroke="black"></polygon>
+<text fill="white" font-family="Times,serif" font-size="14.00" text-anchor="middle" x="623" y="-1110.3">person</text>
+</g>
+
+<!-- person&#45;&gt;person_birth_datetime -->
+
+
+<g class="edge" id="edge78">
+<title>person-&gt;person_birth_datetime</title>
+<path d="M603.65,-1132.28C584.35,-1150.56 552.35,-1178.29 520,-1195 505.81,-1202.33 489.34,-1207.94 474.25,-1212.09" fill="none" stroke="black"></path>
+</g>
+
+<!-- person&#45;&gt;person_gender_concept_id -->
+
+
+<g class="edge" id="edge79">
+<title>person-&gt;person_gender_concept_id</title>
+<path d="M595.7,-1114C567.63,-1114 522.25,-1114 485.63,-1114" fill="none" stroke="black"></path>
+</g>
+
+<!-- person&#45;&gt;person_gender_source_concept_id -->
+
+
+<g class="edge" id="edge80">
+<title>person-&gt;person_gender_source_concept_id</title>
+<path d="M595.7,-1106.72C569.3,-1099.41 527.57,-1087.85 492.22,-1078.06" fill="none" stroke="black"></path>
+</g>
+
+<!-- person&#45;&gt;person_gender_source_value -->
+
+
+<g class="edge" id="edge81">
+<title>person-&gt;person_gender_source_value</title>
+<path d="M595.7,-1121.28C569.19,-1128.62 527.24,-1140.24 491.81,-1150.05" fill="none" stroke="black"></path>
+</g>
+
+<!-- person&#45;&gt;person_person_id -->
+
+
+<g class="edge" id="edge82">
+<title>person-&gt;person_person_id</title>
+<path d="M603.65,-1095.72C584.35,-1077.44 552.35,-1049.71 520,-1033 501.63,-1023.51 479.44,-1016.9 461.35,-1012.61" fill="none" stroke="black"></path>
+</g>
+
+<!-- observation -->
+
+
+<g class="node" id="node53">
+<title>observation</title>
+<polygon fill="#084081" points="663,-862 660,-866 639,-866 636,-862 583,-862 583,-826 663,-826 663,-862" stroke="black"></polygon>
+<text fill="white" font-family="Times,serif" font-size="14.00" text-anchor="middle" x="623" y="-840.3">observation</text>
+</g>
+
+<!-- observation&#45;&gt;observation_observation_concept_id -->
+
+
+<g class="edge" id="edge83">
+<title>observation-&gt;observation_observation_concept_id</title>
+<path d="M603.65,-825.72C584.35,-807.44 552.35,-779.71 520,-763 513.43,-759.6 506.37,-756.58 499.18,-753.9" fill="none" stroke="black"></path>
+</g>
+
+<!-- observation&#45;&gt;observation_observation_datetime -->
+
+
+<g class="edge" id="edge84">
+<title>observation-&gt;observation_observation_datetime</title>
+<path d="M603.65,-862.28C584.35,-880.56 552.35,-908.29 520,-925 511.64,-929.32 502.48,-933.04 493.28,-936.22" fill="none" stroke="black"></path>
+</g>
+
+<!-- observation&#45;&gt;observation_observation_source_concept_id -->
+
+
+<g class="edge" id="edge85">
+<title>observation-&gt;observation_observation_source_concept_id</title>
+<path d="M582.54,-833.07C556.61,-825.89 522.07,-816.33 492.12,-808.03" fill="none" stroke="black"></path>
+</g>
+
+<!-- observation&#45;&gt;observation_observation_source_value -->
+
+
+<g class="edge" id="edge86">
+<title>observation-&gt;observation_observation_source_value</title>
+<path d="M582.54,-844C560.28,-844 531.68,-844 505.09,-844" fill="none" stroke="black"></path>
+</g>
+
+<!-- observation&#45;&gt;observation_person_id -->
+
+
+<g class="edge" id="edge87">
+<title>observation-&gt;observation_person_id</title>
+<path d="M582.54,-854.93C546.93,-864.79 495.07,-879.15 461.19,-888.53" fill="none" stroke="black"></path>
+</g>
+
+<!-- condition_occurrence -->
+
+
+<g class="node" id="node54">
+<title>condition_occurrence</title>
+<polygon fill="#084081" points="690,-565 687,-569 666,-569 663,-565 556,-565 556,-529 690,-529 690,-565" stroke="black"></polygon>
+<text fill="white" font-family="Times,serif" font-size="14.00" text-anchor="middle" x="623" y="-543.3">condition_occurrence</text>
+</g>
+
+<!-- condition_occurrence&#45;&gt;condition_occurrence_condition_concept_id -->
+
+
+<g class="edge" id="edge88">
+<title>condition_occurrence-&gt;condition_occurrence_condition_concept_id</title>
+<path d="M591.54,-528.76C571.67,-517.4 544.89,-503.08 520,-493 511.43,-489.53 502.25,-486.3 493.12,-483.38" fill="none" stroke="black"></path>
+</g>
+
+<!-- condition_occurrence&#45;&gt;condition_occurrence_condition_end_datetime -->
+
+
+<g class="edge" id="edge89">
+<title>condition_occurrence-&gt;condition_occurrence_condition_end_datetime</title>
+<path d="M591.54,-565.24C571.67,-576.6 544.89,-590.92 520,-601 512.05,-604.22 503.58,-607.23 495.11,-609.98" fill="none" stroke="black"></path>
+</g>
+
+<!-- condition_occurrence&#45;&gt;condition_occurrence_condition_source_concept_id -->
+
+
+<g class="edge" id="edge90">
+<title>condition_occurrence-&gt;condition_occurrence_condition_source_concept_id</title>
+<path d="M555.98,-537.86C542.5,-535.99 528.12,-534 514.04,-532.05" fill="none" stroke="black"></path>
+</g>
+
+<!-- condition_occurrence&#45;&gt;condition_occurrence_condition_source_value -->
+
+
+<g class="edge" id="edge91">
+<title>condition_occurrence-&gt;condition_occurrence_condition_source_value</title>
+<path d="M609.69,-528.88C592.42,-504.83 558.74,-462.66 520,-439 513.54,-435.06 506.48,-431.67 499.23,-428.75" fill="none" stroke="black"></path>
+</g>
+
+<!-- condition_occurrence&#45;&gt;condition_occurrence_condition_start_datetime -->
+
+
+<g class="edge" id="edge92">
+<title>condition_occurrence-&gt;condition_occurrence_condition_start_datetime</title>
+<path d="M609.69,-565.12C592.42,-589.17 558.74,-631.34 520,-655 514.4,-658.42 508.35,-661.42 502.12,-664.06" fill="none" stroke="black"></path>
+</g>
+
+<!-- condition_occurrence&#45;&gt;condition_occurrence_person_id -->
+
+
+<g class="edge" id="edge93">
+<title>condition_occurrence-&gt;condition_occurrence_person_id</title>
+<path d="M555.98,-556.14C524.16,-560.55 487.33,-565.65 461.19,-569.27" fill="none" stroke="black"></path>
+</g>
+
+<!-- drug_exposure -->
+
+
+<g class="node" id="node55">
+<title>drug_exposure</title>
+<polygon fill="#084081" points="671.5,-241 668.5,-245 647.5,-245 644.5,-241 574.5,-241 574.5,-205 671.5,-205 671.5,-241" stroke="black"></polygon>
+<text fill="white" font-family="Times,serif" font-size="14.00" text-anchor="middle" x="623" y="-219.3">drug_exposure</text>
+</g>
+
+<!-- drug_exposure&#45;&gt;drug_exposure_drug_concept_id -->
+
+
+<g class="edge" id="edge94">
+<title>drug_exposure-&gt;drug_exposure_drug_concept_id</title>
+<path d="M609.69,-204.88C592.42,-180.83 558.74,-138.66 520,-115 507.8,-107.55 493.45,-102.07 479.73,-98.08" fill="none" stroke="black"></path>
+</g>
+
+<!-- drug_exposure&#45;&gt;drug_exposure_drug_exposure_end_datetime -->
+
+
+<g class="edge" id="edge95">
+<title>drug_exposure-&gt;drug_exposure_drug_exposure_end_datetime</title>
+<path d="M591.54,-241.24C571.67,-252.6 544.89,-266.92 520,-277 512.05,-280.22 503.58,-283.23 495.11,-285.98" fill="none" stroke="black"></path>
+</g>
+
+<!-- drug_exposure&#45;&gt;drug_exposure_drug_exposure_start_datetime -->
+
+
+<g class="edge" id="edge96">
+<title>drug_exposure-&gt;drug_exposure_drug_exposure_start_datetime</title>
+<path d="M609.69,-241.12C592.42,-265.17 558.74,-307.34 520,-331 514.55,-334.33 508.66,-337.27 502.6,-339.85" fill="none" stroke="black"></path>
+</g>
+
+<!-- drug_exposure&#45;&gt;drug_exposure_drug_source_concept_id -->
+
+
+<g class="edge" id="edge97">
+<title>drug_exposure-&gt;drug_exposure_drug_source_concept_id</title>
+<path d="M591.54,-204.76C571.67,-193.4 544.89,-179.08 520,-169 512.05,-165.78 503.58,-162.77 495.11,-160.02" fill="none" stroke="black"></path>
+</g>
+
+<!-- drug_exposure&#45;&gt;drug_exposure_drug_source_value -->
+
+
+<g class="edge" id="edge98">
+<title>drug_exposure-&gt;drug_exposure_drug_source_value</title>
+<path d="M574.3,-216.4C547.58,-212.7 514.03,-208.05 485.71,-204.13" fill="none" stroke="black"></path>
+</g>
+
+<!-- drug_exposure&#45;&gt;drug_exposure_person_id -->
+
+
+<g class="edge" id="edge99">
+<title>drug_exposure-&gt;drug_exposure_person_id</title>
+<path d="M574.3,-229.6C539.23,-234.46 492.42,-240.94 461.07,-245.28" fill="none" stroke="black"></path>
+</g>
+</g>
+</svg>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">carrot.tools</span><span class="w"> </span><span class="kn">import</span> <span class="n">remove_missing_sources_from_rules</span>
+<span class="n">filtered_rules</span> <span class="o">=</span> <span class="n">remove_missing_sources_from_rules</span><span class="p">(</span><span class="n">rules</span><span class="p">,</span><span class="n">local</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="n">filtered_rules</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+<code><span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">remove_missing_sources_from_rules</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">removed Antibody 3027 from rules because it was not loaded</span>
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">remove_missing_sources_from_rules</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">removed H/O: heart failure 3043 from rules because it was not loaded</span>
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">remove_missing_sources_from_rules</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">removed 2019-nCoV 3044 from rules because it was not loaded</span>
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">remove_missing_sources_from_rules</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">removed Cancer 3045 from rules because it was not loaded</span>
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">remove_missing_sources_from_rules</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">removed cdm table 'observation' from rules</span>
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">remove_missing_sources_from_rules</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">removed Headache 3028 from rules because it was not loaded</span>
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">remove_missing_sources_from_rules</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">removed Fatigue 3029 from rules because it was not loaded</span>
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">remove_missing_sources_from_rules</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">removed Dizziness 3030 from rules because it was not loaded</span>
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">remove_missing_sources_from_rules</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">removed Cough 3031 from rules because it was not loaded</span>
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">remove_missing_sources_from_rules</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">removed Fever 3032 from rules because it was not loaded</span>
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">remove_missing_sources_from_rules</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">removed Muscle pain 3033 from rules because it was not loaded</span>
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">remove_missing_sources_from_rules</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">removed Pneumonia 3042 from rules because it was not loaded</span>
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">remove_missing_sources_from_rules</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">removed Mental health problem 3046 from rules because it was not loaded</span>
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">remove_missing_sources_from_rules</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">removed Mental disorder 3047 from rules because it was not loaded</span>
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">remove_missing_sources_from_rules</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">removed Type 2 diabetes mellitus 3048 from rules because it was not loaded</span>
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">remove_missing_sources_from_rules</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">removed Ischemic heart disease 3049 from rules because it was not loaded</span>
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">remove_missing_sources_from_rules</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">removed Hypertensive disorder 3050 from rules because it was not loaded</span>
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">remove_missing_sources_from_rules</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">removed cdm table 'condition_occurrence' from rules</span>
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">remove_missing_sources_from_rules</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">removed COVID-19 vaccine 3034 from rules because it was not loaded</span>
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">remove_missing_sources_from_rules</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">removed COVID-19 vaccine 3035 from rules because it was not loaded</span>
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">remove_missing_sources_from_rules</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">removed COVID-19 vaccine 3036 from rules because it was not loaded</span>
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">remove_missing_sources_from_rules</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">removed SARS-CoV-2 (COVID-19) vaccine, mRNA-1273 0.2 MG/ML Injectable Suspension 3040 from rules because it was not loaded</span>
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">remove_missing_sources_from_rules</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">removed SARS-CoV-2 (COVID-19) vaccine, mRNA-BNT162b2 0.1 MG/ML Injectable Suspension 3041 from rules because it was not loaded</span>
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">remove_missing_sources_from_rules</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">removed cdm table 'drug_exposure' from rules</span>
+</code>
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>{'metadata': {'date_created': '2022-02-12T12:22:48.465257',
+  'dataset': 'FAILED: ExampleV4'},
+ 'cdm': {'person': {'MALE 3025': {'birth_datetime': {'source_table': 'Demographics.csv',
+     'source_field': 'Age',
+     'operations': ['get_datetime_from_age']},
+    'gender_concept_id': {'source_table': 'Demographics.csv',
+     'source_field': 'Sex',
+     'term_mapping': {'Male': 8507}},
+    'gender_source_concept_id': {'source_table': 'Demographics.csv',
+     'source_field': 'Sex',
+     'term_mapping': {'Male': 8507}},
+    'gender_source_value': {'source_table': 'Demographics.csv',
+     'source_field': 'Sex'},
+    'person_id': {'source_table': 'Demographics.csv', 'source_field': 'ID'}},
+   'FEMALE 3026': {'birth_datetime': {'source_table': 'Demographics.csv',
+     'source_field': 'Age',
+     'operations': ['get_datetime_from_age']},
+    'gender_concept_id': {'source_table': 'Demographics.csv',
+     'source_field': 'Sex',
+     'term_mapping': {'Female': 8532}},
+    'gender_source_concept_id': {'source_table': 'Demographics.csv',
+     'source_field': 'Sex',
+     'term_mapping': {'Female': 8532}},
+    'gender_source_value': {'source_table': 'Demographics.csv',
+     'source_field': 'Sex'},
+    'person_id': {'source_table': 'Demographics.csv', 'source_field': 'ID'}}}}}</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="what-is-the-commondatamodel">What is the <code>CommonDataModel</code> ?<a class="headerlink" href="#what-is-the-commondatamodel" title="Permanent link">&para;</a></h2>
+<p>The python class that controls everything when building a common data model</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">carrot.cdm</span><span class="w"> </span><span class="kn">import</span> <span class="n">CommonDataModel</span>
+<span class="n">CommonDataModel</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>carrot.cdm.model.CommonDataModel</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">cdm</span> <span class="o">=</span> <span class="n">CommonDataModel</span><span class="o">.</span><span class="n">from_rules</span><span class="p">(</span><span class="n">filtered_rules</span><span class="p">,</span><span class="n">inputs</span><span class="o">=</span><span class="n">local</span><span class="p">,</span><span class="n">outputs</span><span class="o">=</span><span class="n">bclink</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+<code><span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - CommonDataModel (5.3.1) created with co-connect-tools version 0.0.0
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Running with an DataCollection object
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Turning on automatic cdm column filling
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">No table for getting existing person ids (person_ids) has been defined</span>
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT count(*) FROM ds1000 bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT column_name FROM INFORMATION_SCHEMA. COLUMNS WHERE table_name = 'ds1000' LIMIT 1  bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT person_id FROM ds1000 ORDER BY -person_id LIMIT 1;  bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT count(*) FROM ds10002 bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT column_name FROM INFORMATION_SCHEMA. COLUMNS WHERE table_name = 'ds10002' LIMIT 1  bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT person_id FROM ds10002 ORDER BY -person_id LIMIT 1;  bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Added MALE 3025 of type person
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Added FEMALE 3026 of type person
+</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">cdm</span><span class="o">.</span><span class="n">process</span><span class="p">()</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+<code><span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Starting processing in order: ['person']
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Number of objects to process for each table...
+{
+      "person": 2
+}
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - for person: found 2 objects
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - working on person
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - starting on MALE 3025
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">Person</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Called apply_rules
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Retrieving initial dataframe for 'Demographics.csv' for the first time
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">Person</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped birth_datetime
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">Person</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped gender_concept_id
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">Person</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped gender_source_concept_id
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">Person</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped gender_source_value
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">Person</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped person_id
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">Person</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">Requiring non-null values in gender_concept_id removed 3 rows, leaving 2 rows.</span>
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">Person</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Automatically formatting data columns.
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">Person</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - created df (0x10e65aee0)[MALE_3025]
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished MALE 3025 (0x10e65aee0) ... 1/2 completed, 2 rows
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">BCLinkDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - saving person_ids to cache/person_ids.csv
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">BCLinkDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished save to file
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">ERROR</span> - <span class="ansi-red-fg">table person_ids unknown in dict_keys(['person', 'observation'])</span>
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - starting on FEMALE 3026
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">Person</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Called apply_rules
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">Person</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped birth_datetime
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">Person</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped gender_concept_id
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">Person</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped gender_source_concept_id
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">Person</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped gender_source_value
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">Person</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped person_id
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">Person</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">Requiring non-null values in gender_concept_id removed 2 rows, leaving 3 rows.</span>
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">Person</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Automatically formatting data columns.
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">Person</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - created df (0x10e65ef70)[FEMALE_3026]
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished FEMALE 3026 (0x10e65ef70) ... 2/2 completed, 3 rows
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">BCLinkDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - updating person_ids in cache/person_ids.csv
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">BCLinkDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished save to file
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">ERROR</span> - <span class="ansi-red-fg">table person_ids unknown in dict_keys(['person', 'observation'])</span>
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - saving dataframe (0x10e650d30) to &lt;carrot.io.plugins.bclink.BCLinkDataCollection object at 0x10e2995e0&gt;
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">BCLinkDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - saving person to cache/person.csv
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">BCLinkDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished save to file
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">dataset_tool --load --table=ds1000 --user=data --data_file=cache/person.csv --support --bcqueue bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">datasettool2 list-updates --dataset=ds1000 --user=data --database=bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finalised person on iteration 0 producing 5 rows from 2 tables
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Getting next chunk of data
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Getting the next chunk of size '5' for 'Demographics.csv'
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - --&gt; Got 5 rows
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - for person: found 2 objects
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - working on person
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - starting on MALE 3025
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished MALE 3025 (0x10e65aee0) ... 1/2 completed, 2 rows
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">BCLinkDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - updating person_ids in cache/person_ids.csv
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">BCLinkDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished save to file
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">ERROR</span> - <span class="ansi-red-fg">table person_ids unknown in dict_keys(['person', 'observation'])</span>
+<span class="ansi-green-fg">2022-06-17 14:47:45</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - starting on FEMALE 3026
+<span class="ansi-green-fg">2022-06-17 14:47:46</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished FEMALE 3026 (0x10e65ef70) ... 2/2 completed, 3 rows
+<span class="ansi-green-fg">2022-06-17 14:47:46</span> - <span class="ansi-blue-fg">BCLinkDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - updating person_ids in cache/person_ids.csv
+<span class="ansi-green-fg">2022-06-17 14:47:46</span> - <span class="ansi-blue-fg">BCLinkDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished save to file
+<span class="ansi-green-fg">2022-06-17 14:47:46</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">ERROR</span> - <span class="ansi-red-fg">table person_ids unknown in dict_keys(['person', 'observation'])</span>
+<span class="ansi-green-fg">2022-06-17 14:47:46</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - saving dataframe (0x10e653100) to &lt;carrot.io.plugins.bclink.BCLinkDataCollection object at 0x10e2995e0&gt;
+<span class="ansi-green-fg">2022-06-17 14:47:46</span> - <span class="ansi-blue-fg">BCLinkDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - updating person in cache/person.csv
+<span class="ansi-green-fg">2022-06-17 14:47:46</span> - <span class="ansi-blue-fg">BCLinkDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished save to file
+<span class="ansi-green-fg">2022-06-17 14:47:46</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">dataset_tool --load --table=ds1000 --user=data --data_file=cache/person.csv --support --bcqueue bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:47:46</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">datasettool2 list-updates --dataset=ds1000 --user=data --database=bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:47:46</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finalised person on iteration 1 producing 5 rows from 2 tables
+<span class="ansi-green-fg">2022-06-17 14:47:46</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Getting next chunk of data
+<span class="ansi-green-fg">2022-06-17 14:47:46</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Getting the next chunk of size '5' for 'Demographics.csv'
+<span class="ansi-green-fg">2022-06-17 14:47:46</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - --&gt; Got 0 rows
+<span class="ansi-green-fg">2022-06-17 14:47:46</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - All input files for this object have now been used.
+</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">cdm</span><span class="p">[</span><span class="s1">&#39;person&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>gender_concept_id</th>
+<th>year_of_birth</th>
+<th>month_of_birth</th>
+<th>day_of_birth</th>
+<th>birth_datetime</th>
+<th>gender_source_value</th>
+<th>gender_source_concept_id</th>
+</tr>
+<tr>
+<th>person_id</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>6</th>
+<td>8507</td>
+<td>1963</td>
+<td>7</td>
+<td>16</td>
+<td>1963-07-16 00:00:00.000000</td>
+<td>Male</td>
+<td>8507</td>
+</tr>
+<tr>
+<th>7</th>
+<td>8507</td>
+<td>1969</td>
+<td>7</td>
+<td>14</td>
+<td>1969-07-14 00:00:00.000000</td>
+<td>Male</td>
+<td>8507</td>
+</tr>
+<tr>
+<th>8</th>
+<td>8532</td>
+<td>1952</td>
+<td>7</td>
+<td>18</td>
+<td>1952-07-18 00:00:00.000000</td>
+<td>Female</td>
+<td>8532</td>
+</tr>
+<tr>
+<th>9</th>
+<td>8532</td>
+<td>1942</td>
+<td>7</td>
+<td>21</td>
+<td>1942-07-21 00:00:00.000000</td>
+<td>Female</td>
+<td>8532</td>
+</tr>
+<tr>
+<th>10</th>
+<td>8532</td>
+<td>1969</td>
+<td>7</td>
+<td>14</td>
+<td>1969-07-14 00:00:00.000000</td>
+<td>Female</td>
+<td>8532</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+ 
+        
+      </div>
+      <div class="md-social">
+  
+</div>
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.sections", "navigation.tracking", "navigation.indexes", "navigation.top", "content.action.edit"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.3220b9d7.min.js"></script>
+      
+    
+  </body>
+</html>

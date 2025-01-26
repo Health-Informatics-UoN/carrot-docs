@@ -1,0 +1,1386 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.18">
+    
+    
+      
+        <title>Part 6 BCLink - Carrot Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.66ac8b77.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/custom.css">
+    
+      <link rel="stylesheet" href="../../../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../../../css/pandas-dataframe.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="carrot" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Carrot Docs" class="md-header__button md-logo" aria-label="Carrot Docs" data-md-component="logo">
+      
+  <img src="../../../images/favicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Carrot Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Part 6   BCLink
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Health-Informatics-UoN/carrot-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Health-Informatics-UoN/carrot-docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Carrot Docs" class="md-nav__button md-logo" aria-label="Carrot Docs" data-md-component="logo">
+      
+  <img src="../../../images/favicon.png" alt="logo">
+
+    </a>
+    Carrot Docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Health-Informatics-UoN/carrot-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Health-Informatics-UoN/carrot-docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/Health-Informatics-UoN/carrot-docs/edit/main/docs/CaRROT-CDM/notebooks/Part 6 - BCLink.ipynb" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+    </a>
+  
+  
+
+
+  <h1>Part 6   BCLink</h1>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script>
+(function() {
+  function addWidgetsRenderer() {
+    var requireJsScript = document.createElement('script');
+    requireJsScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js';
+
+    var mimeElement = document.querySelector('script[type="application/vnd.jupyter.widget-view+json"]');
+    var jupyterWidgetsScript = document.createElement('script');
+    var widgetRendererSrc = 'https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js';
+    var widgetState;
+
+    // Fallback for older version:
+    try {
+      widgetState = mimeElement && JSON.parse(mimeElement.innerHTML);
+
+      if (widgetState && (widgetState.version_major < 2 || !widgetState.version_major)) {
+        widgetRendererSrc = 'jupyter-js-widgets@*/dist/embed.js';
+      }
+    } catch(e) {}
+
+    jupyterWidgetsScript.src = widgetRendererSrc;
+
+    document.body.appendChild(requireJsScript);
+    document.body.appendChild(jupyterWidgetsScript);
+  }
+
+  document.addEventListener('DOMContentLoaded', addWidgetsRenderer);
+}());
+</script>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">carrot</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">glob</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">inputs</span> <span class="o">=</span>  <span class="n">carrot</span><span class="o">.</span><span class="n">tools</span><span class="o">.</span><span class="n">load_csv</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;../data/part1/*&#39;</span><span class="p">),</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">inputs</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+<code><span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - DataCollection Object Created
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Using a chunksize of '1000' nrows
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Registering  Blood_Test.csv [&lt;carrot.io.common.DataBrick object at 0x10477c760&gt;]
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Registering  Demographics.csv [&lt;carrot.io.common.DataBrick object at 0x1047fc2e0&gt;]
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Registering  GP_Records.csv [&lt;carrot.io.common.DataBrick object at 0x1047fc5e0&gt;]
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Registering  Hospital_Visit.csv [&lt;carrot.io.common.DataBrick object at 0x1084745b0&gt;]
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Registering  Serology.csv [&lt;carrot.io.common.DataBrick object at 0x1084748b0&gt;]
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Registering  Symptoms.csv [&lt;carrot.io.common.DataBrick object at 0x1084742e0&gt;]
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Registering  Vaccinations.csv [&lt;carrot.io.common.DataBrick object at 0x108474e20&gt;]
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Registering  pks.csv [&lt;carrot.io.common.DataBrick object at 0x108474d90&gt;]
+</code>
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>&lt;carrot.io.plugins.local.LocalDataCollection at 0x1047fc040&gt;</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">outputs</span> <span class="o">=</span> <span class="n">carrot</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">BCLinkDataCollection</span><span class="p">({</span><span class="s1">&#39;dry_run&#39;</span><span class="p">:</span><span class="kc">True</span><span class="p">},</span>
+                                            <span class="n">output_folder</span><span class="o">=</span><span class="s2">&quot;./cache/&quot;</span><span class="p">,</span>
+                                            <span class="n">write_separate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">outputs</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+<code><span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - setup bclink collection
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = 'condition_occurrence' ) bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - condition_occurrence (condition_occurrence) already exists --&gt; all good
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = 'death' ) bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - death (death) already exists --&gt; all good
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = 'drug_exposure' ) bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - drug_exposure (drug_exposure) already exists --&gt; all good
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = 'measurement' ) bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - measurement (measurement) already exists --&gt; all good
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = 'observation' ) bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - observation (observation) already exists --&gt; all good
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = 'person' ) bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - person (person) already exists --&gt; all good
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = 'procedure_occurrence' ) bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - procedure_occurrence (procedure_occurrence) already exists --&gt; all good
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = 'specimen' ) bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - specimen (specimen) already exists --&gt; all good
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = 'visit_occurrence' ) bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - visit_occurrence (visit_occurrence) already exists --&gt; all good
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = 'person_ids' ) bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - person_ids (person_ids) already exists --&gt; all good
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT count(*) FROM condition_occurrence bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT count(*) FROM death bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT count(*) FROM drug_exposure bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT count(*) FROM measurement bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT count(*) FROM observation bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT count(*) FROM person bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT count(*) FROM procedure_occurrence bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT count(*) FROM specimen bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT count(*) FROM visit_occurrence bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT count(*) FROM person_ids bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - DataCollection Object Created
+</code>
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>&lt;carrot.io.plugins.bclink.BCLinkDataCollection at 0x108494820&gt;</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">rules</span> <span class="o">=</span> <span class="n">carrot</span><span class="o">.</span><span class="n">tools</span><span class="o">.</span><span class="n">load_json</span><span class="p">(</span><span class="s2">&quot;../data/rules.json&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">cdm</span> <span class="o">=</span> <span class="n">carrot</span><span class="o">.</span><span class="n">cdm</span><span class="o">.</span><span class="n">CommonDataModel</span><span class="o">.</span><span class="n">from_rules</span><span class="p">(</span><span class="n">rules</span><span class="p">,</span><span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span><span class="n">outputs</span><span class="o">=</span><span class="n">outputs</span><span class="p">)</span>
+<span class="n">cdm</span><span class="o">.</span><span class="n">process</span><span class="p">()</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+<code><span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - CommonDataModel (5.3.1) created with co-connect-tools version 0.0.0
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Running with an DataCollection object
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Turning on automatic cdm column filling
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT * FROM person_ids  bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT count(*) FROM condition_occurrence bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT column_name FROM INFORMATION_SCHEMA. COLUMNS WHERE table_name = 'condition_occurrence' LIMIT 1  bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT person_id FROM condition_occurrence ORDER BY -person_id LIMIT 1;  bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT count(*) FROM death bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT column_name FROM INFORMATION_SCHEMA. COLUMNS WHERE table_name = 'death' LIMIT 1  bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT person_id FROM death ORDER BY -person_id LIMIT 1;  bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT count(*) FROM drug_exposure bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT column_name FROM INFORMATION_SCHEMA. COLUMNS WHERE table_name = 'drug_exposure' LIMIT 1  bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT person_id FROM drug_exposure ORDER BY -person_id LIMIT 1;  bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT count(*) FROM measurement bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT column_name FROM INFORMATION_SCHEMA. COLUMNS WHERE table_name = 'measurement' LIMIT 1  bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT person_id FROM measurement ORDER BY -person_id LIMIT 1;  bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT count(*) FROM observation bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT column_name FROM INFORMATION_SCHEMA. COLUMNS WHERE table_name = 'observation' LIMIT 1  bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT person_id FROM observation ORDER BY -person_id LIMIT 1;  bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT count(*) FROM person bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT column_name FROM INFORMATION_SCHEMA. COLUMNS WHERE table_name = 'person' LIMIT 1  bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT person_id FROM person ORDER BY -person_id LIMIT 1;  bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT count(*) FROM procedure_occurrence bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT column_name FROM INFORMATION_SCHEMA. COLUMNS WHERE table_name = 'procedure_occurrence' LIMIT 1  bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT person_id FROM procedure_occurrence ORDER BY -person_id LIMIT 1;  bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT count(*) FROM specimen bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT column_name FROM INFORMATION_SCHEMA. COLUMNS WHERE table_name = 'specimen' LIMIT 1  bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT person_id FROM specimen ORDER BY -person_id LIMIT 1;  bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT count(*) FROM visit_occurrence bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT column_name FROM INFORMATION_SCHEMA. COLUMNS WHERE table_name = 'visit_occurrence' LIMIT 1  bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">bc_sqlselect --user=bclink --query=SELECT person_id FROM visit_occurrence ORDER BY -person_id LIMIT 1;  bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Added MALE 3025 of type person
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Added FEMALE 3026 of type person
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Added Antibody 3027 of type observation
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Added H/O: heart failure 3043 of type observation
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Added 2019-nCoV 3044 of type observation
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Added Cancer 3045 of type observation
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Added Headache 3028 of type condition_occurrence
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Added Fatigue 3029 of type condition_occurrence
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Added Dizziness 3030 of type condition_occurrence
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Added Cough 3031 of type condition_occurrence
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Added Fever 3032 of type condition_occurrence
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Added Muscle pain 3033 of type condition_occurrence
+<span class="ansi-green-fg">2022-06-17 14:50:33</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Added Pneumonia 3042 of type condition_occurrence
+<span class="ansi-green-fg">2022-06-17 14:50:34</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Added Mental health problem 3046 of type condition_occurrence
+<span class="ansi-green-fg">2022-06-17 14:50:34</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Added Mental disorder 3047 of type condition_occurrence
+<span class="ansi-green-fg">2022-06-17 14:50:34</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Added Type 2 diabetes mellitus 3048 of type condition_occurrence
+<span class="ansi-green-fg">2022-06-17 14:50:34</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Added Ischemic heart disease 3049 of type condition_occurrence
+<span class="ansi-green-fg">2022-06-17 14:50:34</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Added Hypertensive disorder 3050 of type condition_occurrence
+<span class="ansi-green-fg">2022-06-17 14:50:34</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Added COVID-19 vaccine 3034 of type drug_exposure
+<span class="ansi-green-fg">2022-06-17 14:50:34</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Added COVID-19 vaccine 3035 of type drug_exposure
+</code>
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+<code><span class="ansi-green-fg">2022-06-17 14:50:34</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Added COVID-19 vaccine 3036 of type drug_exposure
+<span class="ansi-green-fg">2022-06-17 14:50:34</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Added SARS-CoV-2 (COVID-19) vaccine, mRNA-1273 0.2 MG/ML Injectable Suspension 3040 of type drug_exposure
+<span class="ansi-green-fg">2022-06-17 14:50:34</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Added SARS-CoV-2 (COVID-19) vaccine, mRNA-BNT162b2 0.1 MG/ML Injectable Suspension 3041 of type drug_exposure
+<span class="ansi-green-fg">2022-06-17 14:50:34</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Starting processing in order: ['person', 'observation', 'condition_occurrence', 'drug_exposure']
+<span class="ansi-green-fg">2022-06-17 14:50:34</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Number of objects to process for each table...
+{
+      "person": 2,
+      "observation": 4,
+      "condition_occurrence": 12,
+      "drug_exposure": 5
+}
+<span class="ansi-green-fg">2022-06-17 14:50:34</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - for person: found 2 objects
+<span class="ansi-green-fg">2022-06-17 14:50:34</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - working on person
+<span class="ansi-green-fg">2022-06-17 14:50:34</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - starting on MALE 3025
+<span class="ansi-green-fg">2022-06-17 14:50:34</span> - <span class="ansi-blue-fg">Person</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Called apply_rules
+<span class="ansi-green-fg">2022-06-17 14:50:34</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Retrieving initial dataframe for 'Demographics.csv' for the first time
+<span class="ansi-green-fg">2022-06-17 14:50:34</span> - <span class="ansi-blue-fg">Person</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped birth_datetime
+<span class="ansi-green-fg">2022-06-17 14:50:34</span> - <span class="ansi-blue-fg">Person</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped gender_concept_id
+<span class="ansi-green-fg">2022-06-17 14:50:34</span> - <span class="ansi-blue-fg">Person</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped gender_source_concept_id
+<span class="ansi-green-fg">2022-06-17 14:50:34</span> - <span class="ansi-blue-fg">Person</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped gender_source_value
+<span class="ansi-green-fg">2022-06-17 14:50:34</span> - <span class="ansi-blue-fg">Person</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped person_id
+</code>
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+<code>could not convert string to float: 'na'
+</code>
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+<code><span class="ansi-green-fg">2022-06-17 14:50:34</span> - <span class="ansi-blue-fg">Person</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">Requiring non-null values in gender_concept_id removed 438 rows, leaving 562 rows.</span>
+<span class="ansi-green-fg">2022-06-17 14:50:34</span> - <span class="ansi-blue-fg">Person</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">Requiring non-null values in birth_datetime removed 1 rows, leaving 561 rows.</span>
+<span class="ansi-green-fg">2022-06-17 14:50:34</span> - <span class="ansi-blue-fg">Person</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Automatically formatting data columns.
+<span class="ansi-green-fg">2022-06-17 14:50:34</span> - <span class="ansi-blue-fg">Person</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - created df (0x1084e3790)[MALE_3025]
+<span class="ansi-green-fg">2022-06-17 14:50:34</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished MALE 3025 (0x1084e3790) ... 1/2 completed, 561 rows
+<span class="ansi-green-fg">2022-06-17 14:50:34</span> - <span class="ansi-blue-fg">BCLinkDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - saving person_ids.0x1084e3f10.2022-06-17T135034 to ./cache//person_ids.0x1084e3f10.2022-06-17T135034.csv
+<span class="ansi-green-fg">2022-06-17 14:50:34</span> - <span class="ansi-blue-fg">BCLinkDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished save to file
+<span class="ansi-green-fg">2022-06-17 14:50:34</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">dataset_tool --load --table=person_ids --user=data --data_file=./cache//person_ids.0x1084e3f10.2022-06-17T135034.csv --support --bcqueue bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:34</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">datasettool2 list-updates --dataset=person_ids --user=data --database=bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:34</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - starting on FEMALE 3026
+<span class="ansi-green-fg">2022-06-17 14:50:34</span> - <span class="ansi-blue-fg">Person</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Called apply_rules
+<span class="ansi-green-fg">2022-06-17 14:50:34</span> - <span class="ansi-blue-fg">Person</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped birth_datetime
+<span class="ansi-green-fg">2022-06-17 14:50:34</span> - <span class="ansi-blue-fg">Person</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped gender_concept_id
+<span class="ansi-green-fg">2022-06-17 14:50:34</span> - <span class="ansi-blue-fg">Person</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped gender_source_concept_id
+<span class="ansi-green-fg">2022-06-17 14:50:34</span> - <span class="ansi-blue-fg">Person</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped gender_source_value
+<span class="ansi-green-fg">2022-06-17 14:50:34</span> - <span class="ansi-blue-fg">Person</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped person_id
+<span class="ansi-green-fg">2022-06-17 14:50:34</span> - <span class="ansi-blue-fg">Person</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">Requiring non-null values in gender_concept_id removed 565 rows, leaving 435 rows.</span>
+<span class="ansi-green-fg">2022-06-17 14:50:34</span> - <span class="ansi-blue-fg">Person</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Automatically formatting data columns.
+<span class="ansi-green-fg">2022-06-17 14:50:34</span> - <span class="ansi-blue-fg">Person</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - created df (0x1084e3c10)[FEMALE_3026]
+<span class="ansi-green-fg">2022-06-17 14:50:34</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished FEMALE 3026 (0x1084e3c10) ... 2/2 completed, 435 rows
+</code>
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+<code>could not convert string to float: 'na'
+</code>
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+<code><span class="ansi-green-fg">2022-06-17 14:50:34</span> - <span class="ansi-blue-fg">BCLinkDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - saving person_ids.0x1085161f0.2022-06-17T135034 to ./cache//person_ids.0x1085161f0.2022-06-17T135034.csv
+<span class="ansi-green-fg">2022-06-17 14:50:34</span> - <span class="ansi-blue-fg">BCLinkDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished save to file
+<span class="ansi-green-fg">2022-06-17 14:50:34</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">dataset_tool --load --table=person_ids --user=data --data_file=./cache//person_ids.0x1085161f0.2022-06-17T135034.csv --support --bcqueue bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:34</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">datasettool2 list-updates --dataset=person_ids --user=data --database=bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:34</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - saving dataframe (0x10854c7c0) to &lt;carrot.io.plugins.bclink.BCLinkDataCollection object at 0x108494820&gt;
+<span class="ansi-green-fg">2022-06-17 14:50:34</span> - <span class="ansi-blue-fg">BCLinkDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - saving person.0x10854c7c0.2022-06-17T135034 to ./cache//person.0x10854c7c0.2022-06-17T135034.csv
+<span class="ansi-green-fg">2022-06-17 14:50:34</span> - <span class="ansi-blue-fg">BCLinkDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished save to file
+<span class="ansi-green-fg">2022-06-17 14:50:34</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">dataset_tool --load --table=person --user=data --data_file=./cache//person.0x10854c7c0.2022-06-17T135034.csv --support --bcqueue bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:34</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">datasettool2 list-updates --dataset=person --user=data --database=bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:35</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finalised person on iteration 0 producing 996 rows from 2 tables
+<span class="ansi-green-fg">2022-06-17 14:50:35</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Getting next chunk of data
+<span class="ansi-green-fg">2022-06-17 14:50:35</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Getting the next chunk of size '1000' for 'Demographics.csv'
+<span class="ansi-green-fg">2022-06-17 14:50:35</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - --&gt; Got 0 rows
+<span class="ansi-green-fg">2022-06-17 14:50:35</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - All input files for this object have now been used.
+<span class="ansi-green-fg">2022-06-17 14:50:35</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - resetting used bricks
+<span class="ansi-green-fg">2022-06-17 14:50:35</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - for observation: found 4 objects
+<span class="ansi-green-fg">2022-06-17 14:50:35</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - working on observation
+<span class="ansi-green-fg">2022-06-17 14:50:35</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - starting on Antibody 3027
+<span class="ansi-green-fg">2022-06-17 14:50:35</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Called apply_rules
+<span class="ansi-green-fg">2022-06-17 14:50:35</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Retrieving initial dataframe for 'Serology.csv' for the first time
+<span class="ansi-green-fg">2022-06-17 14:50:35</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped observation_concept_id
+<span class="ansi-green-fg">2022-06-17 14:50:35</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped observation_datetime
+<span class="ansi-green-fg">2022-06-17 14:50:35</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped observation_source_concept_id
+<span class="ansi-green-fg">2022-06-17 14:50:35</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped observation_source_value
+<span class="ansi-green-fg">2022-06-17 14:50:35</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped person_id
+<span class="ansi-green-fg">2022-06-17 14:50:35</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Automatically formatting data columns.
+<span class="ansi-green-fg">2022-06-17 14:50:35</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - created df (0x108592670)[Antibody_3027]
+<span class="ansi-green-fg">2022-06-17 14:50:35</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished Antibody 3027 (0x108592670) ... 1/4 completed, 413 rows
+<span class="ansi-green-fg">2022-06-17 14:50:35</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">ERROR</span> - <span class="ansi-red-fg">There are person_ids in this table that are not in the output person table!</span>
+<span class="ansi-green-fg">2022-06-17 14:50:35</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">ERROR</span> - <span class="ansi-red-fg">Either they are not in the original data, or while creating the person table, </span>
+<span class="ansi-green-fg">2022-06-17 14:50:35</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">ERROR</span> - <span class="ansi-red-fg">studies have been removed due to lack of required fields, such as birthdate.</span>
+<span class="ansi-green-fg">2022-06-17 14:50:35</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">ERROR</span> - <span class="ansi-red-fg">410/413 were good, 3 studies are removed.</span>
+<span class="ansi-green-fg">2022-06-17 14:50:35</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - starting on H/O: heart failure 3043
+<span class="ansi-green-fg">2022-06-17 14:50:35</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Called apply_rules
+<span class="ansi-green-fg">2022-06-17 14:50:35</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Retrieving initial dataframe for 'Hospital_Visit.csv' for the first time
+<span class="ansi-green-fg">2022-06-17 14:50:35</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped observation_concept_id
+<span class="ansi-green-fg">2022-06-17 14:50:35</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped observation_datetime
+<span class="ansi-green-fg">2022-06-17 14:50:35</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped observation_source_concept_id
+<span class="ansi-green-fg">2022-06-17 14:50:35</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped observation_source_value
+<span class="ansi-green-fg">2022-06-17 14:50:35</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped person_id
+<span class="ansi-green-fg">2022-06-17 14:50:35</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">Requiring non-null values in observation_concept_id removed 781 rows, leaving 219 rows.</span>
+<span class="ansi-green-fg">2022-06-17 14:50:35</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Automatically formatting data columns.
+<span class="ansi-green-fg">2022-06-17 14:50:35</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - created df (0x108837760)[H_O_heart_failure_3043]
+<span class="ansi-green-fg">2022-06-17 14:50:35</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished H/O: heart failure 3043 (0x108837760) ... 2/4 completed, 219 rows
+<span class="ansi-green-fg">2022-06-17 14:50:35</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">ERROR</span> - <span class="ansi-red-fg">There are person_ids in this table that are not in the output person table!</span>
+<span class="ansi-green-fg">2022-06-17 14:50:35</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">ERROR</span> - <span class="ansi-red-fg">Either they are not in the original data, or while creating the person table, </span>
+<span class="ansi-green-fg">2022-06-17 14:50:35</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">ERROR</span> - <span class="ansi-red-fg">studies have been removed due to lack of required fields, such as birthdate.</span>
+<span class="ansi-green-fg">2022-06-17 14:50:35</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">ERROR</span> - <span class="ansi-red-fg">218/219 were good, 1 studies are removed.</span>
+<span class="ansi-green-fg">2022-06-17 14:50:35</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - starting on 2019-nCoV 3044
+<span class="ansi-green-fg">2022-06-17 14:50:35</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Called apply_rules
+<span class="ansi-green-fg">2022-06-17 14:50:35</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped observation_concept_id
+<span class="ansi-green-fg">2022-06-17 14:50:35</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped observation_datetime
+<span class="ansi-green-fg">2022-06-17 14:50:35</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped observation_source_concept_id
+<span class="ansi-green-fg">2022-06-17 14:50:35</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped observation_source_value
+<span class="ansi-green-fg">2022-06-17 14:50:35</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped person_id
+<span class="ansi-green-fg">2022-06-17 14:50:35</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">Requiring non-null values in observation_concept_id removed 847 rows, leaving 153 rows.</span>
+<span class="ansi-green-fg">2022-06-17 14:50:35</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Automatically formatting data columns.
+<span class="ansi-green-fg">2022-06-17 14:50:36</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - created df (0x108857700)[2019_nCoV_3044]
+<span class="ansi-green-fg">2022-06-17 14:50:36</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished 2019-nCoV 3044 (0x108857700) ... 3/4 completed, 153 rows
+<span class="ansi-green-fg">2022-06-17 14:50:36</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">ERROR</span> - <span class="ansi-red-fg">There are person_ids in this table that are not in the output person table!</span>
+<span class="ansi-green-fg">2022-06-17 14:50:36</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">ERROR</span> - <span class="ansi-red-fg">Either they are not in the original data, or while creating the person table, </span>
+<span class="ansi-green-fg">2022-06-17 14:50:36</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">ERROR</span> - <span class="ansi-red-fg">studies have been removed due to lack of required fields, such as birthdate.</span>
+<span class="ansi-green-fg">2022-06-17 14:50:36</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">ERROR</span> - <span class="ansi-red-fg">152/153 were good, 1 studies are removed.</span>
+<span class="ansi-green-fg">2022-06-17 14:50:36</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - starting on Cancer 3045
+</code>
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+<code><span class="ansi-green-fg">2022-06-17 14:50:36</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Called apply_rules
+<span class="ansi-green-fg">2022-06-17 14:50:36</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped observation_concept_id
+<span class="ansi-green-fg">2022-06-17 14:50:36</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped observation_datetime
+<span class="ansi-green-fg">2022-06-17 14:50:36</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped observation_source_concept_id
+<span class="ansi-green-fg">2022-06-17 14:50:36</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped observation_source_value
+<span class="ansi-green-fg">2022-06-17 14:50:36</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped person_id
+<span class="ansi-green-fg">2022-06-17 14:50:36</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">Requiring non-null values in observation_concept_id removed 708 rows, leaving 292 rows.</span>
+<span class="ansi-green-fg">2022-06-17 14:50:36</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Automatically formatting data columns.
+<span class="ansi-green-fg">2022-06-17 14:50:36</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - created df (0x108857190)[Cancer_3045]
+<span class="ansi-green-fg">2022-06-17 14:50:36</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished Cancer 3045 (0x108857190) ... 4/4 completed, 292 rows
+<span class="ansi-green-fg">2022-06-17 14:50:36</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">ERROR</span> - <span class="ansi-red-fg">Removed 1 row(s) due to duplicates found when merging observation</span>
+<span class="ansi-green-fg">2022-06-17 14:50:36</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">Example duplicates...</span>
+<span class="ansi-green-fg">2022-06-17 14:50:36</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">                person_id  observation_concept_id observation_date  \
+observation_id                                                       
+440                 110.0                 4059317       2019-07-07   
+441                 110.0                 4059317       2019-07-07   
+
+                      observation_datetime observation_source_value  \
+observation_id                                                        
+440             2019-07-07 00:00:00.000000             Heart Attack   
+441             2019-07-07 00:00:00.000000             Heart Attack   
+
+                observation_source_concept_id  
+observation_id                                 
+440                                   4059317  
+441                                   4059317  </span>
+<span class="ansi-green-fg">2022-06-17 14:50:36</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - saving dataframe (0x108887880) to &lt;carrot.io.plugins.bclink.BCLinkDataCollection object at 0x108494820&gt;
+<span class="ansi-green-fg">2022-06-17 14:50:36</span> - <span class="ansi-blue-fg">BCLinkDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - saving observation.0x108887880.2022-06-17T135036 to ./cache//observation.0x108887880.2022-06-17T135036.csv
+<span class="ansi-green-fg">2022-06-17 14:50:36</span> - <span class="ansi-blue-fg">BCLinkDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished save to file
+<span class="ansi-green-fg">2022-06-17 14:50:36</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">dataset_tool --load --table=observation --user=data --data_file=./cache//observation.0x108887880.2022-06-17T135036.csv --support --bcqueue bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:36</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">datasettool2 list-updates --dataset=observation --user=data --database=bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:36</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finalised observation on iteration 0 producing 1072 rows from 4 tables
+<span class="ansi-green-fg">2022-06-17 14:50:36</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Getting next chunk of data
+<span class="ansi-green-fg">2022-06-17 14:50:36</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Getting the next chunk of size '1000' for 'Hospital_Visit.csv'
+<span class="ansi-green-fg">2022-06-17 14:50:36</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - --&gt; Got 0 rows
+<span class="ansi-green-fg">2022-06-17 14:50:36</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Getting the next chunk of size '1000' for 'Serology.csv'
+<span class="ansi-green-fg">2022-06-17 14:50:36</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - --&gt; Got 0 rows
+<span class="ansi-green-fg">2022-06-17 14:50:36</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - All input files for this object have now been used.
+<span class="ansi-green-fg">2022-06-17 14:50:36</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - resetting used bricks
+<span class="ansi-green-fg">2022-06-17 14:50:36</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - for condition_occurrence: found 12 objects
+<span class="ansi-green-fg">2022-06-17 14:50:36</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - working on condition_occurrence
+<span class="ansi-green-fg">2022-06-17 14:50:36</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - starting on Headache 3028
+<span class="ansi-green-fg">2022-06-17 14:50:36</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Called apply_rules
+<span class="ansi-green-fg">2022-06-17 14:50:36</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Retrieving initial dataframe for 'Symptoms.csv' for the first time
+<span class="ansi-green-fg">2022-06-17 14:50:36</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_concept_id
+<span class="ansi-green-fg">2022-06-17 14:50:36</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_end_datetime
+<span class="ansi-green-fg">2022-06-17 14:50:36</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_source_concept_id
+<span class="ansi-green-fg">2022-06-17 14:50:36</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_source_value
+<span class="ansi-green-fg">2022-06-17 14:50:36</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_start_datetime
+<span class="ansi-green-fg">2022-06-17 14:50:36</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped person_id
+<span class="ansi-green-fg">2022-06-17 14:50:36</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">Requiring non-null values in condition_concept_id removed 55 rows, leaving 275 rows.</span>
+<span class="ansi-green-fg">2022-06-17 14:50:36</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">Requiring non-null values in condition_start_datetime removed 1 rows, leaving 274 rows.</span>
+<span class="ansi-green-fg">2022-06-17 14:50:36</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Automatically formatting data columns.
+<span class="ansi-green-fg">2022-06-17 14:50:37</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - created df (0x1088a7ee0)[Headache_3028]
+<span class="ansi-green-fg">2022-06-17 14:50:37</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished Headache 3028 (0x1088a7ee0) ... 1/12 completed, 274 rows
+<span class="ansi-green-fg">2022-06-17 14:50:37</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - starting on Fatigue 3029
+<span class="ansi-green-fg">2022-06-17 14:50:37</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Called apply_rules
+<span class="ansi-green-fg">2022-06-17 14:50:37</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_concept_id
+<span class="ansi-green-fg">2022-06-17 14:50:37</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_end_datetime
+<span class="ansi-green-fg">2022-06-17 14:50:37</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_source_concept_id
+<span class="ansi-green-fg">2022-06-17 14:50:37</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_source_value
+<span class="ansi-green-fg">2022-06-17 14:50:37</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_start_datetime
+<span class="ansi-green-fg">2022-06-17 14:50:37</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped person_id
+<span class="ansi-green-fg">2022-06-17 14:50:37</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">Requiring non-null values in condition_concept_id removed 95 rows, leaving 235 rows.</span>
+<span class="ansi-green-fg">2022-06-17 14:50:37</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">Requiring non-null values in condition_start_datetime removed 1 rows, leaving 234 rows.</span>
+<span class="ansi-green-fg">2022-06-17 14:50:37</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Automatically formatting data columns.
+<span class="ansi-green-fg">2022-06-17 14:50:37</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - created df (0x1088e2ac0)[Fatigue_3029]
+<span class="ansi-green-fg">2022-06-17 14:50:37</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished Fatigue 3029 (0x1088e2ac0) ... 2/12 completed, 234 rows
+<span class="ansi-green-fg">2022-06-17 14:50:37</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - starting on Dizziness 3030
+<span class="ansi-green-fg">2022-06-17 14:50:37</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Called apply_rules
+<span class="ansi-green-fg">2022-06-17 14:50:37</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_concept_id
+<span class="ansi-green-fg">2022-06-17 14:50:37</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_end_datetime
+<span class="ansi-green-fg">2022-06-17 14:50:37</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_source_concept_id
+<span class="ansi-green-fg">2022-06-17 14:50:37</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_source_value
+</code>
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+<code><span class="ansi-green-fg">2022-06-17 14:50:37</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_start_datetime
+<span class="ansi-green-fg">2022-06-17 14:50:37</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped person_id
+<span class="ansi-green-fg">2022-06-17 14:50:37</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">Requiring non-null values in condition_concept_id removed 195 rows, leaving 135 rows.</span>
+<span class="ansi-green-fg">2022-06-17 14:50:37</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">Requiring non-null values in condition_start_datetime removed 1 rows, leaving 134 rows.</span>
+<span class="ansi-green-fg">2022-06-17 14:50:37</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Automatically formatting data columns.
+<span class="ansi-green-fg">2022-06-17 14:50:37</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - created df (0x1088e2760)[Dizziness_3030]
+<span class="ansi-green-fg">2022-06-17 14:50:37</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished Dizziness 3030 (0x1088e2760) ... 3/12 completed, 134 rows
+<span class="ansi-green-fg">2022-06-17 14:50:37</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - starting on Cough 3031
+<span class="ansi-green-fg">2022-06-17 14:50:37</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Called apply_rules
+<span class="ansi-green-fg">2022-06-17 14:50:37</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_concept_id
+<span class="ansi-green-fg">2022-06-17 14:50:37</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_end_datetime
+<span class="ansi-green-fg">2022-06-17 14:50:37</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_source_concept_id
+<span class="ansi-green-fg">2022-06-17 14:50:37</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_source_value
+<span class="ansi-green-fg">2022-06-17 14:50:37</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_start_datetime
+<span class="ansi-green-fg">2022-06-17 14:50:37</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped person_id
+<span class="ansi-green-fg">2022-06-17 14:50:37</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">Requiring non-null values in condition_concept_id removed 100 rows, leaving 230 rows.</span>
+<span class="ansi-green-fg">2022-06-17 14:50:37</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">Requiring non-null values in condition_start_datetime removed 1 rows, leaving 229 rows.</span>
+<span class="ansi-green-fg">2022-06-17 14:50:37</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Automatically formatting data columns.
+<span class="ansi-green-fg">2022-06-17 14:50:37</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - created df (0x1088f2100)[Cough_3031]
+<span class="ansi-green-fg">2022-06-17 14:50:37</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished Cough 3031 (0x1088f2100) ... 4/12 completed, 229 rows
+<span class="ansi-green-fg">2022-06-17 14:50:37</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - starting on Fever 3032
+<span class="ansi-green-fg">2022-06-17 14:50:37</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Called apply_rules
+<span class="ansi-green-fg">2022-06-17 14:50:37</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_concept_id
+<span class="ansi-green-fg">2022-06-17 14:50:37</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_end_datetime
+<span class="ansi-green-fg">2022-06-17 14:50:37</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_source_concept_id
+<span class="ansi-green-fg">2022-06-17 14:50:37</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_source_value
+<span class="ansi-green-fg">2022-06-17 14:50:37</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_start_datetime
+<span class="ansi-green-fg">2022-06-17 14:50:37</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped person_id
+<span class="ansi-green-fg">2022-06-17 14:50:38</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">Requiring non-null values in condition_concept_id removed 265 rows, leaving 65 rows.</span>
+<span class="ansi-green-fg">2022-06-17 14:50:38</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Automatically formatting data columns.
+<span class="ansi-green-fg">2022-06-17 14:50:38</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - created df (0x1088facd0)[Fever_3032]
+<span class="ansi-green-fg">2022-06-17 14:50:38</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished Fever 3032 (0x1088facd0) ... 5/12 completed, 65 rows
+<span class="ansi-green-fg">2022-06-17 14:50:38</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - starting on Muscle pain 3033
+<span class="ansi-green-fg">2022-06-17 14:50:38</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Called apply_rules
+<span class="ansi-green-fg">2022-06-17 14:50:38</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_concept_id
+<span class="ansi-green-fg">2022-06-17 14:50:38</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_end_datetime
+<span class="ansi-green-fg">2022-06-17 14:50:38</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_source_concept_id
+<span class="ansi-green-fg">2022-06-17 14:50:38</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_source_value
+<span class="ansi-green-fg">2022-06-17 14:50:38</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_start_datetime
+<span class="ansi-green-fg">2022-06-17 14:50:38</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped person_id
+<span class="ansi-green-fg">2022-06-17 14:50:38</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">Requiring non-null values in condition_concept_id removed 295 rows, leaving 35 rows.</span>
+<span class="ansi-green-fg">2022-06-17 14:50:38</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">Requiring non-null values in condition_start_datetime removed 1 rows, leaving 34 rows.</span>
+<span class="ansi-green-fg">2022-06-17 14:50:38</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Automatically formatting data columns.
+<span class="ansi-green-fg">2022-06-17 14:50:38</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - created df (0x1089076a0)[Muscle_pain_3033]
+<span class="ansi-green-fg">2022-06-17 14:50:38</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished Muscle pain 3033 (0x1089076a0) ... 6/12 completed, 34 rows
+<span class="ansi-green-fg">2022-06-17 14:50:38</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - starting on Pneumonia 3042
+<span class="ansi-green-fg">2022-06-17 14:50:38</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Called apply_rules
+<span class="ansi-green-fg">2022-06-17 14:50:38</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Retrieving initial dataframe for 'Hospital_Visit.csv' for the first time
+<span class="ansi-green-fg">2022-06-17 14:50:38</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_concept_id
+<span class="ansi-green-fg">2022-06-17 14:50:38</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_end_datetime
+<span class="ansi-green-fg">2022-06-17 14:50:38</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_source_concept_id
+<span class="ansi-green-fg">2022-06-17 14:50:38</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_source_value
+<span class="ansi-green-fg">2022-06-17 14:50:38</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_start_datetime
+<span class="ansi-green-fg">2022-06-17 14:50:38</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped person_id
+<span class="ansi-green-fg">2022-06-17 14:50:38</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">Requiring non-null values in condition_concept_id removed 866 rows, leaving 134 rows.</span>
+<span class="ansi-green-fg">2022-06-17 14:50:38</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Automatically formatting data columns.
+<span class="ansi-green-fg">2022-06-17 14:50:39</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - created df (0x1088b4130)[Pneumonia_3042]
+<span class="ansi-green-fg">2022-06-17 14:50:39</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished Pneumonia 3042 (0x1088b4130) ... 7/12 completed, 134 rows
+<span class="ansi-green-fg">2022-06-17 14:50:39</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - starting on Mental health problem 3046
+<span class="ansi-green-fg">2022-06-17 14:50:39</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Called apply_rules
+<span class="ansi-green-fg">2022-06-17 14:50:39</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Retrieving initial dataframe for 'GP_Records.csv' for the first time
+<span class="ansi-green-fg">2022-06-17 14:50:39</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_concept_id
+<span class="ansi-green-fg">2022-06-17 14:50:39</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_end_datetime
+<span class="ansi-green-fg">2022-06-17 14:50:39</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_source_concept_id
+<span class="ansi-green-fg">2022-06-17 14:50:39</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_source_value
+<span class="ansi-green-fg">2022-06-17 14:50:39</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_start_datetime
+<span class="ansi-green-fg">2022-06-17 14:50:39</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped person_id
+<span class="ansi-green-fg">2022-06-17 14:50:39</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">Requiring non-null values in condition_concept_id removed 781 rows, leaving 219 rows.</span>
+</code>
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+<code><span class="ansi-green-fg">2022-06-17 14:50:39</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Automatically formatting data columns.
+<span class="ansi-green-fg">2022-06-17 14:50:39</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - created df (0x1089595e0)[Mental_health_problem_3046]
+<span class="ansi-green-fg">2022-06-17 14:50:39</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished Mental health problem 3046 (0x1089595e0) ... 8/12 completed, 219 rows
+<span class="ansi-green-fg">2022-06-17 14:50:39</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">ERROR</span> - <span class="ansi-red-fg">There are person_ids in this table that are not in the output person table!</span>
+<span class="ansi-green-fg">2022-06-17 14:50:39</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">ERROR</span> - <span class="ansi-red-fg">Either they are not in the original data, or while creating the person table, </span>
+<span class="ansi-green-fg">2022-06-17 14:50:39</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">ERROR</span> - <span class="ansi-red-fg">studies have been removed due to lack of required fields, such as birthdate.</span>
+<span class="ansi-green-fg">2022-06-17 14:50:39</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">ERROR</span> - <span class="ansi-red-fg">217/219 were good, 2 studies are removed.</span>
+<span class="ansi-green-fg">2022-06-17 14:50:39</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - starting on Mental disorder 3047
+<span class="ansi-green-fg">2022-06-17 14:50:39</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Called apply_rules
+<span class="ansi-green-fg">2022-06-17 14:50:39</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_concept_id
+<span class="ansi-green-fg">2022-06-17 14:50:39</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_end_datetime
+<span class="ansi-green-fg">2022-06-17 14:50:39</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_source_concept_id
+<span class="ansi-green-fg">2022-06-17 14:50:39</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_source_value
+<span class="ansi-green-fg">2022-06-17 14:50:39</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_start_datetime
+<span class="ansi-green-fg">2022-06-17 14:50:39</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped person_id
+<span class="ansi-green-fg">2022-06-17 14:50:39</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">Requiring non-null values in condition_concept_id removed 781 rows, leaving 219 rows.</span>
+<span class="ansi-green-fg">2022-06-17 14:50:39</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Automatically formatting data columns.
+<span class="ansi-green-fg">2022-06-17 14:50:39</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - created df (0x10898e880)[Mental_disorder_3047]
+<span class="ansi-green-fg">2022-06-17 14:50:39</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished Mental disorder 3047 (0x10898e880) ... 9/12 completed, 219 rows
+<span class="ansi-green-fg">2022-06-17 14:50:39</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">ERROR</span> - <span class="ansi-red-fg">There are person_ids in this table that are not in the output person table!</span>
+<span class="ansi-green-fg">2022-06-17 14:50:39</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">ERROR</span> - <span class="ansi-red-fg">Either they are not in the original data, or while creating the person table, </span>
+<span class="ansi-green-fg">2022-06-17 14:50:39</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">ERROR</span> - <span class="ansi-red-fg">studies have been removed due to lack of required fields, such as birthdate.</span>
+<span class="ansi-green-fg">2022-06-17 14:50:39</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">ERROR</span> - <span class="ansi-red-fg">217/219 were good, 2 studies are removed.</span>
+<span class="ansi-green-fg">2022-06-17 14:50:39</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - starting on Type 2 diabetes mellitus 3048
+<span class="ansi-green-fg">2022-06-17 14:50:39</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Called apply_rules
+<span class="ansi-green-fg">2022-06-17 14:50:39</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_concept_id
+<span class="ansi-green-fg">2022-06-17 14:50:39</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_end_datetime
+<span class="ansi-green-fg">2022-06-17 14:50:39</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_source_concept_id
+<span class="ansi-green-fg">2022-06-17 14:50:39</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_source_value
+<span class="ansi-green-fg">2022-06-17 14:50:39</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_start_datetime
+<span class="ansi-green-fg">2022-06-17 14:50:39</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped person_id
+<span class="ansi-green-fg">2022-06-17 14:50:39</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">Requiring non-null values in condition_concept_id removed 861 rows, leaving 139 rows.</span>
+<span class="ansi-green-fg">2022-06-17 14:50:39</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Automatically formatting data columns.
+<span class="ansi-green-fg">2022-06-17 14:50:39</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - created df (0x10841bee0)[Type_2_diabetes_mellitus_3048]
+<span class="ansi-green-fg">2022-06-17 14:50:39</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished Type 2 diabetes mellitus 3048 (0x10841bee0) ... 10/12 completed, 139 rows
+<span class="ansi-green-fg">2022-06-17 14:50:39</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - starting on Ischemic heart disease 3049
+<span class="ansi-green-fg">2022-06-17 14:50:39</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Called apply_rules
+<span class="ansi-green-fg">2022-06-17 14:50:39</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_concept_id
+<span class="ansi-green-fg">2022-06-17 14:50:39</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_end_datetime
+<span class="ansi-green-fg">2022-06-17 14:50:39</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_source_concept_id
+<span class="ansi-green-fg">2022-06-17 14:50:39</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_source_value
+<span class="ansi-green-fg">2022-06-17 14:50:39</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_start_datetime
+<span class="ansi-green-fg">2022-06-17 14:50:40</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped person_id
+<span class="ansi-green-fg">2022-06-17 14:50:40</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">Requiring non-null values in condition_concept_id removed 897 rows, leaving 103 rows.</span>
+<span class="ansi-green-fg">2022-06-17 14:50:40</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Automatically formatting data columns.
+<span class="ansi-green-fg">2022-06-17 14:50:40</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - created df (0x108990760)[Ischemic_heart_disease_3049]
+<span class="ansi-green-fg">2022-06-17 14:50:40</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished Ischemic heart disease 3049 (0x108990760) ... 11/12 completed, 103 rows
+<span class="ansi-green-fg">2022-06-17 14:50:40</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">ERROR</span> - <span class="ansi-red-fg">There are person_ids in this table that are not in the output person table!</span>
+<span class="ansi-green-fg">2022-06-17 14:50:40</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">ERROR</span> - <span class="ansi-red-fg">Either they are not in the original data, or while creating the person table, </span>
+<span class="ansi-green-fg">2022-06-17 14:50:40</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">ERROR</span> - <span class="ansi-red-fg">studies have been removed due to lack of required fields, such as birthdate.</span>
+<span class="ansi-green-fg">2022-06-17 14:50:40</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">ERROR</span> - <span class="ansi-red-fg">102/103 were good, 1 studies are removed.</span>
+<span class="ansi-green-fg">2022-06-17 14:50:40</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - starting on Hypertensive disorder 3050
+<span class="ansi-green-fg">2022-06-17 14:50:40</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Called apply_rules
+<span class="ansi-green-fg">2022-06-17 14:50:40</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_concept_id
+<span class="ansi-green-fg">2022-06-17 14:50:40</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_end_datetime
+<span class="ansi-green-fg">2022-06-17 14:50:40</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_source_concept_id
+<span class="ansi-green-fg">2022-06-17 14:50:40</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_source_value
+<span class="ansi-green-fg">2022-06-17 14:50:40</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_start_datetime
+<span class="ansi-green-fg">2022-06-17 14:50:40</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped person_id
+<span class="ansi-green-fg">2022-06-17 14:50:40</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">Requiring non-null values in condition_concept_id removed 938 rows, leaving 62 rows.</span>
+<span class="ansi-green-fg">2022-06-17 14:50:40</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Automatically formatting data columns.
+<span class="ansi-green-fg">2022-06-17 14:50:40</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - created df (0x1089a82b0)[Hypertensive_disorder_3050]
+<span class="ansi-green-fg">2022-06-17 14:50:40</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished Hypertensive disorder 3050 (0x1089a82b0) ... 12/12 completed, 62 rows
+<span class="ansi-green-fg">2022-06-17 14:50:40</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">ERROR</span> - <span class="ansi-red-fg">Removed 2 row(s) due to duplicates found when merging condition_occurrence</span>
+</code>
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+<code><span class="ansi-green-fg">2022-06-17 14:50:40</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">Example duplicates...</span>
+<span class="ansi-green-fg">2022-06-17 14:50:40</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">                         person_id  condition_concept_id condition_start_date  \
+condition_occurrence_id                                                         
+38                           125.0                378253           2020-04-11   
+40                           125.0                378253           2020-04-11   
+308                          125.0               4223659           2020-04-11   
+310                          125.0               4223659           2020-04-11   
+
+                           condition_start_datetime condition_end_date  \
+condition_occurrence_id                                                  
+38                       2020-04-11 00:00:00.000000         2020-04-11   
+40                       2020-04-11 00:00:00.000000         2020-04-11   
+308                      2020-04-11 00:00:00.000000         2020-04-11   
+310                      2020-04-11 00:00:00.000000         2020-04-11   
+
+                             condition_end_datetime condition_source_value  \
+condition_occurrence_id                                                      
+38                       2020-04-11 00:00:00.000000                    Yes   
+40                       2020-04-11 00:00:00.000000                    Yes   
+308                      2020-04-11 00:00:00.000000                    Yes   
+310                      2020-04-11 00:00:00.000000                    Yes   
+
+                         condition_source_concept_id  
+condition_occurrence_id                               
+38                                            378253  
+40                                            378253  
+308                                          4223659  
+310                                          4223659  </span>
+<span class="ansi-green-fg">2022-06-17 14:50:40</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - saving dataframe (0x108887bb0) to &lt;carrot.io.plugins.bclink.BCLinkDataCollection object at 0x108494820&gt;
+<span class="ansi-green-fg">2022-06-17 14:50:40</span> - <span class="ansi-blue-fg">BCLinkDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - saving condition_occurrence.0x108887bb0.2022-06-17T135040 to ./cache//condition_occurrence.0x108887bb0.2022-06-17T135040.csv
+<span class="ansi-green-fg">2022-06-17 14:50:40</span> - <span class="ansi-blue-fg">BCLinkDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished save to file
+<span class="ansi-green-fg">2022-06-17 14:50:40</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">dataset_tool --load --table=condition_occurrence --user=data --data_file=./cache//condition_occurrence.0x108887bb0.2022-06-17T135040.csv --support --bcqueue bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:40</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">datasettool2 list-updates --dataset=condition_occurrence --user=data --database=bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:40</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finalised condition_occurrence on iteration 0 producing 1841 rows from 12 tables
+<span class="ansi-green-fg">2022-06-17 14:50:40</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Getting next chunk of data
+<span class="ansi-green-fg">2022-06-17 14:50:40</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Getting the next chunk of size '1000' for 'GP_Records.csv'
+<span class="ansi-green-fg">2022-06-17 14:50:40</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - --&gt; Got 0 rows
+<span class="ansi-green-fg">2022-06-17 14:50:40</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Getting the next chunk of size '1000' for 'Hospital_Visit.csv'
+<span class="ansi-green-fg">2022-06-17 14:50:40</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - --&gt; Got 0 rows
+<span class="ansi-green-fg">2022-06-17 14:50:40</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Getting the next chunk of size '1000' for 'Symptoms.csv'
+<span class="ansi-green-fg">2022-06-17 14:50:40</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - --&gt; Got 0 rows
+<span class="ansi-green-fg">2022-06-17 14:50:40</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - All input files for this object have now been used.
+<span class="ansi-green-fg">2022-06-17 14:50:40</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - resetting used bricks
+<span class="ansi-green-fg">2022-06-17 14:50:40</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - for drug_exposure: found 5 objects
+<span class="ansi-green-fg">2022-06-17 14:50:40</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - working on drug_exposure
+<span class="ansi-green-fg">2022-06-17 14:50:40</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - starting on COVID-19 vaccine 3034
+<span class="ansi-green-fg">2022-06-17 14:50:40</span> - <span class="ansi-blue-fg">DrugExposure</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Called apply_rules
+<span class="ansi-green-fg">2022-06-17 14:50:40</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Retrieving initial dataframe for 'Vaccinations.csv' for the first time
+<span class="ansi-green-fg">2022-06-17 14:50:40</span> - <span class="ansi-blue-fg">DrugExposure</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped drug_concept_id
+<span class="ansi-green-fg">2022-06-17 14:50:40</span> - <span class="ansi-blue-fg">DrugExposure</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped drug_exposure_end_datetime
+<span class="ansi-green-fg">2022-06-17 14:50:40</span> - <span class="ansi-blue-fg">DrugExposure</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped drug_exposure_start_datetime
+<span class="ansi-green-fg">2022-06-17 14:50:40</span> - <span class="ansi-blue-fg">DrugExposure</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped drug_source_concept_id
+<span class="ansi-green-fg">2022-06-17 14:50:40</span> - <span class="ansi-blue-fg">DrugExposure</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped drug_source_value
+<span class="ansi-green-fg">2022-06-17 14:50:40</span> - <span class="ansi-blue-fg">DrugExposure</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped person_id
+<span class="ansi-green-fg">2022-06-17 14:50:40</span> - <span class="ansi-blue-fg">DrugExposure</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">Requiring non-null values in drug_concept_id removed 475 rows, leaving 245 rows.</span>
+<span class="ansi-green-fg">2022-06-17 14:50:41</span> - <span class="ansi-blue-fg">DrugExposure</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Automatically formatting data columns.
+<span class="ansi-green-fg">2022-06-17 14:50:41</span> - <span class="ansi-blue-fg">DrugExposure</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - created df (0x1089b1e50)[COVID_19_vaccine_3034]
+<span class="ansi-green-fg">2022-06-17 14:50:41</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished COVID-19 vaccine 3034 (0x1089b1e50) ... 1/5 completed, 245 rows
+<span class="ansi-green-fg">2022-06-17 14:50:41</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - starting on COVID-19 vaccine 3035
+<span class="ansi-green-fg">2022-06-17 14:50:41</span> - <span class="ansi-blue-fg">DrugExposure</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Called apply_rules
+<span class="ansi-green-fg">2022-06-17 14:50:41</span> - <span class="ansi-blue-fg">DrugExposure</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped drug_concept_id
+<span class="ansi-green-fg">2022-06-17 14:50:41</span> - <span class="ansi-blue-fg">DrugExposure</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped drug_exposure_end_datetime
+<span class="ansi-green-fg">2022-06-17 14:50:41</span> - <span class="ansi-blue-fg">DrugExposure</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped drug_exposure_start_datetime
+<span class="ansi-green-fg">2022-06-17 14:50:41</span> - <span class="ansi-blue-fg">DrugExposure</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped drug_source_concept_id
+<span class="ansi-green-fg">2022-06-17 14:50:41</span> - <span class="ansi-blue-fg">DrugExposure</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped drug_source_value
+<span class="ansi-green-fg">2022-06-17 14:50:41</span> - <span class="ansi-blue-fg">DrugExposure</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped person_id
+<span class="ansi-green-fg">2022-06-17 14:50:41</span> - <span class="ansi-blue-fg">DrugExposure</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">Requiring non-null values in drug_concept_id removed 494 rows, leaving 226 rows.</span>
+<span class="ansi-green-fg">2022-06-17 14:50:41</span> - <span class="ansi-blue-fg">DrugExposure</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">Requiring non-null values in drug_exposure_start_datetime removed 1 rows, leaving 225 rows.</span>
+<span class="ansi-green-fg">2022-06-17 14:50:41</span> - <span class="ansi-blue-fg">DrugExposure</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Automatically formatting data columns.
+<span class="ansi-green-fg">2022-06-17 14:50:41</span> - <span class="ansi-blue-fg">DrugExposure</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - created df (0x1089bf070)[COVID_19_vaccine_3035]
+<span class="ansi-green-fg">2022-06-17 14:50:41</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished COVID-19 vaccine 3035 (0x1089bf070) ... 2/5 completed, 225 rows
+<span class="ansi-green-fg">2022-06-17 14:50:41</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">ERROR</span> - <span class="ansi-red-fg">There are person_ids in this table that are not in the output person table!</span>
+<span class="ansi-green-fg">2022-06-17 14:50:41</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">ERROR</span> - <span class="ansi-red-fg">Either they are not in the original data, or while creating the person table, </span>
+<span class="ansi-green-fg">2022-06-17 14:50:41</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">ERROR</span> - <span class="ansi-red-fg">studies have been removed due to lack of required fields, such as birthdate.</span>
+<span class="ansi-green-fg">2022-06-17 14:50:41</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">ERROR</span> - <span class="ansi-red-fg">224/225 were good, 1 studies are removed.</span>
+<span class="ansi-green-fg">2022-06-17 14:50:41</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - starting on COVID-19 vaccine 3036
+<span class="ansi-green-fg">2022-06-17 14:50:41</span> - <span class="ansi-blue-fg">DrugExposure</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Called apply_rules
+<span class="ansi-green-fg">2022-06-17 14:50:41</span> - <span class="ansi-blue-fg">DrugExposure</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped drug_concept_id
+</code>
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+<code><span class="ansi-green-fg">2022-06-17 14:50:41</span> - <span class="ansi-blue-fg">DrugExposure</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped drug_exposure_end_datetime
+<span class="ansi-green-fg">2022-06-17 14:50:41</span> - <span class="ansi-blue-fg">DrugExposure</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped drug_exposure_start_datetime
+<span class="ansi-green-fg">2022-06-17 14:50:41</span> - <span class="ansi-blue-fg">DrugExposure</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped drug_source_concept_id
+<span class="ansi-green-fg">2022-06-17 14:50:41</span> - <span class="ansi-blue-fg">DrugExposure</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped drug_source_value
+<span class="ansi-green-fg">2022-06-17 14:50:41</span> - <span class="ansi-blue-fg">DrugExposure</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped person_id
+<span class="ansi-green-fg">2022-06-17 14:50:41</span> - <span class="ansi-blue-fg">DrugExposure</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">Requiring non-null values in drug_concept_id removed 471 rows, leaving 249 rows.</span>
+<span class="ansi-green-fg">2022-06-17 14:50:41</span> - <span class="ansi-blue-fg">DrugExposure</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Automatically formatting data columns.
+<span class="ansi-green-fg">2022-06-17 14:50:41</span> - <span class="ansi-blue-fg">DrugExposure</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - created df (0x1089bfb80)[COVID_19_vaccine_3036]
+<span class="ansi-green-fg">2022-06-17 14:50:41</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished COVID-19 vaccine 3036 (0x1089bfb80) ... 3/5 completed, 249 rows
+<span class="ansi-green-fg">2022-06-17 14:50:41</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">ERROR</span> - <span class="ansi-red-fg">There are person_ids in this table that are not in the output person table!</span>
+<span class="ansi-green-fg">2022-06-17 14:50:41</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">ERROR</span> - <span class="ansi-red-fg">Either they are not in the original data, or while creating the person table, </span>
+<span class="ansi-green-fg">2022-06-17 14:50:41</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">ERROR</span> - <span class="ansi-red-fg">studies have been removed due to lack of required fields, such as birthdate.</span>
+<span class="ansi-green-fg">2022-06-17 14:50:41</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">ERROR</span> - <span class="ansi-red-fg">248/249 were good, 1 studies are removed.</span>
+<span class="ansi-green-fg">2022-06-17 14:50:41</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - starting on SARS-CoV-2 (COVID-19) vaccine, mRNA-1273 0.2 MG/ML Injectable Suspension 3040
+<span class="ansi-green-fg">2022-06-17 14:50:41</span> - <span class="ansi-blue-fg">DrugExposure</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Called apply_rules
+<span class="ansi-green-fg">2022-06-17 14:50:41</span> - <span class="ansi-blue-fg">DrugExposure</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped drug_concept_id
+<span class="ansi-green-fg">2022-06-17 14:50:41</span> - <span class="ansi-blue-fg">DrugExposure</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped drug_exposure_end_datetime
+<span class="ansi-green-fg">2022-06-17 14:50:41</span> - <span class="ansi-blue-fg">DrugExposure</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped drug_exposure_start_datetime
+<span class="ansi-green-fg">2022-06-17 14:50:41</span> - <span class="ansi-blue-fg">DrugExposure</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped drug_source_concept_id
+<span class="ansi-green-fg">2022-06-17 14:50:41</span> - <span class="ansi-blue-fg">DrugExposure</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped drug_source_value
+<span class="ansi-green-fg">2022-06-17 14:50:41</span> - <span class="ansi-blue-fg">DrugExposure</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped person_id
+<span class="ansi-green-fg">2022-06-17 14:50:41</span> - <span class="ansi-blue-fg">DrugExposure</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">Requiring non-null values in drug_concept_id removed 475 rows, leaving 245 rows.</span>
+<span class="ansi-green-fg">2022-06-17 14:50:41</span> - <span class="ansi-blue-fg">DrugExposure</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Automatically formatting data columns.
+<span class="ansi-green-fg">2022-06-17 14:50:41</span> - <span class="ansi-blue-fg">DrugExposure</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - created df (0x1089f46d0)[SARS_CoV_2_COVID_19_vaccine_mRNA_1273_0_2_MG_ML_Injectable_Suspension_3040]
+<span class="ansi-green-fg">2022-06-17 14:50:41</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished SARS-CoV-2 (COVID-19) vaccine, mRNA-1273 0.2 MG/ML Injectable Suspension 3040 (0x1089f46d0) ... 4/5 completed, 245 rows
+<span class="ansi-green-fg">2022-06-17 14:50:41</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - starting on SARS-CoV-2 (COVID-19) vaccine, mRNA-BNT162b2 0.1 MG/ML Injectable Suspension 3041
+<span class="ansi-green-fg">2022-06-17 14:50:41</span> - <span class="ansi-blue-fg">DrugExposure</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Called apply_rules
+<span class="ansi-green-fg">2022-06-17 14:50:41</span> - <span class="ansi-blue-fg">DrugExposure</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped drug_concept_id
+<span class="ansi-green-fg">2022-06-17 14:50:41</span> - <span class="ansi-blue-fg">DrugExposure</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped drug_exposure_end_datetime
+<span class="ansi-green-fg">2022-06-17 14:50:41</span> - <span class="ansi-blue-fg">DrugExposure</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped drug_exposure_start_datetime
+<span class="ansi-green-fg">2022-06-17 14:50:41</span> - <span class="ansi-blue-fg">DrugExposure</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped drug_source_concept_id
+<span class="ansi-green-fg">2022-06-17 14:50:41</span> - <span class="ansi-blue-fg">DrugExposure</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped drug_source_value
+<span class="ansi-green-fg">2022-06-17 14:50:41</span> - <span class="ansi-blue-fg">DrugExposure</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped person_id
+<span class="ansi-green-fg">2022-06-17 14:50:41</span> - <span class="ansi-blue-fg">DrugExposure</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">Requiring non-null values in drug_concept_id removed 471 rows, leaving 249 rows.</span>
+<span class="ansi-green-fg">2022-06-17 14:50:41</span> - <span class="ansi-blue-fg">DrugExposure</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Automatically formatting data columns.
+<span class="ansi-green-fg">2022-06-17 14:50:42</span> - <span class="ansi-blue-fg">DrugExposure</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - created df (0x108a0aa60)[SARS_CoV_2_COVID_19_vaccine_mRNA_BNT162b2_0_1_MG_ML_Injectable_Suspension_3041]
+<span class="ansi-green-fg">2022-06-17 14:50:42</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished SARS-CoV-2 (COVID-19) vaccine, mRNA-BNT162b2 0.1 MG/ML Injectable Suspension 3041 (0x108a0aa60) ... 5/5 completed, 249 rows
+<span class="ansi-green-fg">2022-06-17 14:50:42</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">ERROR</span> - <span class="ansi-red-fg">There are person_ids in this table that are not in the output person table!</span>
+<span class="ansi-green-fg">2022-06-17 14:50:42</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">ERROR</span> - <span class="ansi-red-fg">Either they are not in the original data, or while creating the person table, </span>
+<span class="ansi-green-fg">2022-06-17 14:50:42</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">ERROR</span> - <span class="ansi-red-fg">studies have been removed due to lack of required fields, such as birthdate.</span>
+<span class="ansi-green-fg">2022-06-17 14:50:42</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">ERROR</span> - <span class="ansi-red-fg">248/249 were good, 1 studies are removed.</span>
+<span class="ansi-green-fg">2022-06-17 14:50:42</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - saving dataframe (0x1088874c0) to &lt;carrot.io.plugins.bclink.BCLinkDataCollection object at 0x108494820&gt;
+<span class="ansi-green-fg">2022-06-17 14:50:42</span> - <span class="ansi-blue-fg">BCLinkDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - saving drug_exposure.0x1088874c0.2022-06-17T135042 to ./cache//drug_exposure.0x1088874c0.2022-06-17T135042.csv
+<span class="ansi-green-fg">2022-06-17 14:50:42</span> - <span class="ansi-blue-fg">BCLinkDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished save to file
+<span class="ansi-green-fg">2022-06-17 14:50:42</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">dataset_tool --load --table=drug_exposure --user=data --data_file=./cache//drug_exposure.0x1088874c0.2022-06-17T135042.csv --support --bcqueue bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:42</span> - <span class="ansi-blue-fg">BCLinkHelpers</span> - <span class="ansi-white-intense-fg ansi-bold">NOTICE</span> - <span class="ansi-magenta-fg">datasettool2 list-updates --dataset=drug_exposure --user=data --database=bclink</span>
+<span class="ansi-green-fg">2022-06-17 14:50:42</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finalised drug_exposure on iteration 0 producing 1210 rows from 5 tables
+<span class="ansi-green-fg">2022-06-17 14:50:42</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Getting next chunk of data
+<span class="ansi-green-fg">2022-06-17 14:50:42</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Getting the next chunk of size '1000' for 'Vaccinations.csv'
+<span class="ansi-green-fg">2022-06-17 14:50:42</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - --&gt; Got 0 rows
+<span class="ansi-green-fg">2022-06-17 14:50:42</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - All input files for this object have now been used.
+</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">cdm</span><span class="p">[</span><span class="s1">&#39;person&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>gender_concept_id</th>
+<th>year_of_birth</th>
+<th>month_of_birth</th>
+<th>day_of_birth</th>
+<th>birth_datetime</th>
+<th>gender_source_value</th>
+<th>gender_source_concept_id</th>
+</tr>
+<tr>
+<th>person_id</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>1</th>
+<td>8507</td>
+<td>1963</td>
+<td>7</td>
+<td>16</td>
+<td>1963-07-16 00:00:00.000000</td>
+<td>Male</td>
+<td>8507</td>
+</tr>
+<tr>
+<th>2</th>
+<td>8507</td>
+<td>1969</td>
+<td>7</td>
+<td>14</td>
+<td>1969-07-14 00:00:00.000000</td>
+<td>Male</td>
+<td>8507</td>
+</tr>
+<tr>
+<th>3</th>
+<td>8507</td>
+<td>1956</td>
+<td>7</td>
+<td>17</td>
+<td>1956-07-17 00:00:00.000000</td>
+<td>Male</td>
+<td>8507</td>
+</tr>
+<tr>
+<th>4</th>
+<td>8507</td>
+<td>1960</td>
+<td>7</td>
+<td>16</td>
+<td>1960-07-16 00:00:00.000000</td>
+<td>Male</td>
+<td>8507</td>
+</tr>
+<tr>
+<th>5</th>
+<td>8507</td>
+<td>1962</td>
+<td>7</td>
+<td>16</td>
+<td>1962-07-16 00:00:00.000000</td>
+<td>Male</td>
+<td>8507</td>
+</tr>
+<tr>
+<th>...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<th>992</th>
+<td>8532</td>
+<td>1995</td>
+<td>7</td>
+<td>8</td>
+<td>1995-07-08 00:00:00.000000</td>
+<td>Female</td>
+<td>8532</td>
+</tr>
+<tr>
+<th>993</th>
+<td>8532</td>
+<td>1956</td>
+<td>7</td>
+<td>17</td>
+<td>1956-07-17 00:00:00.000000</td>
+<td>Female</td>
+<td>8532</td>
+</tr>
+<tr>
+<th>994</th>
+<td>8532</td>
+<td>1944</td>
+<td>7</td>
+<td>20</td>
+<td>1944-07-20 00:00:00.000000</td>
+<td>Female</td>
+<td>8532</td>
+</tr>
+<tr>
+<th>995</th>
+<td>8532</td>
+<td>1966</td>
+<td>7</td>
+<td>15</td>
+<td>1966-07-15 00:00:00.000000</td>
+<td>Female</td>
+<td>8532</td>
+</tr>
+<tr>
+<th>996</th>
+<td>8532</td>
+<td>1974</td>
+<td>7</td>
+<td>13</td>
+<td>1974-07-13 00:00:00.000000</td>
+<td>Female</td>
+<td>8532</td>
+</tr>
+</tbody>
+</table>
+<p>996 rows × 7 columns</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">cdm</span><span class="p">[</span><span class="s1">&#39;observation&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>person_id</th>
+<th>observation_concept_id</th>
+<th>observation_date</th>
+<th>observation_datetime</th>
+<th>observation_source_value</th>
+<th>observation_source_concept_id</th>
+</tr>
+<tr>
+<th>observation_id</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>1</th>
+<td>357</td>
+<td>4288455</td>
+<td>2020-10-03</td>
+<td>2020-10-03 00:00:00.000000</td>
+<td>17.172114692899758</td>
+<td>4288455</td>
+</tr>
+<tr>
+<th>2</th>
+<td>258</td>
+<td>4288455</td>
+<td>2020-11-02</td>
+<td>2020-11-02 00:00:00.000000</td>
+<td>201.93861878809216</td>
+<td>4288455</td>
+</tr>
+<tr>
+<th>4</th>
+<td>556</td>
+<td>4288455</td>
+<td>2021-07-26</td>
+<td>2021-07-26 00:00:00.000000</td>
+<td>11.506250956970998</td>
+<td>4288455</td>
+</tr>
+<tr>
+<th>5</th>
+<td>380</td>
+<td>4288455</td>
+<td>2021-10-29</td>
+<td>2021-10-29 00:00:00.000000</td>
+<td>2.6594057121417487</td>
+<td>4288455</td>
+</tr>
+<tr>
+<th>6</th>
+<td>415</td>
+<td>4288455</td>
+<td>2021-09-07</td>
+<td>2021-09-07 00:00:00.000000</td>
+<td>40.844873593089126</td>
+<td>4288455</td>
+</tr>
+<tr>
+<th>...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<th>1068</th>
+<td>469</td>
+<td>40757663</td>
+<td>2021-03-04</td>
+<td>2021-03-04 00:00:00.000000</td>
+<td>Cancer</td>
+<td>40757663</td>
+</tr>
+<tr>
+<th>1069</th>
+<td>936</td>
+<td>40757663</td>
+<td>2020-07-17</td>
+<td>2020-07-17 00:00:00.000000</td>
+<td>Cancer</td>
+<td>40757663</td>
+</tr>
+<tr>
+<th>1070</th>
+<td>472</td>
+<td>40757663</td>
+<td>2019-10-25</td>
+<td>2019-10-25 00:00:00.000000</td>
+<td>Cancer</td>
+<td>40757663</td>
+</tr>
+<tr>
+<th>1071</th>
+<td>944</td>
+<td>40757663</td>
+<td>2018-08-12</td>
+<td>2018-08-12 00:00:00.000000</td>
+<td>Cancer</td>
+<td>40757663</td>
+</tr>
+<tr>
+<th>1072</th>
+<td>944</td>
+<td>40757663</td>
+<td>2019-11-12</td>
+<td>2019-11-12 00:00:00.000000</td>
+<td>Cancer</td>
+<td>40757663</td>
+</tr>
+</tbody>
+</table>
+<p>1071 rows × 6 columns</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+ 
+        
+      </div>
+      <div class="md-social">
+  
+</div>
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.sections", "navigation.tracking", "navigation.indexes", "navigation.top", "content.action.edit"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.3220b9d7.min.js"></script>
+      
+    
+  </body>
+</html>

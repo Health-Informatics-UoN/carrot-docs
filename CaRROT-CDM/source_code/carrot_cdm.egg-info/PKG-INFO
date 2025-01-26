@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: carrot-cdm
+Version: 0.0.0
+Summary: Python package for performing mapping of ETL to CDM 
+Home-page: https://github.com/HDRUK/CaRROT-CDM
+Author: CO-CONNECT Collaboration
+Author-email: calmacx@gmail.com
+License: UNKNOWN
+Description: All documentation relating to the CaRROT-CDM builder can be found here:
+        
+        ## [https://hdruk.github.io/CaRROT-Docs/CaRROT-CDM/About/](https://hdruk.github.io/CaRROT-Docs/CaRROT-CDM/About/)
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Provides-Extra: airflow
+Provides-Extra: performance

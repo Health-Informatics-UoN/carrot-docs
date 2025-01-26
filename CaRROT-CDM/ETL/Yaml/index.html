@@ -1,0 +1,834 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.18">
+    
+    
+      
+        <title>Yaml - Carrot Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.66ac8b77.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/custom.css">
+    
+      <link rel="stylesheet" href="../../../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../../../css/pandas-dataframe.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="carrot" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#setup-your-yaml-config" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Carrot Docs" class="md-header__button md-logo" aria-label="Carrot Docs" data-md-component="logo">
+      
+  <img src="../../../images/favicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Carrot Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Yaml
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Health-Informatics-UoN/carrot-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Health-Informatics-UoN/carrot-docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Carrot Docs" class="md-nav__button md-logo" aria-label="Carrot Docs" data-md-component="logo">
+      
+  <img src="../../../images/favicon.png" alt="logo">
+
+    </a>
+    Carrot Docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Health-Informatics-UoN/carrot-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Health-Informatics-UoN/carrot-docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setup-your-yaml-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup your YAML config
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Setup your YAML config">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-to-the-point" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get to the point...
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transform-tab" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transform Tab
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#load-tab" class="md-nav__link">
+    <span class="md-ellipsis">
+      Load Tab
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extract-tab" class="md-nav__link">
+    <span class="md-ellipsis">
+      Extract Tab
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-the-etl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running the ETL
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Running the ETL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#daemon-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Daemon Mode
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Daemon Mode">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#start-the-etl-from-a-yaml-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Start the ETL from a yaml file
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-the-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Check the logs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#find-the-process-id" class="md-nav__link">
+    <span class="md-ellipsis">
+      Find the process ID
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kill-the-daemon" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kill the daemon
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional Commands
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Additional Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#check-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Check Tables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete Tables
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reference
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bclink" class="md-nav__link">
+    <span class="md-ellipsis">
+      BCLink
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/Health-Informatics-UoN/carrot-docs/edit/main/docs/CaRROT-CDM/ETL/Yaml.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+    </a>
+  
+  
+
+
+  <h1>Yaml</h1>
+
+<p>The following guide documents how you can use the co-connect command line tools to automate the ETL process for by defining a <code>yaml</code> configuration file.</p>
+<p>ETL workflows, configured with a <code>yaml</code> file are executed with the synthax <code>carrot etl --config &lt;path to config file&gt; [optional additional COMMAND]</code> </p>
+<p><div class="highlight"><pre><span></span><code>carrot etl --config config.yml --help
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Usage: carrot etl [OPTIONS] COMMAND [ARGS]...
+
+  Command group for running the full ETL of a dataset
+
+Options:
+  --config, --config-file TEXT  specify a yaml configuration file
+  -d, --daemon                  run the ETL as a daemon process
+  -l, --log-file TEXT           specify the log file to write to
+  --help                        Show this message and exit.
+
+Commands:
+  check-tables   check tables
+  clean-table    clean (delete all rows) of a given table name
+  clean-tables   clean (delete all rows) in the tables defined in the...
+  create-tables  create new bclink tables
+  delete-tables  delete some tables
+</code></pre></div></p>
+<p>To run the full ETL you need a <code>.yml</code>(or <code>.yaml</code>) file to configure various settings.</p>
+<p><center>
+<a class="md-button md-button--secondary" href="https://github.com/HDRUK/CaRROT-CDM/tree/master/carrot/data/test/automation">Example yamls</a>
+</center></p>
+<h2 id="setup-your-yaml-config">Setup your YAML config<a class="headerlink" href="#setup-your-yaml-config" title="Permanent link">&para;</a></h2>
+<p>Here are some details on how you can setup a yaml configuration file</p>
+<h3 id="get-to-the-point">Get to the point...<a class="headerlink" href="#get-to-the-point" title="Permanent link">&para;</a></h3>
+<p>"TL;DR, I want a yaml configuration file that I can run out the box..."</p>
+<details>
+<summary>Locally</summary>
+<p>Run on some input data and perform a local load by merging the split outputs (e.g. create one file called <code>person.tsv</code> in the output folder)
+<div class="highlight"><pre><span></span><code><span class="nt">settings</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">listen_for_changes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+
+<span class="nt">load</span><span class="p">:</span><span class="w"> </span><span class="nl">&amp;load-local</span>
+<span class="w">    </span><span class="nt">output</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cache/</span>
+<span class="w">    </span><span class="nt">merge_output</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+
+<span class="nt">transform</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">settings</span><span class="p">:</span><span class="w"> </span><span class="nl">&amp;settings</span>
+<span class="w">        </span><span class="nt">rules</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">demo-dataset/data/rules_small.json</span>
+<span class="w">    </span><span class="nt">data</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">input</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">demo-dataset/data/part1/</span>
+<span class="w">          </span><span class="nt">&lt;&lt;</span><span class="p">:</span><span class="w"> </span><span class="nv">*settings</span>
+<span class="w">          </span><span class="nt">&lt;&lt;</span><span class="p">:</span><span class="w"> </span><span class="nv">*load-local</span>
+</code></pre></div></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The default behaviour is to load all data into memory and begin processing. This behaviour is not optimal for very large datasets, or if your computing environment has a small amount of memory (or you have a crash due to memory usage when running).</p>
+</div>
+<p>To change the chunking of data, you can tell the tool to only read in X number of rows at a time, like so:
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">input</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">  </span><span class="nt">number_of_rows_per_chunk</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10000</span>
+</code></pre></div></p>
+<p>The names of these can be found in the <a href="../../CLI/Run/">source documentation</a>, corresponding to the options you will see via the command <code>carrot run map --help</code>.
+For example, to not perform any column formatting and to not automatically fill missing columns (e.g. <code>year_of_birth</code> in the person table):
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">input</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">  </span><span class="nt">dont_automatically_fill_missing_columns</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">format_level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+</code></pre></div></p>
+</details>
+<details>
+<summary>BCLink</summary>
+<p>Configuration to upload to BCLink. Will wait for changes (additional data added to the transform section, changes to the rules file etc...)
+<div class="highlight"><pre><span></span><code><span class="nt">settings</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">listen_for_changes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">clean</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">load</span><span class="p">:</span><span class="w"> </span><span class="nl">&amp;load-bclink</span>
+<span class="w">    </span><span class="nt">cache</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/usr/lib/bcos/MyWorkingDirectory/Temp/cache/</span>
+<span class="w">    </span><span class="nt">bclink</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">dry_run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="nt">transform</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">settings</span><span class="p">:</span><span class="w"> </span><span class="nl">&amp;settings</span>
+<span class="w">        </span><span class="nt">output</span><span class="p">:</span><span class="w"> </span><span class="nv">*load-bclink</span>
+<span class="w">        </span><span class="nt">rules</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/usr/lib/bcos/MyWorkingDirectory/Temp/demo-dataset/data/rules.json</span>
+<span class="w">    </span><span class="nt">data</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">input</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/usr/lib/bcos/MyWorkingDirectory/Temp/demo-dataset/data/part1/</span>
+<span class="w">      </span><span class="nt">&lt;&lt;</span><span class="p">:</span><span class="w"> </span><span class="nv">*settings</span>
+</code></pre></div></p>
+</details>
+<h3 id="transform-tab">Transform Tab<a class="headerlink" href="#transform-tab" title="Permanent link">&para;</a></h3>
+<p>This tab specifies how the data is going to be transformed.</p>
+<details>
+<summary>Configuration</summary>
+<p>The following is the most basic example of a configuration, where the rules, input data, output data folder and tables names are specified as such:
+<div class="highlight"><pre><span></span><code><span class="nt">transform</span><span class="p">:</span>
+<span class="w">   </span><span class="nt">data</span><span class="p">:</span>
+<span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">input</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;input data folder&gt;</span>
+<span class="w">       </span><span class="nt">output</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;output folder location&gt;</span>
+<span class="w">       </span><span class="nt">rules</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;rules.json location&gt;</span>
+</code></pre></div>
+When this configuration is executed, a local storage folder is used to write the files, i.e. there is no load performed. Effectively this is just the T in the ETL.</p>
+<p>Example:
+<div class="highlight"><pre><span></span><code><span class="nt">transform</span><span class="p">:</span>
+<span class="w">   </span><span class="nt">data</span><span class="p">:</span>
+<span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">input</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/usr/lib/bcos/MyWorkingDirectory/Temp/demo-dataset/data/part1/</span>
+<span class="w">       </span><span class="nt">rules</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/usr/lib/bcos/MyWorkingDirectory/Temp/demo-dataset/data/rules.json</span>
+<span class="w">       </span><span class="nt">output</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/usr/lib/bcos/MyWorkingDirectory/Temp/cache/basic/</span>
+</code></pre></div></p>
+<p>Additional valid keyword arguments to the <code>map</code> function (which can be found in <a href="../../CLI/Run/">in <code>def map</code></a>), can be passed here:
+<div class="highlight"><pre><span></span><code><span class="nt">transform</span><span class="p">:</span>
+<span class="w">   </span><span class="nt">data</span><span class="p">:</span>
+<span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">input</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;input data folder&gt;</span>
+<span class="w">       </span><span class="nt">output</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt; output folder location&gt;</span>
+<span class="w">       </span><span class="nt">rules</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt; rules.json location&gt;</span>
+<span class="w">       </span><span class="nt">split_outputs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;true/false if to save the outputs as one file e.g. person.tsv or not&gt;</span>
+<span class="w">       </span><span class="nt">number_of_rows_to_process</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;number of rows of data to run over&gt;</span>
+<span class="w">       </span><span class="nt">dont_automatically_fill_missing_columns</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;true/false dont automatically fill missing columns e.g. year_of_birth from birth_datetime&gt;</span>
+</code></pre></div></p>
+<p>Multiple input folders can be added:
+<div class="highlight"><pre><span></span><code><span class="nt">transform</span><span class="p">:</span>
+<span class="w">   </span><span class="nt">data</span><span class="p">:</span>
+<span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">input</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt; input data folder&gt;</span>
+<span class="w">       </span><span class="nt">output</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt; output folder location&gt;</span>
+<span class="w">       </span><span class="nt">rules</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt; rules.json location&gt;</span>
+<span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">input</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt; another input data folder&gt;</span>
+<span class="w">       </span><span class="nt">output</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt; output folder location&gt;</span>
+<span class="w">       </span><span class="nt">rules</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt; rules.json location&gt;</span>
+</code></pre></div>
+Anchors can be used to reduce the number of repeats:
+<div class="highlight"><pre><span></span><code><span class="nt">transform</span><span class="p">:</span>
+<span class="w">   </span><span class="nt">settings</span><span class="p">:</span><span class="w"> </span><span class="nl">&amp;settings</span>
+<span class="w">     </span><span class="nt">output</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt; output folder location&gt;</span>
+<span class="w">     </span><span class="nt">rules</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt; rules.json location&gt;</span>
+<span class="w">   </span><span class="nt">data</span><span class="p">:</span>
+<span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">input</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt; input data folder&gt;</span>
+<span class="w">       </span><span class="l l-Scalar l-Scalar-Plain">&lt;&lt;:*settings</span>
+<span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">input</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt; another input data folder&gt;</span><span class="w"> </span>
+<span class="w">       </span><span class="l l-Scalar l-Scalar-Plain">&lt;&lt;:*settings</span>
+</code></pre></div></p>
+<p>Alternatively the data tab can be a master/main folder, containing subfolders of multiple data dumps. If specified as follows, the code will use the main folder to look for subfolders to process.
+<div class="highlight"><pre><span></span><code><span class="nt">transform</span><span class="p">:</span>
+<span class="w">   </span><span class="nt">data</span><span class="p">:</span>
+<span class="w">     </span><span class="nt">input</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt; input main folder&gt;</span>
+<span class="w">     </span><span class="nt">output</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt; output folder location&gt;</span>
+<span class="w">     </span><span class="nt">rules</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt; rules.json location&gt;</span>
+</code></pre></div></p>
+</details>
+<h3 id="load-tab">Load Tab<a class="headerlink" href="#load-tab" title="Permanent link">&para;</a></h3>
+<details>
+<summary>Local Configuration</summary>
+<p>A very basic example shows how the load tab can be used to do the same as above (load/dump to a local folder i.e. <code>LocalDataCollection</code>)
+<div class="highlight"><pre><span></span><code><span class="nt">load</span><span class="p">:</span><span class="w"> </span><span class="nl">&amp;load-local</span>
+<span class="w">   </span><span class="nt">output</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt; folder for the output&gt;</span>
+<span class="nt">transform</span><span class="p">:</span>
+<span class="w">   </span><span class="nt">settings</span><span class="p">:</span><span class="w"> </span><span class="nl">&amp;settings</span>
+<span class="w">     </span><span class="nt">output</span><span class="p">:</span><span class="w"> </span><span class="nv">*load-local</span>
+<span class="w">     </span><span class="nt">rules</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt; rules.json location&gt;</span>
+<span class="w">   </span><span class="nt">data</span><span class="p">:</span>
+<span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">input</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt; input data folder&gt;</span>
+<span class="w">       </span><span class="l l-Scalar l-Scalar-Plain">&lt;&lt;:*settings</span>
+</code></pre></div></p>
+</details>
+<details>
+<summary>BCLink Configuration</summary>
+<p>To specify we want to load to BCLink instead, we can create a load tab section as so:
+<div class="highlight"><pre><span></span><code><span class="nt">load</span><span class="p">:</span><span class="w"> </span><span class="nl">&amp;load-bclink</span>
+<span class="w">  </span><span class="nt">cache</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/usr/lib/bcos/MyWorkingDirectory/Temp/cache/</span>
+<span class="w">  </span><span class="nt">bclink</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">dry_run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="nt">transform</span><span class="p">:</span>
+<span class="w">   </span><span class="nt">settings</span><span class="p">:</span><span class="w"> </span><span class="nl">&amp;settings</span>
+<span class="w">     </span><span class="nt">output</span><span class="p">:</span><span class="w"> </span><span class="nv">*load-bclink</span>
+<span class="w">     </span><span class="nt">rules</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt; rules.json location&gt;</span>
+<span class="w">   </span><span class="nt">data</span><span class="p">:</span>
+<span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">input</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt; input data folder&gt;</span>
+<span class="w">       </span><span class="l l-Scalar l-Scalar-Plain">&lt;&lt;:*settings</span>
+</code></pre></div>
+By specifying that the output should go to the <code>load-bclink</code> configuration, the tool will be able to write the output to a <code>BCLinkDataCollection</code>.</p>
+<p>The default behaviour is to assume that the destination table (e.g. <code>person</code> table) should be loaded to a BCLink table which exactly the same name. 
+If this is not the case, you must manually specify the names of the tables so the tool knows which BCLink table it should upload to.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">load</span><span class="p">:</span><span class="w"> </span><span class="nl">&amp;load-bclink</span>
+<span class="w">  </span><span class="nt">cache</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt; cache directory for writing files&gt;</span>
+<span class="w">  </span><span class="nt">bclink</span><span class="p">:</span>
+<span class="w">     </span><span class="nt">tables</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">&lt;cdm table&gt;</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;bclink table&gt;</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</code></pre></div>
+<p>Example:
+<div class="highlight"><pre><span></span><code><span class="nt">load</span><span class="p">:</span><span class="w"> </span><span class="nl">&amp;load-bclink</span>
+<span class="w">  </span><span class="nt">cache</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/usr/lib/bcos/MyWorkingDirectory/Temp/cache/</span>
+<span class="w">  </span><span class="nt">bclink</span><span class="p">:</span>
+<span class="w">     </span><span class="nt">tables</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">person</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ds100000</span>
+<span class="w">        </span><span class="nt">observation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ds100001</span>
+<span class="w">        </span><span class="nt">measurement</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ds100003</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">.....</span>
+</code></pre></div></p>
+</details>
+<h3 id="extract-tab">Extract Tab<a class="headerlink" href="#extract-tab" title="Permanent link">&para;</a></h3>
+<p>By defining an extract tab in the <code>yaml</code> you are able to execute code <strong>before</strong> the transform is run.</p>
+<details>
+<summary>Configuration</summary>
+<p>The following shows how a bash command can be defined to run on an input and extract an output. It's important that you define an extract job that will run on a single input and output a single output. The configuration must specify a <code>{input}</code> and a  <code>{output}</code>.</p>
+<p>Any configuration must be also hooked up with the transform part, so the tool knows that it should perform the extract before processing..</p>
+<p>For example...
+<div class="highlight"><pre><span></span><code><span class="nt">extract</span><span class="p">:</span><span class="w"> </span><span class="nl">&amp;pseudonymise</span>
+<span class="w">    </span><span class="nt">bash</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">        </span><span class="no">echo &quot;Going to run {input} and put output in {output}&quot;</span>
+<span class="w">        </span><span class="no">pseudonymise csv --salt 12345 --id ID --output-folder {output} {input}</span>
+<span class="nn">...</span>
+<span class="nt">transform</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">data</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">input</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">&lt;&lt;</span><span class="p">:</span><span class="w"> </span><span class="nv">*pseudonymise</span>
+<span class="w">            </span><span class="nt">input</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">demo-dataset/data/part1/</span>
+<span class="w">            </span><span class="nt">output</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data_pseudonymised/</span>
+<span class="w">          </span><span class="nt">output</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">output/</span>
+<span class="w">          </span><span class="nt">rules</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">demo-dataset/data/rules_small.json</span>
+</code></pre></div>
+As can be seen, in the transform tab, the <code>data.input</code> now itself specifies an <code>input</code>/<code>output</code> because the <code>*pseudonymise</code> specifies how a pre-processing on the <code>input</code> should be run to produce an <code>output</code> - which is then used as the <em>input</em> for transform.</p>
+<p>Example output, you will see the <code>pseudonymise csv</code> start to run before the transform.
+<div class="highlight"><pre><span></span><code>2022-03-16 11:35:46 - run_etl - INFO - running etl on config.yaml (last modified: 1647430135.1740856)
+&quot;Going to run demo-dataset/data/part1/Symptoms.csv and put output in data_pseudonymised/&quot;
+
+2022-03-16 11:35:46.656 | INFO     | cli.cli:csv:16 - Working on file demo-dataset/data/part1/Symptoms.csv, pseudonymising columns &#39;[&#39;ID&#39;]&#39; with salt &#39;12345&#39;
+2022-03-16 11:35:46.656 | INFO     | cli.cli:csv:22 - Saving new file to data_pseudonymised//Symptoms.csv
+2022-03-16 11:35:46.761 | DEBUG    | cli.cli:csv:32 - 0        e428669397a3d0c72d46f6d5afe9a8ae20ea675883c0e7...
+1        a37861e3f9bb0fd4385b7c6fddcf6d4ba366a4f3c9b17b...
+2        a37861e3f9bb0fd4385b7c6fddcf6d4ba366a4f3c9b17b...
+3        a37861e3f9bb0fd4385b7c6fddcf6d4ba366a4f3c9b17b...
+4        a37861e3f9bb0fd4385b7c6fddcf6d4ba366a4f3c9b17b...
+...
+</code></pre></div></p>
+</details>
+<h2 id="running-the-etl">Running the ETL<a class="headerlink" href="#running-the-etl" title="Permanent link">&para;</a></h2>
+<p>To run the ETL-Tool given a configuration file, simply run:
+<div class="highlight"><pre><span></span><code>carrot etl --config config.yaml
+</code></pre></div></p>
+<h3 id="daemon-mode">Daemon Mode<a class="headerlink" href="#daemon-mode" title="Permanent link">&para;</a></h3>
+<p>To run as a background process (more specifically as a "daemon"), that watches for changes in a directory (ideal for data dumps of regularly updated data) the tool can be started with the flag <code>-d</code> or <code>--daemon</code>.</p>
+<h4 id="start-the-etl-from-a-yaml-file">Start the ETL from a yaml file<a class="headerlink" href="#start-the-etl-from-a-yaml-file" title="Permanent link">&para;</a></h4>
+<p>Start the ETL process with the following command:
+<div class="highlight"><pre><span></span><code>carrot etl --config config.yaml --daemon
+</code></pre></div>
+You'll see an output like:
+<div class="highlight"><pre><span></span><code>2022-03-16 11:10:30 - etl - INFO - running as a daemon process, logging to carrot.log
+2022-03-16 11:10:30 - etl - INFO - process_id in &lt;TimeoutPIDLockFile: &#39;etl.pid&#39; -- &#39;etl.pid&#39;&gt;
+</code></pre></div></p>
+<p>The file <code>etl.pid</code> will exist as long as the process is running, if you dont see this (while you specified to listen for changes), something when wrong and you should check the logs.</p>
+<h4 id="check-the-logs">Check the logs<a class="headerlink" href="#check-the-logs" title="Permanent link">&para;</a></h4>
+<p>The yaml file configures where log messages are saved. For example, you can <code>tail</code> the last two lines of the log to see the output:
+<div class="highlight"><pre><span></span><code>tail carrot.log
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>2022-03-16 11:14:14 - CommonDataModel - INFO - working on drug_exposure
+2022-03-16 11:14:14 - CommonDataModel - INFO - starting on drug_exposure.COVID_19_vaccine_3035.0x117dff910.2022-03-16T111409
+2022-03-16 11:14:14 - CommonDataModel - INFO - finished drug_exposure.COVID_19_vaccine_3035.0x117dff910.2022-03-16T111409 (0x119468eb0) ... 1/1 completed, 23522 rows
+2022-03-16 11:14:14 - CommonDataModel - INFO - saving dataframe (0x11ba44ca0) to &lt;carrot.io.plugins.local.LocalDataCollection object at 0x117dfffd0&gt;
+2022-03-16 11:14:14 - LocalDataCollection - INFO - saving drug_exposure to cache//drug_exposure.tsv
+2022-03-16 11:14:14 - LocalDataCollection - INFO - finished save to file
+2022-03-16 11:14:14 - CommonDataModel - INFO - finalised drug_exposure on iteration 0 producing 23522 rows from 1 tables
+2022-03-16 11:14:14 - LocalDataCollection - INFO - Getting next chunk of data
+2022-03-16 11:14:14 - LocalDataCollection - INFO - All input files for this object have now been used.
+2022-03-16 11:14:14 - run_etl - INFO - Finished!... Listening for changes every 5 seconds to data in config.yaml
+</code></pre></div></p>
+<h4 id="find-the-process-id">Find the process ID<a class="headerlink" href="#find-the-process-id" title="Permanent link">&para;</a></h4>
+<p>By default a (lock) file <code>etl.pid</code> is created while the ETL process is running as a background process. The PID (process ID) is saved inside the file, e.g.:
+<div class="highlight"><pre><span></span><code>$ cat etl.pid 
+75107
+</code></pre></div></p>
+<h4 id="kill-the-daemon">Kill the daemon<a class="headerlink" href="#kill-the-daemon" title="Permanent link">&para;</a></h4>
+<p>To stop the background process, you can do:
+<div class="highlight"><pre><span></span><code>kill -9 $(cat etl.pid)
+</code></pre></div></p>
+<h2 id="additional-commands">Additional Commands<a class="headerlink" href="#additional-commands" title="Permanent link">&para;</a></h2>
+<h3 id="check-tables">Check Tables<a class="headerlink" href="#check-tables" title="Permanent link">&para;</a></h3>
+<p>A simple command that only works if you have BCLink options setup in your <code>yaml</code> file
+<div class="highlight"><pre><span></span><code>carrot etl --config config.yaml check-tables
+</code></pre></div>
+The command will display information about the number of rows in the BCLink tables the configuration file configures for.</p>
+<h3 id="delete-tables">Delete Tables<a class="headerlink" href="#delete-tables" title="Permanent link">&para;</a></h3>
+<p>The following command can be run even when the ETL tool is already running as a background process
+<div class="highlight"><pre><span></span><code>carrot etl --config config.yaml delete-tables 
+</code></pre></div>
+Starting the command provides you with a prompt, asking which files you want to delete
+<div class="highlight"><pre><span></span><code>2022-03-16 11:17:10 - run_etl - INFO - running etl on config.yaml (last modified: 1647356757.6764326)
+[?] Which tables do you want to delete? ... : 
+ &gt; o /usr/lib/bcos/MyWorkingDirectory/Temp/cache/person_ids.0x7f0c5783dcf8.2022-03-15T134800.tsv
+   o /usr/lib/bcos/MyWorkingDirectory/Temp/cache/person.MALE_3025.0x7f0c57843668.2022-03-15T134803.tsv
+   o /usr/lib/bcos/MyWorkingDirectory/Temp/cache/person_ids.0x7f0c56ad6ac8.2022-03-15T134807.tsv
+   o /usr/lib/bcos/MyWorkingDirectory/Temp/cache/person.FEMALE_3026.0x7f0c57843908.2022-03-15T134809.tsv
+   o /usr/lib/bcos/MyWorkingDirectory/Temp/cache/observation.Antibody_3027.0x7f0c56ad6908.2022-03-15T134814.tsv
+   ...
+</code></pre></div></p>
+<p>For example, selecting one file (by moving your keyboard arrows to navigate and select):
+<div class="highlight"><pre><span></span><code>   o /usr/lib/bcos/MyWorkingDirectory/Temp/cache/observation.2019_nCoV_3044.0x7f0c563fa470.2022-03-15T135156.tsv
+ &gt; X /usr/lib/bcos/MyWorkingDirectory/Temp/cache/observation.Cancer_3045.0x7f0c563fa278.2022-03-15T135200.tsv
+   o /usr/lib/bcos/MyWorkingDirectory/Temp/cache/condition_occurrence.Headache_3028.0x7f0c571c3320.2022-03-15T135459.tsv
+</code></pre></div>
+Starts the process to delete this file (also deletes it from BCLink if it has been uploaded there):
+<div class="highlight"><pre><span></span><code>...
+2022-03-16 11:19:42 - BCLinkHelpers - INFO - Called remove_table on /usr/lib/bcos/MyWorkingDirectory/Temp/cache/observation.Cancer_3045.0x7f0c563fa278.2022-03v
+2022-03-16 11:19:42 - LocalDataCollection - INFO - DataCollection Object Created
+2022-03-16 11:19:42 - LocalDataCollection - INFO - Using a chunksize of &#39;1000&#39; nrows
+2022-03-16 11:19:42 - LocalDataCollection - INFO - Registering  observation [&lt;carrot.io.common.DataBrick object at 0x7fa2a0471630&gt;]
+2022-03-16 11:19:42 - BCLinkHelpers - NOTICE - bc_sqlselect --user=bclink --query=SELECT column_name FROM INFORMATION_SCHEMA. COLUMNS WHERE table_name = &#39;obsek
+2022-03-16 11:19:42 - BCLinkHelpers - INFO - got pk observation_id
+2022-03-16 11:19:42 - LocalDataCollection - INFO - Retrieving initial dataframe for &#39;observation&#39; for the first time
+2022-03-16 11:19:42 - BCLinkHelpers - NOTICE - bc_sqlselect --user=bclink --query=DELETE FROM observation WHERE observation_id IN (82700,82701,82703,82704,827k
+2022-03-16 11:19:42 - LocalDataCollection - INFO - Getting next chunk of data
+2022-03-16 11:19:42 - LocalDataCollection - INFO - Getting the next chunk of size &#39;1000&#39; for &#39;observation&#39;
+2022-03-16 11:19:42 - LocalDataCollection - INFO - --&gt; Got 1000 rows
+...
+2022-03-16 11:19:44 - LocalDataCollection - INFO - All input files for this object have now been used.
+2022-03-16 11:19:44 - delete_tables - WARNING - removing /usr/lib/bcos/MyWorkingDirectory/Temp/cache/observation.Cancer_3045.0x7f0c563fa278.2022-03-15T135200
+</code></pre></div></p>
+<h2 id="reference">Reference<a class="headerlink" href="#reference" title="Permanent link">&para;</a></h2>
+<p>The following </p>
+<h3 id="bclink">BCLink<a class="headerlink" href="#bclink" title="Permanent link">&para;</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+ 
+        
+      </div>
+      <div class="md-social">
+  
+</div>
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.sections", "navigation.tracking", "navigation.indexes", "navigation.top", "content.action.edit"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.3220b9d7.min.js"></script>
+      
+    
+  </body>
+</html>

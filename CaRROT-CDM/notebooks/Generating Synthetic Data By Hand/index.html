@@ -1,0 +1,2066 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.18">
+    
+    
+      
+        <title>Generating Synthetic Data By Hand - Carrot Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.66ac8b77.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/custom.css">
+    
+      <link rel="stylesheet" href="../../../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../../../css/pandas-dataframe.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="carrot" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#define-a-model" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Carrot Docs" class="md-header__button md-logo" aria-label="Carrot Docs" data-md-component="logo">
+      
+  <img src="../../../images/favicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Carrot Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Generating Synthetic Data By Hand
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Health-Informatics-UoN/carrot-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Health-Informatics-UoN/carrot-docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Carrot Docs" class="md-nav__button md-logo" aria-label="Carrot Docs" data-md-component="logo">
+      
+  <img src="../../../images/favicon.png" alt="logo">
+
+    </a>
+    Carrot Docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Health-Informatics-UoN/carrot-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Health-Informatics-UoN/carrot-docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#define-a-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Define a Model
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create a Model
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#viewing-the-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Viewing the Model
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#perform-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Perform analysis
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/Health-Informatics-UoN/carrot-docs/edit/main/docs/CaRROT-CDM/notebooks/Generating Synthetic Data By Hand.ipynb" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+    </a>
+  
+  
+
+
+  <h1>Generating Synthetic Data By Hand</h1>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script>
+(function() {
+  function addWidgetsRenderer() {
+    var requireJsScript = document.createElement('script');
+    requireJsScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js';
+
+    var mimeElement = document.querySelector('script[type="application/vnd.jupyter.widget-view+json"]');
+    var jupyterWidgetsScript = document.createElement('script');
+    var widgetRendererSrc = 'https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js';
+    var widgetState;
+
+    // Fallback for older version:
+    try {
+      widgetState = mimeElement && JSON.parse(mimeElement.innerHTML);
+
+      if (widgetState && (widgetState.version_major < 2 || !widgetState.version_major)) {
+        widgetRendererSrc = 'jupyter-js-widgets@*/dist/embed.js';
+      }
+    } catch(e) {}
+
+    jupyterWidgetsScript.src = widgetRendererSrc;
+
+    document.body.appendChild(requireJsScript);
+    document.body.appendChild(jupyterWidgetsScript);
+  }
+
+  document.addEventListener('DOMContentLoaded', addWidgetsRenderer);
+}());
+</script>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="define-a-model">Define a Model<a class="headerlink" href="#define-a-model" title="Permanent link">&para;</a></h2>
+<p>We can use carrot.cdm to create destination tables and fields for our synthetic data model</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">carrot.cdm.objects.common</span><span class="w"> </span><span class="kn">import</span> <span class="n">DestinationTable</span><span class="p">,</span> <span class="n">DestinationField</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Demographics</span><span class="p">(</span><span class="n">DestinationTable</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Demo&#39;</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ID</span> <span class="o">=</span> <span class="n">DestinationField</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;Text50&quot;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Age</span> <span class="o">=</span> <span class="n">DestinationField</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;Integer&quot;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Sex</span> <span class="o">=</span> <span class="n">DestinationField</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;Text50&quot;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">False</span> <span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Symptoms</span><span class="p">(</span><span class="n">DestinationTable</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Symptoms&#39;</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ID</span> <span class="o">=</span> <span class="n">DestinationField</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;Text50&quot;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">date_occurrence</span> <span class="o">=</span> <span class="n">DestinationField</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;Timestamp&quot;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>                                                                                     
+        <span class="bp">self</span><span class="o">.</span><span class="n">Headache</span> <span class="o">=</span> <span class="n">DestinationField</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;Text50&quot;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">False</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Fatigue</span> <span class="o">=</span> <span class="n">DestinationField</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;Text50&quot;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">False</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Dizzy</span> <span class="o">=</span> <span class="n">DestinationField</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;Text50&quot;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">False</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Cough</span> <span class="o">=</span> <span class="n">DestinationField</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;Text50&quot;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">False</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Fever</span> <span class="o">=</span> <span class="n">DestinationField</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;Text50&quot;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">False</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Muscle_Pain</span> <span class="o">=</span> <span class="n">DestinationField</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;Text50&quot;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">False</span> <span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">GP_Records</span><span class="p">(</span><span class="n">DestinationTable</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;GP_Records&#39;</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ID</span> <span class="o">=</span> <span class="n">DestinationField</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;Text50&quot;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">date_of_visit</span> <span class="o">=</span> <span class="n">DestinationField</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;Timestamp&quot;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>                                                                                     
+        <span class="bp">self</span><span class="o">.</span><span class="n">comorbidity</span> <span class="o">=</span> <span class="n">DestinationField</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;Text50&quot;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">False</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">comorbidity_value</span> <span class="o">=</span> <span class="n">DestinationField</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;Float&quot;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">False</span> <span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Hospital_Visit</span><span class="p">(</span><span class="n">DestinationTable</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Hospital_Visit&#39;</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ID</span> <span class="o">=</span> <span class="n">DestinationField</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;Text50&quot;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">admission_date</span> <span class="o">=</span> <span class="n">DestinationField</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;Timestamp&quot;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>   
+        <span class="bp">self</span><span class="o">.</span><span class="n">reason</span> <span class="o">=</span> <span class="n">DestinationField</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;Text50&quot;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">False</span> <span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Blood_Test</span><span class="p">(</span><span class="n">DestinationTable</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Blood_Test&#39;</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ID</span> <span class="o">=</span> <span class="n">DestinationField</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;Text50&quot;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">date_taken</span> <span class="o">=</span> <span class="n">DestinationField</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;Timestamp&quot;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>   
+        <span class="bp">self</span><span class="o">.</span><span class="n">location</span> <span class="o">=</span> <span class="n">DestinationField</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;Text50&quot;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">False</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">quantity</span> <span class="o">=</span> <span class="n">DestinationField</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;Float&quot;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">False</span> <span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Vaccinations</span><span class="p">(</span><span class="n">DestinationTable</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Vaccinations&#39;</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ID</span> <span class="o">=</span> <span class="n">DestinationField</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;Text50&quot;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">date_of_vaccination</span> <span class="o">=</span> <span class="n">DestinationField</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;Timestamp&quot;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>                                                                                     
+        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">DestinationField</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;Text50&quot;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stage</span> <span class="o">=</span> <span class="n">DestinationField</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;Integer&quot;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span> 
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Serology</span><span class="p">(</span><span class="n">DestinationTable</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Serology&#39;</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ID</span> <span class="o">=</span> <span class="n">DestinationField</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;Text50&quot;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Date</span> <span class="o">=</span> <span class="n">DestinationField</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;Timestamp&quot;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">IgG</span> <span class="o">=</span> <span class="n">DestinationField</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;Float&quot;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">False</span> <span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Then build a total model(dataset) based upon these tables, creating this with 50k people</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">io</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">carrot</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">carrot.cdm</span><span class="w"> </span><span class="kn">import</span> <span class="n">CommonDataModel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">carrot.cdm</span><span class="w"> </span><span class="kn">import</span> <span class="n">define_table</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">create_gaus_time_series</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span><span class="n">sigma</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">mu</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">mktime</span><span class="p">(</span><span class="n">mu</span><span class="o">.</span><span class="n">timetuple</span><span class="p">())</span>
+    <span class="n">sigma</span> <span class="o">=</span> <span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="o">**</span><span class="n">sigma</span><span class="p">))</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span><span class="n">sigma</span><span class="p">,</span><span class="n">n</span><span class="p">)])</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">ExampleCovid19DataSet</span><span class="p">(</span><span class="n">CommonDataModel</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;                                                                                                                                                    </span>
+<span class="sd">        initialise the inputs and setup indexing                                                                                                               </span>
+<span class="sd">        &quot;&quot;&quot;</span>  
+        <span class="c1">#50k people</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="mi">50000</span>
+
+
+        <span class="n">outputs</span> <span class="o">=</span> <span class="n">carrot</span><span class="o">.</span><span class="n">tools</span><span class="o">.</span><span class="n">create_sql_store</span><span class="p">(</span><span class="n">connection_string</span><span class="o">=</span><span class="s2">&quot;postgresql://localhost:5432/ExampleCOVID19DataSet&quot;</span><span class="p">,</span>
+                                          <span class="n">drop_existing</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">format_level</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">outputs</span><span class="o">=</span><span class="n">outputs</span><span class="p">)</span>
+
+        <span class="c1">#create people indexes that we can use in the different tables</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">people</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="sa">f</span><span class="s1">&#39;pk</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)],</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;pks&#39;</span><span class="p">])</span>
+
+        <span class="c1">#set the processing order, e.g we want to build demographics table first</span>
+        <span class="c1">#so that the values recorded in other tables can be demographically dependent </span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_execution_order</span><span class="p">([</span>
+            <span class="s1">&#39;Demographics&#39;</span><span class="p">,</span> 
+            <span class="s1">&#39;GP_Records&#39;</span><span class="p">,</span> 
+            <span class="s1">&#39;Vaccinations&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;Serology&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;Symptoms&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;Hospital_Visit&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;Blood_Test&#39;</span>
+        <span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">process</span><span class="p">()</span>
+
+    <span class="nd">@define_table</span><span class="p">(</span><span class="n">Demographics</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">demo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Straight foreward demographics</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ID</span><span class="o">.</span><span class="n">series</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cdm</span><span class="o">.</span><span class="n">people</span><span class="p">[</span><span class="s1">&#39;pks&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ID</span><span class="o">.</span><span class="n">series</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">series</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">series</span><span class="o">.</span><span class="n">mask</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">series</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span> <span class="mi">0</span> <span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Sex</span><span class="o">.</span><span class="n">series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s1">&#39;Male&#39;</span><span class="p">,</span><span class="s1">&#39;Female&#39;</span><span class="p">,</span><span class="kc">None</span><span class="p">],</span><span class="n">size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">,</span><span class="n">p</span><span class="o">=</span><span class="p">[</span><span class="mf">0.55</span><span class="p">,</span><span class="mf">0.445</span><span class="p">,</span><span class="mf">0.005</span><span class="p">]))</span>
+
+
+    <span class="nd">@define_table</span><span class="p">(</span><span class="n">Symptoms</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">symptoms</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">npeople</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cdm</span><span class="o">.</span><span class="n">demo</span><span class="o">.</span><span class="n">n</span>
+        <span class="n">nsymptoms</span> <span class="o">=</span> <span class="n">npeople</span><span class="o">*</span><span class="mi">5</span>
+
+        <span class="n">ID</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cdm</span><span class="o">.</span><span class="n">demo</span><span class="o">.</span><span class="n">ID</span><span class="o">.</span><span class="n">series</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">ID</span><span class="o">.</span><span class="n">series</span> <span class="o">=</span> <span class="n">ID</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">npeople</span><span class="o">*</span><span class="mf">0.8</span><span class="p">))</span>\
+            <span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">nsymptoms</span><span class="p">,</span><span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>\
+            <span class="o">.</span><span class="n">sort_values</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">date_occurrence</span><span class="o">.</span><span class="n">series</span> <span class="o">=</span> <span class="n">create_gaus_time_series</span><span class="p">(</span><span class="n">mu</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2021</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span>
+                                                              <span class="n">sigma</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;days&#39;</span><span class="p">:</span><span class="mi">365</span><span class="p">},</span>
+                                                              <span class="n">n</span><span class="o">=</span><span class="n">nsymptoms</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">date_occurrence</span><span class="o">.</span><span class="n">series</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">date_occurrence</span><span class="o">.</span><span class="n">series</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mf">0.005</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+        <span class="n">syms_probs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Headache&#39;</span><span class="p">:</span><span class="mf">0.8</span><span class="p">,</span><span class="s1">&#39;Fatigue&#39;</span><span class="p">:</span><span class="mf">0.7</span><span class="p">,</span><span class="s1">&#39;Dizzy&#39;</span><span class="p">:</span><span class="mf">0.4</span><span class="p">,</span><span class="s1">&#39;Cough&#39;</span><span class="p">:</span><span class="mf">0.7</span><span class="p">,</span><span class="s1">&#39;Fever&#39;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">,</span><span class="s1">&#39;Muscle_Pain&#39;</span><span class="p">:</span><span class="mf">0.1</span><span class="p">}</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">p</span> <span class="ow">in</span> <span class="n">syms_probs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s1">&#39;Yes&#39;</span><span class="p">,</span><span class="s1">&#39;No&#39;</span><span class="p">],</span><span class="n">size</span><span class="o">=</span><span class="n">nsymptoms</span><span class="p">,</span><span class="n">p</span><span class="o">=</span><span class="p">[</span><span class="n">p</span><span class="p">,</span><span class="mi">1</span><span class="o">-</span><span class="n">p</span><span class="p">]))</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">key</span><span class="p">),</span><span class="s1">&#39;series&#39;</span><span class="p">,</span><span class="n">series</span><span class="p">)</span>
+
+    <span class="nd">@define_table</span><span class="p">(</span><span class="n">Serology</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">serology</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="nf">calc_IgG</span><span class="p">(</span><span class="n">age</span><span class="p">,</span><span class="n">sex</span><span class="p">,</span><span class="n">nrisks</span><span class="p">):</span>
+            <span class="n">scale</span> <span class="o">=</span> <span class="mi">50</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">age</span><span class="o">/</span><span class="mi">200</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mf">1.1</span> <span class="k">if</span> <span class="n">sex</span><span class="o">==</span><span class="s1">&#39;Female&#39;</span> <span class="k">else</span> <span class="mf">1.0</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">nrisks</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">)</span>
+
+        <span class="n">df_gp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cdm</span><span class="o">.</span><span class="n">gp</span><span class="o">.</span><span class="n">get_df</span><span class="p">()</span>
+        <span class="n">df_nrisks</span> <span class="o">=</span> <span class="n">df_gp</span><span class="p">[</span><span class="s1">&#39;comorbidity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">df_gp</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>\
+                    <span class="o">.</span><span class="n">count</span><span class="p">()</span>
+        <span class="n">df_nrisks</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span><span class="s1">&#39;nrisks&#39;</span>
+
+        <span class="n">df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cdm</span><span class="o">.</span><span class="n">demo</span><span class="o">.</span><span class="n">get_df</span><span class="p">()</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df_nrisks</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;nrisks&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;nrisks&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="mi">18</span><span class="p">]</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+        <span class="n">nstudies</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+        <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mf">1.4</span><span class="p">,</span><span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;IgG&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span> <span class="p">:</span> <span class="n">calc_IgG</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">Age</span><span class="p">,</span><span class="n">x</span><span class="o">.</span><span class="n">Sex</span><span class="p">,</span><span class="n">x</span><span class="o">.</span><span class="n">nrisks</span><span class="p">),</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;ID&#39;</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">IgG</span><span class="o">.</span><span class="n">series</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;IgG&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ID</span><span class="o">.</span><span class="n">series</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;ID&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Date</span><span class="o">.</span><span class="n">series</span> <span class="o">=</span> <span class="n">create_gaus_time_series</span><span class="p">(</span><span class="n">mu</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2021</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span>
+                                                              <span class="n">sigma</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;days&#39;</span><span class="p">:</span><span class="mi">365</span><span class="p">},</span>
+                                                              <span class="n">n</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
+
+    <span class="nd">@define_table</span><span class="p">(</span><span class="n">GP_Records</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">gp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="nf">calc_comoribidites</span><span class="p">(</span><span class="n">age</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">age</span><span class="p">):</span>
+                <span class="k">return</span> <span class="p">[]</span>   
+            <span class="n">comorbidities</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s1">&#39;Mental Health&#39;</span><span class="p">:</span><span class="mf">0.3</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">age</span><span class="o">/</span><span class="mi">90</span><span class="p">)</span> <span class="p">,</span>
+                <span class="s1">&#39;Diabetes Type-II&#39;</span><span class="p">:</span><span class="mf">0.15</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">age</span><span class="o">/</span><span class="mi">70</span><span class="p">)</span> <span class="p">,</span>
+                <span class="s1">&#39;Heart Condition&#39;</span><span class="p">:</span><span class="mf">0.1</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">age</span><span class="o">/</span><span class="mi">50</span><span class="p">)</span> <span class="p">,</span>
+                <span class="s1">&#39;High Blood Pressure&#39;</span><span class="p">:</span><span class="mf">0.07</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">age</span><span class="o">/</span><span class="mi">60</span><span class="p">),</span>
+                <span class="s1">&#39;BMI&#39;</span><span class="p">:</span> <span class="mi">1</span>
+            <span class="p">}</span>
+            <span class="k">return</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span><span class="n">p</span> <span class="ow">in</span> <span class="n">comorbidities</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">()</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span> <span class="n">p</span><span class="p">)</span> <span class="p">]</span>
+
+        <span class="c1">#90% of people have a GP visit record</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cdm</span><span class="o">.</span><span class="n">demo</span><span class="o">.</span><span class="n">get_df</span><span class="p">()</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;comorbidity&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">calc_comoribidites</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">Age</span><span class="p">),</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;date_of_observation&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">create_gaus_time_series</span><span class="p">(</span><span class="n">mu</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2010</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span>
+                                                              <span class="n">sigma</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;days&#39;</span><span class="p">:</span><span class="mi">700</span><span class="p">},</span>
+                                                              <span class="n">n</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
+
+        <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">explode</span><span class="p">(</span><span class="s1">&#39;comorbidity&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;ID&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">ID</span><span class="o">.</span><span class="n">series</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">to_series</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">comorbidity</span><span class="o">.</span><span class="n">series</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;comorbidity&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">comorbidity_value</span><span class="o">.</span><span class="n">series</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;comorbidity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+                                                                <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="s1">&#39;BMI&#39;</span> <span class="k">else</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">date_of_visit</span><span class="o">.</span><span class="n">series</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;date_of_observation&#39;</span><span class="p">]</span>
+
+    <span class="nd">@define_table</span><span class="p">(</span><span class="n">Hospital_Visit</span><span class="p">)</span> 
+    <span class="k">def</span><span class="w"> </span><span class="nf">hospital</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cdm</span><span class="o">.</span><span class="n">demo</span><span class="o">.</span><span class="n">ID</span><span class="o">.</span><span class="n">series</span><span class="p">)</span>
+
+        <span class="c1">#5% of people have had a hospital visit</span>
+        <span class="c1">#some of those have multiple visists</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ID</span><span class="o">.</span><span class="n">series</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cdm</span><span class="o">.</span><span class="n">demo</span><span class="o">.</span><span class="n">ID</span><span class="o">.</span><span class="n">series</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>\
+                        <span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="mf">1.2</span><span class="p">),</span><span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>\
+                        <span class="o">.</span><span class="n">sort_values</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  
+
+        <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ID</span><span class="o">.</span><span class="n">series</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">admission_date</span><span class="o">.</span><span class="n">series</span> <span class="o">=</span> <span class="n">create_gaus_time_series</span><span class="p">(</span><span class="n">mu</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span>
+                                                              <span class="n">sigma</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;days&#39;</span><span class="p">:</span><span class="mi">300</span><span class="p">},</span>
+                                                              <span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+
+        <span class="n">reasons</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;Kidney Operation&#39;</span><span class="p">:</span><span class="mf">0.1</span><span class="p">,</span>
+            <span class="s1">&#39;Appendix Operation&#39;</span><span class="p">:</span><span class="mf">0.1</span><span class="p">,</span>
+            <span class="s1">&#39;Heart Attack&#39;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">,</span>
+            <span class="s1">&#39;COVID-19&#39;</span><span class="p">:</span><span class="mf">0.15</span><span class="p">,</span>
+            <span class="s1">&#39;Pneumonia&#39;</span><span class="p">:</span><span class="mf">0.15</span><span class="p">,</span>
+            <span class="s1">&#39;Cancer&#39;</span><span class="p">:</span><span class="mf">0.3</span>
+        <span class="p">}</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">reason</span><span class="o">.</span><span class="n">series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">reasons</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span><span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">,</span><span class="n">p</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">reasons</span><span class="o">.</span><span class="n">values</span><span class="p">())))</span>
+
+    <span class="nd">@define_table</span><span class="p">(</span><span class="n">Blood_Test</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">bloods</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1">#half of the people with hospital visits have blood taken</span>
+        <span class="n">df_hospital</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cdm</span><span class="o">.</span><span class="n">hospital</span><span class="o">.</span><span class="n">get_df</span><span class="p">()</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">ID</span><span class="o">.</span><span class="n">series</span> <span class="o">=</span> <span class="n">df_hospital</span><span class="p">[</span><span class="s1">&#39;ID&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">date_taken</span><span class="o">.</span><span class="n">series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df_hospital</span><span class="p">[</span><span class="s1">&#39;admission_date&#39;</span><span class="p">])</span> \
+                               <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+
+        <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_hospital</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s1">&#39;Right Arm&#39;</span><span class="p">,</span><span class="s1">&#39;Left Arm&#39;</span><span class="p">,</span><span class="s1">&#39;Small Intestine&#39;</span><span class="p">,</span><span class="s1">&#39;Abdominal Wall&#39;</span><span class="p">],</span>
+                                                   <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">,</span>
+                                                   <span class="n">p</span><span class="o">=</span><span class="p">[</span><span class="mf">0.3</span><span class="p">,</span><span class="mf">0.3</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.2</span><span class="p">]))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">quantity</span><span class="o">.</span><span class="n">series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="p">)))</span>
+
+    <span class="nd">@define_table</span><span class="p">(</span><span class="n">Vaccinations</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">first_covid_vaccination</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="nf">calc_date_of_vacc</span><span class="p">(</span><span class="n">age</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">age</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+            <span class="n">start_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2021</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">tdelta</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="p">(</span><span class="mi">300</span><span class="o">-</span><span class="n">age</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">50</span><span class="p">))</span>
+
+            <span class="k">return</span> <span class="n">start_date</span> <span class="o">+</span> <span class="n">tdelta</span>
+
+        <span class="c1">#95% of people have had a vaccination</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cdm</span><span class="o">.</span><span class="n">demo</span><span class="o">.</span><span class="n">get_df</span><span class="p">()</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">ID</span><span class="o">.</span><span class="n">series</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;ID&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">date_of_vaccination</span><span class="o">.</span><span class="n">series</span> <span class="o">=</span>  <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span> <span class="p">:</span> <span class="n">calc_date_of_vacc</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">Age</span><span class="p">),</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ID</span><span class="o">.</span><span class="n">series</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">type</span><span class="o">.</span><span class="n">series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s1">&#39;Moderna&#39;</span><span class="p">,</span><span class="s1">&#39;AstraZenica&#39;</span><span class="p">,</span><span class="s1">&#39;Pfizer&#39;</span><span class="p">],</span><span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">,</span><span class="n">p</span><span class="o">=</span><span class="p">[</span><span class="mf">0.34</span><span class="p">,</span><span class="mf">0.33</span><span class="p">,</span><span class="mf">0.33</span><span class="p">]))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stage</span><span class="o">.</span><span class="n">series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">((</span><span class="mi">0</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="p">)))</span>
+
+    <span class="nd">@define_table</span><span class="p">(</span><span class="n">Vaccinations</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">second_covid_vaccination</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="nf">calc_date_of_vacc</span><span class="p">(</span><span class="n">age</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">age</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+            <span class="n">start_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2021</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">tdelta</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="p">(</span><span class="mi">300</span><span class="o">-</span><span class="n">age</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">50</span><span class="p">))</span>
+
+            <span class="k">return</span> <span class="n">start_date</span> <span class="o">+</span> <span class="n">tdelta</span>
+
+        <span class="c1">#80% of people who had 1st had 2nd</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cdm</span><span class="o">.</span><span class="n">first_covid_vaccination</span><span class="o">.</span><span class="n">get_df</span><span class="p">()</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">ID</span><span class="o">.</span><span class="n">series</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;ID&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">date_of_vaccination</span><span class="o">.</span><span class="n">series</span> <span class="o">=</span>  <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;date_of_vaccination&#39;</span><span class="p">])</span> \
+                                           <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="p">(</span><span class="mi">50</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">50</span><span class="p">)))</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ID</span><span class="o">.</span><span class="n">series</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">type</span><span class="o">.</span><span class="n">series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s1">&#39;Moderna&#39;</span><span class="p">,</span><span class="s1">&#39;AstraZenica&#39;</span><span class="p">,</span><span class="s1">&#39;Pfizer&#39;</span><span class="p">],</span><span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">,</span><span class="n">p</span><span class="o">=</span><span class="p">[</span><span class="mf">0.34</span><span class="p">,</span><span class="mf">0.33</span><span class="p">,</span><span class="mf">0.33</span><span class="p">]))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stage</span><span class="o">.</span><span class="n">series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">((</span><span class="mi">1</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="p">)))</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="create-a-model">Create a Model<a class="headerlink" href="#create-a-model" title="Permanent link">&para;</a></h2>
+<p>Create and run the model, for a dataset so large and complex, this can take some time</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">model</span> <span class="o">=</span> <span class="n">ExampleCovid19DataSet</span><span class="p">()</span>
+<span class="n">model</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+<code><span class="ansi-green-fg">2022-06-17 15:03:24</span> - <span class="ansi-blue-fg">SqlDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - DataCollection Object Created
+<span class="ansi-green-fg">2022-06-17 15:03:25</span> - <span class="ansi-blue-fg">SqlDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Engine(postgresql://localhost:5432/ExampleCOVID19DataSet)
+<span class="ansi-green-fg">2022-06-17 15:03:25</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - CommonDataModel (5.3.1) created with co-connect-tools version 0.0.0
+<span class="ansi-green-fg">2022-06-17 15:03:25</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Turning on automatic cdm column filling
+<span class="ansi-green-fg">2022-06-17 15:03:25</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Added bloods of type Blood_Test
+<span class="ansi-green-fg">2022-06-17 15:03:25</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Added demo of type Demographics
+<span class="ansi-green-fg">2022-06-17 15:03:25</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Added first_covid_vaccination of type Vaccinations
+<span class="ansi-green-fg">2022-06-17 15:03:25</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Added gp of type GP_Records
+<span class="ansi-green-fg">2022-06-17 15:03:25</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Added hospital of type Hospital_Visit
+<span class="ansi-green-fg">2022-06-17 15:03:25</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Added second_covid_vaccination of type Vaccinations
+<span class="ansi-green-fg">2022-06-17 15:03:25</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Added serology of type Serology
+<span class="ansi-green-fg">2022-06-17 15:03:25</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Added symptoms of type Symptoms
+<span class="ansi-green-fg">2022-06-17 15:03:25</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Starting processing in order: ['Demographics', 'GP_Records', 'Vaccinations', 'Serology', 'Symptoms', 'Hospital_Visit', 'Blood_Test']
+<span class="ansi-green-fg">2022-06-17 15:03:25</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Number of objects to process for each table...
+{
+      "Blood_Test": 1,
+      "Demographics": 1,
+      "Vaccinations": 2,
+      "GP_Records": 1,
+      "Hospital_Visit": 1,
+      "Serology": 1,
+      "Symptoms": 1
+}
+<span class="ansi-green-fg">2022-06-17 15:03:25</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - for Demographics: found 1 object
+<span class="ansi-green-fg">2022-06-17 15:03:25</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - working on Demographics
+<span class="ansi-green-fg">2022-06-17 15:03:25</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - starting on demo
+<span class="ansi-green-fg">2022-06-17 15:03:25</span> - <span class="ansi-blue-fg">Demographics</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Not formatting data columns
+<span class="ansi-green-fg">2022-06-17 15:03:25</span> - <span class="ansi-blue-fg">Demographics</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - created df (0x1076b2a90)[demo]
+<span class="ansi-green-fg">2022-06-17 15:03:25</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished demo (0x1076b2a90) ... 1/1 completed, 50000 rows
+<span class="ansi-green-fg">2022-06-17 15:03:25</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">ERROR</span> - <span class="ansi-red-fg">Removed 49652 row(s) due to duplicates found when merging Demographics</span>
+<span class="ansi-green-fg">2022-06-17 15:03:25</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">Example duplicates...</span>
+<span class="ansi-green-fg">2022-06-17 15:03:25</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">       Age     Sex
+ID                
+pk1   62.0    Male
+pk2   56.0  Female
+pk3   37.0    Male
+pk4   57.0  Female
+pk5   55.0    Male
+pk6   95.0    Male
+pk7   49.0    Male
+pk8   76.0    Male
+pk9   90.0  Female
+pk10  62.0    Male</span>
+<span class="ansi-green-fg">2022-06-17 15:03:25</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - saving dataframe (0x1076b22b0) to &lt;carrot.io.plugins.sql.SqlDataCollection object at 0x107742100&gt;
+<span class="ansi-green-fg">2022-06-17 15:03:25</span> - <span class="ansi-blue-fg">SqlDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - updating Demographics in Engine(postgresql://localhost:5432/ExampleCOVID19DataSet)
+<span class="ansi-green-fg">2022-06-17 15:03:25</span> - <span class="ansi-blue-fg">SqlDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished save to psql
+<span class="ansi-green-fg">2022-06-17 15:03:26</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finalised Demographics on iteration 0 producing 50000 rows from 1 tables
+<span class="ansi-green-fg">2022-06-17 15:03:26</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - for GP_Records: found 1 object
+<span class="ansi-green-fg">2022-06-17 15:03:26</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - working on GP_Records
+<span class="ansi-green-fg">2022-06-17 15:03:26</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - starting on gp
+<span class="ansi-green-fg">2022-06-17 15:03:31</span> - <span class="ansi-blue-fg">GP_Records</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Not formatting data columns
+<span class="ansi-green-fg">2022-06-17 15:03:31</span> - <span class="ansi-blue-fg">GP_Records</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - created df (0x10bc8f070)[gp]
+<span class="ansi-green-fg">2022-06-17 15:03:31</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished gp (0x10bc8f070) ... 1/1 completed, 96181 rows
+<span class="ansi-green-fg">2022-06-17 15:03:31</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">ERROR</span> - <span class="ansi-red-fg">Removed 39336 row(s) due to duplicates found when merging GP_Records</span>
+<span class="ansi-green-fg">2022-06-17 15:03:31</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">Example duplicates...</span>
+<span class="ansi-green-fg">2022-06-17 15:03:31</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">        date_of_visit       comorbidity  comorbidity_value
+ID                                                        
+pk1        2007-10-21  Diabetes Type-II                1.0
+pk10       2009-01-03     Mental Health                1.0
+pk100      2010-04-11     Mental Health                1.0
+pk100      2010-04-11  Diabetes Type-II                1.0
+pk1000     2006-10-08     Mental Health                1.0
+pk10000    2012-02-26     Mental Health                1.0
+pk10001    2007-07-17   Heart Condition                1.0
+pk10002    2012-12-29  Diabetes Type-II                1.0
+pk10002    2012-12-29   Heart Condition                1.0
+pk10003    2010-04-01     Mental Health                1.0</span>
+<span class="ansi-green-fg">2022-06-17 15:03:31</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - saving dataframe (0x10b690b50) to &lt;carrot.io.plugins.sql.SqlDataCollection object at 0x107742100&gt;
+<span class="ansi-green-fg">2022-06-17 15:03:31</span> - <span class="ansi-blue-fg">SqlDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - updating GP_Records in Engine(postgresql://localhost:5432/ExampleCOVID19DataSet)
+<span class="ansi-green-fg">2022-06-17 15:03:37</span> - <span class="ansi-blue-fg">SqlDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished save to psql
+<span class="ansi-green-fg">2022-06-17 15:03:37</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finalised GP_Records on iteration 0 producing 96181 rows from 1 tables
+<span class="ansi-green-fg">2022-06-17 15:03:37</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - for Vaccinations: found 2 objects
+<span class="ansi-green-fg">2022-06-17 15:03:37</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - working on Vaccinations
+<span class="ansi-green-fg">2022-06-17 15:03:37</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - starting on first_covid_vaccination
+<span class="ansi-green-fg">2022-06-17 15:03:39</span> - <span class="ansi-blue-fg">Vaccinations</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Not formatting data columns
+<span class="ansi-green-fg">2022-06-17 15:03:39</span> - <span class="ansi-blue-fg">Vaccinations</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - created df (0x10c0998b0)[first_covid_vaccination]
+<span class="ansi-green-fg">2022-06-17 15:03:39</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished first_covid_vaccination (0x10c0998b0) ... 1/2 completed, 45000 rows
+<span class="ansi-green-fg">2022-06-17 15:03:39</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - starting on second_covid_vaccination
+<span class="ansi-green-fg">2022-06-17 15:03:39</span> - <span class="ansi-blue-fg">Vaccinations</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Not formatting data columns
+<span class="ansi-green-fg">2022-06-17 15:03:39</span> - <span class="ansi-blue-fg">Vaccinations</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - created df (0x10bd35070)[second_covid_vaccination]
+<span class="ansi-green-fg">2022-06-17 15:03:39</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished second_covid_vaccination (0x10bd35070) ... 2/2 completed, 36000 rows
+<span class="ansi-green-fg">2022-06-17 15:03:39</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">ERROR</span> - <span class="ansi-red-fg">Removed 64 row(s) due to duplicates found when merging Vaccinations</span>
+<span class="ansi-green-fg">2022-06-17 15:03:39</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">Example duplicates...</span>
+<span class="ansi-green-fg">2022-06-17 15:03:39</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">                type  stage
+ID                         
+pk40950  AstraZenica      0
+pk44515  AstraZenica      0
+pk33656  AstraZenica      0
+pk23624  AstraZenica      0
+pk49043      Moderna      0
+pk12327  AstraZenica      0
+pk45916       Pfizer      0
+pk22064       Pfizer      0
+pk23701      Moderna      0
+pk2449   AstraZenica      0</span>
+<span class="ansi-green-fg">2022-06-17 15:03:39</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - saving dataframe (0x1076b29a0) to &lt;carrot.io.plugins.sql.SqlDataCollection object at 0x107742100&gt;
+</code>
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+<code><span class="ansi-green-fg">2022-06-17 15:03:39</span> - <span class="ansi-blue-fg">SqlDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - updating Vaccinations in Engine(postgresql://localhost:5432/ExampleCOVID19DataSet)
+<span class="ansi-green-fg">2022-06-17 15:03:48</span> - <span class="ansi-blue-fg">SqlDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished save to psql
+<span class="ansi-green-fg">2022-06-17 15:03:48</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finalised Vaccinations on iteration 0 producing 81000 rows from 2 tables
+<span class="ansi-green-fg">2022-06-17 15:03:48</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - for Serology: found 1 object
+<span class="ansi-green-fg">2022-06-17 15:03:48</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - working on Serology
+<span class="ansi-green-fg">2022-06-17 15:03:48</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - starting on serology
+<span class="ansi-green-fg">2022-06-17 15:03:49</span> - <span class="ansi-blue-fg">Serology</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Not formatting data columns
+<span class="ansi-green-fg">2022-06-17 15:03:49</span> - <span class="ansi-blue-fg">Serology</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - created df (0x10bd35be0)[serology]
+<span class="ansi-green-fg">2022-06-17 15:03:49</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished serology (0x10bd35be0) ... 1/1 completed, 20591 rows
+<span class="ansi-green-fg">2022-06-17 15:03:49</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - saving dataframe (0x10b6b6cd0) to &lt;carrot.io.plugins.sql.SqlDataCollection object at 0x107742100&gt;
+<span class="ansi-green-fg">2022-06-17 15:03:49</span> - <span class="ansi-blue-fg">SqlDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - updating Serology in Engine(postgresql://localhost:5432/ExampleCOVID19DataSet)
+<span class="ansi-green-fg">2022-06-17 15:03:51</span> - <span class="ansi-blue-fg">SqlDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished save to psql
+<span class="ansi-green-fg">2022-06-17 15:03:51</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finalised Serology on iteration 0 producing 20591 rows from 1 tables
+<span class="ansi-green-fg">2022-06-17 15:03:51</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - for Symptoms: found 1 object
+<span class="ansi-green-fg">2022-06-17 15:03:51</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - working on Symptoms
+<span class="ansi-green-fg">2022-06-17 15:03:51</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - starting on symptoms
+<span class="ansi-green-fg">2022-06-17 15:03:53</span> - <span class="ansi-blue-fg">Symptoms</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Not formatting data columns
+<span class="ansi-green-fg">2022-06-17 15:03:53</span> - <span class="ansi-blue-fg">Symptoms</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - created df (0x1265ee490)[symptoms]
+<span class="ansi-green-fg">2022-06-17 15:03:53</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished symptoms (0x1265ee490) ... 1/1 completed, 250000 rows
+<span class="ansi-green-fg">2022-06-17 15:03:53</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">ERROR</span> - <span class="ansi-red-fg">Removed 193327 row(s) due to duplicates found when merging Symptoms</span>
+<span class="ansi-green-fg">2022-06-17 15:03:53</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">Example duplicates...</span>
+<span class="ansi-green-fg">2022-06-17 15:03:53</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">     date_occurrence Headache Fatigue Dizzy Cough Fever Muscle_Pain
+ID                                                                 
+pk1       2021-01-24      Yes     Yes    No   Yes    No         Yes
+pk1       2019-05-30      Yes     Yes    No    No   Yes          No
+pk1       2021-05-16      Yes      No    No    No   Yes          No
+pk1       2022-06-11      Yes     Yes   Yes   Yes    No          No
+pk1       2020-06-18      Yes     Yes   Yes   Yes   Yes         Yes
+pk1       2021-02-04      Yes      No    No   Yes    No          No
+pk10      2021-11-24      Yes     Yes    No   Yes   Yes          No
+pk10      2018-12-15       No     Yes    No   Yes    No          No
+pk10      2020-12-28      Yes      No    No   Yes    No          No
+pk10      2023-04-08      Yes     Yes   Yes   Yes    No          No</span>
+<span class="ansi-green-fg">2022-06-17 15:03:53</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - saving dataframe (0x10bd3c220) to &lt;carrot.io.plugins.sql.SqlDataCollection object at 0x107742100&gt;
+<span class="ansi-green-fg">2022-06-17 15:03:53</span> - <span class="ansi-blue-fg">SqlDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - updating Symptoms in Engine(postgresql://localhost:5432/ExampleCOVID19DataSet)
+<span class="ansi-green-fg">2022-06-17 15:04:00</span> - <span class="ansi-blue-fg">SqlDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished save to psql
+<span class="ansi-green-fg">2022-06-17 15:04:00</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finalised Symptoms on iteration 0 producing 250000 rows from 1 tables
+<span class="ansi-green-fg">2022-06-17 15:04:00</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - for Hospital_Visit: found 1 object
+<span class="ansi-green-fg">2022-06-17 15:04:00</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - working on Hospital_Visit
+<span class="ansi-green-fg">2022-06-17 15:04:00</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - starting on hospital
+<span class="ansi-green-fg">2022-06-17 15:04:00</span> - <span class="ansi-blue-fg">Hospital_Visit</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Not formatting data columns
+<span class="ansi-green-fg">2022-06-17 15:04:00</span> - <span class="ansi-blue-fg">Hospital_Visit</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - created df (0x12660f580)[hospital]
+<span class="ansi-green-fg">2022-06-17 15:04:00</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished hospital (0x12660f580) ... 1/1 completed, 60000 rows
+<span class="ansi-green-fg">2022-06-17 15:04:00</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">ERROR</span> - <span class="ansi-red-fg">Removed 51290 row(s) due to duplicates found when merging Hospital_Visit</span>
+<span class="ansi-green-fg">2022-06-17 15:04:00</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">Example duplicates...</span>
+<span class="ansi-green-fg">2022-06-17 15:04:00</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">        admission_date              reason
+ID                                        
+pk1         2020-03-20              Cancer
+pk1000      2019-02-14           Pneumonia
+pk10001     2019-10-10  Appendix Operation
+pk10001     2021-01-13              Cancer
+pk10001     2018-11-30            COVID-19
+pk10001     2021-01-21            COVID-19
+pk10002     2020-05-31              Cancer
+pk10004     2020-02-12              Cancer
+pk10004     2020-05-27    Kidney Operation
+pk10005     2020-11-13           Pneumonia</span>
+<span class="ansi-green-fg">2022-06-17 15:04:00</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - saving dataframe (0x10bd3c280) to &lt;carrot.io.plugins.sql.SqlDataCollection object at 0x107742100&gt;
+<span class="ansi-green-fg">2022-06-17 15:04:00</span> - <span class="ansi-blue-fg">SqlDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - updating Hospital_Visit in Engine(postgresql://localhost:5432/ExampleCOVID19DataSet)
+<span class="ansi-green-fg">2022-06-17 15:04:01</span> - <span class="ansi-blue-fg">SqlDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished save to psql
+<span class="ansi-green-fg">2022-06-17 15:04:01</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finalised Hospital_Visit on iteration 0 producing 60000 rows from 1 tables
+<span class="ansi-green-fg">2022-06-17 15:04:01</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - for Blood_Test: found 1 object
+<span class="ansi-green-fg">2022-06-17 15:04:01</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - working on Blood_Test
+<span class="ansi-green-fg">2022-06-17 15:04:01</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - starting on bloods
+<span class="ansi-green-fg">2022-06-17 15:04:02</span> - <span class="ansi-blue-fg">Blood_Test</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Not formatting data columns
+<span class="ansi-green-fg">2022-06-17 15:04:02</span> - <span class="ansi-blue-fg">Blood_Test</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - created df (0x126afcdf0)[bloods]
+<span class="ansi-green-fg">2022-06-17 15:04:02</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished bloods (0x126afcdf0) ... 1/1 completed, 30000 rows
+<span class="ansi-green-fg">2022-06-17 15:04:02</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - saving dataframe (0x10bd42ee0) to &lt;carrot.io.plugins.sql.SqlDataCollection object at 0x107742100&gt;
+<span class="ansi-green-fg">2022-06-17 15:04:02</span> - <span class="ansi-blue-fg">SqlDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - updating Blood_Test in Engine(postgresql://localhost:5432/ExampleCOVID19DataSet)
+<span class="ansi-green-fg">2022-06-17 15:04:06</span> - <span class="ansi-blue-fg">SqlDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished save to psql
+<span class="ansi-green-fg">2022-06-17 15:04:06</span> - <span class="ansi-blue-fg">ExampleCovid19DataSet</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finalised Blood_Test on iteration 0 producing 30000 rows from 1 tables
+</code>
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>&lt;__main__.ExampleCovid19DataSet at 0x10b6280d0&gt;</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="viewing-the-model">Viewing the Model<a class="headerlink" href="#viewing-the-model" title="Permanent link">&para;</a></h2>
+<p>Print to see what output data tables the model contains</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">model</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>dict_keys(['Demographics', 'GP_Records', 'Vaccinations', 'Serology', 'Symptoms', 'Hospital_Visit', 'Blood_Test'])</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>retrieve the dataframes from the model</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">model</span><span class="p">[</span><span class="s1">&#39;Demographics&#39;</span><span class="p">]</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>Age</th>
+<th>Sex</th>
+</tr>
+<tr>
+<th>ID</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>pk1</th>
+<td>62.0</td>
+<td>Male</td>
+</tr>
+<tr>
+<th>pk2</th>
+<td>56.0</td>
+<td>Female</td>
+</tr>
+<tr>
+<th>pk3</th>
+<td>37.0</td>
+<td>Male</td>
+</tr>
+<tr>
+<th>pk4</th>
+<td>57.0</td>
+<td>Female</td>
+</tr>
+<tr>
+<th>pk5</th>
+<td>55.0</td>
+<td>Male</td>
+</tr>
+<tr>
+<th>...</th>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<th>pk45025</th>
+<td>124.0</td>
+<td>Male</td>
+</tr>
+<tr>
+<th>pk47056</th>
+<td>29.0</td>
+<td>None</td>
+</tr>
+<tr>
+<th>pk49115</th>
+<td>61.0</td>
+<td>None</td>
+</tr>
+<tr>
+<th>pk49903</th>
+<td>31.0</td>
+<td>None</td>
+</tr>
+<tr>
+<th>pk49979</th>
+<td>139.0</td>
+<td>Male</td>
+</tr>
+</tbody>
+</table>
+<p>348 rows × 2 columns</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">model</span><span class="p">[</span><span class="s1">&#39;GP_Records&#39;</span><span class="p">]</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>date_of_visit</th>
+<th>comorbidity</th>
+<th>comorbidity_value</th>
+</tr>
+<tr>
+<th>ID</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>pk1</th>
+<td>2007-10-21</td>
+<td>Diabetes Type-II</td>
+<td>1.000000</td>
+</tr>
+<tr>
+<th>pk1</th>
+<td>2007-10-21</td>
+<td>Heart Condition</td>
+<td>1.000000</td>
+</tr>
+<tr>
+<th>pk1</th>
+<td>2007-10-21</td>
+<td>BMI</td>
+<td>48.725715</td>
+</tr>
+<tr>
+<th>pk10</th>
+<td>2009-01-03</td>
+<td>Mental Health</td>
+<td>1.000000</td>
+</tr>
+<tr>
+<th>pk10</th>
+<td>2009-01-03</td>
+<td>BMI</td>
+<td>23.007635</td>
+</tr>
+<tr>
+<th>...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<th>pk9994</th>
+<td>2009-08-09</td>
+<td>BMI</td>
+<td>58.675133</td>
+</tr>
+<tr>
+<th>pk9995</th>
+<td>2012-09-06</td>
+<td>BMI</td>
+<td>46.737545</td>
+</tr>
+<tr>
+<th>pk9996</th>
+<td>2010-04-13</td>
+<td>BMI</td>
+<td>1.468812</td>
+</tr>
+<tr>
+<th>pk9998</th>
+<td>2013-02-05</td>
+<td>BMI</td>
+<td>9.818068</td>
+</tr>
+<tr>
+<th>pk9999</th>
+<td>2011-05-23</td>
+<td>BMI</td>
+<td>17.832532</td>
+</tr>
+</tbody>
+</table>
+<p>56845 rows × 3 columns</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">model</span><span class="p">[</span><span class="s1">&#39;Vaccinations&#39;</span><span class="p">]</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>date_of_vaccination</th>
+<th>type</th>
+<th>stage</th>
+</tr>
+<tr>
+<th>ID</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>pk32019</th>
+<td>2021-07-18 21:19:36.566949</td>
+<td>Moderna</td>
+<td>0</td>
+</tr>
+<tr>
+<th>pk32821</th>
+<td>2021-09-07 23:08:09.986958</td>
+<td>AstraZenica</td>
+<td>0</td>
+</tr>
+<tr>
+<th>pk40642</th>
+<td>2021-08-17 22:21:06.467002</td>
+<td>Pfizer</td>
+<td>0</td>
+</tr>
+<tr>
+<th>pk30449</th>
+<td>2021-08-31 08:30:15.911471</td>
+<td>AstraZenica</td>
+<td>0</td>
+</tr>
+<tr>
+<th>pk34545</th>
+<td>2021-06-26 14:03:28.892069</td>
+<td>Moderna</td>
+<td>0</td>
+</tr>
+<tr>
+<th>...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<th>pk31142</th>
+<td>2021-07-08 00:53:53.763942</td>
+<td>Pfizer</td>
+<td>1</td>
+</tr>
+<tr>
+<th>pk22055</th>
+<td>2021-08-17 01:57:34.407304</td>
+<td>AstraZenica</td>
+<td>1</td>
+</tr>
+<tr>
+<th>pk38363</th>
+<td>2021-11-21 07:48:46.199824</td>
+<td>AstraZenica</td>
+<td>1</td>
+</tr>
+<tr>
+<th>pk38067</th>
+<td>2021-10-21 18:15:40.375532</td>
+<td>Moderna</td>
+<td>1</td>
+</tr>
+<tr>
+<th>pk39445</th>
+<td>2021-11-05 17:19:06.735946</td>
+<td>Pfizer</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>80936 rows × 3 columns</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">model</span><span class="p">[</span><span class="s1">&#39;Serology&#39;</span><span class="p">]</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>Date</th>
+<th>IgG</th>
+</tr>
+<tr>
+<th>ID</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>pk10001</th>
+<td>2021-03-17</td>
+<td>13.701676</td>
+</tr>
+<tr>
+<th>pk10001</th>
+<td>2021-07-29</td>
+<td>1.077413</td>
+</tr>
+<tr>
+<th>pk10005</th>
+<td>2020-06-06</td>
+<td>39.366639</td>
+</tr>
+<tr>
+<th>pk10005</th>
+<td>2020-03-02</td>
+<td>56.358177</td>
+</tr>
+<tr>
+<th>pk10009</th>
+<td>2021-05-03</td>
+<td>55.585361</td>
+</tr>
+<tr>
+<th>...</th>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<th>pk997</th>
+<td>2020-12-14</td>
+<td>1.720815</td>
+</tr>
+<tr>
+<th>pk9978</th>
+<td>2020-11-10</td>
+<td>52.239568</td>
+</tr>
+<tr>
+<th>pk9982</th>
+<td>2023-05-12</td>
+<td>5.753619</td>
+</tr>
+<tr>
+<th>pk9989</th>
+<td>2022-12-16</td>
+<td>37.616017</td>
+</tr>
+<tr>
+<th>pk9989</th>
+<td>2022-12-14</td>
+<td>7.415778</td>
+</tr>
+</tbody>
+</table>
+<p>20591 rows × 2 columns</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">model</span><span class="p">[</span><span class="s1">&#39;Symptoms&#39;</span><span class="p">]</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>date_occurrence</th>
+<th>Headache</th>
+<th>Fatigue</th>
+<th>Dizzy</th>
+<th>Cough</th>
+<th>Fever</th>
+<th>Muscle_Pain</th>
+</tr>
+<tr>
+<th>ID</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>pk1</th>
+<td>2021-01-24</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<th>pk1</th>
+<td>2019-05-30</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<th>pk1</th>
+<td>2021-05-16</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<th>pk1</th>
+<td>2022-06-11</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<th>pk1</th>
+<td>2020-06-18</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<th>...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<th>pk9992</th>
+<td>2021-11-22</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<th>pk9992</th>
+<td>2019-11-07</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<th>pk9992</th>
+<td>2018-09-01</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<th>pk9993</th>
+<td>2018-12-02</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<th>pk9996</th>
+<td>2018-08-11</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p>56673 rows × 7 columns</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">model</span><span class="p">[</span><span class="s1">&#39;Blood_Test&#39;</span><span class="p">]</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>date_taken</th>
+<th>location</th>
+<th>quantity</th>
+</tr>
+<tr>
+<th>ID</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>pk31048</th>
+<td>2019-05-24 13:00:52.371957</td>
+<td>Right Arm</td>
+<td>0.858088</td>
+</tr>
+<tr>
+<th>pk42771</th>
+<td>2020-12-04 13:00:52.371957</td>
+<td>Right Arm</td>
+<td>0.362495</td>
+</tr>
+<tr>
+<th>pk9294</th>
+<td>2019-08-18 13:00:52.371957</td>
+<td>Left Arm</td>
+<td>0.674107</td>
+</tr>
+<tr>
+<th>pk34653</th>
+<td>2020-06-11 13:00:52.371957</td>
+<td>Small Intestine</td>
+<td>0.994321</td>
+</tr>
+<tr>
+<th>pk34474</th>
+<td>2020-06-13 13:00:52.371957</td>
+<td>Left Arm</td>
+<td>0.520345</td>
+</tr>
+<tr>
+<th>...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<th>pk2856</th>
+<td>2021-03-03 13:00:52.371957</td>
+<td>Left Arm</td>
+<td>0.358316</td>
+</tr>
+<tr>
+<th>pk46915</th>
+<td>2020-01-19 13:00:52.371957</td>
+<td>Left Arm</td>
+<td>0.387136</td>
+</tr>
+<tr>
+<th>pk32960</th>
+<td>2019-10-12 13:00:52.371957</td>
+<td>Left Arm</td>
+<td>0.563794</td>
+</tr>
+<tr>
+<th>pk30995</th>
+<td>2018-05-29 13:00:52.371957</td>
+<td>Abdominal Wall</td>
+<td>0.665672</td>
+</tr>
+<tr>
+<th>pk21561</th>
+<td>2019-10-16 13:00:52.371957</td>
+<td>Left Arm</td>
+<td>2.318754</td>
+</tr>
+</tbody>
+</table>
+<p>30000 rows × 3 columns</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">model</span><span class="p">[</span><span class="s1">&#39;Hospital_Visit&#39;</span><span class="p">]</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>admission_date</th>
+<th>reason</th>
+</tr>
+<tr>
+<th>ID</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>pk1</th>
+<td>2020-03-20</td>
+<td>Cancer</td>
+</tr>
+<tr>
+<th>pk1000</th>
+<td>2019-02-14</td>
+<td>Pneumonia</td>
+</tr>
+<tr>
+<th>pk10001</th>
+<td>2019-10-10</td>
+<td>Appendix Operation</td>
+</tr>
+<tr>
+<th>pk10001</th>
+<td>2021-01-13</td>
+<td>Cancer</td>
+</tr>
+<tr>
+<th>pk10001</th>
+<td>2018-11-30</td>
+<td>COVID-19</td>
+</tr>
+<tr>
+<th>...</th>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<th>pk9843</th>
+<td>2018-10-04</td>
+<td>COVID-19</td>
+</tr>
+<tr>
+<th>pk9904</th>
+<td>2018-05-15</td>
+<td>Appendix Operation</td>
+</tr>
+<tr>
+<th>pk9913</th>
+<td>2022-06-14</td>
+<td>Pneumonia</td>
+</tr>
+<tr>
+<th>pk9915</th>
+<td>2021-12-24</td>
+<td>COVID-19</td>
+</tr>
+<tr>
+<th>pk9926</th>
+<td>2017-11-18</td>
+<td>Cancer</td>
+</tr>
+</tbody>
+</table>
+<p>8710 rows × 2 columns</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="perform-analysis">Perform analysis<a class="headerlink" href="#perform-analysis" title="Permanent link">&para;</a></h2>
+<p>Firstly get the the GP records, and count the number of comorbidities a patient has, to create risk groups</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">df_gp</span> <span class="o">=</span> <span class="n">model</span><span class="p">[</span><span class="s1">&#39;GP_Records&#39;</span><span class="p">]</span>
+<span class="n">df_nrisks</span> <span class="o">=</span> <span class="n">df_gp</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">df_gp</span><span class="o">.</span><span class="n">index</span><span class="p">)[</span><span class="s1">&#39;comorbidity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span> 
+<span class="n">df_nrisks</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;nrisks&#39;</span>
+<span class="n">df_nrisks</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>nrisks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>40</td>
+</tr>
+<tr>
+<th>1</th>
+<td>35767</td>
+</tr>
+<tr>
+<th>2</th>
+<td>6920</td>
+</tr>
+<tr>
+<th>3</th>
+<td>1927</td>
+</tr>
+<tr>
+<th>4</th>
+<td>313</td>
+</tr>
+<tr>
+<th>5</th>
+<td>33</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>build a dataframe for analysis by getting the serology data + demographics data + the number of risks</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">model</span><span class="p">[</span><span class="s1">&#39;Serology&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">model</span><span class="p">[</span><span class="s1">&#39;Demographics&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df_nrisks</span><span class="p">)</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">df</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>Date</th>
+<th>IgG</th>
+<th>Age</th>
+<th>Sex</th>
+<th>nrisks</th>
+</tr>
+<tr>
+<th>ID</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>pk10001</th>
+<td>2021-03-17</td>
+<td>13.701676</td>
+<td>0.0</td>
+<td>0</td>
+<td>2.0</td>
+</tr>
+<tr>
+<th>pk10001</th>
+<td>2021-07-29</td>
+<td>1.077413</td>
+<td>0.0</td>
+<td>0</td>
+<td>2.0</td>
+</tr>
+<tr>
+<th>pk10005</th>
+<td>2020-06-06</td>
+<td>39.366639</td>
+<td>0.0</td>
+<td>0</td>
+<td>3.0</td>
+</tr>
+<tr>
+<th>pk10005</th>
+<td>2020-03-02</td>
+<td>56.358177</td>
+<td>0.0</td>
+<td>0</td>
+<td>3.0</td>
+</tr>
+<tr>
+<th>pk10009</th>
+<td>2021-05-03</td>
+<td>55.585361</td>
+<td>0.0</td>
+<td>0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<th>...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<th>pk997</th>
+<td>2020-12-14</td>
+<td>1.720815</td>
+<td>0.0</td>
+<td>0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<th>pk9978</th>
+<td>2020-11-10</td>
+<td>52.239568</td>
+<td>0.0</td>
+<td>0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<th>pk9982</th>
+<td>2023-05-12</td>
+<td>5.753619</td>
+<td>0.0</td>
+<td>0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<th>pk9989</th>
+<td>2022-12-16</td>
+<td>37.616017</td>
+<td>0.0</td>
+<td>0</td>
+<td>2.0</td>
+</tr>
+<tr>
+<th>pk9989</th>
+<td>2022-12-14</td>
+<td>7.415778</td>
+<td>0.0</td>
+<td>0</td>
+<td>2.0</td>
+</tr>
+</tbody>
+</table>
+<p>20591 rows × 5 columns</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Produce some plots show how there is a difference in the IgG response for different age and risk groups</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="n">fig</span><span class="p">,</span><span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;IgG&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">150</span><span class="p">),</span><span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="mi">50</span><span class="p">][</span><span class="s1">&#39;IgG&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">150</span><span class="p">),</span><span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Age &amp;gt; 50&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="mi">50</span><span class="p">][</span><span class="s1">&#39;IgG&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">150</span><span class="p">),</span><span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Age &amp;lt; 50&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;IgG measurement&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;nrisks&#39;</span><span class="p">]</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;IgG&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">150</span><span class="p">),</span><span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;nrisk=0&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;nrisks&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;IgG&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">150</span><span class="p">),</span><span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;nrisk=1&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;nrisks&#39;</span><span class="p">]</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;IgG&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">150</span><span class="p">),</span><span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;nrisk&amp;gt;1&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;IgG measurement&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">();</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_png output_subarea">
+<img alt="No description has been provided for this image" src="data:image/png;base64,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kcsSvb6ISF3UohARkazUoqjDsjVvNnxQDvXq2qVZryeSj7Zu3UpVVRWbN29OOpTUKyoqoqSkhDZt2kQ6XhVFXcZtaN7rJdzlJZIPqqqqaNeuHaWlpQQps6Qu7k51dTVVVVV07do10nvU9SQieWHz5s107NhRlUQDzIyOHTs2quWVVxWFmZ1hZpM2bGjmFoGIpIIqiWgaW0551fXk7nOAOeXl5aOTjkVEklM6dm4s5628cUgs5027vGpRiIi0BBMnTuTee++t9/Vx48Zx880379a5b7jhBrp160b37t155JFHdjfET8mrFoWISKZctQBy2ULZtm0bF198cc7Ol2nFihVMmzaNl19+mbfeeouTTz6Z1157jYKCgiadVxVFisTVXI5iT21Si+RSZWUlgwcPpn///vztb3+juLiYWbNmMXjwYHr37s3ChQsZMWIEH374Ifvuuy8//OEPmTBhAhMnTqR169aUlZUxbdq0T53zzjvvZMaMGcyYMYO999476/VnzZrF8OHDKSwspGvXrnTr1o1FixZx3HHHNennUkWRIu16jE3w6qooRHJh1apVVFRUcOedd3LOOefw4IMPArBly5YdOejGjRu34/gbb7yRNWvWUFhYyAcffPCpc912223Mnz+fmTNnUlhYyPjx47n//vt3ueaJJ57IhAkTWLduHf369duxv6SkhHXrmr7stioKEZEc6tq1K7179wagb9++VFZWAnDuuefWefyRRx7JN77xDYYNG8awYcN27L/33nvp3LkzM2fO3DEx7kc/+hE/+tGP4gy/TqooUqC5Z4Jn0qxwkdwqLCzc8bygoICPPvoIgH322afO4+fOnctTTz3FnDlz+PWvf82yZUHOt169evHiiy9+amJcQy2K4uJi1q5du2N/VVUVxcXFTf6ZVFGkQXPPBM+kWeGSx5K87xfF9u3bWbt2LQMHDqR///5MmzaNTZs2AXD00UdzySWXMHToUB555BE+97nPNdiiGDp0KOeddx5XXXUVb731FqtWreLYY49tcpyqKEREEvLJJ59w/vnns2HDBtydMWPG0KFDhx2v9+/fn5tvvpkhQ4Ywf/58OnXqlPV8PXv25JxzzqGsrIzWrVtz++23N3nEE4C5e5NPkjbl5eW+OwsX1aQZ35PSfe+JP7Pkp5UrV9KjR4+kw2gx6iovM1vi7uW1j9WEOxERyUoV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
+"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+ 
+        
+      </div>
+      <div class="md-social">
+  
+</div>
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.sections", "navigation.tracking", "navigation.indexes", "navigation.top", "content.action.edit"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.3220b9d7.min.js"></script>
+      
+    
+  </body>
+</html>

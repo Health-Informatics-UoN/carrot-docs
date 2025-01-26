@@ -1,0 +1,786 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.18">
+    
+    
+      
+        <title>ETL Developer Guide - Carrot Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.66ac8b77.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/custom.css">
+    
+      <link rel="stylesheet" href="../../../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../../../css/pandas-dataframe.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="carrot" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-initial-setup" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Carrot Docs" class="md-header__button md-logo" aria-label="Carrot Docs" data-md-component="logo">
+      
+  <img src="../../../images/favicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Carrot Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              ETL Developer Guide
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Health-Informatics-UoN/carrot-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Health-Informatics-UoN/carrot-docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Carrot Docs" class="md-nav__button md-logo" aria-label="Carrot Docs" data-md-component="logo">
+      
+  <img src="../../../images/favicon.png" alt="logo">
+
+    </a>
+    Carrot Docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Health-Informatics-UoN/carrot-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Health-Informatics-UoN/carrot-docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-initial-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Initial Setup
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-setup-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Setup Data
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-setup-a-yaml-configuration-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Setup a yaml configuration file
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-setup-and-check-bclink-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Setup and Check BCLink tables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-clean-the-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Clean the tables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-run-the-etl" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Run the ETL
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Run the ETL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#start-of-the-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Start of the Process
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extracting-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Extracting data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transforming-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transforming data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loading-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Loading Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#finished-and-waiting-for-changed" class="md-nav__link">
+    <span class="md-ellipsis">
+      Finished and waiting for changed
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/Health-Informatics-UoN/carrot-docs/edit/main/docs/CaRROT-CDM/ETL/ETL-Developer-Guide.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+    </a>
+  
+  
+
+
+  <h1>ETL Developer Guide</h1>
+
+<h2 id="1-initial-setup">1. Initial Setup<a class="headerlink" href="#1-initial-setup" title="Permanent link">&para;</a></h2>
+<p>The following is a walkthrough of how to run an automated ETL process using test data available as part of the package.</p>
+<p>It is assumed that BCLink systems has already been an installed on a host machine. </p>
+<details class="example">
+<summary>Setting up a working directory</summary>
+<p>To use ETL with <code>bclink</code>, you must be the user <code>bcos_srv</code>, i.e. when ssh'd into the machine hosting <code>bclink</code>:
+<div class="highlight"><pre><span></span><code>ssh &lt;IP address of host machine&gt;
+sudo -s
+su - bcos_srv
+</code></pre></div></p>
+<p>The best practise is to create a working directory in the following location:
+<div class="highlight"><pre><span></span><code>mkdir /usr/lib/bcos/MyWorkingDirectory/
+cd /usr/lib/bcos/MyWorkingDirectory/
+</code></pre></div></p>
+</details>
+<details class="example">
+<summary>Installing carrot-cdm</summary>
+<p>It is also best practise to setup a virtual python environment and install the tool:</p>
+<div class="highlight"><pre><span></span><code>python3 -m venv automation
+source automation/bin/activate
+pip install pip --upgrade
+pip install carrot-cdm
+</code></pre></div>
+<p>Check the version:
+<div class="highlight"><pre><span></span><code>carrot info version
+</code></pre></div>
+Which should display version <code>&gt;=0.4.1</code> for the automation to work.</p>
+<p><a class="md-button md-button--primary" href="../../Installing/">Detailed Installation Instructions</a></p>
+</details>
+<details class="example">
+<summary>Get input data</summary>
+<p>Test data can be found in th <code>data_folder</code>:
+<div class="highlight"><pre><span></span><code>$ ls $(carrot info data_folder)/test/
+automation  expected_outputs  inputs  rules  scan_report
+</code></pre></div></p>
+<p>Copy the data (or use a symbolic link) into your current working directory:
+<div class="highlight"><pre><span></span><code>$ pwd
+/usr/lib/bcos/MyWorkingDirectory
+$ mkdir input_data
+$ cp -r $(carrot info data_folder)/test/inputs/original input_data/001
+$ ls input_data/001
+covid19_antibody.csv  Covid19_test.csv  Demographics.csv  Symptoms.csv  vaccine.csv
+</code></pre></div></p>
+</details>
+<details class="example">
+<summary>Get a rules <code>json</code> file</summary>
+<p>As associated example mapping rules <code>json</code> file for this test dataset can be found and copied over to the working directory:
+<div class="highlight"><pre><span></span><code>$ cp -r $(carrot info data_folder)/test/rules/rules_14June2021.json rules.json
+$ carrot display json rules.json |&amp; head -15
+{
+  &quot;metadata&quot;: {
+        &quot;date_created&quot;: &quot;2021-06-14T15:27:37.123947&quot;,
+        &quot;dataset&quot;: &quot;Test&quot;
+  },
+  &quot;cdm&quot;: {
+        &quot;observation&quot;: {
+              &quot;observation_0&quot;: {
+                    &quot;observation_concept_id&quot;: {
+                          &quot;source_table&quot;: &quot;Demographics.csv&quot;,
+                          &quot;source_field&quot;: &quot;ethnicity&quot;,
+                          &quot;term_mapping&quot;: {
+                                &quot;Asian&quot;: 35825508
+                          }
+                    },
+</code></pre></div></p>
+</details>
+<h2 id="2-setup-data">2. Setup Data<a class="headerlink" href="#2-setup-data" title="Permanent link">&para;</a></h2>
+<p>To the run the tool and automatically upload data to <code>bclink</code>, you <strong>must</strong> be logged in as the user <code>bcos_srv</code>, therefore this user must have permissions to view the data.</p>
+<details class="example">
+<summary>Granting data access to a user</summary>
+<p>There are many ways of doing this on CentOS via <code>chown</code> and/or <code>chmod</code>. You should contact your system administrator to do this if your are not experienced and/or don't have <code>root</code> access (that you may need).
+<div class="highlight"><pre><span></span><code>chown -R &lt;user/group&gt;:&lt;group&gt; &lt;path to data&gt;
+</code></pre></div></p>
+</details>
+<h2 id="3-setup-a-yaml-configuration-file">3. Setup a <code>yaml</code> configuration file<a class="headerlink" href="#3-setup-a-yaml-configuration-file" title="Permanent link">&para;</a></h2>
+<p>The next step is to create and configure a <code>yaml</code> file for the tool to digest. This yaml file must contain the location of the "rules" <code>json</code> file, provided to you by the connect team, and the path of the input data.</p>
+<details class="example">
+<summary>Minimal YAML</summary>
+<p>Create a file called <code>config.yaml</code> and insert the following lines and save:
+<div class="highlight"><pre><span></span><code><span class="nt">rules</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;path to rules .json file&gt;</span>
+<span class="nt">data</span><span class="p">:</span><span class="w"> </span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">input</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;path to folder containing input .csv file&gt;</span>
+<span class="w">    </span><span class="nt">output</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;path to a folder where you want to save the output data e.g. `./output_data/`&gt;</span>
+</code></pre></div></p>
+<p>Example:
+<div class="highlight"><pre><span></span><code><span class="nt">rules</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/usr/lib/bcos/MyWorkingDirectory/rules.json</span><span class="w"> </span>
+<span class="nt">data</span><span class="p">:</span><span class="w"> </span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">input</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/usr/lib/bcos/MyWorkingDirectory/input_data/</span>
+<span class="w">     </span><span class="nt">output</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/usr/lib/bcos/MyWorkingDirectory/output_data/</span>
+</code></pre></div></p>
+</details>
+<details class="example">
+<summary>YAML with multiple data folders</summary>
+<p>Similarly if you have multiple data dumps, you can configure the yaml like so:
+<div class="highlight"><pre><span></span><code><span class="nt">rules</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;path to rules .json file&gt;</span>
+<span class="nt">data</span><span class="p">:</span><span class="w"> </span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">input</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;path to folder containing input .csv file&gt;</span>
+<span class="w">    </span><span class="nt">output</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;path to a folder where you want to save the output data e.g. `./output_data/001/`&gt;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">input</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;path to a 2nd folder containing input .csv file&gt;</span>
+<span class="w">    </span><span class="nt">output</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;path to a 2nd folder where you want to save the output data e.g. `./output_data/002/`&gt;</span>
+</code></pre></div></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>While the tool is running you can edit this file to append more data paths...</p>
+</div>
+</details>
+<details class="example">
+<summary>YAML to watch a directory for new data dumps</summary>
+<p>Create a new file called <code>config.yaml</code> that will do the following:</p>
+<ol>
+<li>Look every 1 minute in the folder <code>input_data</code> for any subfolders containing input <code>csv</code> data files</li>
+<li>Run pseudonymisation on this data with a salt of value <code>00ed1234da</code> and save the pseudonymised data in the folder <code>pseudonymised_input_data</code></li>
+<li>Run the transform of the dataset into CDM based on the rules saved in <code>rules.json</code> </li>
+<li>Upload this data into bclink link tables (e.g. person.tsv &rarr; person_test_data_v1)</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="nt">clean</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">rules</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/usr/lib/bcos/MyWorkingDirectory/rules.json</span>
+<span class="nt">log</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/usr/lib/bcos/MyWorkingDirectory/carrot.log</span>
+<span class="nt">data</span><span class="p">:</span><span class="w"> </span>
+<span class="w">  </span><span class="nt">watch</span><span class="p">:</span><span class="w"> </span>
+<span class="w">     </span><span class="nt">minutes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">  </span><span class="nt">input</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/usr/lib/bcos/MyWorkingDirectory/input_data</span>
+<span class="w">  </span><span class="nt">output</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/usr/lib/bcos/MyWorkingDirectory/mapped_data</span>
+<span class="w">  </span><span class="nt">pseudonymise</span><span class="p">:</span><span class="w"> </span>
+<span class="w">     </span><span class="nt">output</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/usr/lib/bcos/MyWorkingDirectory/pseudonymised_input_data</span>
+<span class="w">     </span><span class="nt">salt</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">00ed1234da</span>
+</code></pre></div>
+</details>
+<h2 id="4-setup-and-check-bclink-tables">4. Setup and Check BCLink tables<a class="headerlink" href="#4-setup-and-check-bclink-tables" title="Permanent link">&para;</a></h2>
+<p>By default, if the Carrot documentation for setting up BCLink has been followed correctly, you should already have tables created for the various bclink tables, e.g.:  </p>
+<ul>
+<li>person  </li>
+<li>condition_occurrence  </li>
+<li>measurement  </li>
+<li>observation  </li>
+<li>drug_exposure   </li>
+</ul>
+<details class="example">
+<summary>Check if your tables exist</summary>
+<p>With a minimal <code>yaml</code> configuration, you can perform a check to see if the tables exist and that the tool is able to interact with them.</p>
+<p><div class="highlight"><pre><span></span><code>carrot etl bclink --config config.yml check_tables
+</code></pre></div>
+Example output:
+<div class="highlight"><pre><span></span><code>(automation) [bcos_srv@link-test-dt Demo]$ carrot etl bclink --config config.yml check_tables
+2021-11-17 10:33:31 - check_tables - INFO - printing to see if tables exist
+2021-11-17 10:33:31 - run_bash_cmd - NOTICE - bc_sqlselect --user=bclink --query=SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = &#39;person&#39; ) bclink
+2021-11-17 10:33:31 - run_bash_cmd - NOTICE - bc_sqlselect --user=bclink --query=SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = &#39;condition_occurrence&#39; ) bclink
+2021-11-17 10:33:31 - check_tables - INFO - {
+  &quot;person&quot;: true,
+  &quot;condition_occurrence&quot;: true
+  }
+</code></pre></div></p>
+</details>
+<details class="example">
+<summary>If you need to create new tables via the GUI</summary>
+<p>If you want to do some testing on new tables</p>
+<p>Log in to the bclink web-gui as the 'data' user.</p>
+<p>Create a table (example <code>person</code>)
+<img alt="1" src="../../../images/bclink_gui/1.png" /></p>
+<p>Make a not of the dataset name and ID of the dataset i.e. <code>ds100421</code>
+<img alt="2" src="../../../images/bclink_gui/2.png" /></p>
+</details>
+<details class="example">
+<summary>If you need to create new tables via the command line</summary>
+<p>Creating a person table called <code>person_test_data_v1</code>
+<div class="highlight"><pre><span></span><code>cd /usr/lib/bcos/OMOP
+$dataset_tool --create --form=PERSON --table=person_test_data_v1 --setname=&#39;PERSON_TEST_DATA_V1&#39; --user=data bclink
+Created dataset with table person_test_data_v1
+</code></pre></div></p>
+<p>CO-CONNECT-Tools also has this feature to create tables based on what has been setup in the <code>yaml</code> configuration file
+<div class="highlight"><pre><span></span><code>carrot etl bclink --config &lt;config&gt; create_tables
+</code></pre></div>
+Example output:
+<div class="highlight"><pre><span></span><code>2021-11-05 11:03:10 - run_bash_cmd - NOTICE - bc_sqlselect --user=bclink --query=SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = &#39;person_004&#39; ) bclink
+2021-11-05 11:03:10 - run_bash_cmd - NOTICE - dataset_tool --create --table=person_004 --setname=PERSON_004 --user=data --form=PERSON bclink
+2021-11-05 11:03:10 - bclink_helpers - INFO - Created dataset with table person_004
+--&gt; All done with success.
+...
+</code></pre></div></p>
+</details>
+<details class="example">
+<summary>If you needed to create tables / if your table check fails</summary>
+<p>If you have had problems with your tables and need to overwrite the default behaviour of the tool, you can append to the <code>yaml</code> file the following configurtion, to force the tool to upload the output (destination) tables to specific BCLink tables
+<div class="highlight"><pre><span></span><code><span class="nt">bclink</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">tables</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">person</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;bclink id of person table&gt;</span>
+<span class="w">    </span><span class="nt">observation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;bclink id of observation table&gt;</span><span class="w"> </span>
+<span class="w">    </span><span class="nt">measurement</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;bclink id of measurement table&gt;</span><span class="w"> </span>
+<span class="w">    </span><span class="nt">condition_occurrence</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;bclink id of condition_occurrence table&gt;</span><span class="w"> </span>
+</code></pre></div></p>
+</details>
+<h2 id="5-clean-the-tables">5. Clean the tables<a class="headerlink" href="#5-clean-the-tables" title="Permanent link">&para;</a></h2>
+<p>Before you run the ETL (for the first time), it's important to make sure there's no existing data present in the tables you are uploading to.</p>
+<details class="example">
+<summary>From the Command Line</summary>
+<p><div class="highlight"><pre><span></span><code>carrot etl bclink --config config.yml clean_tables 
+</code></pre></div>
+Example output:
+<div class="highlight"><pre><span></span><code>(automation) [bcos_srv@link-test-dt Demo]$ carrot etl bclink --config config2.yml clean_tables
+2021-11-17 11:13:03 - bclink_helpers - INFO - Cleaning table person_001
+2021-11-17 11:13:03 - run_bash_cmd - NOTICE - datasettool2 delete-all-rows person_001 --database=bclink
+2021-11-17 11:13:05 - bclink_helpers - WARNING - Deleting all rows from dataset PERSON_001 (person_001)
+2021-11-17 11:13:05 - bclink_helpers - WARNING - Deleted all 0 rows from dataset PERSON_001 (person_001)
+2021-11-17 11:13:05 - bclink_helpers - INFO - Cleaning table condition_occurrence_001
+2021-11-17 11:13:05 - run_bash_cmd - NOTICE - datasettool2 delete-all-rows condition_occurrence_001 --database=bclink
+2021-11-17 11:13:07 - bclink_helpers - WARNING - Deleting all rows from dataset CONDITION_OCCURRENCE_001 (condition_occurrence_001)
+2021-11-17 11:13:07 - bclink_helpers - WARNING - Deleted all 6 rows from dataset CONDITION_OCCURRENCE_001 (condition_occurrence_001)
+2021-11-17 11:13:07 - clean_tables - INFO - removing output/001/
+</code></pre></div></p>
+</details>
+<details class="example">
+<summary>Specify within the YAML</summary>
+<p>Alternatively you can tell the tool to do this automatically by specifying it in the <code>yaml</code> configuration file, by appending the configuration:
+<div class="highlight"><pre><span></span><code>clean: true
+</code></pre></div></p>
+</details>
+<h2 id="6-run-the-etl">6. Run the ETL<a class="headerlink" href="#6-run-the-etl" title="Permanent link">&para;</a></h2>
+<p>Finally you are ready to execute the ETL...</p>
+<details class="example">
+<summary>Execute the full ETL</summary>
+<p><div class="highlight"><pre><span></span><code>carrot etl bclink --config config.yml execute
+</code></pre></div>
+Example output:</p>
+<h4 id="start-of-the-process">Start of the Process<a class="headerlink" href="#start-of-the-process" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>2021-11-17 11:18:06 - _process_list_data - INFO - ETL process has begun
+2021-11-17 11:18:06 - run_bash_cmd - NOTICE - bc_sqlselect --user=bclink --query=SELECT count(*) FROM person_001 bclink
+2021-11-17 11:18:06 - run_bash_cmd - NOTICE - bc_sqlselect --user=bclink --query=SELECT count(*) FROM condition_occurrence_001 bclink
+2021-11-17 11:18:06 - bclink_helpers - INFO - ======== BCLINK SUMMARY ========
+2021-11-17 11:18:06 - bclink_helpers - INFO - {
+  &quot;person&quot;: {
+        &quot;bclink_table&quot;: &quot;person_001&quot;,
+        &quot;nrows&quot;: &quot;0&quot;
+  },
+  &quot;condition_occurrence&quot;: {
+        &quot;bclink_table&quot;: &quot;condition_occurrence_001&quot;,
+        &quot;nrows&quot;: &quot;0&quot;
+  }
+}
+2021-11-17 11:18:06 - _process_list_data - INFO - New data found! [{&#39;input&#39;: &#39;data/001/&#39;, &#39;output&#39;: &#39;output/001/&#39;}]
+2021-11-17 11:18:06 - execute - INFO - Executing steps [&#39;clean&#39;, &#39;extract&#39;, &#39;transform&#39;, &#39;load&#39;]
+</code></pre></div>
+<h4 id="extracting-data">Extracting data<a class="headerlink" href="#extracting-data" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>...
+2021-11-17 11:18:10 - execute - INFO - Executing ETL...
+2021-11-17 11:18:10 - extract - INFO - starting extraction processes
+2021-11-17 11:18:10 - run_bash_cmd - NOTICE - bc_sqlselect --user=bclink --query=SELECT count(*) FROM person_001 bclink
+2021-11-17 11:18:10 - run_bash_cmd - NOTICE - bc_sqlselect --user=bclink --query=SELECT count(*) FROM condition_occurrence_001 bclink
+2021-11-17 11:18:10 - transform - INFO - starting data transform processes
+2021-11-17 11:18:10 - transform - INFO - inputs: [&#39;data/001/&#39;]
+2021-11-17 11:18:10 - transform - INFO - output_folder: output/001/
+2021-11-17 11:18:10 - transform - INFO - indexer: {}
+2021-11-17 11:18:10 - transform - INFO - existing_global_ids: None
+</code></pre></div>
+<h4 id="transforming-data">Transforming data<a class="headerlink" href="#transforming-data" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>...
+2021-11-17 11:18:11 - InputData - INFO - Registering  Questionnaire.csv [&lt;class &#39;pandas.io.parsers.TextFileReader&#39;&gt;]
+2021-11-17 11:18:11 - InputData - INFO - Registering  Demo.csv [&lt;class &#39;pandas.io.parsers.TextFileReader&#39;&gt;]
+2021-11-17 11:18:11 - CommonDataModel::Demo_test - INFO - CommonDataModel created with version 0.0.0
+2021-11-17 11:18:11 - CommonDataModel::Demo_test - INFO - Running with the output to be dumped to a folder &#39;output/001/&#39;
+2021-11-17 11:18:11 - CommonDataModel::Demo_test - INFO - Running with an InputData object
+2021-11-17 11:18:11 - CommonDataModel::Demo_test - INFO - Added FEMALE of type person
+...
+2021-11-17 11:18:11 - CommonDataModel::Demo_test - INFO - Starting processing in order: [&#39;person&#39;, &#39;condition_occurrence&#39;]
+2021-11-17 11:18:11 - CommonDataModel::Demo_test - INFO - Number of objects to process for each table...
+{
+  &quot;person&quot;: 2,
+  &quot;condition_occurrence&quot;: 2
+}
+...
+2021-11-17 11:18:11 - CommonDataModel::Demo_test - INFO - working on person
+2021-11-17 11:18:11 - FEMALE - INFO - Called apply_rules
+2021-11-17 11:18:11 - FEMALE - INFO - Mapped birth_datetime
+2021-11-17 11:18:11 - FEMALE - INFO - Mapped gender_concept_id
+2021-11-17 11:18:11 - FEMALE - INFO - Mapped gender_source_concept_id
+2021-11-17 11:18:11 - FEMALE - INFO - Mapped gender_source_value
+2021-11-17 11:18:11 - FEMALE - INFO - Mapped person_id
+2021-11-17 11:18:11 - FEMALE - INFO - Performing checks on data formatting.
+2021-11-17 11:18:11 - FEMALE - WARNING - Requiring non-null values in gender_concept_id removed 1 rows, leaving 3 rows.
+...
+2021-11-17 11:18:11 - CommonDataModel::Demo_test - INFO - saving person to output/001//person.tsv
+2021-11-17 11:18:11 - CommonDataModel::Demo_test - INFO - saving condition_occurrence to output/001//condition_occurrence.tsv
+2021-11-17 11:18:11 - CommonDataModel::Demo_test - INFO - finished save to file
+2021-11-17 11:18:11 - CommonDataModel::Demo_test - INFO - making output folder output/001//logs/
+</code></pre></div>
+<h4 id="loading-data">Loading Data<a class="headerlink" href="#loading-data" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>...
+2021-11-17 11:18:11 - load - INFO - starting loading data processes
+2021-11-17 11:18:11 - load - INFO - starting loading global ids
+2021-11-17 11:18:11 - load - INFO - starting loading cdm tables
+2021-11-17 11:18:11 - run_bash_cmd - NOTICE - dataset_tool --load --table=person_001 --user=data --data_file=output/001//person.tsv --support --bcqueue bclink
+2021-11-17 11:18:11 - bclink_helpers - INFO - submitted job to bclink queue: link-test-dt:bcos_srv-1221
+...
+2021-11-17 11:19:00 - bclink_helpers - INFO -    BATCH                     UPDDATE         UPD_COMPLETION_DATE    JOB STATUS  ACTION
+0   1327  2021-11-17-11.18.13.428504  2021-11-17-11.18.13.740396  13648     OK  INSERT
+2021-11-17 11:19:00 - bclink_helpers - INFO - Getting log for person_001 id=13648
+2021-11-17 11:19:00 - run_bash_cmd - NOTICE - cat /data/var/lib/bcos/download/data/job13648/cover.13648
+2021-11-17 11:19:00 - bclink_helpers - TEXT -
+2021-11-17 11:19:00 - bclink_helpers - TEXT - Job #13646    Wed Nov 17 11:18:11 2021    BC|SNPmax 6.0.0-rc21
+2021-11-17 11:19:00 - bclink_helpers - TEXT - ### Application: supp-dataload-batch
+2021-11-17 11:19:00 - bclink_helpers - TEXT - ### User:        data
+2021-11-17 11:19:00 - bclink_helpers - TEXT - ### Database:  bclink
+2021-11-17 11:19:00 - bclink_helpers - TEXT - ### Run on local/localhost.localdomain
+...
+2021-11-17 11:19:05 - execute - INFO - looking for duplicates and deleting any
+2021-11-17 11:19:05 - drop_duplicates - INFO - printing to see if tables exist
+2021-11-17 11:19:05 - drop_duplicates - INFO - Looking for duplicates in condition_occurrence (condition_occurrence_001)
+2021-11-17 11:19:05 - run_bash_cmd - NOTICE - bc_sqlselect --user=bclink --query=SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = &#39;condition_occurrence_001&#39; ) bclink
+...
+2021-11-17 11:19:05 - bclink_helpers - INFO - no duplicates detected
+2021-11-17 11:19:05 - bclink_helpers - INFO - [
+  {
+        &quot;job_id&quot;: &quot;13648&quot;,
+        &quot;table&quot;: &quot;person&quot;,
+        &quot;bclink_table&quot;: &quot;person_001&quot;,
+        &quot;From&quot;: &quot; output/001//person.tsv&quot;,
+        &quot;To&quot;: &quot;   &lt;data&gt; PERSON_001 (person_001)&quot;,
+        &quot;new_rows&quot;: &quot;4 new row(s) inserted&quot;
+  },
+  {
+        &quot;job_id&quot;: &quot;13649&quot;,
+        &quot;table&quot;: &quot;condition_occurrence&quot;,
+        &quot;bclink_table&quot;: &quot;condition_occurrence_001&quot;,
+        &quot;From&quot;: &quot; output/001//condition_occurrence.tsv&quot;,
+        &quot;To&quot;: &quot;   &lt;data&gt; CONDITION_OCCURRENCE_001 (condition_occurrence_001)&quot;,
+        &quot;new_rows&quot;: &quot;6 new row(s) inserted&quot;
+  }
+]
+</code></pre></div>
+<h4 id="finished-and-waiting-for-changed">Finished and waiting for changed<a class="headerlink" href="#finished-and-waiting-for-changed" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>2021-11-17 11:19:05 - execute - INFO - done!
+2021-11-17 11:19:05 - _process_list_data - INFO - Finished!... Listening for changes to data in config.yml
+</code></pre></div>
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+ 
+        
+      </div>
+      <div class="md-social">
+  
+</div>
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.sections", "navigation.tracking", "navigation.indexes", "navigation.top", "content.action.edit"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.3220b9d7.min.js"></script>
+      
+    
+  </body>
+</html>

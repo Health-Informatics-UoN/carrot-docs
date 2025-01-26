@@ -1,0 +1,2297 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.18">
+    
+    
+      
+        <title>Introduction Using the ETLTool - Carrot Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.66ac8b77.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/custom.css">
+    
+      <link rel="stylesheet" href="../../../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../../../css/pandas-dataframe.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="carrot" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduction" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Carrot Docs" class="md-header__button md-logo" aria-label="Carrot Docs" data-md-component="logo">
+      
+  <img src="../../../images/favicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Carrot Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Introduction   Using the ETLTool
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Health-Informatics-UoN/carrot-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Health-Informatics-UoN/carrot-docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Carrot Docs" class="md-nav__button md-logo" aria-label="Carrot Docs" data-md-component="logo">
+      
+  <img src="../../../images/favicon.png" alt="logo">
+
+    </a>
+    Carrot Docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Health-Informatics-UoN/carrot-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Health-Informatics-UoN/carrot-docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#loading-the-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Loading the Rules
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#loading-the-input-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Loading the input data
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Loading the input data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#csv" class="md-nav__link">
+    <span class="md-ellipsis">
+      CSV
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chunked-csv" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chunked CSV
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      SQL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spark-databricks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Spark Databricks
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-cdm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating a CDM
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-cdm-objects-to-the-cdm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding CDM Objects to the CDM
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#process-the-cdm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Process The CDM
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inspect-outputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inspect Outputs
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/Health-Informatics-UoN/carrot-docs/edit/main/docs/CaRROT-CDM/notebooks/Introduction - Using the ETLTool.ipynb" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+    </a>
+  
+  
+
+
+  <h1>Introduction   Using the ETLTool</h1>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script>
+(function() {
+  function addWidgetsRenderer() {
+    var requireJsScript = document.createElement('script');
+    requireJsScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js';
+
+    var mimeElement = document.querySelector('script[type="application/vnd.jupyter.widget-view+json"]');
+    var jupyterWidgetsScript = document.createElement('script');
+    var widgetRendererSrc = 'https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js';
+    var widgetState;
+
+    // Fallback for older version:
+    try {
+      widgetState = mimeElement && JSON.parse(mimeElement.innerHTML);
+
+      if (widgetState && (widgetState.version_major < 2 || !widgetState.version_major)) {
+        widgetRendererSrc = 'jupyter-js-widgets@*/dist/embed.js';
+      }
+    } catch(e) {}
+
+    jupyterWidgetsScript.src = widgetRendererSrc;
+
+    document.body.appendChild(requireJsScript);
+    document.body.appendChild(jupyterWidgetsScript);
+  }
+
+  document.addEventListener('DOMContentLoaded', addWidgetsRenderer);
+}());
+</script>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="https://mybinder.org/v2/gh/CO-CONNECT/carrot.cdm/HEAD"><img alt="Binder" src="https://mybinder.org/badge_logo.svg" /></a></p>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>The ETL transform to CDM using the classes defined in <code>carrot.cdm</code> is documented here as python notebook, as an example of how the classes can be used. Developers can follow the following workbook example, changing the rules file and the input files.</p>
+<h2 id="installing">Installing<a class="headerlink" href="#installing" title="Permanent link">&para;</a></h2>
+<p>The best way is to install the module via <code>pip</code>. </p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="err">!</span><span class="n">pip3</span> <span class="n">install</span> <span class="n">carrot</span><span class="o">-</span><span class="n">cdm</span> <span class="o">-</span><span class="n">q</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="err">!</span><span class="n">carrot</span> <span class="o">--</span><span class="n">version</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+<code>0.6.2
+</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="loading-the-rules">Loading the Rules<a class="headerlink" href="#loading-the-rules" title="Permanent link">&para;</a></h2>
+<p>Given the full path to a <code>json</code> file containing the rules, the first step is to load this up into a <code>json</code> object/dict.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">carrot.tools</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="n">carrot</span><span class="o">.</span><span class="n">data_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">carrot</span><span class="o">.</span><span class="vm">__file__</span><span class="p">),</span><span class="s1">&#39;data&#39;</span><span class="p">)</span>
+
+<span class="n">rules</span> <span class="o">=</span> <span class="n">carrot</span><span class="o">.</span><span class="n">tools</span><span class="o">.</span><span class="n">load_json</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">carrot</span><span class="o">.</span><span class="n">data_folder</span><span class="si">}</span><span class="s1">/test/rules/rules_14June2021.json&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">rules</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">6</span><span class="p">))</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+<code>{
+      "metadata": {
+            "date_created": "2021-06-14T15:27:37.123947",
+            "dataset": "Test"
+      },
+      "cdm": {
+            "observation": {
+                  "observation_0": {
+                        "observation_concept_id": {
+                              "source_table": "Demographics.csv",
+                              "source_field": "ethnicity",
+                              "term_mapping": {
+                                    "Asian": 35825508
+                              }
+                        },
+                        "observation_datetime": {
+                              "source_table": "Demographics.csv",
+                              "source_field": "date_of_birth"
+                        },
+                        "observation_source_concept_id": {
+                              "source_table": "Demographics.csv",
+                              "source_field": "ethnicity",
+                              "term_mapping": {
+                                    "Asian": 35825508
+                              }
+                        },
+                        "observation_source_value": {
+                              "source_table": "Demographics.csv",
+                              "source_field": "ethnicity"
+                        },
+                        "person_id": {
+                              "source_table": "Demographics.csv",
+                              "source_field": "PersonID"
+                        }
+                  },
+                  "observation_1": {
+                        "observation_concept_id": {
+                              "source_table": "Demographics.csv",
+                              "source_field": "ethnicity",
+                              "term_mapping": {
+                                    "Bangladeshi": 35825531
+                              }
+                        },
+                        "observation_datetime": {
+                              "source_table": "Demographics.csv",
+                              "source_field": "date_of_birth"
+                        },
+                        "observation_source_concept_id": {
+                              "source_table": "Demographics.csv",
+                              "source_field": "ethnicity",
+                              "term_mapping": {
+                                    "Bangladeshi": 35825531
+                              }
+                        },
+                        "observation_source_value": {
+                              "source_table": "Demographics.csv",
+                              "source_field": "ethnicity"
+                        },
+                        "person_id": {
+                              "source_table": "Demographics.csv",
+                              "source_field": "PersonID"
+                        }
+                  },
+                  "observation_2": {
+                        "observation_concept_id": {
+                              "source_table": "Demographics.csv",
+                              "source_field": "ethnicity",
+                              "term_mapping": {
+                                    "Indian": 35826241
+                              }
+                        },
+                        "observation_datetime": {
+                              "source_table": "Demographics.csv",
+                              "source_field": "date_of_birth"
+                        },
+                        "observation_source_concept_id": {
+                              "source_table": "Demographics.csv",
+                              "source_field": "ethnicity",
+                              "term_mapping": {
+                                    "Indian": 35826241
+                              }
+                        },
+                        "observation_source_value": {
+                              "source_table": "Demographics.csv",
+                              "source_field": "ethnicity"
+                        },
+                        "person_id": {
+                              "source_table": "Demographics.csv",
+                              "source_field": "PersonID"
+                        }
+                  },
+                  "observation_3": {
+                        "observation_concept_id": {
+                              "source_table": "Demographics.csv",
+                              "source_field": "ethnicity",
+                              "term_mapping": {
+                                    "White": 35827394
+                              }
+                        },
+                        "observation_datetime": {
+                              "source_table": "Demographics.csv",
+                              "source_field": "date_of_birth"
+                        },
+                        "observation_source_concept_id": {
+                              "source_table": "Demographics.csv",
+                              "source_field": "ethnicity",
+                              "term_mapping": {
+                                    "White": 35827394
+                              }
+                        },
+                        "observation_source_value": {
+                              "source_table": "Demographics.csv",
+                              "source_field": "ethnicity"
+                        },
+                        "person_id": {
+                              "source_table": "Demographics.csv",
+                              "source_field": "PersonID"
+                        }
+                  },
+                  "observation_4": {
+                        "observation_concept_id": {
+                              "source_table": "Demographics.csv",
+                              "source_field": "ethnicity",
+                              "term_mapping": {
+                                    "Black": 35825567
+                              }
+                        },
+                        "observation_datetime": {
+                              "source_table": "Demographics.csv",
+                              "source_field": "date_of_birth"
+                        },
+                        "observation_source_concept_id": {
+                              "source_table": "Demographics.csv",
+                              "source_field": "ethnicity",
+                              "term_mapping": {
+                                    "Black": 35825567
+                              }
+                        },
+                        "observation_source_value": {
+                              "source_table": "Demographics.csv",
+                              "source_field": "ethnicity"
+                        },
+                        "person_id": {
+                              "source_table": "Demographics.csv",
+                              "source_field": "PersonID"
+                        }
+                  },
+                  "observation_5": {
+                        "observation_concept_id": {
+                              "source_table": "Demographics.csv",
+                              "source_field": "ethnicity",
+                              "term_mapping": {
+                                    "White and Asian": 35827395
+                              }
+                        },
+                        "observation_datetime": {
+                              "source_table": "Demographics.csv",
+                              "source_field": "date_of_birth"
+                        },
+                        "observation_source_concept_id": {
+                              "source_table": "Demographics.csv",
+                              "source_field": "ethnicity",
+                              "term_mapping": {
+                                    "White and Asian": 35827395
+                              }
+                        },
+                        "observation_source_value": {
+                              "source_table": "Demographics.csv",
+                              "source_field": "ethnicity"
+                        },
+                        "person_id": {
+                              "source_table": "Demographics.csv",
+                              "source_field": "PersonID"
+                        }
+                  }
+            },
+            "condition_occurrence": {
+                  "condition_occurrence_0": {
+                        "condition_concept_id": {
+                              "source_table": "Symptoms.csv",
+                              "source_field": "symptom1",
+                              "term_mapping": {
+                                    "Y": 254761
+                              }
+                        },
+                        "condition_end_datetime": {
+                              "source_table": "Symptoms.csv",
+                              "source_field": "visit_date"
+                        },
+                        "condition_source_concept_id": {
+                              "source_table": "Symptoms.csv",
+                              "source_field": "symptom1",
+                              "term_mapping": {
+                                    "Y": 254761
+                              }
+                        },
+                        "condition_source_value": {
+                              "source_table": "Symptoms.csv",
+                              "source_field": "symptom1"
+                        },
+                        "condition_start_datetime": {
+                              "source_table": "Symptoms.csv",
+                              "source_field": "visit_date"
+                        },
+                        "person_id": {
+                              "source_table": "Symptoms.csv",
+                              "source_field": "PersonID"
+                        }
+                  }
+            },
+            "person": {
+                  "female": {
+                        "birth_datetime": {
+                              "source_table": "Demographics.csv",
+                              "source_field": "date_of_birth"
+                        },
+                        "gender_concept_id": {
+                              "source_table": "Demographics.csv",
+                              "source_field": "sex",
+                              "term_mapping": {
+                                    "F": 8532
+                              }
+                        },
+                        "gender_source_concept_id": {
+                              "source_table": "Demographics.csv",
+                              "source_field": "sex",
+                              "term_mapping": {
+                                    "F": 8532
+                              }
+                        },
+                        "gender_source_value": {
+                              "source_table": "Demographics.csv",
+                              "source_field": "sex"
+                        },
+                        "person_id": {
+                              "source_table": "Demographics.csv",
+                              "source_field": "PersonID"
+                        }
+                  },
+                  "male": {
+                        "birth_datetime": {
+                              "source_table": "Demographics.csv",
+                              "source_field": "date_of_birth"
+                        },
+                        "gender_concept_id": {
+                              "source_table": "Demographics.csv",
+                              "source_field": "sex",
+                              "term_mapping": {
+                                    "M": 8507
+                              }
+                        },
+                        "gender_source_concept_id": {
+                              "source_table": "Demographics.csv",
+                              "source_field": "sex",
+                              "term_mapping": {
+                                    "M": 8507
+                              }
+                        },
+                        "gender_source_value": {
+                              "source_table": "Demographics.csv",
+                              "source_field": "sex"
+                        },
+                        "person_id": {
+                              "source_table": "Demographics.csv",
+                              "source_field": "PersonID"
+                        }
+                  }
+            },
+            "measurement": {
+                  "covid_antibody": {
+                        "value_as_number": {
+                              "source_table": "covid19_antibody.csv",
+                              "source_field": "IgG"
+                        },
+                        "measurement_source_value": {
+                              "source_table": "covid19_antibody.csv",
+                              "source_field": "IgG"
+                        },
+                        "measurement_concept_id": {
+                              "source_table": "covid19_antibody.csv",
+                              "source_field": "IgG",
+                              "term_mapping": 37398191
+                        },
+                        "measurement_source_concept_id": {
+                              "source_table": "covid19_antibody.csv",
+                              "source_field": "IgG",
+                              "term_mapping": 37398191
+                        },
+                        "measurement_datetime": {
+                              "source_table": "covid19_antibody.csv",
+                              "source_field": "date"
+                        },
+                        "person_id": {
+                              "source_table": "covid19_antibody.csv",
+                              "source_field": "PersonID"
+                        }
+                  }
+            }
+      }
+}
+</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="loading-the-input-data">Loading the input data<a class="headerlink" href="#loading-the-input-data" title="Permanent link">&para;</a></h2>
+<p>The ETL Tool takes in as input pandas dataframes and provides a tool for loading CSV files</p>
+<h3 id="csv">CSV<a class="headerlink" href="#csv" title="Permanent link">&para;</a></h3>
+<p>A convienience function is available to create a map between a file name and a file path for all files in a directory:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">f_map</span> <span class="o">=</span> <span class="n">carrot</span><span class="o">.</span><span class="n">tools</span><span class="o">.</span><span class="n">get_file_map_from_dir</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">carrot</span><span class="o">.</span><span class="n">data_folder</span><span class="si">}</span><span class="s1">/test/inputs/&#39;</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">f_map</span><span class="p">,</span><span class="n">indent</span><span class="o">=</span><span class="mi">6</span><span class="p">))</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+<code>{
+      "Symptoms.csv": "/Users/calummacdonald/Usher/CO-CONNECT/Software/CaRROT-CDM/carrot/data/test/inputs/Symptoms.csv",
+      "Covid19_test.csv": "/Users/calummacdonald/Usher/CO-CONNECT/Software/CaRROT-CDM/carrot/data/test/inputs/Covid19_test.csv",
+      "covid19_antibody.csv": "/Users/calummacdonald/Usher/CO-CONNECT/Software/CaRROT-CDM/carrot/data/test/inputs/covid19_antibody.csv",
+      "vaccine.csv": "/Users/calummacdonald/Usher/CO-CONNECT/Software/CaRROT-CDM/carrot/data/test/inputs/vaccine.csv",
+      "Demographics.csv": "/Users/calummacdonald/Usher/CO-CONNECT/Software/CaRROT-CDM/carrot/data/test/inputs/Demographics.csv"
+}
+</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>use the <code>f_map</code> to load all the inputs into a map between the file name and a dataframe object. This can be created manually via any prefered method.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">inputs</span> <span class="o">=</span> <span class="n">carrot</span><span class="o">.</span><span class="n">tools</span><span class="o">.</span><span class="n">load_csv</span><span class="p">(</span><span class="n">f_map</span><span class="p">)</span>
+<span class="n">inputs</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+<code><span class="ansi-green-fg">2022-06-17 14:46:49</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - DataCollection Object Created
+<span class="ansi-green-fg">2022-06-17 14:46:49</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Registering  Symptoms.csv [&lt;carrot.io.common.DataBrick object at 0x10df1b040&gt;]
+<span class="ansi-green-fg">2022-06-17 14:46:49</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Registering  Covid19_test.csv [&lt;carrot.io.common.DataBrick object at 0x10df1b0d0&gt;]
+<span class="ansi-green-fg">2022-06-17 14:46:49</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Registering  covid19_antibody.csv [&lt;carrot.io.common.DataBrick object at 0x10df1b310&gt;]
+<span class="ansi-green-fg">2022-06-17 14:46:49</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Registering  vaccine.csv [&lt;carrot.io.common.DataBrick object at 0x110d473d0&gt;]
+<span class="ansi-green-fg">2022-06-17 14:46:49</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Registering  Demographics.csv [&lt;carrot.io.common.DataBrick object at 0x10deb5dc0&gt;]
+</code>
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>&lt;carrot.io.plugins.local.LocalDataCollection at 0x10deb5d30&gt;</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">inputs</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>dict_keys(['Symptoms.csv', 'Covid19_test.csv', 'covid19_antibody.csv', 'vaccine.csv', 'Demographics.csv'])</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">inputs</span><span class="p">[</span><span class="s1">&#39;Symptoms.csv&#39;</span><span class="p">]</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+<code><span class="ansi-green-fg">2022-06-17 14:46:49</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Retrieving initial dataframe for 'Symptoms.csv' for the first time
+</code>
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>PersonID</th>
+<th>visit_date</th>
+<th>symptom1</th>
+<th>symptom2</th>
+<th>symptom3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>16dc368a89b428b2485484313ba67a3912ca03f2b2b424...</td>
+<td>2020-11-15 00:00:00.000000</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<th>1</th>
+<td>37834f2f25762f23e1f74a531cbe445db73d6765ebe608...</td>
+<td>2020-01-04 00:00:00.000000</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<th>2</th>
+<td>454f63ac30c8322997ef025edff6abd23e0dbe7b8a3d51...</td>
+<td>2020-03-27 00:00:00.000000</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<th>3</th>
+<td>5ef6fdf32513aa7cd11f72beccf132b9224d33f271471f...</td>
+<td>2020-06-24 00:00:00.000000</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr>
+<th>4</th>
+<td>1253e9373e781b7500266caa55150e08e210bc8cd8cc70...</td>
+<td>2020-07-27 00:00:00.000000</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<th>...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<th>795</th>
+<td>62f6d46c48c7d9ff3d09a408d0ec880f167a5dc9c8fd34...</td>
+<td>2020-11-04 00:00:00.000000</td>
+<td>N</td>
+<td>Y</td>
+<td>N</td>
+</tr>
+<tr>
+<th>796</th>
+<td>c62510afc57db491f9f993387b76dd9a7d08f09c013269...</td>
+<td>2020-07-27 00:00:00.000000</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<th>797</th>
+<td>bdc5d8a48c23897906b09a9a3680bd2e9c8b3121edbda3...</td>
+<td>2020-03-27 00:00:00.000000</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<th>798</th>
+<td>fa88d374b9cf5e059fad4a2fe406feae4c49cbf4803083...</td>
+<td>2020-12-24 00:00:00.000000</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr>
+<th>799</th>
+<td>6a97982dccf77dd3dafa27fcbdf75c017301f730ba186b...</td>
+<td>2020-11-15 00:00:00.000000</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+</tbody>
+</table>
+<p>800 rows × 5 columns</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="chunked-csv">Chunked CSV<a class="headerlink" href="#chunked-csv" title="Permanent link">&para;</a></h3>
+<p>For large datasets, it's better to chunk the data as to not overload your computer memory, this can be achieved by supplying a <code>chunksize</code> argument:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">inputs_chunked</span> <span class="o">=</span> <span class="n">carrot</span><span class="o">.</span><span class="n">tools</span><span class="o">.</span><span class="n">load_csv</span><span class="p">(</span><span class="n">f_map</span><span class="p">,</span><span class="n">chunksize</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">inputs_chunked</span><span class="p">[</span><span class="s1">&#39;Symptoms.csv&#39;</span><span class="p">]</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+<code><span class="ansi-green-fg">2022-06-17 14:46:49</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - DataCollection Object Created
+<span class="ansi-green-fg">2022-06-17 14:46:49</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Using a chunksize of '100' nrows
+<span class="ansi-green-fg">2022-06-17 14:46:49</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Registering  Symptoms.csv [&lt;carrot.io.common.DataBrick object at 0x10deb5850&gt;]
+<span class="ansi-green-fg">2022-06-17 14:46:49</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Registering  Covid19_test.csv [&lt;carrot.io.common.DataBrick object at 0x111d3c490&gt;]
+<span class="ansi-green-fg">2022-06-17 14:46:49</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Registering  covid19_antibody.csv [&lt;carrot.io.common.DataBrick object at 0x111d3c580&gt;]
+<span class="ansi-green-fg">2022-06-17 14:46:49</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Registering  vaccine.csv [&lt;carrot.io.common.DataBrick object at 0x111d3c970&gt;]
+<span class="ansi-green-fg">2022-06-17 14:46:49</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Registering  Demographics.csv [&lt;carrot.io.common.DataBrick object at 0x111d3cc40&gt;]
+<span class="ansi-green-fg">2022-06-17 14:46:49</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Retrieving initial dataframe for 'Symptoms.csv' for the first time
+</code>
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>PersonID</th>
+<th>visit_date</th>
+<th>symptom1</th>
+<th>symptom2</th>
+<th>symptom3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>16dc368a89b428b2485484313ba67a3912ca03f2b2b424...</td>
+<td>2020-11-15 00:00:00.000000</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<th>1</th>
+<td>37834f2f25762f23e1f74a531cbe445db73d6765ebe608...</td>
+<td>2020-01-04 00:00:00.000000</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<th>2</th>
+<td>454f63ac30c8322997ef025edff6abd23e0dbe7b8a3d51...</td>
+<td>2020-03-27 00:00:00.000000</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<th>3</th>
+<td>5ef6fdf32513aa7cd11f72beccf132b9224d33f271471f...</td>
+<td>2020-06-24 00:00:00.000000</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr>
+<th>4</th>
+<td>1253e9373e781b7500266caa55150e08e210bc8cd8cc70...</td>
+<td>2020-07-27 00:00:00.000000</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<th>...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<th>95</th>
+<td>a4e00d7e6aa82111575438c5e5d3e63269d4c475c718b2...</td>
+<td>2020-11-04 00:00:00.000000</td>
+<td>N</td>
+<td>Y</td>
+<td>N</td>
+</tr>
+<tr>
+<th>96</th>
+<td>8bcbb4c131df56f7c79066016241cc4bdf4e58db55c4f6...</td>
+<td>2020-07-27 00:00:00.000000</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<th>97</th>
+<td>a4e00d7e6aa82111575438c5e5d3e63269d4c475c718b2...</td>
+<td>2020-01-04 00:00:00.000000</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<th>98</th>
+<td>5a39cadd1b007093db50744797c7a04a34f73b35ed4447...</td>
+<td>2020-12-24 00:00:00.000000</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr>
+<th>99</th>
+<td>27badc983df1780b60c2b3fa9d3a19a00e46aac798451f...</td>
+<td>2020-11-04 00:00:00.000000</td>
+<td>N</td>
+<td>Y</td>
+<td>N</td>
+</tr>
+</tbody>
+</table>
+<p>100 rows × 5 columns</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The internal working of the <code>InputData</code> object will more to the next slice of data when running the process, untill all data has been processed.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">inputs_chunked</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+<code><span class="ansi-green-fg">2022-06-17 14:46:49</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Getting next chunk of data
+<span class="ansi-green-fg">2022-06-17 14:46:49</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Getting the next chunk of size '100' for 'Symptoms.csv'
+<span class="ansi-green-fg">2022-06-17 14:46:49</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - --&gt; Got 100 rows
+</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">inputs_chunked</span><span class="p">[</span><span class="s1">&#39;Symptoms.csv&#39;</span><span class="p">]</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>PersonID</th>
+<th>visit_date</th>
+<th>symptom1</th>
+<th>symptom2</th>
+<th>symptom3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>100</th>
+<td>43974ed74066b207c30ffd0fed5146762e6c60745ac977...</td>
+<td>2020-03-27 00:00:00.000000</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<th>101</th>
+<td>fc56dbc6d4652b315b86b71c8d688c1ccdea9c5f1fd077...</td>
+<td>2020-02-04 00:00:00.000000</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr>
+<th>102</th>
+<td>f8809aff4d69bece79dabe35be0c708b890d7eafb841f1...</td>
+<td>2020-06-24 00:00:00.000000</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr>
+<th>103</th>
+<td>5cf4e26bd3d87da5e03f80a43a64f1220a1f4ba9e1d634...</td>
+<td>2020-11-15 00:00:00.000000</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<th>104</th>
+<td>f8809aff4d69bece79dabe35be0c708b890d7eafb841f1...</td>
+<td>2020-07-27 00:00:00.000000</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<th>...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<th>195</th>
+<td>a0f8b2c4cb1ac82abdb37f0fe5203b97be556c4468c83b...</td>
+<td>2020-12-24 00:00:00.000000</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr>
+<th>196</th>
+<td>4c15f47afe7f817fd559e12ddbc276f4930c5822f20490...</td>
+<td>2020-01-04 00:00:00.000000</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<th>197</th>
+<td>983bd614bb5afece5ab3b6023f71147cd7b6bc2314f9d2...</td>
+<td>2020-11-04 00:00:00.000000</td>
+<td>N</td>
+<td>Y</td>
+<td>N</td>
+</tr>
+<tr>
+<th>198</th>
+<td>c3ea99f86b2f8a74ef4145bb245155ff5f91cd856f2875...</td>
+<td>2020-06-24 00:00:00.000000</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr>
+<th>199</th>
+<td>f32828acecb4282c87eaa554d2e1db74e418cd68458430...</td>
+<td>2020-03-27 00:00:00.000000</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+</tbody>
+</table>
+<p>100 rows × 5 columns</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="sql">SQL<a class="headerlink" href="#sql" title="Permanent link">&para;</a></h3>
+<p>Another alternative, if your input data is not in <code>csv</code> format is to load the data manually yourself from SQL / Spark / DataBricks views etc.</p>
+<p>Firstly, initialise an input data handler object"</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">inputs_sql</span> <span class="o">=</span> <span class="n">carrot</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">DataCollection</span><span class="p">()</span>
+<span class="n">inputs_sql</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+<code><span class="ansi-green-fg">2022-06-17 14:46:49</span> - <span class="ansi-blue-fg">DataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - DataCollection Object Created
+</code>
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>&lt;carrot.io.common.DataCollection at 0x111c49130&gt;</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Load your data, for example fron a PostgresSQL server, using <code>sqlalchemy</code> and pandas:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_engine</span>
+
+<span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s1">&#39;postgresql://localhost:5432/coconnect_data_test&#39;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s2">&quot;my_data_table&quot;</span><span class="p">,</span><span class="n">engine</span><span class="p">)</span>
+<span class="n">df</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>PersonID</th>
+<th>visit_date</th>
+<th>symptom1</th>
+<th>symptom2</th>
+<th>symptom3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>16dc368a89b428b2485484313ba67a3912ca03f2b2b424...</td>
+<td>2020-11-15 00:00:00.000000</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<th>1</th>
+<td>37834f2f25762f23e1f74a531cbe445db73d6765ebe608...</td>
+<td>2020-01-04 00:00:00.000000</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<th>2</th>
+<td>454f63ac30c8322997ef025edff6abd23e0dbe7b8a3d51...</td>
+<td>2020-03-27 00:00:00.000000</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<th>3</th>
+<td>5ef6fdf32513aa7cd11f72beccf132b9224d33f271471f...</td>
+<td>2020-06-24 00:00:00.000000</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr>
+<th>4</th>
+<td>1253e9373e781b7500266caa55150e08e210bc8cd8cc70...</td>
+<td>2020-07-27 00:00:00.000000</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<th>...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<th>95</th>
+<td>a4e00d7e6aa82111575438c5e5d3e63269d4c475c718b2...</td>
+<td>2020-11-04 00:00:00.000000</td>
+<td>N</td>
+<td>Y</td>
+<td>N</td>
+</tr>
+<tr>
+<th>96</th>
+<td>8bcbb4c131df56f7c79066016241cc4bdf4e58db55c4f6...</td>
+<td>2020-07-27 00:00:00.000000</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<th>97</th>
+<td>a4e00d7e6aa82111575438c5e5d3e63269d4c475c718b2...</td>
+<td>2020-01-04 00:00:00.000000</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<th>98</th>
+<td>5a39cadd1b007093db50744797c7a04a34f73b35ed4447...</td>
+<td>2020-12-24 00:00:00.000000</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr>
+<th>99</th>
+<td>27badc983df1780b60c2b3fa9d3a19a00e46aac798451f...</td>
+<td>2020-11-04 00:00:00.000000</td>
+<td>N</td>
+<td>Y</td>
+<td>N</td>
+</tr>
+</tbody>
+</table>
+<p>100 rows × 5 columns</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Set the input object to this dataframe</p>
+<p><em>note:</em> the name of the input table must be the same as the name in the <code>json</code> rules. In this example, the name in the <code>json</code> for the mapping for this table is <code>Symptoms.csv</code>, therefore the dataframe is associated with that name.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">inputs_sql</span><span class="p">[</span><span class="s1">&#39;Symptoms.csv&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">carrot</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">DataBrick</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="n">inputs_sql</span><span class="p">[</span><span class="s1">&#39;Symptoms.csv&#39;</span><span class="p">]</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+<code><span class="ansi-green-fg">2022-06-17 14:46:50</span> - <span class="ansi-blue-fg">DataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Registering  Symptoms.csv [&lt;carrot.io.common.DataBrick object at 0x111d44940&gt;]
+<span class="ansi-green-fg">2022-06-17 14:46:50</span> - <span class="ansi-blue-fg">DataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Retrieving initial dataframe for 'Symptoms.csv' for the first time
+</code>
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>PersonID</th>
+<th>visit_date</th>
+<th>symptom1</th>
+<th>symptom2</th>
+<th>symptom3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>16dc368a89b428b2485484313ba67a3912ca03f2b2b424...</td>
+<td>2020-11-15 00:00:00.000000</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<th>1</th>
+<td>37834f2f25762f23e1f74a531cbe445db73d6765ebe608...</td>
+<td>2020-01-04 00:00:00.000000</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<th>2</th>
+<td>454f63ac30c8322997ef025edff6abd23e0dbe7b8a3d51...</td>
+<td>2020-03-27 00:00:00.000000</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<th>3</th>
+<td>5ef6fdf32513aa7cd11f72beccf132b9224d33f271471f...</td>
+<td>2020-06-24 00:00:00.000000</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr>
+<th>4</th>
+<td>1253e9373e781b7500266caa55150e08e210bc8cd8cc70...</td>
+<td>2020-07-27 00:00:00.000000</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<th>...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<th>95</th>
+<td>a4e00d7e6aa82111575438c5e5d3e63269d4c475c718b2...</td>
+<td>2020-11-04 00:00:00.000000</td>
+<td>N</td>
+<td>Y</td>
+<td>N</td>
+</tr>
+<tr>
+<th>96</th>
+<td>8bcbb4c131df56f7c79066016241cc4bdf4e58db55c4f6...</td>
+<td>2020-07-27 00:00:00.000000</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<th>97</th>
+<td>a4e00d7e6aa82111575438c5e5d3e63269d4c475c718b2...</td>
+<td>2020-01-04 00:00:00.000000</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<th>98</th>
+<td>5a39cadd1b007093db50744797c7a04a34f73b35ed4447...</td>
+<td>2020-12-24 00:00:00.000000</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr>
+<th>99</th>
+<td>27badc983df1780b60c2b3fa9d3a19a00e46aac798451f...</td>
+<td>2020-11-04 00:00:00.000000</td>
+<td>N</td>
+<td>Y</td>
+<td>N</td>
+</tr>
+</tbody>
+</table>
+<p>100 rows × 5 columns</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="spark-databricks">Spark Databricks<a class="headerlink" href="#spark-databricks" title="Permanent link">&para;</a></h3>
+<p>If you want to use something like Spark for integration with DataBricks, you can use <code>pyspark</code> to load the data:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pyspark.sql</span><span class="w"> </span><span class="kn">import</span> <span class="n">SparkSession</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">spark</span> <span class="o">=</span> <span class="n">SparkSession</span> \
+    <span class="o">.</span><span class="n">builder</span> \
+    <span class="o">.</span><span class="n">appName</span><span class="p">(</span><span class="s2">&quot;Python Spark SQL basic example&quot;</span><span class="p">)</span> \
+    <span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">&quot;spark.jars&quot;</span><span class="p">,</span> <span class="s2">&quot;/Users/calummacdonald/Downloads/postgresql-42.3.1.jar&quot;</span><span class="p">)</span> \
+    <span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span> \
+    <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;jdbc&quot;</span><span class="p">)</span> \
+    <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;url&quot;</span><span class="p">,</span> <span class="s2">&quot;jdbc:postgresql://localhost:5432/coconnect_data_test&quot;</span><span class="p">)</span> \
+    <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;dbtable&quot;</span><span class="p">,</span> <span class="s2">&quot;my_data_table&quot;</span><span class="p">)</span> \
+    <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;driver&quot;</span><span class="p">,</span> <span class="s2">&quot;org.postgresql.Driver&quot;</span><span class="p">)</span> \
+    <span class="o">.</span><span class="n">load</span><span class="p">()</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">printSchema</span><span class="p">()</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+<code>root
+ |-- PersonID: string (nullable = true)
+ |-- visit_date: string (nullable = true)
+ |-- symptom1: string (nullable = true)
+ |-- symptom2: string (nullable = true)
+ |-- symptom3: string (nullable = true)
+
+</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">inputs_databricks</span> <span class="o">=</span> <span class="n">carrot</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">DataCollection</span><span class="p">()</span>
+<span class="n">inputs_databricks</span><span class="p">[</span><span class="s1">&#39;Symptons.csv&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">carrot</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">DataBrick</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">toPandas</span><span class="p">())</span>
+<span class="n">inputs_databricks</span><span class="p">[</span><span class="s1">&#39;Symptons.csv&#39;</span><span class="p">]</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+<code><span class="ansi-green-fg">2022-06-17 14:47:04</span> - <span class="ansi-blue-fg">DataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - DataCollection Object Created
+<span class="ansi-green-fg">2022-06-17 14:47:07</span> - <span class="ansi-blue-fg">DataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Registering  Symptons.csv [&lt;carrot.io.common.DataBrick object at 0x111c490d0&gt;]
+<span class="ansi-green-fg">2022-06-17 14:47:07</span> - <span class="ansi-blue-fg">DataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Retrieving initial dataframe for 'Symptons.csv' for the first time
+</code>
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>PersonID</th>
+<th>visit_date</th>
+<th>symptom1</th>
+<th>symptom2</th>
+<th>symptom3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>16dc368a89b428b2485484313ba67a3912ca03f2b2b424...</td>
+<td>2020-11-15 00:00:00.000000</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<th>1</th>
+<td>37834f2f25762f23e1f74a531cbe445db73d6765ebe608...</td>
+<td>2020-01-04 00:00:00.000000</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<th>2</th>
+<td>454f63ac30c8322997ef025edff6abd23e0dbe7b8a3d51...</td>
+<td>2020-03-27 00:00:00.000000</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<th>3</th>
+<td>5ef6fdf32513aa7cd11f72beccf132b9224d33f271471f...</td>
+<td>2020-06-24 00:00:00.000000</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr>
+<th>4</th>
+<td>1253e9373e781b7500266caa55150e08e210bc8cd8cc70...</td>
+<td>2020-07-27 00:00:00.000000</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<th>...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<th>95</th>
+<td>a4e00d7e6aa82111575438c5e5d3e63269d4c475c718b2...</td>
+<td>2020-11-04 00:00:00.000000</td>
+<td>N</td>
+<td>Y</td>
+<td>N</td>
+</tr>
+<tr>
+<th>96</th>
+<td>8bcbb4c131df56f7c79066016241cc4bdf4e58db55c4f6...</td>
+<td>2020-07-27 00:00:00.000000</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<th>97</th>
+<td>a4e00d7e6aa82111575438c5e5d3e63269d4c475c718b2...</td>
+<td>2020-01-04 00:00:00.000000</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<th>98</th>
+<td>5a39cadd1b007093db50744797c7a04a34f73b35ed4447...</td>
+<td>2020-12-24 00:00:00.000000</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr>
+<th>99</th>
+<td>27badc983df1780b60c2b3fa9d3a19a00e46aac798451f...</td>
+<td>2020-11-04 00:00:00.000000</td>
+<td>N</td>
+<td>Y</td>
+<td>N</td>
+</tr>
+</tbody>
+</table>
+<p>100 rows × 5 columns</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="creating-a-cdm">Creating a CDM<a class="headerlink" href="#creating-a-cdm" title="Permanent link">&para;</a></h2>
+<p>As CO-CONNECT-Tools contains a pythonic version of the CDM, we can create an instance of the <code>CommonDataModel</code> class.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">carrot.cdm</span><span class="w"> </span><span class="kn">import</span> <span class="n">CommonDataModel</span>
+
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">carrot</span><span class="o">.</span><span class="n">tools</span><span class="o">.</span><span class="n">create_csv_store</span><span class="p">(</span><span class="n">output_folder</span><span class="o">=</span><span class="s1">&#39;output_dir/&#39;</span><span class="p">)</span>
+
+<span class="n">cdm</span> <span class="o">=</span> <span class="n">CommonDataModel</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">rules</span><span class="p">[</span><span class="s1">&#39;metadata&#39;</span><span class="p">][</span><span class="s1">&#39;dataset&#39;</span><span class="p">],</span>
+                      <span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span>
+                      <span class="n">outputs</span><span class="o">=</span><span class="n">outputs</span><span class="p">)</span>
+<span class="n">cdm</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+<code><span class="ansi-green-fg">2022-06-17 14:47:07</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - DataCollection Object Created
+<span class="ansi-green-fg">2022-06-17 14:47:07</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - CommonDataModel (5.3.1) created with co-connect-tools version 0.0.0
+<span class="ansi-green-fg">2022-06-17 14:47:07</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Running with an DataCollection object
+<span class="ansi-green-fg">2022-06-17 14:47:07</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Turning on automatic cdm column filling
+</code>
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>&lt;carrot.cdm.model.CommonDataModel at 0x112313820&gt;</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="adding-cdm-objects-to-the-cdm">Adding CDM Objects to the CDM<a class="headerlink" href="#adding-cdm-objects-to-the-cdm" title="Permanent link">&para;</a></h2>
+<p>The next step is to loop over all the rules from the <code>json</code>, creating and adding a new CDM object (e.g. Person) to the CDM.</p>
+<p>Within the loop the CDM object define function is set a lambda function to the apply rules. This means that during the executing, in runtime, the tool (via the <code>CommonDataModel</code> class, will execute the define function and know how to apply the mapping rules.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">cdm</span><span class="o">.</span><span class="n">create_and_add_objects</span><span class="p">(</span><span class="n">rules</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+<code><span class="ansi-green-fg">2022-06-17 14:47:07</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Added observation_0 of type observation
+<span class="ansi-green-fg">2022-06-17 14:47:07</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Added observation_1 of type observation
+<span class="ansi-green-fg">2022-06-17 14:47:07</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Added observation_2 of type observation
+<span class="ansi-green-fg">2022-06-17 14:47:07</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Added observation_3 of type observation
+<span class="ansi-green-fg">2022-06-17 14:47:07</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Added observation_4 of type observation
+<span class="ansi-green-fg">2022-06-17 14:47:07</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Added observation_5 of type observation
+<span class="ansi-green-fg">2022-06-17 14:47:07</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Added condition_occurrence_0 of type condition_occurrence
+<span class="ansi-green-fg">2022-06-17 14:47:07</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Added female of type person
+<span class="ansi-green-fg">2022-06-17 14:47:07</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Added male of type person
+<span class="ansi-green-fg">2022-06-17 14:47:07</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Added covid_antibody of type measurement
+</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>After the initialisation and creation of the CDM objects, we can see what objects we have been registered in the model..</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">cdm</span><span class="o">.</span><span class="n">objects</span><span class="p">()</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>{'observation': {'observation_0': &lt;carrot.cdm.objects.versions.v5_3_1.observation.Observation at 0x112313460&gt;,
+  'observation_1': &lt;carrot.cdm.objects.versions.v5_3_1.observation.Observation at 0x112305f70&gt;,
+  'observation_2': &lt;carrot.cdm.objects.versions.v5_3_1.observation.Observation at 0x11236d790&gt;,
+  'observation_3': &lt;carrot.cdm.objects.versions.v5_3_1.observation.Observation at 0x112313340&gt;,
+  'observation_4': &lt;carrot.cdm.objects.versions.v5_3_1.observation.Observation at 0x112399fa0&gt;,
+  'observation_5': &lt;carrot.cdm.objects.versions.v5_3_1.observation.Observation at 0x112305d60&gt;},
+ 'condition_occurrence': {'condition_occurrence_0': &lt;carrot.cdm.objects.versions.v5_3_1.condition_occurrence.ConditionOccurrence at 0x11239ce50&gt;},
+ 'person': {'female': &lt;carrot.cdm.objects.versions.v5_3_1.person.Person at 0x1123135e0&gt;,
+  'male': &lt;carrot.cdm.objects.versions.v5_3_1.person.Person at 0x11239deb0&gt;},
+ 'measurement': {'covid_antibody': &lt;carrot.cdm.objects.versions.v5_3_1.measurement.Measurement at 0x11239d970&gt;}}</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="process-the-cdm">Process The CDM<a class="headerlink" href="#process-the-cdm" title="Permanent link">&para;</a></h2>
+<p>Processing the CDM will execute all objects, pandas dataframes will be created for each object, based on the rules that have been provided.</p>
+<p>Importantly the CDM will also format, finalise and merge all the individual dataframes for each objects. </p>
+<ul>
+<li>Formatting makes sure the columns are in the correct format i.e. a date is YYY-MM-DD</li>
+<li>Finalise makes sure </li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">cdm</span><span class="o">.</span><span class="n">process</span><span class="p">()</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+<code><span class="ansi-green-fg">2022-06-17 14:47:07</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Starting processing in order: ['person', 'observation', 'condition_occurrence', 'measurement']
+<span class="ansi-green-fg">2022-06-17 14:47:07</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Number of objects to process for each table...
+{
+      "observation": 6,
+      "condition_occurrence": 1,
+      "person": 2,
+      "measurement": 1
+}
+<span class="ansi-green-fg">2022-06-17 14:47:07</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - for person: found 2 objects
+<span class="ansi-green-fg">2022-06-17 14:47:07</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - working on person
+<span class="ansi-green-fg">2022-06-17 14:47:07</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - starting on female
+<span class="ansi-green-fg">2022-06-17 14:47:07</span> - <span class="ansi-blue-fg">Person</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Called apply_rules
+<span class="ansi-green-fg">2022-06-17 14:47:07</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Retrieving initial dataframe for 'Demographics.csv' for the first time
+<span class="ansi-green-fg">2022-06-17 14:47:07</span> - <span class="ansi-blue-fg">Person</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped birth_datetime
+<span class="ansi-green-fg">2022-06-17 14:47:07</span> - <span class="ansi-blue-fg">Person</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped gender_concept_id
+<span class="ansi-green-fg">2022-06-17 14:47:07</span> - <span class="ansi-blue-fg">Person</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped gender_source_concept_id
+<span class="ansi-green-fg">2022-06-17 14:47:07</span> - <span class="ansi-blue-fg">Person</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped gender_source_value
+<span class="ansi-green-fg">2022-06-17 14:47:08</span> - <span class="ansi-blue-fg">Person</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped person_id
+<span class="ansi-green-fg">2022-06-17 14:47:08</span> - <span class="ansi-blue-fg">Person</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">Requiring non-null values in gender_concept_id removed 400 rows, leaving 600 rows.</span>
+<span class="ansi-green-fg">2022-06-17 14:47:08</span> - <span class="ansi-blue-fg">Person</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Automatically formatting data columns.
+<span class="ansi-green-fg">2022-06-17 14:47:08</span> - <span class="ansi-blue-fg">Person</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - created df (0x1123bb490)[female]
+<span class="ansi-green-fg">2022-06-17 14:47:08</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished female (0x1123bb490) ... 1/2 completed, 600 rows
+<span class="ansi-green-fg">2022-06-17 14:47:08</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - saving person_ids to output_dir//person_ids.csv
+<span class="ansi-green-fg">2022-06-17 14:47:08</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished save to file
+<span class="ansi-green-fg">2022-06-17 14:47:08</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - starting on male
+<span class="ansi-green-fg">2022-06-17 14:47:08</span> - <span class="ansi-blue-fg">Person</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Called apply_rules
+<span class="ansi-green-fg">2022-06-17 14:47:08</span> - <span class="ansi-blue-fg">Person</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped birth_datetime
+<span class="ansi-green-fg">2022-06-17 14:47:08</span> - <span class="ansi-blue-fg">Person</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped gender_concept_id
+<span class="ansi-green-fg">2022-06-17 14:47:08</span> - <span class="ansi-blue-fg">Person</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped gender_source_concept_id
+<span class="ansi-green-fg">2022-06-17 14:47:08</span> - <span class="ansi-blue-fg">Person</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped gender_source_value
+<span class="ansi-green-fg">2022-06-17 14:47:08</span> - <span class="ansi-blue-fg">Person</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped person_id
+<span class="ansi-green-fg">2022-06-17 14:47:08</span> - <span class="ansi-blue-fg">Person</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">Requiring non-null values in gender_concept_id removed 600 rows, leaving 400 rows.</span>
+<span class="ansi-green-fg">2022-06-17 14:47:08</span> - <span class="ansi-blue-fg">Person</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Automatically formatting data columns.
+<span class="ansi-green-fg">2022-06-17 14:47:08</span> - <span class="ansi-blue-fg">Person</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - created df (0x1123f5760)[male]
+<span class="ansi-green-fg">2022-06-17 14:47:08</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished male (0x1123f5760) ... 2/2 completed, 400 rows
+<span class="ansi-green-fg">2022-06-17 14:47:08</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - updating person_ids in output_dir//person_ids.csv
+<span class="ansi-green-fg">2022-06-17 14:47:08</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished save to file
+<span class="ansi-green-fg">2022-06-17 14:47:08</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - saving dataframe (0x1123bb190) to &lt;carrot.io.plugins.local.LocalDataCollection object at 0x112313ee0&gt;
+<span class="ansi-green-fg">2022-06-17 14:47:08</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - saving person to output_dir//person.csv
+<span class="ansi-green-fg">2022-06-17 14:47:08</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished save to file
+<span class="ansi-green-fg">2022-06-17 14:47:08</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finalised person on iteration 0 producing 1000 rows from 2 tables
+<span class="ansi-green-fg">2022-06-17 14:47:08</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Getting next chunk of data
+<span class="ansi-green-fg">2022-06-17 14:47:08</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - All input files for this object have now been used.
+<span class="ansi-green-fg">2022-06-17 14:47:08</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - resetting used bricks
+<span class="ansi-green-fg">2022-06-17 14:47:08</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - for observation: found 6 objects
+<span class="ansi-green-fg">2022-06-17 14:47:08</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - working on observation
+<span class="ansi-green-fg">2022-06-17 14:47:08</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - starting on observation_0
+<span class="ansi-green-fg">2022-06-17 14:47:08</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Called apply_rules
+<span class="ansi-green-fg">2022-06-17 14:47:08</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Retrieving initial dataframe for 'Demographics.csv' for the first time
+<span class="ansi-green-fg">2022-06-17 14:47:08</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped observation_concept_id
+<span class="ansi-green-fg">2022-06-17 14:47:08</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped observation_datetime
+<span class="ansi-green-fg">2022-06-17 14:47:08</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped observation_source_concept_id
+<span class="ansi-green-fg">2022-06-17 14:47:09</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped observation_source_value
+<span class="ansi-green-fg">2022-06-17 14:47:09</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped person_id
+<span class="ansi-green-fg">2022-06-17 14:47:09</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">Requiring non-null values in observation_concept_id removed 900 rows, leaving 100 rows.</span>
+<span class="ansi-green-fg">2022-06-17 14:47:09</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Automatically formatting data columns.
+<span class="ansi-green-fg">2022-06-17 14:47:09</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - created df (0x1123bb5e0)[observation_0]
+<span class="ansi-green-fg">2022-06-17 14:47:09</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished observation_0 (0x1123bb5e0) ... 1/6 completed, 100 rows
+<span class="ansi-green-fg">2022-06-17 14:47:09</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - starting on observation_1
+<span class="ansi-green-fg">2022-06-17 14:47:09</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Called apply_rules
+<span class="ansi-green-fg">2022-06-17 14:47:09</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped observation_concept_id
+<span class="ansi-green-fg">2022-06-17 14:47:09</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped observation_datetime
+<span class="ansi-green-fg">2022-06-17 14:47:09</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped observation_source_concept_id
+<span class="ansi-green-fg">2022-06-17 14:47:09</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped observation_source_value
+<span class="ansi-green-fg">2022-06-17 14:47:09</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped person_id
+<span class="ansi-green-fg">2022-06-17 14:47:09</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">Requiring non-null values in observation_concept_id removed 900 rows, leaving 100 rows.</span>
+<span class="ansi-green-fg">2022-06-17 14:47:09</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Automatically formatting data columns.
+<span class="ansi-green-fg">2022-06-17 14:47:09</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - created df (0x11241ce20)[observation_1]
+<span class="ansi-green-fg">2022-06-17 14:47:09</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished observation_1 (0x11241ce20) ... 2/6 completed, 100 rows
+<span class="ansi-green-fg">2022-06-17 14:47:09</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - starting on observation_2
+<span class="ansi-green-fg">2022-06-17 14:47:09</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Called apply_rules
+<span class="ansi-green-fg">2022-06-17 14:47:09</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped observation_concept_id
+<span class="ansi-green-fg">2022-06-17 14:47:09</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped observation_datetime
+<span class="ansi-green-fg">2022-06-17 14:47:09</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped observation_source_concept_id
+<span class="ansi-green-fg">2022-06-17 14:47:09</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped observation_source_value
+<span class="ansi-green-fg">2022-06-17 14:47:09</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped person_id
+<span class="ansi-green-fg">2022-06-17 14:47:09</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">Requiring non-null values in observation_concept_id removed 900 rows, leaving 100 rows.</span>
+<span class="ansi-green-fg">2022-06-17 14:47:09</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Automatically formatting data columns.
+<span class="ansi-green-fg">2022-06-17 14:47:09</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - created df (0x112427580)[observation_2]
+</code>
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+<code><span class="ansi-green-fg">2022-06-17 14:47:09</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished observation_2 (0x112427580) ... 3/6 completed, 100 rows
+<span class="ansi-green-fg">2022-06-17 14:47:09</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - starting on observation_3
+<span class="ansi-green-fg">2022-06-17 14:47:09</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Called apply_rules
+<span class="ansi-green-fg">2022-06-17 14:47:09</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped observation_concept_id
+<span class="ansi-green-fg">2022-06-17 14:47:09</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped observation_datetime
+<span class="ansi-green-fg">2022-06-17 14:47:09</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped observation_source_concept_id
+<span class="ansi-green-fg">2022-06-17 14:47:09</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped observation_source_value
+<span class="ansi-green-fg">2022-06-17 14:47:09</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped person_id
+<span class="ansi-green-fg">2022-06-17 14:47:09</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">Requiring non-null values in observation_concept_id removed 700 rows, leaving 300 rows.</span>
+<span class="ansi-green-fg">2022-06-17 14:47:09</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Automatically formatting data columns.
+<span class="ansi-green-fg">2022-06-17 14:47:09</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - created df (0x1124357f0)[observation_3]
+<span class="ansi-green-fg">2022-06-17 14:47:09</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished observation_3 (0x1124357f0) ... 4/6 completed, 300 rows
+<span class="ansi-green-fg">2022-06-17 14:47:09</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - starting on observation_4
+<span class="ansi-green-fg">2022-06-17 14:47:09</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Called apply_rules
+<span class="ansi-green-fg">2022-06-17 14:47:09</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped observation_concept_id
+<span class="ansi-green-fg">2022-06-17 14:47:09</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped observation_datetime
+<span class="ansi-green-fg">2022-06-17 14:47:09</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped observation_source_concept_id
+<span class="ansi-green-fg">2022-06-17 14:47:09</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped observation_source_value
+<span class="ansi-green-fg">2022-06-17 14:47:09</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped person_id
+<span class="ansi-green-fg">2022-06-17 14:47:09</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">Requiring non-null values in observation_concept_id removed 800 rows, leaving 200 rows.</span>
+<span class="ansi-green-fg">2022-06-17 14:47:09</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Automatically formatting data columns.
+<span class="ansi-green-fg">2022-06-17 14:47:09</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - created df (0x112440490)[observation_4]
+<span class="ansi-green-fg">2022-06-17 14:47:09</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished observation_4 (0x112440490) ... 5/6 completed, 200 rows
+<span class="ansi-green-fg">2022-06-17 14:47:10</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - starting on observation_5
+<span class="ansi-green-fg">2022-06-17 14:47:10</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Called apply_rules
+<span class="ansi-green-fg">2022-06-17 14:47:10</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped observation_concept_id
+<span class="ansi-green-fg">2022-06-17 14:47:10</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped observation_datetime
+<span class="ansi-green-fg">2022-06-17 14:47:10</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped observation_source_concept_id
+<span class="ansi-green-fg">2022-06-17 14:47:10</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped observation_source_value
+<span class="ansi-green-fg">2022-06-17 14:47:10</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped person_id
+<span class="ansi-green-fg">2022-06-17 14:47:10</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">Requiring non-null values in observation_concept_id removed 900 rows, leaving 100 rows.</span>
+<span class="ansi-green-fg">2022-06-17 14:47:10</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Automatically formatting data columns.
+<span class="ansi-green-fg">2022-06-17 14:47:10</span> - <span class="ansi-blue-fg">Observation</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - created df (0x112456f70)[observation_5]
+<span class="ansi-green-fg">2022-06-17 14:47:10</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished observation_5 (0x112456f70) ... 6/6 completed, 100 rows
+<span class="ansi-green-fg">2022-06-17 14:47:10</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - saving dataframe (0x112427280) to &lt;carrot.io.plugins.local.LocalDataCollection object at 0x112313ee0&gt;
+<span class="ansi-green-fg">2022-06-17 14:47:10</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - saving observation to output_dir//observation.csv
+<span class="ansi-green-fg">2022-06-17 14:47:10</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished save to file
+<span class="ansi-green-fg">2022-06-17 14:47:10</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finalised observation on iteration 0 producing 900 rows from 6 tables
+<span class="ansi-green-fg">2022-06-17 14:47:10</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Getting next chunk of data
+<span class="ansi-green-fg">2022-06-17 14:47:10</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - All input files for this object have now been used.
+<span class="ansi-green-fg">2022-06-17 14:47:10</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - resetting used bricks
+<span class="ansi-green-fg">2022-06-17 14:47:10</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - for condition_occurrence: found 1 object
+<span class="ansi-green-fg">2022-06-17 14:47:10</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - working on condition_occurrence
+<span class="ansi-green-fg">2022-06-17 14:47:10</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - starting on condition_occurrence_0
+<span class="ansi-green-fg">2022-06-17 14:47:10</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Called apply_rules
+<span class="ansi-green-fg">2022-06-17 14:47:10</span> - <span class="ansi-blue-fg">LocalDataCollection</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Retrieving initial dataframe for 'Symptoms.csv' for the first time
+<span class="ansi-green-fg">2022-06-17 14:47:10</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_concept_id
+<span class="ansi-green-fg">2022-06-17 14:47:10</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_end_datetime
+<span class="ansi-green-fg">2022-06-17 14:47:10</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_source_concept_id
+<span class="ansi-green-fg">2022-06-17 14:47:10</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_source_value
+<span class="ansi-green-fg">2022-06-17 14:47:10</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped condition_start_datetime
+<span class="ansi-green-fg">2022-06-17 14:47:10</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Mapped person_id
+<span class="ansi-green-fg">2022-06-17 14:47:10</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">WARNING</span> - <span class="ansi-yellow-fg">Requiring non-null values in condition_concept_id removed 400 rows, leaving 400 rows.</span>
+<span class="ansi-green-fg">2022-06-17 14:47:10</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - Automatically formatting data columns.
+<span class="ansi-green-fg">2022-06-17 14:47:10</span> - <span class="ansi-blue-fg">ConditionOccurrence</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - created df (0x112456790)[condition_occurrence_0]
+<span class="ansi-green-fg">2022-06-17 14:47:10</span> - <span class="ansi-blue-fg">CommonDataModel</span> - <span class="ansi-white-intense-fg ansi-bold">INFO</span> - finished condition_occurrence_0 (0x112456790) ... 1/1 completed, 400 rows
+</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="inspect-outputs">Inspect Outputs<a class="headerlink" href="#inspect-outputs" title="Permanent link">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">cdm</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">cdm</span><span class="p">[</span><span class="s1">&#39;person&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">cdm</span><span class="p">[</span><span class="s1">&#39;observation&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">cdm</span><span class="p">[</span><span class="s1">&#39;condition_occurrence&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+ 
+        
+      </div>
+      <div class="md-social">
+  
+</div>
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.sections", "navigation.tracking", "navigation.indexes", "navigation.top", "content.action.edit"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.3220b9d7.min.js"></script>
+      
+    
+  </body>
+</html>

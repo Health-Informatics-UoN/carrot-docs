@@ -1,0 +1,546 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.18">
+    
+    
+      
+        <title>Quickstart Guide - Carrot Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.66ac8b77.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/custom.css">
+    
+      <link rel="stylesheet" href="../../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../../css/pandas-dataframe.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="carrot" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#quickstart-guide" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Carrot Docs" class="md-header__button md-logo" aria-label="Carrot Docs" data-md-component="logo">
+      
+  <img src="../../images/favicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Carrot Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Quickstart Guide
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Health-Informatics-UoN/carrot-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Health-Informatics-UoN/carrot-docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Carrot Docs" class="md-nav__button md-logo" aria-label="Carrot Docs" data-md-component="logo">
+      
+  <img src="../../images/favicon.png" alt="logo">
+
+    </a>
+    Carrot Docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Health-Informatics-UoN/carrot-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Health-Informatics-UoN/carrot-docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#gaining-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gaining Access
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#upload-a-first-scan-report" class="md-nav__link">
+    <span class="md-ellipsis">
+      Upload a first Scan Report
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#navigation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Navigation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-mapping-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating Mapping Rules
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating Mapping Rules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setting-person-id-and-date-event-for-each-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting Person ID and Date Event for each table
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generate-initial-mapping-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generate Initial Mapping Rules
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-further-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add further Concepts
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#downloading-mapping-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Downloading Mapping Rules
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/Health-Informatics-UoN/carrot-docs/edit/main/docs/Carrot-Mapper/quickstart.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="quickstart-guide">Quickstart Guide<a class="headerlink" href="#quickstart-guide" title="Permanent link">&para;</a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This page is a work in progress, and should not be relied upon.</p>
+</div>
+<p>This Quickstart guide will guide you through the usage of Carrot-Mapper. Specifically, it covers:</p>
+<ol>
+<li><a href="#gaining-access">Gaining access</a></li>
+<li>Uploading a new Scan Report</li>
+<li>Navigating within a Scan Report</li>
+<li><a href="#creating-mapping-rules">Creating Mapping Rules</a></li>
+<li><a href="#downloading-mapping-rules">Downloading Mapping Rules</a></li>
+<li>Understanding Datasets and Projects</li>
+<li><a href="#the-home-page">The Home page</a></li>
+<li>Administrating Datasets and Scan Reports</li>
+<li>Managing Project access</li>
+<li>Analysing Mapping Rules</li>
+<li>Getting help</li>
+</ol>
+<p>This Quickstart guide is intended as a brief introduction to each of the areas. 
+Users requiring more details should follow the links or search the documentation for their specific query.
+Developers should use the Developer Guide for technical documentation.</p>
+<h2 id="gaining-access">Gaining Access<a class="headerlink" href="#gaining-access" title="Permanent link">&para;</a></h2>
+<p>The deployed Carrot-Mapper is available at <a href="https://carrot.ac.uk">carrot.ac.uk</a>.</p>
+<p>A user account is required to access the site; one can be requested from the site administrator. </p>
+<p>Users must be a member of at least one Project.
+Project membership is currently handled by the site administrator.</p>
+<p>Once logged in, the user is presented with the <a href="#the-home-page">Home page</a>. 
+This is a simple dashboard displaying statistics about the data the user can access.</p>
+<h2 id="upload-a-first-scan-report">Upload a first Scan Report<a class="headerlink" href="#upload-a-first-scan-report" title="Permanent link">&para;</a></h2>
+<p>To begin, navigate to "Scan Reports &gt; Upload New Scan Report" using the navbar at the top of the screen.</p>
+<p><strong>TODO:</strong> Provide a sample ScanReport file and Data Dictionary file.</p>
+<p>Fill in the details as required, and upload a valid Scan Report File. 
+You may optionally provide a Data Dictionary file.
+If an error message occurs, fix the error in the Scan Report File (or Data Dictionary file if provided) and try again to upload.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Not all possible errors in the files can be checked before upload. If you are directed to the Scan Reports page after upload, this indicates that all pre-checks have completed.
+However, other errors can be checked only during the processing of the file after upload. If these occur, the <code>Status</code> of the Scan Report may change to <code>Upload Failed</code>, or it may stay as <code>Upload in Progress</code> forever (over 30 minutes indicates an error).
+If this occurs, please check your files yourself for possible errors, and if that fails then contact the system administrator to check the logs.</p>
+</div>
+<p>Once a valid Scan Report File is uploaded, the user will be redirected to the Scan Report list page.
+This should show the newly created Scan Report at the top of the table.</p>
+<p>After upload, an automated task is launched to ingest the contents of the file and perform a number of processing steps. 
+This process can take several minutes for large Scan Report Files.
+While this process is running, the "Status" visible to the right of the row will be "Upload in Progress".
+Once the process completes, the status will change (once the page is reloaded) to "Upload Complete".
+In the case of an unrecoverable error in processing, the status will be set to "Upload Failed".</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Please note that sometimes errors in processing do not result in the status being set to "Upload Failed", with the status incorrectly remaining as "Upload in Progress".
+If this status remains for more than 30 minutes then you can be sure that the process has failed.
+Please report this to the development team with a copy of the Scan Report File being used, to help us improve the checks run.</p>
+</div>
+<p>Wait for approximately one minute to ensure the example Scan Report has been fully processed.
+Refresh the Scan Reports page to check that the Status of your Scan Report has been set to "Upload Complete" before continuing.</p>
+<h2 id="navigation">Navigation<a class="headerlink" href="#navigation" title="Permanent link">&para;</a></h2>
+<p>After upload, the user is directed to the Scan Reports page before the new Scan Report has been fully processed. 
+While the Scan Report continues to be processed, the contents visible on Carrot-Mapper will be populated over time.</p>
+<p>Click on the name of the Scan Report to navigate to the list of Tables ("Tables List") within the Scan Report.
+As Tables are processed, the user can click on the name of each Table to navigate to the list of Fields ("Field List") within that Table.
+Similarly, clicking on a Field name in a Table will display the list of Values ("Value List") within that Field.
+In this way, the structure of the Scan Report can be navigated.</p>
+<p>Sometimes a list is too large to be displayed all at once. In this case, the list will be displayed over a number of pages. Use the grey buttons at the top of the page to navigate through the pages.</p>
+<p><strong>TODO</strong>: note somewhere how to navigate pagination URLs.</p>
+<p>Use the breadcrumbs at the top of the page to quickly navigate back up the Scan Report.</p>
+<h2 id="creating-mapping-rules">Creating Mapping Rules<a class="headerlink" href="#creating-mapping-rules" title="Permanent link">&para;</a></h2>
+<p>The example Scan Report and Data Dictionary will have added some OMOP Concepts to fields and values in the Scan Report.
+For example, <strong>TODO</strong>(field) shows the OMOP code <strong>TODO</strong>, and <strong>TODO</strong>(value) shows the OMOP code <strong>TODO</strong>.</p>
+<p>You can hover over the Concepts to show more details about them (currently this just shows further details of how the Concept was added - in this case, they are added by vocab as defined in the Data Dictionary we supplied)</p>
+<h3 id="setting-person-id-and-date-event-for-each-table">Setting Person ID and Date Event for each table<a class="headerlink" href="#setting-person-id-and-date-event-for-each-table" title="Permanent link">&para;</a></h3>
+<p>The first task of creating Mapping Rules for a Scan Report is to set the Person ID and Date Event fields of each table.</p>
+<p>Navigate to the Tables view of your Scan Report by clicking on its name on the Scan Report list page.
+This page will show the list of all the tables in the Scan Report, while the <code>PERSON ID</code> and <code>EVENT DATE</code> columns are empty. 
+On the right-hand side, press the <code>Edit Table</code> link on the first table (<code>Demographics.csv</code>).
+In the first drop-down (Person ID), select <code>PersonID</code> which is one of the fields as reported by the Scan Report file.
+In the second drop-down (Date Event), select <code>Date_of_Birth</code>.
+Then press the <code>Update Demographics.csv</code> button. 
+You will be taken back to the Tables list, and the <code>PERSON ID</code> and <code>EVENT DATE</code> columns are now populated in the <code>Demographics.csv</code> row.</p>
+<p>Now do the same for <code>Covid.csv</code>, selecting <code>PersonID</code> and <code>Date</code>.</p>
+<p>The Tables list will now show both tables have filled <code>PERSON ID</code> and <code>EVENT DATE</code> columns. And we are ready to proceed with generating Mapping Rules</p>
+<h3 id="generate-initial-mapping-rules">Generate Initial Mapping Rules<a class="headerlink" href="#generate-initial-mapping-rules" title="Permanent link">&para;</a></h3>
+<p>Navigate to the Mapping Rules page associated to your Scan Report. 
+This can be either <strong>(a)</strong> from the Scan Reports page - press the <code>Rules</code> button; or <strong>(b)</strong> from any of the Tables, Fields or Values pages - press the <code>Go to Rules</code> button near the top of the page.</p>
+<p>Now that <code>Person ID</code> and <code>Date Event</code> are set for each of the tables, the Mapping Rules associated to those Concepts have been generated.</p>
+<p>After a few moments, the table will be populated by the Mapping Rules associated to the Concepts already mapped (in this example, there should be 16 Mapping Rules generated).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you don't see any Mapping Rules appear, this is usually an indication that you have not set the <code>Person ID</code> and <code>Date Event</code> on the tables.</p>
+</div>
+<p>Note that there are 5 or 6 rows in the table associated to each Concept. 
+In the <code>Rule ID</code> column in the table, there are 5 or 6 with a given ID. 
+This fully describes how to map the source term to the OMOP standard.</p>
+<p>A Summary view is available using the <code>Show Summary view</code> button at the top of the page. 
+This shows only one of the Rules associated to each source-concept pair, which can be useful for reviewing.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Summary view only shows Rules that are shown on the current pagination view. 
+Often this means only 5 or 6 Rules are visible in Summary View at any one time.
+By editing the URL so that <code>page_size=300</code>, for example, one can increase the number of Rules visible in Summary View at one time.</p>
+</div>
+<p>All the Mapping Rules associated to the Concepts, which were automatically added to our Scan Report by using a Data Dictionary file, are now available.</p>
+<h3 id="add-further-concepts">Add further Concepts<a class="headerlink" href="#add-further-concepts" title="Permanent link">&para;</a></h3>
+<p>Further mappings can be added manually.</p>
+<p>Navigate to the <code>Demographics.csv</code> table, and the <code>Sex</code> field. 
+There will be a table with 3 rows: <code>F</code>, <code>M</code> and an empty row.
+Note that, thanks to our Data Dictionary file, the <code>Value description</code> column has been populated with helpful information.
+It indicates that <code>F</code> means "Female", and <code>M</code> "Male".
+To add the correct OMOP Concepts, click in the text box to the left of the <code>Add</code> button on the right-hand side of the screen, in the row associated with <code>F</code>.
+Type <code>8532</code> and press <code>Add</code>. After a moment, a green <code>Success: Mapping Rules created</code> banner appears, along with a blue Concept tag inside the table.
+Similarly, add <code>8507</code> for the <code>M</code> row.</p>
+<p>Now that these Concepts have been added, press the <code>Go to Rules</code> button.
+Note that new rows have been added associated to the <code>F</code> and <code>M</code> values. These were generated at the time of adding the Concepts on the previous page.</p>
+<p>You can also try <em>removing</em> a Concept by pressing the grey <code>x</code> on the right of any Concept tag, then return to the Rules page to see that the associated Mapping Rules have been deleted.</p>
+<h2 id="downloading-mapping-rules">Downloading Mapping Rules<a class="headerlink" href="#downloading-mapping-rules" title="Permanent link">&para;</a></h2>
+<p>The final task in the simplest end-to-end process in Carrot-Mapper is to download the Mapping Rules in a form that can be used as input to Carrot-CDM (which will perform the transformations on the data).</p>
+<p>Navigate to the Mapping Rules page, and press the <code>Download Mapping JSON</code> button.
+This will download to your machine a <code>.json</code> file containing the Mapping Rules.</p>
+<p>To view a more human-readable version, press the <code>Download Mapping CSV</code> for a <code>.csv</code> file instead. This however cannot be used as input to Carrot-CDM.</p>
+<p>Finally, a diagram of the Mapping Rules can be viewed and downloaded using the yellow <code>View Map Diagram</code> and red <code>Download Map Diagram</code> buttons.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+ 
+        
+      </div>
+      <div class="md-social">
+  
+</div>
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.tracking", "navigation.indexes", "navigation.top", "content.action.edit"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.3220b9d7.min.js"></script>
+      
+    
+  </body>
+</html>

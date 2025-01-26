@@ -1,0 +1,762 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.18">
+    
+    
+      
+        <title>The Carrot-Mapper API - Carrot Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.66ac8b77.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/custom.css">
+    
+      <link rel="stylesheet" href="../../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../../css/pandas-dataframe.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="carrot" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#the-carrot-mapper-api" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Carrot Docs" class="md-header__button md-logo" aria-label="Carrot Docs" data-md-component="logo">
+      
+  <img src="../../images/favicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Carrot Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              The Carrot-Mapper API
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Health-Informatics-UoN/carrot-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Health-Informatics-UoN/carrot-docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Carrot Docs" class="md-nav__button md-logo" aria-label="Carrot Docs" data-md-component="logo">
+      
+  <img src="../../images/favicon.png" alt="logo">
+
+    </a>
+    Carrot Docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Health-Informatics-UoN/carrot-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Health-Informatics-UoN/carrot-docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#api-root" class="md-nav__link">
+    <span class="md-ellipsis">
+      API Root
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#filter-fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      Filter fields
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Filter fields">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#specifying-returning-fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specifying returning fields
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#omop-db" class="md-nav__link">
+    <span class="md-ellipsis">
+      OMOP DB
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#carrot" class="md-nav__link">
+    <span class="md-ellipsis">
+      Carrot
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#count-stats" class="md-nav__link">
+    <span class="md-ellipsis">
+      Count Stats
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assorted-others" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assorted others
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/Health-Informatics-UoN/carrot-docs/edit/main/docs/Carrot-Mapper/API.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="the-carrot-mapper-api">The Carrot-Mapper API<a class="headerlink" href="#the-carrot-mapper-api" title="Permanent link">&para;</a></h1>
+<p>The Carrot-Mapper API allows programmatic interaction with the Carrot-Mapper database. This API is developed using the Django REST framework. 
+Access to API endpoints is protected by token based authentication. The REST API is also the means of communication between the Django webapp and its supporting Azure Functions.  </p>
+<p>This page documents <em>most</em> of the endpoints defined. The only exceptions are some page-view URLs that are not designed for REST access, but rather are for internal use by the webapp.</p>
+<p>Our development team typically tests API endpoints using the Postman software. </p>
+<h2 id="api-root">API Root<a class="headerlink" href="#api-root" title="Permanent link">&para;</a></h2>
+<p>An API root can be accessed using: <strong>http://localhost:8080/api</strong> and this endpoint lists all the available endpoints in the API (see Figure 1). 
+Figure 1 also demonstrates that for testing API endpoints, a token is required, which can be requested from the system administrator.   </p>
+<p><img alt="" src="../images/APIRootTest_Postman.png" />
+<strong>Figure 1</strong> <em>A sample API endpoint testing through Postman</em></p>
+<p>Prepend the string <code>http://localhost:8080/api/</code> to each of the defined URLs to access a valid endpoint. 
+Access to the dev/test/prod systems is similarly via <code>https://ccom-dev.azurewebsites.net/api/</code>, <code>https://ccom-test.azurewebsites.net/api/</code> and <code>https://ccom.azurewebsites.net/api/</code> respectively, with different auth tokens for each.</p>
+<h2 id="filter-fields">Filter fields<a class="headerlink" href="#filter-fields" title="Permanent link">&para;</a></h2>
+<p>Many endpoints support selected filter fields. Here we define the syntax used to express the available filter options
+for a given endpoint.
+<div class="highlight"><pre><span></span><code>filter_fields:
+name: exact
+</code></pre></div>
+indicates that the filter field <code>?name=ABC</code> can be optionally appended to the URL to filter by the <code>name</code> property.</p>
+<p>Supplying no filter field will return all results.
+<div class="highlight"><pre><span></span><code>filter_fields:
+    id: exact, in
+</code></pre></div>
+indicates that the filter field <code>?id=ABC</code> can be appended to the URL to filter by the <code>id</code> property, or the filter field
+<code>?id__in=1,2,3</code> can be appended to return only results with <code>id</code> of either  <code>1</code>, <code>2</code>, or <code>3</code>. Similarly, supplying no
+filter field will return all results.</p>
+<p>Multiple filter fields can be defined for a given URL, leading to more complicated examples. Multiple filters are 
+separated by <code>&amp;</code>, with no restriction on the ordering of the filters, thus
+<div class="highlight"><pre><span></span><code>filter_fields:
+    id: exact, in
+    name: exact
+</code></pre></div>
+allows all of the following combinations:
+<div class="highlight"><pre><span></span><code>?id=1
+?id__in=1,2,3
+?name=ABC
+?id=1&amp;name=ABC
+?name=ABC&amp;id__in=1,2,3
+</code></pre></div></p>
+<h3 id="specifying-returning-fields">Specifying returning fields<a class="headerlink" href="#specifying-returning-fields" title="Permanent link">&para;</a></h3>
+<p>For some endpoints (those defined using DynamicFieldsMixin), users have an option of specifying return fields.
+On this page, these endpoints are marked with <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 12v7.88c.04.3-.06.62-.29.83a.996.996 0 0 1-1.41 0l-2.01-2.01a.989.989 0 0 1-.29-.83V12h-.03L4.21 4.62a1 1 0 0 1 .17-1.4c.19-.14.4-.22.62-.22h14c.22 0 .43.08.62.22a1 1 0 0 1 .17 1.4L14.03 12H14Z"/></svg></span>.
+If no return fields parameter is supplied, all fields will be returned.</p>
+<p>Return fields are specified by the syntax <code>?fields=id,name</code>. When combined with filters, the syntax is thus for example <code>?dataset_name=test&amp;fields=id</code>.</p>
+<h2 id="omop-db">OMOP DB<a class="headerlink" href="#omop-db" title="Permanent link">&para;</a></h2>
+<p>Read-only endpoints exist for 8 tables of the OMOP CDM DB. </p>
+<ol>
+<li>
+<p>Concept table: </p>
+<ul>
+<li><strong>omop/concepts/</strong> Returns all records in the <code>concept</code> table.</li>
+<li><strong>omop/concepts/1/</strong> Returns concept details from the <code>concept</code> table for <code>concept_id=1</code>.</li>
+<li><strong>omop/conceptsfilter/</strong>
+  <div class="highlight"><pre><span></span><code>filter_fields:
+  concept_id: in, exact
+  concept_code: in, exact
+  vocabulary_id: in, exact
+</code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>Concept_ancestor table: </p>
+<ul>
+<li><strong>omop/conceptancestors/</strong> Returns all records from the <code>concept_ancestor</code> table</li>
+<li><strong>omop/conceptancestors/262/</strong> Returns all records from the <code>concept_ancestor</code> table with <code>concept_ancestor_id=262</code></li>
+<li><strong>omop/conceptancestors/</strong>
+  <div class="highlight"><pre><span></span><code>filter_fields:
+  ancestor_concept_id: exact
+  descendant_concept_id: exact
+</code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>Concept_class table: </p>
+<ul>
+<li><strong>omop/conceptclasses</strong>   Returns all records from the <code>concept_class</code> table</li>
+<li><strong>omop/conceptclasses/10<sup>th</sup>%20level/</strong> Returns all records from <code>concept_class</code> table with <code>concept_class_id='10th level'</code></li>
+</ul>
+</li>
+<li>
+<p>Concept_relationship table: </p>
+<ul>
+<li><strong>omop/conceptrelationships/</strong> Returns all records from the <code>conceptrelationship</code> table
+  <div class="highlight"><pre><span></span><code>filter_fields:
+  concept_id_1: exact
+  concept_id_2: exact
+  relationship_id: exact
+</code></pre></div></li>
+<li><strong>omop/conceptrelationshipfilter/</strong> Returns all records from the <code>conceptrelationship</code> table
+  <div class="highlight"><pre><span></span><code>filter_fields:
+  concept_id_1: in, exact
+  concept_id_2: in, exact
+  relationship_id: in, exact
+</code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>Concept_synonym table: </p>
+<ul>
+<li><strong>omop/conceptsynonyms/</strong> Returns all records from the <code>concept_synonym</code> table</li>
+<li><strong>omop/conceptsynonyms/2/</strong> Returns all records from the <code>concept_synonym</code> table with <code>concept_id=2</code></li>
+</ul>
+</li>
+<li>
+<p>Domain table: </p>
+<ul>
+<li><strong>omop/domains</strong> Returns all records from the <code>domain</code> table</li>
+<li><strong>omop/domains/Condition/</strong>   Returns all records from the <code>domain</code> table with <code>domain_id=Condition</code></li>
+</ul>
+</li>
+<li>
+<p>Drug_strength table: </p>
+<ul>
+<li><strong>omop/drugstrengths/</strong>   Returns all records from the <code>drug_strength</code> table
+  <div class="highlight"><pre><span></span><code>filter_fields:
+  drug_concept_id: in, exact
+  ingredient_concept_id: in, exact
+</code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>Vocabulary table: </p>
+<ul>
+<li><strong>omop/vocabularies/</strong> Returns all records from the <code>vocabulary</code> table</li>
+<li><strong>omop/vocabularies/Cost/</strong>   Returns a record from a <code>vocabulary</code> table with <code>vocabulary_id=Cost</code></li>
+</ul>
+</li>
+</ol>
+<h2 id="carrot">Carrot<a class="headerlink" href="#carrot" title="Permanent link">&para;</a></h2>
+<p>Note that many of these endpoints implement user permissions checks, and may restrict or filter results based upon the 
+user rights associated to the Token provided.</p>
+<ol>
+<li>
+<p>User table</p>
+<ul>
+<li><strong>users/</strong> Returns all records from the <code>auth_users</code> table. </li>
+<li><strong>users/&lt;User_id&gt;/</strong>  Returns user details from the <code>auth_users</code> table by <code>id</code>.</li>
+<li><strong>usersfilter/</strong> 
+  <div class="highlight"><pre><span></span><code>filter_fields:
+  id: in, exact
+</code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>mapping_scanreport table</p>
+<ul>
+<li><strong>scanreports/</strong> <a href="#specifying-returning-fields"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 12v7.88c.04.3-.06.62-.29.83a.996.996 0 0 1-1.41 0l-2.01-2.01a.989.989 0 0 1-.29-.83V12h-.03L4.21 4.62a1 1 0 0 1 .17-1.4c.19-.14.4-.22.62-.22h14c.22 0 .43.08.62.22a1 1 0 0 1 .17 1.4L14.03 12H14Z"/></svg></span></a> Returns all records from the <code>mapping_scanreport</code> table. </li>
+<li>For this endpoint, making a GET/POST request shows the results. Making a PUT/PATCH/DELETE request allows 
+    for editing. 
+  <div class="highlight"><pre><span></span><code>filter_fields:
+  parent_dataset: exact
+</code></pre></div></li>
+<li><strong>scanreports/&lt;ScanReport_id&gt;/</strong> <a href="#specifying-returning-fields"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 12v7.88c.04.3-.06.62-.29.83a.996.996 0 0 1-1.41 0l-2.01-2.01a.989.989 0 0 1-.29-.83V12h-.03L4.21 4.62a1 1 0 0 1 .17-1.4c.19-.14.4-.22.62-.22h14c.22 0 .43.08.62.22a1 1 0 0 1 .17 1.4L14.03 12H14Z"/></svg></span></a> Returns all records from the <code>mapping_scanreport</code> table by <code>id</code>.</li>
+</ul>
+</li>
+<li>
+<p>mapping_scanreporttable table</p>
+<ul>
+<li><strong>scanreporttables/</strong> <a href="#specifying-returning-fields"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 12v7.88c.04.3-.06.62-.29.83a.996.996 0 0 1-1.41 0l-2.01-2.01a.989.989 0 0 1-.29-.83V12h-.03L4.21 4.62a1 1 0 0 1 .17-1.4c.19-.14.4-.22.62-.22h14c.22 0 .43.08.62.22a1 1 0 0 1 .17 1.4L14.03 12H14Z"/></svg></span></a> Returns all records from the <code>mapping_scanreporttables</code> table.
+  <div class="highlight"><pre><span></span><code>filter_fields:
+  id: in, exact
+  name: in, exact
+  scan_report: in, exact
+</code></pre></div></li>
+<li>For this endpoint, making a GET/POST request shows the results. Making a PUT/PATCH/DELETE request allows 
+    for editing.</li>
+<li><strong>scanreporttables/&lt;ScanReportTable_id&gt;/</strong> <a href="#specifying-returning-fields"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 12v7.88c.04.3-.06.62-.29.83a.996.996 0 0 1-1.41 0l-2.01-2.01a.989.989 0 0 1-.29-.83V12h-.03L4.21 4.62a1 1 0 0 1 .17-1.4c.19-.14.4-.22.62-.22h14c.22 0 .43.08.62.22a1 1 0 0 1 .17 1.4L14.03 12H14Z"/></svg></span></a> Returns all records from the <code>mapping_scanreporttable</code> table by <code>id</code>.</li>
+</ul>
+</li>
+<li>
+<p>mapping_scanreportfield table</p>
+<ul>
+<li><strong>scanreportfields/</strong> <a href="#specifying-returning-fields"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 12v7.88c.04.3-.06.62-.29.83a.996.996 0 0 1-1.41 0l-2.01-2.01a.989.989 0 0 1-.29-.83V12h-.03L4.21 4.62a1 1 0 0 1 .17-1.4c.19-.14.4-.22.62-.22h14c.22 0 .43.08.62.22a1 1 0 0 1 .17 1.4L14.03 12H14Z"/></svg></span></a> Returns all records from the <code>mapping_scanreportfield</code> table.
+  <div class="highlight"><pre><span></span><code>filter_fields:
+  id: in, exact
+  name: in, exact
+  scan_report_table: in, exact
+</code></pre></div></li>
+<li>For this endpoint, making a GET/POST request shows the results. Making a PUT/PATCH/DELETE request allows 
+    for editing.</li>
+<li><strong>scanreportfields/&lt;ScanReportField_id&gt;/</strong> <a href="#specifying-returning-fields"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 12v7.88c.04.3-.06.62-.29.83a.996.996 0 0 1-1.41 0l-2.01-2.01a.989.989 0 0 1-.29-.83V12h-.03L4.21 4.62a1 1 0 0 1 .17-1.4c.19-.14.4-.22.62-.22h14c.22 0 .43.08.62.22a1 1 0 0 1 .17 1.4L14.03 12H14Z"/></svg></span></a> Returns all records in the <code>mapping_scanreportfields</code> table by <code>id</code>.</li>
+</ul>
+</li>
+<li>
+<p>mapping_scanreportvalue table</p>
+<ul>
+<li><strong>scanreportvalues/</strong> <a href="#specifying-returning-fields"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 12v7.88c.04.3-.06.62-.29.83a.996.996 0 0 1-1.41 0l-2.01-2.01a.989.989 0 0 1-.29-.83V12h-.03L4.21 4.62a1 1 0 0 1 .17-1.4c.19-.14.4-.22.62-.22h14c.22 0 .43.08.62.22a1 1 0 0 1 .17 1.4L14.03 12H14Z"/></svg></span></a> Returns all records from the <code>mapping_scanreportvalues</code> table. 
+  <div class="highlight"><pre><span></span><code>filter_fields:
+  id: in, exact
+  name: in, exact
+  scan_report_field: in, exact
+</code></pre></div></li>
+<li>For this endpoint, making a GET/POST request shows the results. Making a PUT/PATCH/DELETE request allows 
+    for editing.</li>
+<li>
+<p><strong>scanreportvalues/&lt;ScanReportValue_id&gt;/</strong> <a href="#specifying-returning-fields"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 12v7.88c.04.3-.06.62-.29.83a.996.996 0 0 1-1.41 0l-2.01-2.01a.989.989 0 0 1-.29-.83V12h-.03L4.21 4.62a1 1 0 0 1 .17-1.4c.19-.14.4-.22.62-.22h14c.22 0 .43.08.62.22a1 1 0 0 1 .17 1.4L14.03 12H14Z"/></svg></span></a> Returns all records from the <code>mapping_scanreportvalues</code> table by <code>id</code>.</p>
+</li>
+<li>
+<p><strong>scanreportvaluepks/?scan_report=&lt;ScanReport_id&gt;</strong> Returns all records from the <code>mapping_scanreportvalues</code> table 
+  which are linked to the scan report by <code>id</code> through the chain of <code>ScanReportValue -&gt; ScanReportField -&gt; ScanReportTable -&gt; ScanReport</code>, and which 
+  additionally do not have <code>conceptID=-1</code> (which is the default for those without an associated ScanReportConcept).</p>
+</li>
+<li><strong>scanreportvaluesfilterscanreporttable</strong> <a href="#specifying-returning-fields"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 12v7.88c.04.3-.06.62-.29.83a.996.996 0 0 1-1.41 0l-2.01-2.01a.989.989 0 0 1-.29-.83V12h-.03L4.21 4.62a1 1 0 0 1 .17-1.4c.19-.14.4-.22.62-.22h14c.22 0 .43.08.62.22a1 1 0 0 1 .17 1.4L14.03 12H14Z"/></svg></span></a> Returns all ScanReportValues associated to the supplied <code>ScanReportTable</code> id.
+  <div class="highlight"><pre><span></span><code>filter_fields:
+  scan_report_table: exact
+</code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>mapping_scanreportconcept table  </p>
+<ul>
+<li><strong>scanreportconcepts/</strong> <a href="#specifying-returning-fields"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 12v7.88c.04.3-.06.62-.29.83a.996.996 0 0 1-1.41 0l-2.01-2.01a.989.989 0 0 1-.29-.83V12h-.03L4.21 4.62a1 1 0 0 1 .17-1.4c.19-.14.4-.22.62-.22h14c.22 0 .43.08.62.22a1 1 0 0 1 .17 1.4L14.03 12H14Z"/></svg></span></a> Returns all records from the <code>mapping_scanreportconcepts</code> table. For this endpoint, making a put request allows to accept a json array that is beneficial in its own right with a single call to an api endpoint. </li>
+<li><strong>scanreportconcepts/&lt;ScanReportConcept_id&gt;/</strong> <a href="#specifying-returning-fields"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 12v7.88c.04.3-.06.62-.29.83a.996.996 0 0 1-1.41 0l-2.01-2.01a.989.989 0 0 1-.29-.83V12h-.03L4.21 4.62a1 1 0 0 1 .17-1.4c.19-.14.4-.22.62-.22h14c.22 0 .43.08.62.22a1 1 0 0 1 .17 1.4L14.03 12H14Z"/></svg></span></a> Returns all records from the <code>mapping_scanreportconcepts</code> table by <code>id</code>.</li>
+<li><strong>scanreportconceptsfilter/</strong> <a href="#specifying-returning-fields"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 12v7.88c.04.3-.06.62-.29.83a.996.996 0 0 1-1.41 0l-2.01-2.01a.989.989 0 0 1-.29-.83V12h-.03L4.21 4.62a1 1 0 0 1 .17-1.4c.19-.14.4-.22.62-.22h14c.22 0 .43.08.62.22a1 1 0 0 1 .17 1.4L14.03 12H14Z"/></svg></span></a> Returns all records from the <code>mapping_scanreportconcepts</code> table, with additional filtering capabilities on <code>concept_id</code>.
+  <div class="highlight"><pre><span></span><code>filter_fields:
+  id: in, exact
+  object_id: in, exact
+  content_type: in, exact
+  concept_id: in, exact
+</code></pre></div></li>
+<li><strong>scanreportactiveconceptfilter/</strong> <a href="#specifying-returning-fields"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 12v7.88c.04.3-.06.62-.29.83a.996.996 0 0 1-1.41 0l-2.01-2.01a.989.989 0 0 1-.29-.83V12h-.03L4.21 4.62a1 1 0 0 1 .17-1.4c.19-.14.4-.22.62-.22h14c.22 0 .43.08.62.22a1 1 0 0 1 .17 1.4L14.03 12H14Z"/></svg></span></a> Returns all records from the <code>mapping_scanreportconcepts</code> table
+  which (1) are associated to an object with the given <code>content_type</code> (<code>15</code> for <code>ScanReportField</code>, <code>17</code> for <code>ScanReportValue</code> - any other value will return None);
+  and (2) are associated to a <code>ScanReport</code> which is both active (not hidden) and has Status <code>Mapping Complete</code>.
+  This endpoint is only available to the Azure Function superuser.
+  <div class="highlight"><pre><span></span><code>filter_fields:
+  content_type: exact
+</code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>mapping_classificationsystem table   </p>
+<ul>
+<li><strong>UNUSED!</strong> <strong>classificationsystems/</strong> <a href="#specifying-returning-fields"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 12v7.88c.04.3-.06.62-.29.83a.996.996 0 0 1-1.41 0l-2.01-2.01a.989.989 0 0 1-.29-.83V12h-.03L4.21 4.62a1 1 0 0 1 .17-1.4c.19-.14.4-.22.62-.22h14c.22 0 .43.08.62.22a1 1 0 0 1 .17 1.4L14.03 12H14Z"/></svg></span></a> Returns all records from the <code>mapping_classificationsystem</code> table.</li>
+<li><strong>classificationsystems/&lt;ClassificationSystem_id&gt;/</strong> <a href="#specifying-returning-fields"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 12v7.88c.04.3-.06.62-.29.83a.996.996 0 0 1-1.41 0l-2.01-2.01a.989.989 0 0 1-.29-.83V12h-.03L4.21 4.62a1 1 0 0 1 .17-1.4c.19-.14.4-.22.62-.22h14c.22 0 .43.08.62.22a1 1 0 0 1 .17 1.4L14.03 12H14Z"/></svg></span></a> Returns all records from the <code>mapping_classificationsystem</code> table by <code>id</code>.</li>
+</ul>
+</li>
+<li>
+<p>mapping_datadictionary table </p>
+<ul>
+<li><strong>UNUSED!</strong> <strong>datadictionaries/</strong> <a href="#specifying-returning-fields"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 12v7.88c.04.3-.06.62-.29.83a.996.996 0 0 1-1.41 0l-2.01-2.01a.989.989 0 0 1-.29-.83V12h-.03L4.21 4.62a1 1 0 0 1 .17-1.4c.19-.14.4-.22.62-.22h14c.22 0 .43.08.62.22a1 1 0 0 1 .17 1.4L14.03 12H14Z"/></svg></span></a> Returns all records from the <code>mapping_datadictionary</code> table.</li>
+<li><strong>datadictionaries/&lt;DataDictionary_id&gt;/</strong> <a href="#specifying-returning-fields"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 12v7.88c.04.3-.06.62-.29.83a.996.996 0 0 1-1.41 0l-2.01-2.01a.989.989 0 0 1-.29-.83V12h-.03L4.21 4.62a1 1 0 0 1 .17-1.4c.19-.14.4-.22.62-.22h14c.22 0 .43.08.62.22a1 1 0 0 1 .17 1.4L14.03 12H14Z"/></svg></span></a> Returns all records from the <code>mapping_datadictionary</code> table by <code>id</code>.</li>
+</ul>
+</li>
+<li>
+<p>datapartner table    </p>
+<ul>
+<li><strong>datapartners/</strong> <a href="#specifying-returning-fields"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 12v7.88c.04.3-.06.62-.29.83a.996.996 0 0 1-1.41 0l-2.01-2.01a.989.989 0 0 1-.29-.83V12h-.03L4.21 4.62a1 1 0 0 1 .17-1.4c.19-.14.4-.22.62-.22h14c.22 0 .43.08.62.22a1 1 0 0 1 .17 1.4L14.03 12H14Z"/></svg></span></a> Returns all records from the <code>datapartner</code> table.  </li>
+<li><strong>datapartners/&lt;DataPartner_id&gt;/</strong> <a href="#specifying-returning-fields"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 12v7.88c.04.3-.06.62-.29.83a.996.996 0 0 1-1.41 0l-2.01-2.01a.989.989 0 0 1-.29-.83V12h-.03L4.21 4.62a1 1 0 0 1 .17-1.4c.19-.14.4-.22.62-.22h14c.22 0 .43.08.62.22a1 1 0 0 1 .17 1.4L14.03 12H14Z"/></svg></span></a> Returns all records from the <code>datapartner</code> table by <code>id</code>.</li>
+<li><strong>datapartnersfilter/</strong> <a href="#specifying-returning-fields"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 12v7.88c.04.3-.06.62-.29.83a.996.996 0 0 1-1.41 0l-2.01-2.01a.989.989 0 0 1-.29-.83V12h-.03L4.21 4.62a1 1 0 0 1 .17-1.4c.19-.14.4-.22.62-.22h14c.22 0 .43.08.62.22a1 1 0 0 1 .17 1.4L14.03 12H14Z"/></svg></span></a>
+  <div class="highlight"><pre><span></span><code>filter_fields:
+  name: exact
+</code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>mapping_omoptable table </p>
+<ul>
+<li><strong>omoptables/</strong> Returns all records from the <code>mapping_omoptable</code> table.</li>
+<li><strong>omoptables/&lt;OmopTable_id&gt;/</strong> Returns all records from the <code>mapping_omoptable</code> table by <code>id</code>.</li>
+<li><strong>UNUSED!</strong> <strong>omoptablesfilter/</strong>
+   <div class="highlight"><pre><span></span><code>filter_fields:
+  id: in, exact
+</code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>mapping_omopfield table </p>
+<ul>
+<li><strong>omopfields/</strong> <a href="#specifying-returning-fields"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 12v7.88c.04.3-.06.62-.29.83a.996.996 0 0 1-1.41 0l-2.01-2.01a.989.989 0 0 1-.29-.83V12h-.03L4.21 4.62a1 1 0 0 1 .17-1.4c.19-.14.4-.22.62-.22h14c.22 0 .43.08.62.22a1 1 0 0 1 .17 1.4L14.03 12H14Z"/></svg></span></a> Returns all records from the <code>mapping_omopfield</code> table.</li>
+<li><strong>omopfields/&lt;OmopField_id&gt;/</strong> <a href="#specifying-returning-fields"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 12v7.88c.04.3-.06.62-.29.83a.996.996 0 0 1-1.41 0l-2.01-2.01a.989.989 0 0 1-.29-.83V12h-.03L4.21 4.62a1 1 0 0 1 .17-1.4c.19-.14.4-.22.62-.22h14c.22 0 .43.08.62.22a1 1 0 0 1 .17 1.4L14.03 12H14Z"/></svg></span></a> Returns all records from the <code>mapping_omopfield</code> table by <code>id</code>.</li>
+<li><strong>UNUSED!</strong> <strong>omopfieldsfilter/</strong> <a href="#specifying-returning-fields"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 12v7.88c.04.3-.06.62-.29.83a.996.996 0 0 1-1.41 0l-2.01-2.01a.989.989 0 0 1-.29-.83V12h-.03L4.21 4.62a1 1 0 0 1 .17-1.4c.19-.14.4-.22.62-.22h14c.22 0 .43.08.62.22a1 1 0 0 1 .17 1.4L14.03 12H14Z"/></svg></span></a>
+   <div class="highlight"><pre><span></span><code>filter_fields:
+  id: in, exact
+</code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>mapping_mappingrule table   </p>
+<ul>
+<li><strong>mappingrules/</strong> <a href="#specifying-returning-fields"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 12v7.88c.04.3-.06.62-.29.83a.996.996 0 0 1-1.41 0l-2.01-2.01a.989.989 0 0 1-.29-.83V12h-.03L4.21 4.62a1 1 0 0 1 .17-1.4c.19-.14.4-.22.62-.22h14c.22 0 .43.08.62.22a1 1 0 0 1 .17 1.4L14.03 12H14Z"/></svg></span></a> Returns all records from the <code>mapping_mappingrule</code> table.</li>
+<li><strong>mappingrules/&lt;MappingRule_id&gt;</strong> <a href="#specifying-returning-fields"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 12v7.88c.04.3-.06.62-.29.83a.996.996 0 0 1-1.41 0l-2.01-2.01a.989.989 0 0 1-.29-.83V12h-.03L4.21 4.62a1 1 0 0 1 .17-1.4c.19-.14.4-.22.62-.22h14c.22 0 .43.08.62.22a1 1 0 0 1 .17 1.4L14.03 12H14Z"/></svg></span></a> Returns all records from the <code>mapping_mappingrule</code> table by <code>id</code>.</li>
+<li><strong>mappingrulesfilter/</strong> <a href="#specifying-returning-fields"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 12v7.88c.04.3-.06.62-.29.83a.996.996 0 0 1-1.41 0l-2.01-2.01a.989.989 0 0 1-.29-.83V12h-.03L4.21 4.62a1 1 0 0 1 .17-1.4c.19-.14.4-.22.62-.22h14c.22 0 .43.08.62.22a1 1 0 0 1 .17 1.4L14.03 12H14Z"/></svg></span></a>
+   <div class="highlight"><pre><span></span><code>filter_fields:
+  scan_report: in, exact
+  concept: in, exact
+</code></pre></div></li>
+<li><strong>mappingruleslist/?id=&lt;ScanReport_id&gt;</strong> This returns all mapping rules associated to the <code>ScanReport</code> with <code>id</code>. This requires looking up a number of foreign keys and may be rather slow.</li>
+<li>This also supports pagination, using the page number parameter <code>p</code> and page size parameter <code>page_size</code>, e.g. <code>mappingruleslist/?id=56&amp;p=1&amp;page_size=30</code> </li>
+</ul>
+</li>
+<li>
+<p>mapping_dataset table</p>
+<ul>
+<li><strong>datasets/</strong> <a href="#specifying-returning-fields"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 12v7.88c.04.3-.06.62-.29.83a.996.996 0 0 1-1.41 0l-2.01-2.01a.989.989 0 0 1-.29-.83V12h-.03L4.21 4.62a1 1 0 0 1 .17-1.4c.19-.14.4-.22.62-.22h14c.22 0 .43.08.62.22a1 1 0 0 1 .17 1.4L14.03 12H14Z"/></svg></span></a> Returns all <code>Datasets</code> which the user is able to view.
+  <div class="highlight"><pre><span></span><code>filter_fields:
+  id: in, exact
+  data_partner: in, exact
+  hidden: in, exact 
+</code></pre></div></li>
+<li><strong>datasets/&lt;Dataset_id&gt;</strong> <a href="#specifying-returning-fields"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 12v7.88c.04.3-.06.62-.29.83a.996.996 0 0 1-1.41 0l-2.01-2.01a.989.989 0 0 1-.29-.83V12h-.03L4.21 4.62a1 1 0 0 1 .17-1.4c.19-.14.4-.22.62-.22h14c.22 0 .43.08.62.22a1 1 0 0 1 .17 1.4L14.03 12H14Z"/></svg></span></a> Return a single <code>Dataset</code> by <code>id</code>.</li>
+<li><strong>datasets/update/&lt;Dataset_id&gt;</strong> <a href="#specifying-returning-fields"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 12v7.88c.04.3-.06.62-.29.83a.996.996 0 0 1-1.41 0l-2.01-2.01a.989.989 0 0 1-.29-.83V12h-.03L4.21 4.62a1 1 0 0 1 .17-1.4c.19-.14.4-.22.62-.22h14c.22 0 .43.08.62.22a1 1 0 0 1 .17 1.4L14.03 12H14Z"/></svg></span></a> Update a single <code>Dataset</code> by <code>id</code>.</li>
+<li><strong>datasets/delete/&lt;Dataset_id&gt;</strong> <a href="#specifying-returning-fields"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 12v7.88c.04.3-.06.62-.29.83a.996.996 0 0 1-1.41 0l-2.01-2.01a.989.989 0 0 1-.29-.83V12h-.03L4.21 4.62a1 1 0 0 1 .17-1.4c.19-.14.4-.22.62-.22h14c.22 0 .43.08.62.22a1 1 0 0 1 .17 1.4L14.03 12H14Z"/></svg></span></a> Delete a single <code>Dataset</code> by <code>id</code>.</li>
+<li><strong>datasets/create</strong> Create a single <code>Dataset</code>.</li>
+<li><strong>datasets_data_partners/</strong> <a href="#specifying-returning-fields"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 12v7.88c.04.3-.06.62-.29.83a.996.996 0 0 1-1.41 0l-2.01-2.01a.989.989 0 0 1-.29-.83V12h-.03L4.21 4.62a1 1 0 0 1 .17-1.4c.19-.14.4-.22.62-.22h14c.22 0 .43.08.62.22a1 1 0 0 1 .17 1.4L14.03 12H14Z"/></svg></span></a> Returns all <code>Datasets</code> which the user is able to view, while providing a pagination option, and pre-fetching (for performance) Data Partner information associated to each.
+  <div class="highlight"><pre><span></span><code>filter_fields:
+  id: in, exact
+  data_partner: in, exact
+  hidden: in, exact 
+</code></pre></div></li>
+<li>This also supports pagination, using the page number parameter <code>p</code> and page size parameter <code>page_size</code>, e.g. <code>datasets_data_partners/?id=56&amp;p=1&amp;page_size=30</code> </li>
+</ul>
+</li>
+<li>
+<p>mapping_projects table</p>
+<ul>
+<li><strong>projects/</strong> <a href="#specifying-returning-fields"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 12v7.88c.04.3-.06.62-.29.83a.996.996 0 0 1-1.41 0l-2.01-2.01a.989.989 0 0 1-.29-.83V12h-.03L4.21 4.62a1 1 0 0 1 .17-1.4c.19-.14.4-.22.62-.22h14c.22 0 .43.08.62.22a1 1 0 0 1 .17 1.4L14.03 12H14Z"/></svg></span></a> Returns all <code>Projects</code> which the user is able to view.
+  <div class="highlight"><pre><span></span><code>filter_fields:
+  name: in, exact
+  dataset: exact 
+</code></pre></div></li>
+<li><strong>projects/&lt;Project_id&gt;</strong> <a href="#specifying-returning-fields"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 12v7.88c.04.3-.06.62-.29.83a.996.996 0 0 1-1.41 0l-2.01-2.01a.989.989 0 0 1-.29-.83V12h-.03L4.21 4.62a1 1 0 0 1 .17-1.4c.19-.14.4-.22.62-.22h14c.22 0 .43.08.62.22a1 1 0 0 1 .17 1.4L14.03 12H14Z"/></svg></span></a> Returns a single <code>Project</code> by <code>id</code>.</li>
+<li><strong>projects/update/&lt;Project_id&gt;</strong> <a href="#specifying-returning-fields"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 12v7.88c.04.3-.06.62-.29.83a.996.996 0 0 1-1.41 0l-2.01-2.01a.989.989 0 0 1-.29-.83V12h-.03L4.21 4.62a1 1 0 0 1 .17-1.4c.19-.14.4-.22.62-.22h14c.22 0 .43.08.62.22a1 1 0 0 1 .17 1.4L14.03 12H14Z"/></svg></span></a> Update a single <code>Project</code> by <code>id</code>.</li>
+</ul>
+</li>
+</ol>
+<h2 id="count-stats">Count Stats<a class="headerlink" href="#count-stats" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>countstats/</strong> Returns the total number of <code>ScanReports</code>, <code>ScanReportTables</code>, <code>ScanReportFields</code>, <code>ScanReportValues</code> &amp; <code>MappingRules</code> in the database.</li>
+<li><strong>countstatsscanreport/?scan_report=&lt;ScanReport_id&gt;</strong> Returns the total number of tables, fields, values and mapping rules in a <code>ScanReport</code> by <code>id</code>.</li>
+<li><strong>countstatsscanreporttable/?scan_report_table=&lt;ScanReportTable_id&gt;</strong> Returns the total number of <code>ScanReportFields</code> and <code>ScanReportValues</code> in a <code>ScanReportTable</code> by <code>id</code>.</li>
+<li><strong>countstatsscanreporttablefield/?scan_report_field=&lt;ScanReportField_id&gt;</strong> Returns the total number of <code>ScanReportValues</code> in a <code>ScanReportField</code> by <code>id</code>.</li>
+</ul>
+<h2 id="assorted-others">Assorted others<a class="headerlink" href="#assorted-others" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p><strong>analyse/&lt;ScanReport_id&gt;/</strong> <a href="#specifying-returning-fields"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 12v7.88c.04.3-.06.62-.29.83a.996.996 0 0 1-1.41 0l-2.01-2.01a.989.989 0 0 1-.29-.83V12h-.03L4.21 4.62a1 1 0 0 1 .17-1.4c.19-.14.4-.22.62-.22h14c.22 0 .43.08.62.22a1 1 0 0 1 .17 1.4L14.03 12H14Z"/></svg></span></a> Returns an analysis of the <code>ScanReportConcepts</code> in the <code>ScanReport</code> with <code>id</code>. This analysis compares to all other <code>ScanReports</code>, 
+  finding ancestor and descendants of each, and reporting the results (specifically, any mismatched <code>Concepts</code> found between this <code>ScanReport</code> and any other)</p>
+</li>
+<li>
+<p><strong>countprojects/&lt;Dataset_id&gt;/</strong> Returns the count of distinct projects to which the provided <code>Dataset</code> <code>id</code> is associated.</p>
+</li>
+<li>
+<p><strong>scanreports/&lt;ScanReport_id&gt;/download</strong> Returns the <code>ScanReport</code> file in <code>.xlsx</code> format with <code>id</code> from Azure blob storage as an HTTP Response.</p>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+ 
+        
+      </div>
+      <div class="md-social">
+  
+</div>
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.tracking", "navigation.indexes", "navigation.top", "content.action.edit"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.3220b9d7.min.js"></script>
+      
+    
+  </body>
+</html>
