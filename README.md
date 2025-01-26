@@ -1,4 +1,4 @@
-[!CAUTION]
+> [!CAUTION]
 > Carrot documentation is now moved to a [new repository](https://github.com/Health-Informatics-UoN/carrot).
 
 # Carrot Documentation
